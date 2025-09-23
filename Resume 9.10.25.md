@@ -2,7 +2,7 @@
 
 **Rice University	Class of 2029**
 
-* B.S. Electrical & Computer Engineering
+* B.S. Electrical & Computer Engineering; Minor in Entrepreneurship
 * Serving freshman class as New Student Representative in Martel College parliament
 
 **Davis High School	2021 - 2025**
