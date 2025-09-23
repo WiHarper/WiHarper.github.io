@@ -7,7 +7,7 @@ title: "Wilson Harper"
 It's great to see you. Get in touch!
 
 <!-- put this where you want the email to appear -->
-<div id="email" data-user="wilsonharper" data-domain="wilsonharper.net"></div>
+<div id="email" data-user="hey" data-domain="wilsonharper.net"></div>
 
 <noscript>wilsonharper [at] wilsonharper [dot] net</noscript>
 
