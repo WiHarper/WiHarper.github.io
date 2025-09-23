@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<div>
+<div></div>
   
 [LinkedIn](https://linkedin.com/in/wilson-harper)
 
