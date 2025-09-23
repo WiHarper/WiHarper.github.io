@@ -26,9 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
   el.appendChild(a);
 });
 </script>
-
-<br><br>
-
+<br>
 [LinkedIn](https://linkedin.com/in/wilson-harper)
 
 [HN](https://news.ycombinator.com/user?id=WilsonHarper)
