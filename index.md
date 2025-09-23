@@ -4,10 +4,14 @@ title: "Wilson Harper"
 
 ---
 
+div.email > span:nth-child(2) {
+	display: none;
+}
+
 # Hey!
 It's great to see you. Get in touch!
 
-[hey@wilsonharper.net](mailto:hey@wilsonharper.net)
+<div class="email">wilsonharper@<span>wilsonharper.</span>.</span>net</div>
 
 [LinkedIn](https://linkedin.com/in/wilson-harper)
 
