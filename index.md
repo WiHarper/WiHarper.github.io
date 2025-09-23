@@ -1,16 +1,9 @@
 ---
 
-title: "My Personal Site"
+title: "Wilson Harper"
 
 ---
 
-
-
-\# Hello World
-
-
-
-This is my site being built with GitHub Pages.
 
 
 
