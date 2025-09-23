@@ -1,3 +1,9 @@
+---
+
+title: "Resume"
+
+---
+
 # **EDUCATION**
 
 **Rice University	Class of 2029**
