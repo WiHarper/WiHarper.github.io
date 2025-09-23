@@ -1,18 +1,21 @@
 ---
-
 title: "Wilson Harper"
-
 ---
 
-div.email > span:nth-child(2) {
-	display: none;
+<style>
+.email span {
+  display: none;
 }
+</style>
 
 # Hey!
 It's great to see you. Get in touch!
 
-<div class="email">wilsonharper@<span>wilsonharper</span>.</span>net</div>
-
+<div class="email">
+  wilsonharper@
+  <span>REMOVE_THIS</span>
+  net
+</div>
 
 [LinkedIn](https://linkedin.com/in/wilson-harper)
 
