@@ -7,9 +7,9 @@ title: "Wilson Harper"
 # Hey!
 It's great to see you. Get in touch!
 
-[hey@wilsonharper.net](hey@wilsonharper.net)
+<hey@wilsonharper.net>
 
-[LinkedIn](linkedin.com/in/wilson-harper)
+[LinkedIn](https://linkedin.com/in/wilson-harper)
 
 [Hacker News](https://news.ycombinator.com/user?id=WilsonHarper)
 
