@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<div></div>
-  
+<br><br>
+
 [LinkedIn](https://linkedin.com/in/wilson-harper)
 
 [HN](https://news.ycombinator.com/user?id=WilsonHarper)
