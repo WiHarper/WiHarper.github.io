@@ -11,7 +11,8 @@ div.email > span:nth-child(2) {
 # Hey!
 It's great to see you. Get in touch!
 
-<div class="email">wilsonharper@<span>wilsonharper.</span>.</span>net</div>
+<div class="email">wilsonharper@<span>wilsonharper</span>.</span>net</div>
+
 
 [LinkedIn](https://linkedin.com/in/wilson-harper)
 
