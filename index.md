@@ -4,5 +4,6 @@ title: "Wilson Harper"
 
 ---
 
-Welcome to my website.
+# Hey!
+It's great to see you. Welcome to my website.
 
