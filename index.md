@@ -7,7 +7,7 @@ title: "Wilson Harper"
 # Hey!
 It's great to see you. Get in touch!
 
-<hey@wilsonharper.net>
+<https://hey@wilsonharper.net>
 
 [LinkedIn](https://linkedin.com/in/wilson-harper)
 
