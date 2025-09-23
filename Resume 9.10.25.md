@@ -1,11 +1,8 @@
-\*\*Wilson Harper	\*\*	wilsonharper.net  
-linkedin.com/in/Wilson-Harper	Houston, TX
-
 # **EDUCATION**
 
 **Rice University	Class of 2029**
 
-* B.S. Electrical \& Computer Engineering
+* B.S. Electrical & Computer Engineering
 * Serving freshman class as New Student Representative in Martel College parliament
 
 **Davis High School	2021 - 2025**
@@ -29,7 +26,7 @@ linkedin.com/in/Wilson-Harper	Houston, TX
 
 
 
-**Chapter President \& National Voting Delegate, Technology Student Association	  2018 - 2025**
+**Chapter President & National Voting Delegate, Technology Student Association	  2018 - 2025**
 
 * Served as chapter president and national conference voting delegate for 50+ students
 * Won 6 state-level awards and qualified for national contest three times
