@@ -6,6 +6,9 @@ title: "Wilson Harper"
 # Hey!
 It's great to see you. Get in touch!
 
+![Alt text](/picture.jpg){:width="25%"}
+
+
 <!-- put this where you want the email to appear -->
 <div id="email" data-user="hey" data-domain="wilsonharper.net"></div>
 
