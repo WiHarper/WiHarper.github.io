@@ -11,7 +11,7 @@ It's great to see you. Get in touch!
 
 [LinkedIn](https://linkedin.com/in/wilson-harper)
 
-[Hacker News](https://news.ycombinator.com/user?id=WilsonHarper)
+[HN](https://news.ycombinator.com/user?id=WilsonHarper)
 
 [Instagram](https://www.instagram.com/wils.harp/)
 
