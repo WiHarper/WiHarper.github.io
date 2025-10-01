@@ -36,4 +36,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 [Instagram](https://www.instagram.com/wils.harp/)
 
-[Resume](Resume 9.10.25.md)
+[Resume](Resume.md)
