@@ -18,7 +18,7 @@
 </iframe>
 # ⠀
 
-## Commercial Space Essay, University of Washington Aerospace Scholars
+## Commercial Space, University of Washington Aerospace Scholars
 
 <iframe src="{{ '/assets/WAS_essay.pdf' | relative_url }}" width="100%" height="600px">
 </iframe>
