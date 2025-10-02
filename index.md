@@ -32,8 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
 <br>
 [LinkedIn](https://linkedin.com/in/wilson-harper)
 
-[HN](https://news.ycombinator.com/user?id=WilsonHarper)
+[Resume](resume.md)
+
+[Portfolio][portfolio.md]
 
 [Instagram](https://www.instagram.com/wils.harp/)
 
-[Resume](Resume.md)
+[HN](https://news.ycombinator.com/user?id=WilsonHarper)
