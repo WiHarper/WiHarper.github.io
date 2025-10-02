@@ -5,7 +5,7 @@ title: "Resume"
 ---
 # Resume
 
-# **EDUCATION**
+## **EDUCATION**
 
 **Rice University	Class of 2029**
 
@@ -17,7 +17,7 @@ title: "Resume"
 * Served 2300+ students as Student Body President with $63k budget
 * Earned IB diploma with 3.99 GPA and WA State Seal of Biliteracy in Spanish
 
-# **TECHNICAL EXPERIENCE**
+## **TECHNICAL EXPERIENCE**
 
 **Avionics Design, Rice Flight	2025 - Present**
 
@@ -56,7 +56,7 @@ title: "Resume"
 
 
 
-# **GENERAL EXPERIENCE**
+## **GENERAL EXPERIENCE**
 
 **Summer Camp Staff, Spokane, WA	  2025**
 
@@ -69,7 +69,7 @@ title: "Resume"
 * Allocated $100,000+ in funding to local nonprofits
 * Evaluated 30+ grant applications with community leaders’ mentorship
 
-# **SKILLS**
+## **SKILLS**
 
 * **Programming:** Python, ArduPilot, CAD (Fusion 360, OnShape), Soldering, Avionics Systems
 * **Hardware:** Soldering, UAV design, LiDAR, Telemetry, 3D Printing
