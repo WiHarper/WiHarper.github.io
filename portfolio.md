@@ -5,7 +5,7 @@
 <iframe src="{{ '/assets/TSA.pdf' | relative_url }}" width="100%" height="600px">
 </iframe>
 
-## Synthetic Aperture Radars, MIT Lincoln Laboratory
+## Synthetic Aperture Radar, MIT Lincoln Laboratory
 
 <iframe src="{{ '/assets/LLRISE.pdf' | relative_url }}" width="100%" height="600px">
 </iframe>
