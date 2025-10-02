@@ -6,7 +6,7 @@ title: "Wilson Harper"
 # Hey!
 It's great to see you. Get in touch!
 
-![Alt text](/picture.jpg){:width="25%"}
+![Alt text](assets/picture.jpg){:width="25%"}
 
 
 <!-- put this where you want the email to appear -->
