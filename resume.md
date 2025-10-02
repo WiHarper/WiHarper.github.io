@@ -3,6 +3,7 @@
 title: "Resume"
 
 ---
+# Resume
 
 # **EDUCATION**
 
