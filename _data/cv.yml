@@ -1,0 +1,103 @@
+- title: General Info
+  type: map
+  contents:
+    - name: Full Name
+      value: Wilson Harper
+    - name: Website
+      value: <a href="http://wilsonharper.net">wilsonharper.net</a>
+    - name: Email
+      value: <a href="mailto:hello@wilsonharper.net">hello@wilsonharper.net</a>
+    - name: LinkedIn
+      value: <a href="http://linkedin.com/in/Wilson-Harper">Wilson-Harper</a>
+    - name: Location
+      value: Houston, TX
+
+- title: Education
+  type: time_table
+  contents:
+    - title: B.S. Electrical & Computer Engineering; Minor in Entrepreneurship
+      institution: Rice University — Houston, TX
+      year: Class of 2029
+      icon: fa-solid fa-graduation-cap
+      description:
+        - Elected as New Student Representative in Martel College Parliament
+    - title: High School Diploma
+      institution: Davis High School — Yakima, WA
+      year: 2021 - 2025
+      icon: fa-solid fa-school
+      description:
+        - Earned 3.99 GPA, IB Diploma, and Washington State Seal of Biliteracy in Spanish
+
+- title: Engineering Experience
+  type: time_table
+  contents:
+    - title: Incoming Embedded Engineering Intern
+      institution: RTX BBN Technologies — Cambridge, MA
+      year: 2026
+      icon: fa-solid fa-microchip
+      description:
+        - Will prototype embedded multi-domain systems and PNT algorithms for harsh environments
+    - title: Avionics Design
+      institution: Rice Flight — Houston, TX
+      year: 2025 - Present
+      icon: fa-solid fa-plane-up
+      description:
+        - Leading design of thrust test stand to measure efficiency for UAV optimization
+        - Integrating Arduino with load cells, current sensors, and UAV hardware to collect/analyze data
+    - title: Active Fin Stabilization
+      institution: Rice Eclipse Rocketry — Houston, TX
+      year: 2025 - Present
+      icon: fa-solid fa-rocket
+      description:
+        - Designing avionics for reliable rocket active fin stabilization system
+        - Integrating RP2350 and I2C/UART sensors on custom PCB to control servo-actuated fins
+        - Active fin stabilization system will go on space-shot rocket to exceed the Kármán line
+    - title: Chapter President & UAV Team Captain
+      institution: Technology Student Association — Yakima, WA
+      year: 2018 - 2025
+      icon: fa-solid fa-screwdriver-wrench
+      description:
+        - Served as chapter president for 50+ students and won six state-level awards
+        - Led design of position-holding UAV in GPS-denied environments using optical flow and LiDAR
+        - Designed a modular 3D-printed airframe and servo-actuated gripper to move payloads
+        - Implemented EKF sensor fusion, remote telemetry, and power distribution systems
+    - title: Researcher
+      institution: MIT Lincoln Laboratory RISE — Lexington, MA
+      year: 2024
+      icon: fa-solid fa-flask
+      description:
+        - One of ~4% of applicants selected for DoD-sponsored free research experience
+        - Researched, built, and programmed Doppler and synthetic aperture radars
+        - Gained experience in soldering, CAD, signal processing, and research, mentored by Lincoln Labs staff
+
+- title: Professional Experience
+  type: time_table
+  contents:
+    - title: Teaching Assistant, BUSI 361 (Communication for Entrepreneurs)
+      institution: Rice University — Houston, TX
+      year: 2026
+      icon: fa-solid fa-chalkboard-user
+      description:
+        - Facilitating instruction on communication, conflict resolution, networking, and workplace dynamics
+        - Coaching students on public speaking to effectively communicate complex concepts
+    - title: Summer Camp Staff
+      institution: Spokane, WA
+      year: 2025
+      icon: fa-solid fa-campground
+      description:
+        - Responsible for up to 65 guests at remote location accessible only by boat
+        - Learned high-stakes logistics planning due to remote environment
+        - Duties ranged from comforting homesick children to cleaning large amounts of septic waste
+
+- title: Skills
+  type: nested_list
+  contents:
+    - title: Software
+      items:
+        - Python, CAD (Fusion, OnShape), avionics, ArduPilot, MS Office (Word, Excel, Powerpoint)
+    - title: Hardware
+      items:
+        - LiDAR, radar, telemetry, sensor integration, UAVs
+    - title: Tools
+      items:
+        - soldering, 3D printing, CNC routing, hand tools, multimeters, breadboards
