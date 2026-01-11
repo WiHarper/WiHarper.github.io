@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: ECE @ Rice University | Incoming Embedded Engineering Intern @ RTX BBN
+subtitle: ECE @ Rice University // Incoming Embedded Engineering Intern @ RTX BBN
 
 profile:
   align: right
