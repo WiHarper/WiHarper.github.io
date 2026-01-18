@@ -10,7 +10,7 @@ related publications: false
 
 <div style="width: 100%; height: 50vh; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e1e1e1;">
     <iframe 
-        src="https://snoopy.tail8fddcb.ts.net/" 
+        src="https://adsb.wilsonharper.net/" 
         width="100%" 
         height="100%" 
         style="border:none;"
@@ -28,7 +28,7 @@ related publications: false
     
     <div style="width: 100%; height: 210vh; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e1e1e1;">
         <iframe 
-            src="https://snoopy.tail8fddcb.ts.net/graphs1090/" 
+            src="https://adsb.wilsonharper.net/graphs1090/" 
             width="100%" 
             height="100%" 
             style="border:none;"
