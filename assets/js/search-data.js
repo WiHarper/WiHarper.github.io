@@ -50,6 +50,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
+            },},{id: "projects-ads-b-feeder",
+          title: 'ADS-B Feeder',
+          description: "[&quot;work in progress&quot;]",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/adsb/";
             },},{id: "projects-deej-volume-mixer",
           title: 'Deej Volume Mixer',
           description: "with customizeable hotkeys",
