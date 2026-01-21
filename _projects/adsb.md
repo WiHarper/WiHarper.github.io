@@ -21,7 +21,7 @@ related publications: false
 <div class="caption">
     Live feed from my Raspberry Pi via 1090MHz ADS-B.
 </div>
-
+ 
 <div style="margin-top: 40px;">
     <h2>RF Telemetry & System Health</h2>
     <p>Real-time performance metrics of the receiver chain and demodulator.</p>
