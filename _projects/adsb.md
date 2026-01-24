@@ -2,7 +2,7 @@
 layout: page
 title: Raspberry Pi ADS-B Feeder
 description: with a custom 1090 MHz ground plane antenna
-img: assets/img/adsb/PXL_20260124_200900324.PORTRAIT.jpg
+img: assets/img/adsb/thumb.png
 importance: 70
 category:
 related publications: false
