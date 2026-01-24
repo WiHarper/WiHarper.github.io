@@ -50,9 +50,9 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "projects-ads-b-feeder",
-          title: 'ADS-B Feeder',
-          description: "[&quot;work in progress&quot;]",
+            },},{id: "projects-raspberry-pi-ads-b-feeder",
+          title: 'Raspberry Pi ADS-B Feeder',
+          description: "with a DIY ground plane antenna",
           section: "Projects",handler: () => {
               window.location.href = "/projects/adsb/";
             },},{id: "projects-deej-volume-mixer",
