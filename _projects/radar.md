@@ -3,7 +3,7 @@ layout: page
 title: Synthetic Aperture Radar
 description: built at MIT Lincoln Laboratory RISE
 img: assets/img/radar/PXL_20240724_022544293.NIGHT.jpg
-importance: 50
+importance: 100
 category:
 related_publications: false
 ---

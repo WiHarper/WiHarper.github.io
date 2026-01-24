@@ -3,7 +3,7 @@ layout: page
 title: Deej Volume Mixer
 description: with customizeable hotkeys
 img: assets/img/deej/PXL_20240421_034149214.PORTRAIT.jpg
-importance: 100
+importance: 120
 category:
 related_publications: false
 ---

@@ -3,7 +3,7 @@ layout: page
 title: Position-Holding UAV
 description: featuring optical flow, LiDAR, and a gripper
 img: assets/img/uav_images/PXL_20250402_002400514.PORTRAIT.jpg
-importance: 3
+importance: 80
 category:
 related publications: false
 ---
