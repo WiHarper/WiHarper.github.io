@@ -52,7 +52,7 @@ ninja.data = [{
               window.location.href = "/books/the_godfather/";
             },},{id: "projects-raspberry-pi-ads-b-feeder",
           title: 'Raspberry Pi ADS-B Feeder',
-          description: "with a DIY ground plane antenna",
+          description: "with a custom 1090 MHz ground plane antenna",
           section: "Projects",handler: () => {
               window.location.href = "/projects/adsb/";
             },},{id: "projects-deej-volume-mixer",
