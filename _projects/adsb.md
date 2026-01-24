@@ -8,7 +8,11 @@ category:
 related publications: false
 ---
 
+
+
 This project and writeup is a work-in-progress. Check back for more info soon!
+
+In the meantime, you can view the live feed [here](https://adsb.wilsonharper.net/?temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1)!
 
 <div style="width: 100%; height: 50vh; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e1e1e1;">
     <iframe 
