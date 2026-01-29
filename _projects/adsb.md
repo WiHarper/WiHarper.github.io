@@ -56,7 +56,7 @@ I've been interested in software-defined radio recently. Listening to aircraft a
         border-radius: 30px;
         font-weight: bold;
         transition: background 0.2s;
-        pointer-events: none; 
+        pointer-events: none; /* Let clicks pass through to the container */
     }
 
     .map-facade:hover .play-button {
@@ -65,16 +65,28 @@ I've been interested in software-defined radio recently. Listening to aircraft a
 </style>
 
 
+<script>
+    function loadMap() {
+        var container = document.getElementById('mapContainer');
+        
+        // Create the iframe
+        var iframe = document.createElement('iframe');
+        iframe.src = "https://adsb.wilsonharper.net/?hidesidebar&temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1";
+        iframe.width = "100%";
+        iframe.height = "100%";
+        iframe.style.border = "none";
+        iframe.title = "Live Air Traffic Map";
+        
+        // Clear the container and add the iframe
+        container.innerHTML = ''; 
+        container.appendChild(iframe);
+        
+        // Optional: Remove the click listener so it doesn't reload
+        container.removeAttribute('onclick');
+    }
+</script>
 
-<div style="width: 100%; height: 50vh; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e1e1e1;">
-    <iframe 
-        src="https://adsb.wilsonharper.net/?hidesidebar&temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1" 
-        width="100%" 
-        height="100%" 
-        style="border:none;"
-        title="Live Air Traffic Map">
-    </iframe>
-</div>
+
 
 You can view the live feed in its own tab [here](https://adsb.wilsonharper.net/?temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1)!
 
@@ -96,7 +108,7 @@ I also noticed that there were only a few examples online where design decisions
 
 With that in mind, here's my bill of materials:
 
-- [A 2832U-based Software-defined Radio](https://www.amazon.comRTL-SDR-Blog-RTL2832U-Software-Defined/dp/B0CD745394)
+- [A 2832U-based Software-defined Radio](https://www.amazon.comRTL-SDR-Blog-RTL2832U-Software-Defined/dp/B0CD745394)  
     I went with the RTL-SDR Blog V4. It seems like the Blog V3 might have better range but more heat, so I'm happy with this decision.
 - [Raspberry Pi Zero 2 W Kit](https://www.amazon.com/Raspberry-Pi-Zero-WH-Kit/dp/B0DRRDJKDV)  
     The Pi Zero 2 W is low power consumption, leading to less heat. It has WiFi and just one USB-OTG port--that's all I need! The kit came with a heatsink, and USB and HDMI adapters. 
@@ -104,7 +116,7 @@ With that in mind, here's my bill of materials:
     A high-quality power adapter is necessary for a project like this. The SDR draws appreciable power, and stability issues can impact reception. I would have liked a power supply that was explicitly weather resistant. The cable's ferrite core was also a little inconvenient. 
 - [SanDisk High Endurance MicroSD Card - 32GB](https://shop.sandisk.com/products/memory-cards/microsd-cards/sandisk-high-endurance-uhs-i-microsd?sku=SDSQQNR-032G-GN6IA)  
     Continuous operation is hard on SD cards. While the software is designed to avoid tons of writing, a high-quality card ought to help with longevity, especially in Houston's heat. 16GB would have been fine, but the 32GB SKU was only a few bucks more.  
-- [1090 MHz Saw Filter](https://www.amazon.com/dp/B09RPKHQ6S)
+- [1090 MHz Saw Filter](https://www.amazon.com/dp/B09RPKHQ6S)  
     This filter helps the SDR avoid drowning in environmental noise. By only allowing 1090 MHz frequencies to pass through , it improves the signal-to-noise ratio.
 
 And a few more parts that can vary depending on price and installation details:
@@ -113,9 +125,9 @@ And a few more parts that can vary depending on price and installation details:
     I went with [this one](https://www.amazon.com/dp/B0CZ2ZXRKS) from Amazon, and it ended up being about the right size.
 - Copper wire
 - N-type to SMA cable
-- N-type 4-hole bulkhead
+- N-type 4-hole bulkhead  
     I made a custom spider-style antenna out of wire and a connector. A wide variety of connectors are often used, such as F-81L or SO-239. I went with an N-type for two reasons:
-    1. It's fairly rugged and weatherproof.
+    1. It's fairly rugged and weatherproof.  
     2. It handles high frequency signals better.  
 
 Rounding out the list, I used a PVC pipe for mounting, some wire crimp connectors, and miscellaneous fasteners, glue, etc. I also purchased conformal coating for the Pi, but I'm not sure it's needed.
@@ -284,5 +296,6 @@ I recently found a 10.5" 1080p monitor for free in Rice's [OEKD](https://oedk.ri
 
 ## Historical Performance Data
 
-You can see historical performance data [here](https://adsb.wilsonharper.net/graphs1090/).
+You can find historical data [here](https://adsb.wilsonharper.net/graphs1090/).
+
 
