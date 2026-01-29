@@ -17,9 +17,8 @@ related publications: false
 I've been interested in software-defined radio recently. Listening to aircraft and ATC radio is pretty cool, but there's not all that much I can do with that info. I started learning about ADS-B data, or Automatic Dependent Surveillance–Broadcast data. Generally, aircraft flying in controlled airspace (near large airports or above 18,000 feet) are required to transmit an ADS-B signal. This signal typically includes GPS coordinates, altitude, heading, speed, callsign, and craft type.
 
 
-
-<div class="map-facade" id="mapContainer" onclick="loadMap()">
-    <img src="assets/img/adsb/preview.png" alt="Live ADS-B Map Preview" class="map-placeholder">
+<div class="map-facade" id="mapContainer" onclick="loadMap()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter') loadMap()">
+    <img src="/assets/img/adsb/preview.png" alt="Live ADS-B Map Preview" class="map-placeholder">
     
     <div class="play-button">
         <span>📍 Click for Live Map</span>
@@ -29,20 +28,21 @@ I've been interested in software-defined radio recently. Listening to aircraft a
 <style>
     .map-facade {
         width: 100%;
-        height: 50vh;
+        height: 50vh; /* Matches your iframe height */
         border-radius: 8px;
         overflow: hidden;
         position: relative;
         cursor: pointer;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         border: 1px solid #e1e1e1;
-        background-color: #f8f9fa;
+        background-color: #f8f9fa; /* Fallback color if image fails */
     }
     
     .map-placeholder {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.3s ease; /* Subtle zoom effect on hover */
     }
 
     .play-button {
@@ -51,41 +51,51 @@ I've been interested in software-defined radio recently. Listening to aircraft a
         left: 50%;
         transform: translate(-50%, -50%);
         background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px); /* Adds that modern "frosted glass" look */
         color: white;
         padding: 12px 24px;
         border-radius: 30px;
         font-weight: bold;
-        transition: background 0.2s;
-        pointer-events: none; /* Let clicks pass through to the container */
+        transition: all 0.2s ease;
+        pointer-events: none;
+        border: 1px solid rgba(255,255,255,0.2);
     }
 
+    /* Interactive hover effects */
     .map-facade:hover .play-button {
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 0.85);
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+    .map-facade:hover .map-placeholder {
+        transform: scale(1.02);
     }
 </style>
-
 
 <script>
     function loadMap() {
         var container = document.getElementById('mapContainer');
         
-        // Create the iframe
+        // Visual feedback immediately before load
+        container.style.cursor = 'wait';
+        
         var iframe = document.createElement('iframe');
+        // Added 'loading=lazy' for performance
+        iframe.setAttribute('loading', 'lazy'); 
         iframe.src = "https://adsb.wilsonharper.net/?hidesidebar&temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1";
         iframe.width = "100%";
         iframe.height = "100%";
         iframe.style.border = "none";
         iframe.title = "Live Air Traffic Map";
         
-        // Clear the container and add the iframe
         container.innerHTML = ''; 
         container.appendChild(iframe);
-        
-        // Optional: Remove the click listener so it doesn't reload
         container.removeAttribute('onclick');
+        container.removeAttribute('onkeydown');
+        container.removeAttribute('role');
+        container.removeAttribute('tabindex');
+        container.style.cursor = 'default';
     }
 </script>
-
 
 
 You can view the live feed in its own tab [here](https://adsb.wilsonharper.net/?temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1)!
