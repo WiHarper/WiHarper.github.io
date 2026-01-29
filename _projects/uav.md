@@ -94,7 +94,7 @@ It is capable of holding position in GPS-denied environments using optical flow 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/uav_images/wiring_diagram.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/uav_images/wiring_diagram.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -117,13 +117,13 @@ Still, Ardupilot led to some challenges. There were strong oscillations in-fligh
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/uav_images/other_images/PXL_20230115_233634620.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/uav_images/other_images/PXL_20230115_233634620.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/uav_images/other_images/PXL_20230119_003632201.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/uav_images/other_images/PXL_20230119_003632201.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/uav_images/other_images/PXL_20230312_235735093.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/uav_images/other_images/PXL_20230312_235735093.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -142,6 +142,6 @@ If we were operating with GPS, Mission Planner would let us create waypoints and
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/uav_images/other_images/IMG_20240629_003631.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/uav_images/other_images/IMG_20240629_003631.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>

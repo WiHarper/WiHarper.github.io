@@ -88,7 +88,7 @@ related_publications: false
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image22.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image22.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -101,7 +101,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image18.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image18.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -110,7 +110,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image17.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image17.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -155,13 +155,13 @@ related_publications: false
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image26.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image26.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image51.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image51.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image29.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image29.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -190,7 +190,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image33.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image33.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -201,7 +201,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/fastandslow.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/fastandslow.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -210,7 +210,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/overlay.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/overlay.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -229,7 +229,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/reflectorvisual.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/reflectorvisual.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -239,7 +239,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/reflectordata.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/reflectordata.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">

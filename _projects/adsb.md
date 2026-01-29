@@ -10,7 +10,7 @@ related publications: false
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/PXL_20260124_200845740.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200845740.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -84,13 +84,13 @@ I protected both holes with some mesh to keep insects out. The top hole has a PV
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/PXL_20260124_163439190.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_163439190.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/PXL_20260124_172448052.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_172448052.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/PXL_20260124_200950880.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200950880.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -135,13 +135,13 @@ If the four radials were flat, they would have an impedance of about 35 Ohms. By
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/PXL_20260124_175615330.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_175615330.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/PXL_20260124_181314546.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_181314546.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/PXL_20260124_182613898.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_182613898.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -149,7 +149,7 @@ I attached the antenna to a cable gland, which I then attached to a 5' PVC pipe.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/PXL_20260124_200900324.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200900324.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -161,7 +161,7 @@ I initially tested the feeder with the stock 20 cm dipole on the first floor of 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/dump1090-localhost-local_trailing_rate-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-local_trailing_rate-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -171,7 +171,7 @@ Message rate is one of the most important measures of an ADS-B feeder's performa
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/dump1090-localhost-aircraft-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-aircraft-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -180,13 +180,13 @@ I also like keeping track of the actual number of aircraft tracked. It's seen up
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/dump1090-localhost-range-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-range-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/dump1090-localhost-signal-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-signal-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -196,7 +196,7 @@ Range has also clearly skyrocketed, and I've been able to occasionally see aircr
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/Screenshot 2026-01-26 153206.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-26 153206.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -208,7 +208,7 @@ Now that I've run the feeder for about a week, I have some data to play with! I 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/Screenshot 2026-01-29 133638.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-29 133638.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -216,7 +216,7 @@ This is too much information to view at once. Luckily, it's easy to filter. Let'
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/Screenshot 2026-01-29 133638.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-29 133638.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -224,7 +224,7 @@ Here, we can see aircraft above 45,000'. The only aircraft this high up tend to 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/Screenshot 2026-01-29 133638.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-29 133638.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -232,7 +232,7 @@ Under 350', we see mainly helicopters and airplanes landing at IAH, Hobby, Pearl
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/Screenshot 2026-01-29 135200.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-29 135200.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -245,7 +245,7 @@ I recently found a 10.5" 1080p monitor for free in Rice's [OEKD](https://oedk.ri
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/PXL_20260129_051649964.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260129_051649964.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
