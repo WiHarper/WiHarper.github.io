@@ -19,7 +19,7 @@ I've been interested in software-defined radio recently. Listening to aircraft a
 
 
 <div class="map-facade" id="mapContainer" onclick="loadMap()">
-    <img src="assets/img/adsb/map-preview.jpg" alt="Live ADS-B Map Preview" class="map-placeholder">
+    <img src="assets/img/adsb/Screenshot 2026-01-29 at 15-31-14 Raspberry Pi ADS-B Feeder Wilson Harper.png" alt="Live ADS-B Map Preview" class="map-placeholder">
     
     <div class="play-button">
         <span>📍 Click to Load Live Map</span>
@@ -56,7 +56,7 @@ I've been interested in software-defined radio recently. Listening to aircraft a
         border-radius: 30px;
         font-weight: bold;
         transition: background 0.2s;
-        pointer-events: none; /* Let clicks pass through to the container */
+        pointer-events: none; 
     }
 
     .map-facade:hover .play-button {
@@ -64,26 +64,6 @@ I've been interested in software-defined radio recently. Listening to aircraft a
     }
 </style>
 
-<script>
-    function loadMap() {
-        var container = document.getElementById('mapContainer');
-        
-        // Create the iframe
-        var iframe = document.createElement('iframe');
-        iframe.src = "https://adsb.wilsonharper.net/?hidesidebar&temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1";
-        iframe.width = "100%";
-        iframe.height = "100%";
-        iframe.style.border = "none";
-        iframe.title = "Live Air Traffic Map";
-        
-        // Clear the container and add the iframe
-        container.innerHTML = ''; 
-        container.appendChild(iframe);
-        
-        // Optional: Remove the click listener so it doesn't reload
-        container.removeAttribute('onclick');
-    }
-</script>
 
 
 <div style="width: 100%; height: 50vh; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e1e1e1;">
@@ -304,15 +284,5 @@ I recently found a 10.5" 1080p monitor for free in Rice's [OEKD](https://oedk.ri
 
 ## Historical Performance Data
 
-Below you can find historical data the feeder has collected. A full-screen view is available [here](https://adsb.wilsonharper.net/graphs1090/).
-
-<div style="width: 100%; height: 220vh; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e1e1e1;">
-    <iframe 
-        src="https://adsb.wilsonharper.net/graphs1090/" 
-        width="100%" 
-        height="100%" 
-        style="border:none;"
-        title="Live Air Traffic Map">
-    </iframe>
-</div>
+You can see historical performance data [here](https://adsb.wilsonharper.net/graphs1090/).
 
