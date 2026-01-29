@@ -34,7 +34,7 @@ I've been interested in software-defined radio recently. Listening to aircraft a
 
 
 
-If you've ever been on [Flightradar24](https://www.flightradar24.com/), [ADS-B Exchange](https://globe.adsbexchange.com/), or [FlightAware](https://www.flightaware.com/), you've used this data. In fact, these website collect info either by sending out ADS-B feeder kits around the world or by accepting data sent in by enthusiast setups. I wanted to build one of these setups. 
+If you've ever been on [Flightradar24](https://www.flightradar24.com/), [ADS-B Exchange](https://globe.adsbexchange.com/), or [FlightAware](https://www.flightaware.com/), you've used this data. In fact, these websites collect info either by sending out ADS-B feeder kits around the world or by accepting data sent in by enthusiast setups. I wanted to build one of these setups. 
 
 The basic idea is that a single-board computer and software-defined radio listen to 1090 MHz signals, decode them, and send them to aggregators over the internet. (A small minority of aircraft broadcast on 978 MHz, but catching those signals requires another SDR.)
 
@@ -56,11 +56,11 @@ With that in mind, here's my bill of materials:
 - #### [Raspberry Pi Zero 2 W Kit](https://www.amazon.com/Raspberry-Pi-Zero-WH-Kit/dp/B0DRRDJKDV)  
     The Pi Zero 2 W is low power consumption, leading to less heat. It has WiFi and just one USB-OTG port--that's all I need! The kit came with a heatsink, and USB and HDMI adapters. 
 - #### [CanaKit 5V 2.5A Micro USB Power Supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4)  
-    A high-quality power adapter is necessary for a project like this. The SDR draw appreciable power, and stability issues can impact reception. I would have liked a power supply that was explicitly weather resistant. The cable's ferrite core was also a little inconvenient. 
+    A high-quality power adapter is necessary for a project like this. The SDR draws appreciable power, and stability issues can impact reception. I would have liked a power supply that was explicitly weather resistant. The cable's ferrite core was also a little inconvenient. 
 - #### [SanDisk High Endurance MicroSD Card - 32GB](https://shop.sandisk.com/products/memory-cards/microsd-cards/sandisk-high-endurance-uhs-i-microsd?sku=SDSQQNR-032G-GN6IA)  
     Continuous operation is hard on SD cards. While the software is designed to avoid tons of writing, a high-quality card ought to help with longevity, especially in Houston's heat. 16GB would have been fine, but the 32GB SKU was only a few bucks more.  
 - #### [1090 MHz Saw Filter](https://www.amazon.com/dp/B09RPKHQ6S)
-    This filter helps the SDR avoid drowning in environmental noise. By only allowing 1090 MHz frequencies to pass through , it improves the signal-to-noise ration.
+    This filter helps the SDR avoid drowning in environmental noise. By only allowing 1090 MHz frequencies to pass through , it improves the signal-to-noise ratio.
 
 And a few more parts that can vary depending on price and installation details:
 
@@ -212,15 +212,8 @@ Now that I've run the feeder for about a week, I have some data to play with! I 
     </div>
 </div>
 
-This is too much information to view at once. Luckily, it's easy to filter. Let's start by looking at flights at different altitudes.
+This is too much information to view at once. Luckily, it's easy to filter. Let's start by looking at flights at certain altitudes.
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-29 133638.png" title=" " class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-
-Here, we can see aircraft above 45,000'. The only aircraft this high up tend to be bizjets--commercial airliners typically top out around 30,000' to 40,000'.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
@@ -229,12 +222,6 @@ Here, we can see aircraft above 45,000'. The only aircraft this high up tend to 
 </div>
 
 Under 350', we see mainly helicopters and airplanes landing at IAH, Hobby, Pearland, and a number of smaller airports I didn't even know about.
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-29 135200.png" title=" " class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
 
 Filtering for military aircraft reveals more than I expected. There are plenty of Cessnas, but I've also seen T-38s, a C-17, and an A-330 registered by the Canadian military.
 
@@ -254,7 +241,7 @@ I recently found a 10.5" 1080p monitor for free in Rice's [OEKD](https://oedk.ri
 
 Below you can find historical data the feeder has collected. A full-screen view is available [here](https://adsb.wilsonharper.net/graphs1090/).
 
-<div style="width: 100%; height: 120vh; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e1e1e1;">
+<div style="width: 100%; height: 220vh; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e1e1e1;">
     <iframe 
         src="https://adsb.wilsonharper.net/graphs1090/" 
         width="100%" 
