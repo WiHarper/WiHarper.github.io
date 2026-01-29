@@ -19,10 +19,10 @@ I've been interested in software-defined radio recently. Listening to aircraft a
 
 
 <div class="map-facade" id="mapContainer" onclick="loadMap()">
-    <img src="assets/img/adsb/Screenshot 2026-01-29 at 15-31-14 Raspberry Pi ADS-B Feeder Wilson Harper.png" alt="Live ADS-B Map Preview" class="map-placeholder">
+    <img src="assets/img/adsb/preview.png" alt="Live ADS-B Map Preview" class="map-placeholder">
     
     <div class="play-button">
-        <span>📍 Click to Load Live Map</span>
+        <span>📍 Click for Live Map</span>
     </div>
 </div>
 
