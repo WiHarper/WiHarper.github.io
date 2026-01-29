@@ -17,6 +17,75 @@ related publications: false
 I've been interested in software-defined radio recently. Listening to aircraft and ATC radio is pretty cool, but there's not all that much I can do with that info. I started learning about ADS-B data, or Automatic Dependent Surveillance–Broadcast data. Generally, aircraft flying in controlled airspace (near large airports or above 18,000 feet) are required to transmit an ADS-B signal. This signal typically includes GPS coordinates, altitude, heading, speed, callsign, and craft type.
 
 
+
+<div class="map-facade" id="mapContainer" onclick="loadMap()">
+    <img src="assets/img/adsb/map-preview.jpg" alt="Live ADS-B Map Preview" class="map-placeholder">
+    
+    <div class="play-button">
+        <span>📍 Click to Load Live Map</span>
+    </div>
+</div>
+
+<style>
+    .map-facade {
+        width: 100%;
+        height: 50vh;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        border: 1px solid #e1e1e1;
+        background-color: #f8f9fa;
+    }
+    
+    .map-placeholder {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-weight: bold;
+        transition: background 0.2s;
+        pointer-events: none; /* Let clicks pass through to the container */
+    }
+
+    .map-facade:hover .play-button {
+        background: rgba(0, 0, 0, 0.9);
+    }
+</style>
+
+<script>
+    function loadMap() {
+        var container = document.getElementById('mapContainer');
+        
+        // Create the iframe
+        var iframe = document.createElement('iframe');
+        iframe.src = "https://adsb.wilsonharper.net/?hidesidebar&temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1";
+        iframe.width = "100%";
+        iframe.height = "100%";
+        iframe.style.border = "none";
+        iframe.title = "Live Air Traffic Map";
+        
+        // Clear the container and add the iframe
+        container.innerHTML = ''; 
+        container.appendChild(iframe);
+        
+        // Optional: Remove the click listener so it doesn't reload
+        container.removeAttribute('onclick');
+    }
+</script>
+
+
 <div style="width: 100%; height: 50vh; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e1e1e1;">
     <iframe 
         src="https://adsb.wilsonharper.net/?hidesidebar&temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1" 
@@ -27,11 +96,7 @@ I've been interested in software-defined radio recently. Listening to aircraft a
     </iframe>
 </div>
 
-<div class="caption">
-    You can view the live feed in its own tab [here](https://adsb.wilsonharper.net/?temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1)!
-
-</div>
-
+You can view the live feed in its own tab [here](https://adsb.wilsonharper.net/?temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1)!
 
 
 If you've ever been on [Flightradar24](https://www.flightradar24.com/), [ADS-B Exchange](https://globe.adsbexchange.com/), or [FlightAware](https://www.flightaware.com/), you've used this data. In fact, these websites collect info either by sending out ADS-B feeder kits around the world or by accepting data sent in by enthusiast setups. I wanted to build one of these setups. 
@@ -51,24 +116,24 @@ I also noticed that there were only a few examples online where design decisions
 
 With that in mind, here's my bill of materials:
 
-- #### A 2832U-based Software-defined Radio
-    I went with the [RTL-SDR Blog V4](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Defined/dp/B0CD745394). It seems like the Blog V3 might have better range but more heat, so I'm happy with this decision.
-- #### [Raspberry Pi Zero 2 W Kit](https://www.amazon.com/Raspberry-Pi-Zero-WH-Kit/dp/B0DRRDJKDV)  
+- [A 2832U-based Software-defined Radio](https://www.amazon.comRTL-SDR-Blog-RTL2832U-Software-Defined/dp/B0CD745394)
+    I went with the RTL-SDR Blog V4. It seems like the Blog V3 might have better range but more heat, so I'm happy with this decision.
+- [Raspberry Pi Zero 2 W Kit](https://www.amazon.com/Raspberry-Pi-Zero-WH-Kit/dp/B0DRRDJKDV)  
     The Pi Zero 2 W is low power consumption, leading to less heat. It has WiFi and just one USB-OTG port--that's all I need! The kit came with a heatsink, and USB and HDMI adapters. 
-- #### [CanaKit 5V 2.5A Micro USB Power Supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4)  
+- [CanaKit 5V 2.5A Micro USB Power Supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4)  
     A high-quality power adapter is necessary for a project like this. The SDR draws appreciable power, and stability issues can impact reception. I would have liked a power supply that was explicitly weather resistant. The cable's ferrite core was also a little inconvenient. 
-- #### [SanDisk High Endurance MicroSD Card - 32GB](https://shop.sandisk.com/products/memory-cards/microsd-cards/sandisk-high-endurance-uhs-i-microsd?sku=SDSQQNR-032G-GN6IA)  
+- [SanDisk High Endurance MicroSD Card - 32GB](https://shop.sandisk.com/products/memory-cards/microsd-cards/sandisk-high-endurance-uhs-i-microsd?sku=SDSQQNR-032G-GN6IA)  
     Continuous operation is hard on SD cards. While the software is designed to avoid tons of writing, a high-quality card ought to help with longevity, especially in Houston's heat. 16GB would have been fine, but the 32GB SKU was only a few bucks more.  
-- #### [1090 MHz Saw Filter](https://www.amazon.com/dp/B09RPKHQ6S)
+- [1090 MHz Saw Filter](https://www.amazon.com/dp/B09RPKHQ6S)
     This filter helps the SDR avoid drowning in environmental noise. By only allowing 1090 MHz frequencies to pass through , it improves the signal-to-noise ratio.
 
 And a few more parts that can vary depending on price and installation details:
 
-- #### Weather-resistant box  
+- Weather-resistant box  
     I went with [this one](https://www.amazon.com/dp/B0CZ2ZXRKS) from Amazon, and it ended up being about the right size.
-- #### Copper wire
-- #### N-type to SMA cable
-- #### N-type 4-hole bulkhead
+- Copper wire
+- N-type to SMA cable
+- N-type 4-hole bulkhead
     I made a custom spider-style antenna out of wire and a connector. A wide variety of connectors are often used, such as F-81L or SO-239. I went with an N-type for two reasons:
     1. It's fairly rugged and weatherproof.
     2. It handles high frequency signals better.  
