@@ -28,21 +28,21 @@ I've been interested in software-defined radio recently. Listening to aircraft a
 <style>
     .map-facade {
         width: 100%;
-        height: 50vh; /* Matches your iframe height */
+        height: 50vh; 
         border-radius: 8px;
         overflow: hidden;
         position: relative;
         cursor: pointer;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         border: 1px solid #e1e1e1;
-        background-color: #f8f9fa; /* Fallback color if image fails */
+        background-color: #f8f9fa; 
     }
     
     .map-placeholder {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.3s ease; /* Subtle zoom effect on hover */
+        transition: transform 0.3s ease; 
     }
 
     .play-button {
@@ -51,7 +51,7 @@ I've been interested in software-defined radio recently. Listening to aircraft a
         left: 50%;
         transform: translate(-50%, -50%);
         background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(4px); /* Adds that modern "frosted glass" look */
+        backdrop-filter: blur(4px); 
         color: white;
         padding: 12px 24px;
         border-radius: 30px;
@@ -61,7 +61,6 @@ I've been interested in software-defined radio recently. Listening to aircraft a
         border: 1px solid rgba(255,255,255,0.2);
     }
 
-    /* Interactive hover effects */
     .map-facade:hover .play-button {
         background: rgba(0, 0, 0, 0.85);
         transform: translate(-50%, -50%) scale(1.05);
@@ -75,11 +74,9 @@ I've been interested in software-defined radio recently. Listening to aircraft a
     function loadMap() {
         var container = document.getElementById('mapContainer');
         
-        // Visual feedback immediately before load
         container.style.cursor = 'wait';
         
         var iframe = document.createElement('iframe');
-        // Added 'loading=lazy' for performance
         iframe.setAttribute('loading', 'lazy'); 
         iframe.src = "https://adsb.wilsonharper.net/?hidesidebar&temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1";
         iframe.width = "100%";
@@ -97,8 +94,9 @@ I've been interested in software-defined radio recently. Listening to aircraft a
     }
 </script>
 
+<br>
 
-You can view the live feed in its own tab [here](https://adsb.wilsonharper.net/?temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1)!
+You can view the live feed in its own tab [here](https://adsb.wilsonharper.net/?temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1).
 
 
 If you've ever been on [Flightradar24](https://www.flightradar24.com/), [ADS-B Exchange](https://globe.adsbexchange.com/), or [FlightAware](https://www.flightaware.com/), you've used this data. In fact, these websites collect info either by sending out ADS-B feeder kits around the world or by accepting data sent in by enthusiast setups. I wanted to build one of these setups. 
