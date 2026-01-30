@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Pi ADS-B Feeder and Custom Antenna
+title: DIY ADS-B Feeder and Antenna
 description: from a dorm balcony in Houston's humidity
 img: assets/img/adsb/thumb.png
 importance: 70
@@ -92,7 +92,7 @@ I built an ADS-B ground station to track aircraft 200 miles away from my dorm ba
 
 You can view the live feed in its own tab [here](https://adsb.wilsonharper.net/?temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1).
 
-## Motivation & Constraints?
+## Motivation & Constraints
 
 I've been wanted to feed data to ADS-B aggregators and get some experience with Pi's as always-on computers. Living in a dorm at Rice University presented an interesting set of constraints, though.
 
@@ -226,7 +226,7 @@ I attached the antenna to a cable gland, which I then attached to a 5' PVC pipe.
         {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200940822.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_201016967.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_201023922.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -244,7 +244,7 @@ Because the Pi power cord has a large ferrite core toward the end, I didn't have
 I initially tested the feeder with the stock 20 cm dipole on the first floor of a brick building. Performance was as poor as expected, but it gave me a great baseline. Later, I installed the antenna and relocated the feeder to a 5th-floor balcony. You can see this change happened Saturday at noon in the following graphs.
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm-9 mt-3 mt-md-0">
+    <div class="col-sm-8 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-local_trailing_rate-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
@@ -286,7 +286,7 @@ Range has also clearly skyrocketed, and I've been able to occasionally see aircr
 
 Houston is still quite cold, but it's great to see the CPU stay under 50 degrees C. It's sitting around 50% memory utilization and 25% CPU utilization. The image takes up just 4 GB.
 
-## Fun Data Analysis!
+## Some Fun Data Analysis
 
 Now that I've run the feeder for about a week, I have some data to play with! I especially enjoy the [heatmap view](https://adsb.wilsonharper.net/?heatmap). Each dot represents one received message. Colder-colored dots are at a higher altitude.
 
@@ -296,18 +296,26 @@ Now that I've run the feeder for about a week, I have some data to play with! I 
     </div>
 </div>
 
-This is too much information to view at once. Luckily, it's easy to filter. Let's start by looking at flights at certain altitudes.
+This is too much information to view at once. Luckily, it's easy to filter. Let's start by looking at flights at certain altitudes. Under 350', we see mainly helicopters and airplanes landing at IAH, Hobby, Pearland, and a number of smaller airports I didn't even know about.
 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-9 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-29 133638.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-29 134430.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
-Under 350', we see mainly helicopters and airplanes landing at IAH, Hobby, Pearland, and a number of smaller airports I didn't even know about.
 
-Filtering for military aircraft reveals more than I expected. There are plenty of Cessnas, but I've also seen T-38s, a C-17, and an A-330 registered by the Canadian military.
+Filtering for military aircraft reveals more than I expected. There are plenty of Cessnas, but I've also seen T-38s, a C-17, and an A-330 registered to the Canadian military.
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-8 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/adsb/canada.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm-4 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/adsb/Screenshot 2026-01-25 121350.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 ## Displaying the Info
 
