@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Raspberry Pi ADS-B Feeder and Custom 1090 MHz Antenna
-description: in HTX's humidity and on university WiFi
+title: Pi ADS-B Feeder and Custom Antenna
+description: from a dorm balcony in Houston's humidity
 img: assets/img/adsb/thumb.png
 importance: 70
 category:
