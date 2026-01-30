@@ -60,19 +60,19 @@ ninja.data = [{
           description: "using all-original CAD, an Arduino Micro, and a fork of the deej project",
           section: "Projects",handler: () => {
               window.location.href = "/projects/deej/";
-            },},{id: "projects-designing-a-manned-and-robotic-mars-mission-architecture",
-          title: 'Designing a Manned and Robotic Mars Mission Architecture',
+            },},{id: "projects-manned-and-robotic-mars-mission-architecture",
+          title: 'Manned and Robotic Mars Mission Architecture',
           description: "for canyon excavation and habitat preparation",
           section: "Projects",handler: () => {
               window.location.href = "/projects/marsdesigns/";
-            },},{id: "projects-building-a-handheld-synthetic-aperture-radar-system",
-          title: 'Building a Handheld Synthetic Aperture Radar System',
-          description: "and researching Doppler and SAR at MIT Lincoln Laboratory RISE",
+            },},{id: "projects-building-a-synthetic-aperture-radar",
+          title: 'Building a Synthetic Aperture Radar',
+          description: "and presenting research on SAR and Doppler at MIT Lincoln Laboratory RISE",
           section: "Projects",handler: () => {
               window.location.href = "/projects/radar/";
             },},{id: "projects-achieving-stable-flight-in-gps-denied-environments",
           title: 'Achieving Stable Flight in GPS-Denied Environments',
-          description: "featuring sensor fusion with optical flow, LiDAR, and a gripper",
+          description: "featuring position-holding, a gripper, and sensor fusion with optical flow and LiDAR",
           section: "Projects",handler: () => {
               window.location.href = "/projects/uav/";
             },},{
