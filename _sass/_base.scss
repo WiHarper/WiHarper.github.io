@@ -480,6 +480,11 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
+/* Centering wrapper for footer content (social icons + copyright) */
+.footer-center {
+  text-align: center;
+}
+
 .wechat-modal {
   display: none;
   position: fixed;
