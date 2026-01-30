@@ -22,11 +22,12 @@ It's great to see you! 👋
 
 I’m Wilson, an electrical and computer engineering student at Rice University fascinated by radars, rockets, and avionics.
 
-I'm especially interested in the intersection of hardware and signal processing. Currently, I'm researching compact, directional wind systems for immersive enviornments in Rice's Experimental Pixels Lab and designing avionics for [Rice Eclipse](https://eclipse.rice.edu/) rocketry. I've also researched synthetic aperture radars at the MIT Lincoln Laboratory and developed UAV propulsion test stands with [Rice Flight](https://www.aiaa.rice.edu/riceflight.html).
+I'm especially interested in the intersection of hardware and signal processing. Currently, I'm researching compact, directional wind systems for immersive environments in Rice's Experimental Pixels Lab and designing avionics for [Rice Eclipse](https://eclipse.rice.edu/) rocketry. I've also researched synthetic aperture radars at the MIT Lincoln Laboratory and developed UAV propulsion test stands with [Rice Flight](https://www.aiaa.rice.edu/riceflight.html).
 
-I’m excited to get even more hands-on, practical experience with electrical and computer engineering I’d love to chat about ECE, rockets, Rice, or anything else!
+I’m excited to get even more hands-on, practical experience with electrical and computer engineering. I'd love to chat about ECE, rockets, Rice, or anything else!
 
 Feel free to check out my [projects](https://wilsonharper.net/projects/), [resume](https://wilsonharper.net/resume/), or contact me below.
+
 
 
 <style>
