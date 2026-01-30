@@ -50,8 +50,8 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "projects-pi-ads-b-feeder-and-custom-antenna",
-          title: 'Pi ADS-B Feeder and Custom Antenna',
+            },},{id: "projects-diy-ads-b-feeder-and-antenna",
+          title: 'DIY ADS-B Feeder and Antenna',
           description: "from a dorm balcony in Houston&#39;s humidity",
           section: "Projects",handler: () => {
               window.location.href = "/projects/adsb/";
