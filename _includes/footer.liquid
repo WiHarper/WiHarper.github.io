@@ -14,8 +14,8 @@
     <div class="container mt-0">
       {% unless page.permalink == '/' %}
         <div class="contact-icons footer-social">{% include social.liquid %}</div>
+        {{ footer_contents }}
       {% endunless %}
-      {{ footer_contents }}
     </div>
   </footer>
 {% else %}
@@ -27,8 +27,8 @@
       <div class="container">
       {% unless page.permalink == '/' %}
         <div class="contact-icons footer-social">{% include social.liquid %}</div>
+        {{ footer_contents }}
       {% endunless %}
-      {{ footer_contents }}
     </div>
   </footer>
 {% endif %}
