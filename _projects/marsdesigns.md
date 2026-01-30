@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Designing a Manned and Robotic Mars Mission Architecture
+title: Manned and Robotic Mars Mission Architecture
 description: for canyon excavation and habitat preparation
 img: assets/img/was/rover4.jpg
 importance: 150

@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Building a Handheld Synthetic Aperture Radar System
-description: and researching Doppler and SAR at MIT Lincoln Laboratory RISE
+title: Building a Synthetic Aperture Radar
+description: and presenting research on SAR and Doppler at MIT Lincoln Laboratory RISE
 img: assets/img/radar/PXL_20240724_022544293.NIGHT.jpg
 importance: 100
 category:
