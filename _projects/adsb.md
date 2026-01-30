@@ -92,7 +92,7 @@ I built an ADS-B ground station to track aircraft 200 miles away from my dorm ba
 
 You can view the live feed in its own tab [here](https://adsb.wilsonharper.net/?temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1).
 
-## Why, though?
+## Motivation & Constraints?
 
 I've been wanted to feed data to ADS-B aggregators and get some experience with Pi's as always-on computers. Living in a dorm at Rice University presented an interesting set of constraints, though.
 
@@ -119,7 +119,7 @@ I also noticed that there were only a few examples online where design decisions
 
 With that in mind, here's my bill of materials:
 
-- [A 2832U-based Software-defined Radio](https://www.amazon.comRTL-SDR-Blog-RTL2832U-Software-Defined/dp/B0CD745394)  
+- [A 2832U-based Software-defined Radio](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Defined/dp/B0CD745394)  
     I went with the RTL-SDR Blog V4. It seems like the Blog V3 might have better range but more heat, so I'm happy with this decision.
 - [Raspberry Pi Zero 2 W Kit](https://www.amazon.com/Raspberry-Pi-Zero-WH-Kit/dp/B0DRRDJKDV)  
     The Pi Zero 2 W is low power consumption, leading to less heat. It has WiFi and just one USB-OTG port--that's all I need! The kit came with a heatsink, and USB and HDMI adapters. 
