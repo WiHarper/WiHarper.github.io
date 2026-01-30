@@ -244,7 +244,7 @@ Because the Pi power cord has a large ferrite core toward the end, I didn't have
 I initially tested the feeder with the stock 20 cm dipole on the first floor of a brick building. Performance was as poor as expected, but it gave me a great baseline. Later, I installed the antenna and relocated the feeder to a 5th-floor balcony. You can see this change happened Saturday at noon in the following graphs.
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
+    <div class="col-sm-9 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-local_trailing_rate-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
@@ -254,7 +254,7 @@ Message rate is one of the most important measures of an ADS-B feeder's performa
  With the old antenna and location, I was lucky to see over 5 messages per second. After relocating and upgrading the antenna, I saw as high as 700--over two orders of magnitude greater! I am writing this after the January 2026 North American winter storm, and it seems air traffic numbers are still returning to typical levels. 
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
+    <div class="col-sm-9 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-aircraft-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
@@ -263,13 +263,13 @@ I also like keeping track of the actual number of aircraft tracked. It's seen up
 
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
+    <div class="col-sm-9 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-range-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
+    <div class="col-sm-9 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-signal-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
@@ -279,7 +279,7 @@ These graphs might be my favorite of the bunch because the difference between an
 Range has also clearly skyrocketed, and I've been able to occasionally see aircraft past Austin!
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
+    <div class="col-sm-12 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-26 153206.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
@@ -291,7 +291,7 @@ Houston is still quite cold, but it's great to see the CPU stay under 50 degrees
 Now that I've run the feeder for about a week, I have some data to play with! I especially enjoy the [heatmap view](https://adsb.wilsonharper.net/?heatmap). Each dot represents one received message. Colder-colored dots are at a higher altitude.
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
+    <div class="col-sm-9 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-29 133638.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
@@ -300,7 +300,7 @@ This is too much information to view at once. Luckily, it's easy to filter. Let'
 
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
+    <div class="col-sm-9 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-29 133638.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
@@ -315,7 +315,7 @@ I recently found a 10.5" 1080p monitor for free in Rice's [OEKD](https://oedk.ri
 
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
+    <div class="col-sm-9 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260129_051649964.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
