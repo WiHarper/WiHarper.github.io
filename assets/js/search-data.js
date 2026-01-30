@@ -50,9 +50,9 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "projects-raspberry-pi-ads-b-feeder",
-          title: 'Raspberry Pi ADS-B Feeder',
-          description: "with a custom 1090 MHz ground plane antenna",
+            },},{id: "projects-raspberry-pi-ads-b-feeder-and-custom-1090-mhz-antenna",
+          title: 'Raspberry Pi ADS-B Feeder and Custom 1090 MHz Antenna',
+          description: "in HTX&#39;s humidity and on university WiFi",
           section: "Projects",handler: () => {
               window.location.href = "/projects/adsb/";
             },},{id: "projects-deej-volume-mixer",
