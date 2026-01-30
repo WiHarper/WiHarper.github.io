@@ -12,7 +12,7 @@
 {% if site.footer_fixed %}
   <footer class="fixed-bottom" role="contentinfo">
     <div class="container mt-0">
-      {% unless page.permalink == '/' %}
+      {% unless page.permalink == '/' or page.permalink == '/resume/' %}
         <div class="footer-center">
           <div class="contact-icons footer-social">{% include social.liquid %}</div>
           <div class="footer-text">{{ footer_contents }}</div>
@@ -27,7 +27,7 @@
     {% endif %}
 
       <div class="container">
-      {% unless page.permalink == '/' %}
+      {% unless page.permalink == '/' or page.permalink == '/resume/' %}
         <div class="footer-center">
           <div class="contact-icons footer-social">{% include social.liquid %}</div>
           <div class="footer-text">{{ footer_contents }}</div>
