@@ -311,7 +311,7 @@ This is too much information to view at once. Luckily, it's easy to filter. Let'
 </div>
 
 
-Filtering for military aircraft reveals more than I expected. There are plenty of Cessnas, but I've also seen T-38s, a C-17, and an A-330 registered to the Royal Canadian Air Force.
+Filtering for military aircraft reveals more than I expected. There are plenty of Cessnas, but I've also seen tons of NASA T-38s, a C-17, and an A-330 registered to the Royal Canadian Air Force.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
@@ -337,5 +337,3 @@ I recently found a 10.5" 1080p monitor for free in Rice's [OEKD](https://oedk.ri
 ## Historical Performance Data
 
 You can find historical data [here](https://adsb.wilsonharper.net/graphs1090/).
-
-
