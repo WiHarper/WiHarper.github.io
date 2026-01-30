@@ -12,7 +12,9 @@
 {% if site.footer_fixed %}
   <footer class="fixed-bottom" role="contentinfo">
     <div class="container mt-0">
-      <div class="contact-icons">{% include social.liquid %}</div>
+      {% unless page.permalink == '/' %}
+        <div class="contact-icons footer-social">{% include social.liquid %}</div>
+      {% endunless %}
       {{ footer_contents }}
     </div>
   </footer>
@@ -22,8 +24,10 @@
       {% include newsletter.liquid %}
     {% endif %}
 
-    <div class="container">
-      <div class="contact-icons">{% include social.liquid %}</div>
+      <div class="container">
+      {% unless page.permalink == '/' %}
+        <div class="contact-icons footer-social">{% include social.liquid %}</div>
+      {% endunless %}
       {{ footer_contents }}
     </div>
   </footer>

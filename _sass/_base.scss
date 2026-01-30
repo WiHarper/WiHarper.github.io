@@ -455,6 +455,31 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
+/* Footer-specific social icon styles */
+.footer-social {
+  font-size: 5rem; /* larger icons in footer */
+
+  a {
+    i::before {
+      color: var(--global-text-color); /* black in light mode */
+      transition: all 0.2s ease-in-out;
+    }
+
+    &:hover {
+      i::before {
+        color: var(--global-theme-color);
+      }
+    }
+  }
+
+  /* Force white icons when dark theme is active */
+  html[data-theme="dark"] & {
+    a i::before {
+      color: #ffffff;
+    }
+  }
+}
+
 .wechat-modal {
   display: none;
   position: fixed;
