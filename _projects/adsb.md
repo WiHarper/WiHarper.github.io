@@ -1,27 +1,21 @@
 ---
 layout: page
-title: Raspberry Pi ADS-B Feeder
-description: with a custom 1090 MHz ground plane antenna
+title: Raspberry Pi ADS-B Feeder and Custom 1090 MHz Antenna
+description: in HTX's humidity and on university WiFi
 img: assets/img/adsb/thumb.png
 importance: 70
 category:
 related publications: false
 ---
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200845740.jpg" title=" " class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-
-I've been interested in software-defined radio recently. Listening to aircraft and ATC radio is pretty cool, but there's not all that much I can do with that info. I started learning about ADS-B data, or Automatic Dependent Surveillance–Broadcast data. Generally, aircraft flying in controlled airspace (near large airports or above 18,000 feet) are required to transmit an ADS-B signal. This signal typically includes GPS coordinates, altitude, heading, speed, callsign, and craft type.
+I built an ADS-B ground station to track aircraft 200 miles away from my dorm balcony, all on restricted university WiFi and in Houston's 100% humidity. My limited budget required some engineering--specifically, a spider antenna that increased my message rate by 100x over the stock dipole.
 
 
 <div class="map-facade" id="mapContainer" onclick="loadMap()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter') loadMap()">
     <img src="/assets/img/adsb/preview.png" alt="Live ADS-B Map Preview" class="map-placeholder">
     
     <div class="play-button">
-        <span>📍 Click for Live Map</span>
+        <span>Click for Live Map</span>
     </div>
 </div>
 
@@ -98,21 +92,30 @@ I've been interested in software-defined radio recently. Listening to aircraft a
 
 You can view the live feed in its own tab [here](https://adsb.wilsonharper.net/?temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1).
 
+## Why, though?
 
-If you've ever been on [Flightradar24](https://www.flightradar24.com/), [ADS-B Exchange](https://globe.adsbexchange.com/), or [FlightAware](https://www.flightaware.com/), you've used this data. In fact, these websites collect info either by sending out ADS-B feeder kits around the world or by accepting data sent in by enthusiast setups. I wanted to build one of these setups. 
+I've been wanted to feed data to ADS-B aggregators and get some experience with Pi's as always-on computers. Living in a dorm at Rice University presented an interesting set of constraints, though.
+
+Generally, aircraft flying in controlled airspace (near large airports or above 18,000 feet) are required to transmit an ADS-B signal. This signal typically includes GPS coordinates, altitude, heading, speed, callsign, and craft type. If you've ever been on [Flightradar24](https://www.flightradar24.com/), [ADS-B Exchange](https://globe.adsbexchange.com/), or [FlightAware](https://www.flightaware.com/), you've used this data. In fact, these websites collect info either by sending out ADS-B feeder kits around the world or by accepting data sent in by enthusiast setups. I wanted to build one of these setups. 
 
 The basic idea is that a single-board computer and software-defined radio listen to 1090 MHz signals, decode them, and send them to aggregators over the internet. (A small minority of aircraft broadcast on 978 MHz, but catching those signals requires another SDR.)
 
 As I decided on what parts to purchase, I kept a few factors in mind:
 
 - The entire setup must be mounted high up. The Martel College fifth floor balcony was the clear choice.
-- The feeder must communicate over WiFi. I could not run an ethernet cable to the balcony.
+- The feeder must communicate over WiFi. I could not run an ethernet cable to the balcony. Making things more tricky, the Rice network has client isolation, preventing peer-to-peer communications.
 - Cooling and weatherproofing is a priority. Houston is hot, rainy, and humid. High temperatures and moisture can cause the Pi to throttle and the software-defined radio to pick up the wrong frequencies.
 - I want it to be small, consume little power, and take up little space.
 
-I also noticed that there were only a few examples online where design decisions were explained and documented, and I'd like to make this small contribution.
+I also noticed that there were only a few examples online where design decisions were explained and documented, and I'd like to make this contribution to the corpus. I'd like to thank [Ian Hsieh](https://www.linkedin.com/in/ian-hsieh-b67457216) for his help.
 
-## **Bill of Materials**
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200845740.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+## Bill of Materials
 
 With that in mind, here's my bill of materials:
 
@@ -141,11 +144,10 @@ And a few more parts that can vary depending on price and installation details:
 Rounding out the list, I used a PVC pipe for mounting, some wire crimp connectors, and miscellaneous fasteners, glue, etc. I also purchased conformal coating for the Pi, but I'm not sure it's needed.
 
 
-## The Build Process
+## Build Process
 
 I started by getting the box ready. My strategy to deal with heat was fairly straightforward, relying on convection. A small hole in the bottom and top of the box ought to let heat rise through the container. 
 
-I protected both holes with some mesh to keep insects out. The top hole has a PVC elbow connector to prevent water ingress. As Houston heats up, we'll see how effective this cooling design is.
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
@@ -159,7 +161,7 @@ I protected both holes with some mesh to keep insects out. The top hole has a PV
     </div>
 </div>
 
-Clearly, I was not going for an absolutely airtight box. Still, the cable gland at the bottom keeps things tidy.
+I protected both holes with some mesh to keep insects out. The top hole has a PVC elbow connector to prevent water ingress. As Houston heats up, we'll see how effective this cooling design is. Clearly, I was not going for an absolutely airtight box. Still, the cable gland at the bottom keeps things tidy.
 
 
 
@@ -187,16 +189,15 @@ The Pi Zero 2 W struggles with many aggregators, and multilateration (a method t
 
 ADS-B signals are decoded using [readsb](https://github.com/wiedehopf/readsb). The map interface is [tar1090](https://github.com/wiedehopf/tar1090), and the graphs are from [graph1090](https://github.com/wiedehopf/graphs1090).
 
-I used [Tailscale](https://tailscale.com/) to remote into the Pi over Rice WiFi for config, SSH, and accessing the tar1090 map directly. I used a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to enable public access and cache map tiles/interface data to reduce load on the Pi. 
+I used [Tailscale](https://tailscale.com/) to remote into the Pi over Rice WiFi for config, SSH, and accessing the tar1090 map directly. I used a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to enable public access and cache map tiles/interface data to reduce load on the Pi. Port forwarding on Rice WiFi is not possible, and I like Cloudflare's security.
 
 
 ## Antenna Construction
 
 There are commercially-available 1090 MHz ADS-B antennas. As an electrical engineering student, though, it seemed worthwhile (and cheaper!) to build my own. There are a few designs out there, but most follow a similar pattern with a vertical whip and four radials at 45 degrees. 
 
-I did some math to determine the right length for the whip and radials. To find the wavelength, we divide C by 1090 MHz, giving us a length of 0.275 meters. For a quarter-wave monopole, the resonant length is 0.275 meters divided by 4, giving 68.75 mm. In a conductor such as copper, radio waves travel a bit slower--about 95%. Therefore, each wire is about 66 mm from tip to connection point. 
+I did some math to determine the right length for the whip and radials. To find the wavelength, we divide C by 1090 MHz, giving us a length of 0.275 meters. For a quarter-wave monopole, the resonant length is 0.275 meters divided by 4, giving 68.75 mm. In a conductor such as copper, radio waves travel a bit slower--about 95%. This reduced velocity factor means the antenna wires should be just a bit shorter. Therefore, each wire is about 66 mm from tip to connection point. 
 
-If the four radials were flat, they would have an impedance of about 35 Ohms. By bending them to 45 degrees, their impedance is about 50 Ohms matching the 50 Ohm standard of the coax and SDR.
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
@@ -210,15 +211,33 @@ If the four radials were flat, they would have an impedance of about 35 Ohms. By
     </div>
 </div>
 
-I attached the antenna to a cable gland, which I then attached to a 5' PVC pipe.
+If the four radials were flat, they would have an impedance of about 35 Ohms. By bending them to 45 degrees, their impedance is about 50 Ohms matching the 50 Ohm standard of the coax and SDR.
 
-<div class="row">
+## Installation
+
+
+I attached the antenna to a cable gland, which I then attached to a 5' PVC pipe. I mounted the box and pipe to the balcony's railing.
+
+<div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200900324.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200940822.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_201016967.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
 </div>
 
-I mounted the box and pipe to the balcony's railing.
+Because the Pi power cord has a large ferrite core toward the end, I didn't have as much slack inside the box as I would've liked. This limitation led me to make the excellent engineering decision of shoving everything inside. Ultimately, it works just fine. I could see better placement helping with heat dissipation; we'll see later if that's needed.
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_201100311.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
 
 ## Performance
 
@@ -255,7 +274,7 @@ I also like keeping track of the actual number of aircraft tracked. It's seen up
     </div>
 </div>
 
-These graphs might be my favorite of the bunch because the difference between antennas/locations is so stark. Signal level has increased across the board. The strongest signals are as high as -1.5 dB, and the noise floor hasn't appreciably increased.
+These graphs might be my favorite of the bunch because the difference between antennas/locations is so stark. Signal level has increased across the board. The strongest signals are as high as -1.5 dB, and the noise floor hasn't appreciably increased. This high value means the SDR may be clipping, and I plan to investigate that.
 
 Range has also clearly skyrocketed, and I've been able to occasionally see aircraft past Austin!
 
@@ -267,7 +286,7 @@ Range has also clearly skyrocketed, and I've been able to occasionally see aircr
 
 Houston is still quite cold, but it's great to see the CPU stay under 50 degrees C. It's sitting around 50% memory utilization and 25% CPU utilization. The image takes up just 4 GB.
 
-## Fun Data Analysis
+## Fun Data Analysis!
 
 Now that I've run the feeder for about a week, I have some data to play with! I especially enjoy the [heatmap view](https://adsb.wilsonharper.net/?heatmap). Each dot represents one received message. Colder-colored dots are at a higher altitude.
 
