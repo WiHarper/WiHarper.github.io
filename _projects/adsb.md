@@ -8,7 +8,7 @@ category:
 related publications: false
 ---
 
-I built an ADS-B ground station to track aircraft 200 miles away from my dorm balcony, all on restricted university WiFi and in Houston's 100% humidity. My limited budget required some engineering--specifically, a spider antenna that increased my message rate by 100x over the stock dipole.
+I built an ADS-B ground station to track aircraft 200 miles away from my dorm balcony, all on restricted university WiFi and in Houston's 100% humidity. My limited budget required some custom engineering--specifically, a spider antenna that increased my message rate by 100x over the stock dipole.
 
 
 <div class="map-facade" id="mapContainer" onclick="loadMap()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter') loadMap()">
@@ -71,7 +71,7 @@ I built an ADS-B ground station to track aircraft 200 miles away from my dorm ba
         container.style.cursor = 'wait';
         
         var iframe = document.createElement('iframe');
-        iframe.setAttribute('loading', 'lazy'); 
+        iframe.setAttribute('loading', 'eager'); 
         iframe.src = "https://adsb.wilsonharper.net/?hidesidebar&temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1";
         iframe.width = "100%";
         iframe.height = "100%";
@@ -94,9 +94,9 @@ You can view the live feed in its own tab [here](https://adsb.wilsonharper.net/?
 
 ## Motivation & Constraints
 
-I've been wanted to feed data to ADS-B aggregators and get some experience with Pi's as always-on computers. Living in a dorm at Rice University presented an interesting set of constraints, though.
+I've been wanting to feed data to ADS-B aggregators and get some experience with Raspberry Pis as always-on computers. Living in a dorm at Rice University presented an interesting set of constraints, though.
 
-Generally, aircraft flying in controlled airspace (near large airports or above 18,000 feet) are required to transmit an ADS-B signal. This signal typically includes GPS coordinates, altitude, heading, speed, callsign, and craft type. If you've ever been on [Flightradar24](https://www.flightradar24.com/), [ADS-B Exchange](https://globe.adsbexchange.com/), or [FlightAware](https://www.flightaware.com/), you've used this data. In fact, these websites collect info either by sending out ADS-B feeder kits around the world or by accepting data sent in by enthusiast setups. I wanted to build one of these setups. 
+ADS-B is the system aircraft use to broadcast GPS, altitude, and speed. Aggregators like FlightRadar24 rely on volunteer feeders to collect this 1090 MHz data. I wanted to build a node for that network.
 
 The basic idea is that a single-board computer and software-defined radio listen to 1090 MHz signals, decode them, and send them to aggregators over the internet. (A small minority of aircraft broadcast on 978 MHz, but catching those signals requires another SDR.)
 
@@ -111,7 +111,7 @@ I also noticed that there were only a few examples online where design decisions
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200845740.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/adsb/PXL_20260124_200845740.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -124,7 +124,7 @@ With that in mind, here's my bill of materials:
 - [Raspberry Pi Zero 2 W Kit](https://www.amazon.com/Raspberry-Pi-Zero-WH-Kit/dp/B0DRRDJKDV)  
     The Pi Zero 2 W is low power consumption, leading to less heat. It has WiFi and just one USB-OTG port--that's all I need! The kit came with a heatsink, and USB and HDMI adapters. 
 - [CanaKit 5V 2.5A Micro USB Power Supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4)  
-    A high-quality power adapter is necessary for a project like this. The SDR draws appreciable power, and stability issues can impact reception. I would have liked a power supply that was explicitly weather resistant. The cable's ferrite core was also a little inconvenient. 
+    A high-quality power adapter is necessary for a project like this. The SDR draws quite a bit of power for a Pi Zero, and stability issues can impact reception. I would have liked a power supply that was explicitly weather resistant. The cable's ferrite core was also inconvenient. 
 - [SanDisk High Endurance MicroSD Card - 32GB](https://shop.sandisk.com/products/memory-cards/microsd-cards/sandisk-high-endurance-uhs-i-microsd?sku=SDSQQNR-032G-GN6IA)  
     Continuous operation is hard on SD cards. While the software is designed to avoid tons of writing, a high-quality card ought to help with longevity, especially in Houston's heat. 16GB would have been fine, but the 32GB SKU was only a few bucks more.  
 - [1090 MHz Saw Filter](https://www.amazon.com/dp/B09RPKHQ6S)  
@@ -196,7 +196,7 @@ I used [Tailscale](https://tailscale.com/) to remote into the Pi over Rice WiFi 
 
 There are commercially-available 1090 MHz ADS-B antennas. As an electrical engineering student, though, it seemed worthwhile (and cheaper!) to build my own. There are a few designs out there, but most follow a similar pattern with a vertical whip and four radials at 45 degrees. 
 
-I did some math to determine the right length for the whip and radials. To find the wavelength, we divide C by 1090 MHz, giving us a length of 0.275 meters. For a quarter-wave monopole, the resonant length is 0.275 meters divided by 4, giving 68.75 mm. In a conductor such as copper, radio waves travel a bit slower--about 95%. This reduced velocity factor means the antenna wires should be just a bit shorter. Therefore, each wire is about 66 mm from tip to connection point. 
+I did some math to determine the right length for the whip and radials. To find the wavelength, we divide C by 1090 MHz, giving us a length of 0.275 meters. For a quarter-wave monopole, the resonant length is 0.275 meters divided by 4, giving 68.75 mm. In copper, the velocity factor is about 0.95. This means radio waves travel at about 0.95 C. This factor means the antenna wires should be just a bit shorter. Therefore, each wire is about 66 mm from tip to connection point. 
 
 
 <div class="row mt-5">
@@ -241,7 +241,9 @@ Because the Pi power cord has a large ferrite core toward the end, I didn't have
 
 ## Performance
 
-I initially tested the feeder with the stock 20 cm dipole on the first floor of a brick building. Performance was as poor as expected, but it gave me a great baseline. Later, I installed the antenna and relocated the feeder to a 5th-floor balcony. You can see this change happened Saturday at noon in the following graphs.
+I initially tested the feeder with the stock 20 cm dipole on the first floor of a brick building. Performance was as poor, as expected, but it gave me a great baseline. ADS-B signals are mostly line-of-sight, and the dipole's length wasn't doing me any favors.
+
+Later, I installed the antenna and relocated the feeder to a 5th-floor balcony. You can see this change happened Saturday at noon in the following graphs.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
@@ -268,13 +270,16 @@ I also like keeping track of the actual number of aircraft tracked. It's seen up
     </div>
 </div>
 
+
+
 <div class="row justify-content-sm-center">
     <div class="col-sm-9 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-signal-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
-These graphs might be my favorite of the bunch because the difference between antennas/locations is so stark. Signal level has increased across the board. The strongest signals are as high as -1.5 dB, and the noise floor hasn't appreciably increased. This high value means the SDR may be clipping, and I plan to investigate that.
+These two above graphs might be my favorite of the bunch because the difference between antennas/locations is so stark. Signal level has increased across the board. The strongest signals are as high as -1.5 dB, and the noise floor hasn't appreciably increased. This high value means the SDR may be clipping, and I plan to investigate that.
+
 
 Range has also clearly skyrocketed, and I've been able to occasionally see aircraft past Austin!
 
@@ -306,7 +311,7 @@ This is too much information to view at once. Luckily, it's easy to filter. Let'
 </div>
 
 
-Filtering for military aircraft reveals more than I expected. There are plenty of Cessnas, but I've also seen T-38s, a C-17, and an A-330 registered to the Canadian military.
+Filtering for military aircraft reveals more than I expected. There are plenty of Cessnas, but I've also seen T-38s, a C-17, and an A-330 registered to the Royal Canadian Air Force.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
