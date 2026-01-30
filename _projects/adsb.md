@@ -45,7 +45,7 @@ I've been interested in software-defined radio recently. Listening to aircraft a
         transition: transform 0.3s ease; 
     }
 
-    .play-button {e
+    .play-button {
         position: absolute;
         top: 50%;
         left: 50%;
