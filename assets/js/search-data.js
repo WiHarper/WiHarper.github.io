@@ -50,29 +50,29 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "projects-diy-ads-b-feeder-and-antenna",
-          title: 'DIY ADS-B Feeder and Antenna',
-          description: "from a dorm balcony in Houston&#39;s humidity",
+            },},{id: "projects-tracking-aircraft-200-miles-away-from-a-dorm-balcony",
+          title: 'Tracking Aircraft 200 Miles Away from a Dorm Balcony',
+          description: "overcoming humidity and client isolation with a Pi Zero 2W and a custom antenna",
           section: "Projects",handler: () => {
               window.location.href = "/projects/adsb/";
-            },},{id: "projects-deej-volume-mixer",
-          title: 'Deej Volume Mixer',
-          description: "with customizeable hotkeys",
+            },},{id: "projects-hardware-audio-control-for-windows-apps",
+          title: 'Hardware Audio Control for Windows Apps',
+          description: "using all-original CAD, an Arduino Micro, and a fork of the deej project",
           section: "Projects",handler: () => {
               window.location.href = "/projects/deej/";
-            },},{id: "projects-mars-rover-and-plane-designs",
-          title: 'Mars Rover and Plane Designs',
-          description: "for UW Washington Aerospace Scholars",
+            },},{id: "projects-designing-a-manned-and-robotic-mars-mission-architecture",
+          title: 'Designing a Manned and Robotic Mars Mission Architecture',
+          description: "for canyon excavation and habitat preparation",
           section: "Projects",handler: () => {
               window.location.href = "/projects/marsdesigns/";
-            },},{id: "projects-synthetic-aperture-radar",
-          title: 'Synthetic Aperture Radar',
-          description: "built at MIT Lincoln Laboratory RISE",
+            },},{id: "projects-building-a-handheld-synthetic-aperture-radar-system",
+          title: 'Building a Handheld Synthetic Aperture Radar System',
+          description: "and researching Doppler and SAR at MIT Lincoln Laboratory RISE",
           section: "Projects",handler: () => {
               window.location.href = "/projects/radar/";
-            },},{id: "projects-position-holding-uav",
-          title: 'Position-Holding UAV',
-          description: "featuring optical flow, LiDAR, and a gripper",
+            },},{id: "projects-achieving-stable-flight-in-gps-denied-environments",
+          title: 'Achieving Stable Flight in GPS-Denied Environments',
+          description: "featuring sensor fusion with optical flow, LiDAR, and a gripper",
           section: "Projects",handler: () => {
               window.location.href = "/projects/uav/";
             },},{
