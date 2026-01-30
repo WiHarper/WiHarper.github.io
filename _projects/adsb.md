@@ -1,7 +1,7 @@
 ---
 layout: page
-title: DIY ADS-B Feeder and Antenna
-description: from a dorm balcony in Houston's humidity
+title: Tracking Aircraft 200 Miles Away from a Dorm Balcony
+description: overcoming humidity and client isolation with a Pi Zero 2W and a custom antenna
 img: assets/img/adsb/thumb.png
 importance: 70
 category:

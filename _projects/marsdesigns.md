@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Mars Rover and Plane Designs
-description: for UW Washington Aerospace Scholars
+title: Designing a Manned and Robotic Mars Mission Architecture
+description: for canyon excavation and habitat preparation
 img: assets/img/was/rover4.jpg
 importance: 150
 category:
