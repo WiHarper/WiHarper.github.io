@@ -8,7 +8,7 @@ category:
 related publications: false
 ---
 
-I built an ADS-B ground station on my dorm balcony--behind restrictive campus Wi-Fi and in Houston heat--using a Pi Zero 2 W, a DIY quarter-wave antenna, and Cloudflare Tunnels and Tailscale. I increased message throughput from ~5 to ~750 msg/s, and it now tracks aircraft from Austin to Louisiana.
+I built an ADS-B ground station on my dorm balcony--behind restrictive campus Wi-Fi and in Houston heat--using a Pi Zero 2 W, a DIY quarter-wave antenna, and Cloudflare Tunnels and Tailscale. I increased throughput from ~5 to ~750 msg/s, and it now tracks aircraft from Austin to Louisiana.
 
 
 <div class="map-facade" id="mapContainer" onclick="loadMap()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter') loadMap()">
@@ -96,12 +96,10 @@ You can view the live feed in its own tab [here](https://adsb.wilsonharper.net/?
 
 I've been wanting to feed data to ADS-B aggregators and get some experience with Raspberry Pis as always-on computers. ADS-B is the system aircraft use to broadcast GPS, altitude, and speed. Aggregators like FlightRadar24 rely on volunteer feeders to collect this 1090 MHz data. I wanted to build a node for that network.
 
-The basic idea is that a single-board computer and software-defined radio listen to 1090 MHz signals, decode them, and send them to aggregators over the internet. (A small minority of aircraft broadcast on 978 MHz, but catching those signals requires another SDR.)
-
 As I decided on what parts to purchase, I kept a few factors in mind:
 
 - The entire setup must be mounted high up. The Martel College fifth-floor balcony was the clear choice.
-- The feeder must communicate over WiFi. I could not run an ethernet cable to the balcony. Making things more tricky, the Rice network enforces client isolation, preventing peer-to-peer communications.
+- The feeder must communicate over WiFi. I could not run an ethernet cable to the balcony. Making things more tricky, the Rice network enforces client isolation, making peer-to-peer connections impossible.
 - Cooling and weatherproofing are priorities. Houston is hot, rainy, and humid. High temperatures and moisture can cause the Pi to throttle and the software-defined radio to pick up the wrong frequencies.
 - I want it to be small, consume little power, and take up little space.
 
@@ -118,32 +116,32 @@ I also noticed a lack of documentation online explaining why specific design dec
 With that in mind, here's my bill of materials:
 
 - [A 2832U-based Software-defined Radio](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Defined/dp/B0CD745394)  
-    I went with the RTL-SDR Blog V4. The V4 runs cooler than the acclaimed V3--super important here.
+    I went with the RTL-SDR Blog V4. The V4 runs cooler than the well-known Blog V3.
 - [Raspberry Pi Zero 2 W Kit](https://www.amazon.com/Raspberry-Pi-Zero-WH-Kit/dp/B0DRRDJKDV)  
-    The Pi Zero 2 W has low power consumption, leading to less heat. It has WiFi and just one USB-OTG port--that's all I need! The kit came with a heatsink, and USB and HDMI adapters. 
+    The Pi Zero 2 W has low power consumption, leading to less heat. It has WiFi and just one USB-OTG port--that's all I need! The kit came with a heatsink and USB + HDMI adapters. 
 - [CanaKit 5V 2.5A Micro USB Power Supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4)  
-    A high-quality power adapter is necessary for a project like this. The SDR draws quite a bit of power for a Pi Zero, and stability issues can impact reception. I would have liked a power supply that was explicitly weather resistant. The cable's ferrite core was also inconvenient for fitting inside the tight enclosure. 
+    A high-quality power adapter is necessary for a project like this. The SDR draws quite a bit of power for a Pi Zero, and stability issues impact reception. I would have liked a power supply that was explicitly weather resistant. The cable's ferrite core was also inconvenient for fitting inside the tight enclosure. 
 - [SanDisk High Endurance MicroSD Card - 32GB](https://shop.sandisk.com/products/memory-cards/microsd-cards/sandisk-high-endurance-uhs-i-microsd?sku=SDSQQNR-032G-GN6IA)  
     Continuous operation is hard on SD cards. While the software is designed to avoid tons of writing, a high-quality card ought to help with longevity, especially in Houston's heat. 16GB would have been fine, but the 32GB SKU was only a few bucks more.  
-- [1090 MHz Saw Filter](https://www.amazon.com/dp/B09RPKHQ6S)  
+- [1090 MHz SAW Filter](https://www.amazon.com/dp/B09RPKHQ6S)  
     This filter helps the SDR avoid drowning in environmental noise. By only allowing 1090 MHz frequencies to pass through , it improves the signal-to-noise ratio.
 
 And a few more parts that can vary depending on price and installation details:
 
 - Weather-resistant box  
-    I went with [this one](https://www.amazon.com/dp/B0CZ2ZXRKS) from Amazon, and it ended up being about the right size.
+    - I went with [this one](https://www.amazon.com/dp/B0CZ2ZXRKS) from Amazon, and it ended up being about the right size.
 - N-type 4-hole bulkhead  
-    I made a custom spider-style antenna out of wire and a connector. A wide variety of connectors are often used, such as F-81L or SO-239. I went with an N-type for its superior weather resistance and better handling of high-frequency signals.
+    - I made a custom spider-style antenna out of wire and a connector. A wide variety of connectors are often used, such as F-81L or SO-239. I went with an N-type for its superior weather resistance and better handling of high-frequency signals.
 - Copper wire
 - N-type to SMA cable
 
 
-Rounding out the list, I used a PVC pipe for mounting, some wire crimp connectors, and miscellaneous fasteners, glue, etc. I also purchased conformal coating for the Pi, and I plan to apply it soon.
+Rounding out the list, I used a PVC pipe for mounting the antenna, some wire crimp connectors, and miscellaneous fasteners, glue, etc. I also purchased conformal coating for the Pi, and I plan to apply it soon.
 
 
 ## Build Process
 
-I started by getting the box ready. My thermal strategy relies on simple passive convection. Intake and exhaust vents at the bottom and top create a chimney effect to dissipate heat.
+I started by getting the box ready. My thermal strategy relies on  passive convection. Intake and exhaust vents at the bottom and top create a chimney effect to dissipate heat.
 
 
 <div class="row mt-5">
@@ -163,19 +161,16 @@ I protected both holes with some mesh to keep insects out. The top hole has a PV
 
 ## Software
 
-I flashed the Pi with [ADSB.im](https://adsb.im/home). This feeder image is easy to set up and can simultaneously feed several aggregators. 
+I flashed the Pi with [ADSB.im](https://adsb.im/home). This feeder image is fairly easy to set up and can simultaneously feed several aggregators. ADS-B signals are decoded using [readsb](https://github.com/wiedehopf/readsb). The map interface is [tar1090](https://github.com/wiedehopf/tar1090), and the graphs are from [graph1090](https://github.com/wiedehopf/graphs1090).
 
-All the components were just placed into the box. Wire length was an issue, but this works just fine.
 
-Initial config on Rice WiFi was a challenge. ADSB.im is meant to run headlessly, and config is done via a localhost website. Because Rice's WiFi does not support peer-to-peer connections, I set it up by first connecting both the Pi and my laptop to my phone's hotspot, but I needed a better strategy for long-term use. 
+Initial config on Rice WiFi was a challenge, though. ADSB.im is meant to run headlessly, and config is done via a localhost website. Because Rice's WiFi does not support peer-to-peer connections, I set it up by first connecting both the Pi and my laptop to my phone's hotspot, but I needed a better strategy for long-term use. 
 
-The solution was Tailscale; I treat the Pi as a node on a private mesh network. Since I cannot SSH locally (due to client isolation), I SSH over the Tailscale interface. This allows me to update configurations or view the raw tar1090 interface securely from my laptop anywhere in the world, without exposing port 22 to the open web.
+The solution was Tailscale; I treat the Pi as a node on a private mesh network. Since I cannot SSH locally (due to client isolation), I SSH over the Tailscale interface. This allows me to update configurations or view the raw tar1090 interface securely from my laptop anywhere in the world, without exposing port 22 to the open web. I initially attempted to use Tailscale Funnels for public access to keep things simple. However, I found the performance on the Pi Zero to be sluggish--it just couldn't handle more than a few requests at once.
 
-I initially attempted to use Tailscale Funnels for public access to keep things simple. However, I found the performance on the Pi Zero to be sluggish--it just couldn't handle more than a few requests at once.
+For the public facing map, I decided to use Cloudflare. I run the cloudflared daemon directly on the Pi, creating an outbound connection. Cloudflare's excellent caching increases speed and reduces load on the Pi and the Rice network. I had to set up caching to only save static assets (like map tiles and UI details), but it was just a few clicks. Cloudflare made it easy to enable HTTPS, and the DDOS protection is non-crucial but very cool
 
-For the public facing map, I decided to use Cloudflare. I run the cloudflared daemon directly on the Pi, creating a secure outbound connection. Cloudflare's excellent caching increases speed and reduces load on the Pi and the Rice network. I had to set up caching to only save static assets (like map tiles and UI details), but it was just a few clicks. Cloudflare made it easy to enable HTTPS, and the DDOS protection is probably non-crucial but very cool
-
-At 2.4 GHz, the WiFi range is there. Stability is not perfect; it loses connection occasionally. Still, its uptime is around 99.5%. That sounds great to me.
+At 2.4 GHz, the WiFi range is decent. Stability is not perfect; it loses connection occasionally. Still, its uptime is around 99.5%. That sounds great to me.
 
 The Pi Zero 2 W struggles with many aggregators, and multilateration (a method to locate an aircraft even if it does not broadcast its location) tends to have issues. This was a compromise I was willing to make in order to have the Zero 2 W's low heat generation. Right now, I'm feeding data to:
 - [ADSB.lol](https://adsb.lol/)
@@ -184,8 +179,15 @@ The Pi Zero 2 W struggles with many aggregators, and multilateration (a method t
 - [Flightradar24](https://www.flightradar24.com/)
 - [FlightAware](https://www.flightaware.com/live/map)
 
-ADS-B signals are decoded using [readsb](https://github.com/wiedehopf/readsb). The map interface is [tar1090](https://github.com/wiedehopf/tar1090), and the graphs are from [graph1090](https://github.com/wiedehopf/graphs1090).
 
+<div class="row justify-content-sm-center">
+    <div class="col-sm-9 mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-31 154038.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+
+Oh, and feeding data gets me free access to the business plans on paid aggregators, giving me access to detailed data from around the globe.
 
 
 ## Antenna Construction
@@ -247,7 +249,7 @@ Later, I installed the antenna and relocated the feeder to a 5th-floor balcony. 
     </div>
 </div>
 
-Message rate is one of the most important measures of an ADS-B feeder's performance. It simply refers to how often the feeder "hears" a message sent from an aircraft. 
+Message rate is one of the most important measures of an ADS-B feeder's performance. It refers to how often the feeder "hears" a message sent from an aircraft. 
 
 With the old antenna and location, I was lucky to see over 5 messages per second. After relocating and upgrading the antenna, I saw as high as 700--over two orders of magnitude greater! I am writing this after the January 2026 North American winter storm, and it seems air traffic numbers are still returning to typical levels. 
 
@@ -257,7 +259,7 @@ With the old antenna and location, I was lucky to see over 5 messages per second
     </div>
 </div>
 
-I also like keeping track of the actual number of aircraft tracked. It's seen up to 132 at once, and it's clear that  air traffic volume follows daily patterns.
+I also like keeping track of the actual number of aircraft tracked. It's seen up to ~130 at once, and it's clear that  air traffic volume follows daily patterns.
 
 
 <div class="row justify-content-sm-center">
@@ -274,8 +276,7 @@ I also like keeping track of the actual number of aircraft tracked. It's seen up
     </div>
 </div>
 
-These two above graphs might be my favorite of the bunch because the difference between antennas/locations is so stark. RSSI (signal strength) has increased across the board. The strongest signals are as high as -1.5 dB, and the noise floor hasn't appreciably increased. The -1.5 dB peaks suggest the SDR is clipping. While readsb's autogain is enabled, the V4's LNA might be too aggressive for the new antenna. I likely need to manually reduce gain.
-
+These two graphs above might be my favorite of the bunch because the difference between antennas/locations is so stark. RSSI (signal strength) has increased across the board. The strongest signals are as high as -1.5 dB, and the noise floor hasn't appreciably increased. The -1.5 dB peaks suggest the SDR is clipping. While readsb's autogain is enabled, the V4's LNA might be too aggressive for the new antenna. I likely need to manually reduce gain.
 
 Range has also clearly skyrocketed, and I've been able to occasionally see aircraft past Austin!
 
@@ -285,11 +286,10 @@ Range has also clearly skyrocketed, and I've been able to occasionally see aircr
     </div>
 </div>
 
-Houston is still quite cold, but it's great to see the CPU stay under 50 degrees C. It's sitting around 50% memory utilization and 25% CPU utilization. The image takes up just 4 GB.
+Houston is still quite cold, but it's great to see the CPU stay under 50 degrees C. I had to enable ZRAM memory compression to improve stability. It's sitting around 25% CPU utilization. It's only using about 4 GB of space on the MicroSD card. 
 
-## Some Fun Data Analysis
-
-Now that I've run the feeder for about a week, I have some data to play with! I especially enjoy the [heatmap view](https://adsb.wilsonharper.net/?heatmap). Each dot represents one received message. Cooler colors (blues/purples) represent higher altitudes.
+## Data Analysis
+Now that I've run the feeder for a while, I have some data to play with! I especially enjoy the [heatmap view](https://adsb.wilsonharper.net/?heatmap). Each dot represents one received message. Cooler colors (blues/purples) represent higher altitudes.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-9 mt-3 mt-md-0">
@@ -321,7 +321,6 @@ Filtering for military aircraft reveals more than I expected. There are plenty o
 ## Displaying the Info
 
 I recently found a 10.5" 1080p monitor for free in Rice's [OEKD](https://oedk.rice.edu/). I've been looking for a project to use it in, and this was the perfect chance. I hooked up a Raspberry Pi 4 running Chromium in Kiosk Mode, wrote a few autostart scripts, and now [Rice Flight](https://www.aiaa.rice.edu/riceflight.html) has a live view of nearby aircraft! It restarts every night and reloads the website every three hours. It also auto-selects the nearest aircraft and displays a picture of it if available.
-
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-9 mt-3 mt-md-0">
