@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Building a 200-Mile ADS-B Ground Station on University WiFi
+title: Tracking Planes 150 Miles Away on Hostile University WiFi
 description: overcoming humidity and client isolation with a Pi Zero 2 W and custom antenna
 img: assets/img/adsb/thumb.png
 importance: 70
@@ -8,9 +8,7 @@ category:
 related publications: false
 ---
 
-My budget was limited. Rice University’s WiFi forbids peer-to-peer connections. Houston’s weather kills electronics. I still built an ADS-B ground station on my dorm balcony that tracks aircraft from Austin to Louisiana.
-
-I constructed a quarter-wave ground plane antenna that increased my message rate from 5 to 700 msg/s--two orders of magnitude. A weatherproof-ish box with cooling protects the electronics. Setting up Tailscale and Cloudflare Tunnels allowed compatibility with Rice's WiFi and an actually-usable viewing experience.
+I built an ADS-B ground station on my dorm balcony--behind restrictive campus Wi-Fi and in Houston heat--using a Pi Zero 2 W, a DIY quarter-wave antenna, and Cloudflare Tunnels and Tailscale. I increased message throughput from ~5 to ~750 msg/s, and it now tracks aircraft from Austin to Louisiana.
 
 
 <div class="map-facade" id="mapContainer" onclick="loadMap()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter') loadMap()">
@@ -102,12 +100,12 @@ The basic idea is that a single-board computer and software-defined radio listen
 
 As I decided on what parts to purchase, I kept a few factors in mind:
 
-- The entire setup must be mounted high up. The Martel College fifth floor balcony was the clear choice.
+- The entire setup must be mounted high up. The Martel College fifth-floor balcony was the clear choice.
 - The feeder must communicate over WiFi. I could not run an ethernet cable to the balcony. Making things more tricky, the Rice network enforces client isolation, preventing peer-to-peer communications.
-- Cooling and weatherproofing is a priority. Houston is hot, rainy, and humid. High temperatures and moisture can cause the Pi to throttle and the software-defined radio to pick up the wrong frequencies.
+- Cooling and weatherproofing are priorities. Houston is hot, rainy, and humid. High temperatures and moisture can cause the Pi to throttle and the software-defined radio to pick up the wrong frequencies.
 - I want it to be small, consume little power, and take up little space.
 
-I also noticed a lack of documentation online explaining why specific design decisions were made, so I wanted to contribute my reasoning to the corpus. I'd like to thank [Ian Hsieh](https://www.linkedin.com/in/ian-hsieh-b67457216) for his help.
+I also noticed a lack of documentation online explaining why specific design decisions were made, so I wanted to contribute my build process to the corpus. I'd like to thank [Ian Hsieh](https://www.linkedin.com/in/ian-hsieh-b67457216) for his help.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -163,22 +161,19 @@ I started by getting the box ready. My thermal strategy relies on simple passive
 I protected both holes with some mesh to keep insects out. The top hole has a PVC elbow connector to prevent water ingress. As Houston heats up, we'll see how effective this cooling design is. Clearly, I was not going for an absolutely airtight box. Still, the cable gland at the bottom keeps things tidy.
 
 
-
-
-
-
-
-
 ## Software
 
-I flashed the Pi with [ADSB.im](https://adsb.im/home). This feeder image is fairly easy to set up and can simultaneously feed several aggregators. 
+I flashed the Pi with [ADSB.im](https://adsb.im/home). This feeder image is easy to set up and can simultaneously feed several aggregators. 
 
 All the components were just placed into the box. Wire length was an issue, but this works just fine.
 
-Initial config on Rice WiFi was a challenge. ADSB.im is meant to run headlessly, and config is done via a localhost website. Because Rice's WiFi does not support peer-to-peer connections, I set it up by first connecting both the Pi and my laptop to my phone's hotspot. My next step was installing Tailscale. Once I switched over to the Rice WiFi, I was able to SSH in over WAN for more configuration.
+Initial config on Rice WiFi was a challenge. ADSB.im is meant to run headlessly, and config is done via a localhost website. Because Rice's WiFi does not support peer-to-peer connections, I set it up by first connecting both the Pi and my laptop to my phone's hotspot, but I needed a better strategy for long-term use. 
 
-I use Tailscale to remote into the Pi over Rice WiFi for config, SSH-ing, and accessing the tar1090 map directly. I used a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to enable public access and cache map tiles/interface data to reduce load on the Pi. Port forwarding on Rice WiFi is not possible, and I like Cloudflare's security.
+The solution was Tailscale; I treat the Pi as a node on a private mesh network. Since I cannot SSH locally (due to client isolation), I SSH over the Tailscale interface. This allows me to update configurations or view the raw tar1090 interface securely from my laptop anywhere in the world, without exposing port 22 to the open web.
 
+I initially attempted to use Tailscale Funnels for public access to keep things simple. However, I found the performance on the Pi Zero to be sluggish--it just couldn't handle more than a few requests at once.
+
+For the public facing map, I decided to use Cloudflare. I run the cloudflared daemon directly on the Pi, creating a secure outbound connection. Cloudflare's excellent caching increases speed and reduces load on the Pi and the Rice network. I had to set up caching to only save static assets (like map tiles and UI details), but it was just a few clicks. Cloudflare made it easy to enable HTTPS, and the DDOS protection is probably non-crucial but very cool
 
 At 2.4 GHz, the WiFi range is there. Stability is not perfect; it loses connection occasionally. Still, its uptime is around 99.5%. That sounds great to me.
 
@@ -212,7 +207,7 @@ I calculated the resonant length for the whip and radials. To find the wavelengt
     </div>
 </div>
 
-If the four radials were flat, they would have an impedance of about 35 Ohms. By bending them to 45 degrees, their impedance is about 50 Ohms matching the 50 Ohm standard of the coax and SDR.
+If the four radials were flat, they would have an impedance of about 35 Ohms. By bending them to 45 degrees, their impedance is about 50 Ohms. This matches the 50 Ohm standard of the coax and SDR, minimizing reflections.
 
 ## Installation
 
@@ -254,7 +249,7 @@ Later, I installed the antenna and relocated the feeder to a 5th-floor balcony. 
 
 Message rate is one of the most important measures of an ADS-B feeder's performance. It simply refers to how often the feeder "hears" a message sent from an aircraft. 
 
- With the old antenna and location, I was lucky to see over 5 messages per second. After relocating and upgrading the antenna, I saw as high as 700--over two orders of magnitude greater! I am writing this after the January 2026 North American winter storm, and it seems air traffic numbers are still returning to typical levels. 
+With the old antenna and location, I was lucky to see over 5 messages per second. After relocating and upgrading the antenna, I saw as high as 700--over two orders of magnitude greater! I am writing this after the January 2026 North American winter storm, and it seems air traffic numbers are still returning to typical levels. 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-9 mt-3 mt-md-0">
@@ -279,7 +274,7 @@ I also like keeping track of the actual number of aircraft tracked. It's seen up
     </div>
 </div>
 
-These two above graphs might be my favorite of the bunch because the difference between antennas/locations is so stark. RSSI (signal strength) has increased across the board. The strongest signals are as high as -1.5 dB, and the noise floor hasn't appreciably increased. This high value means the SDR may be clipping, and I plan to investigate this. I am currently using readsb's autogain feature.
+These two above graphs might be my favorite of the bunch because the difference between antennas/locations is so stark. RSSI (signal strength) has increased across the board. The strongest signals are as high as -1.5 dB, and the noise floor hasn't appreciably increased. The -1.5 dB peaks suggest the SDR is clipping. While readsb's autogain is enabled, the V4's LNA might be too aggressive for the new antenna. I likely need to manually reduce gain.
 
 
 Range has also clearly skyrocketed, and I've been able to occasionally see aircraft past Austin!
@@ -325,7 +320,7 @@ Filtering for military aircraft reveals more than I expected. There are plenty o
 
 ## Displaying the Info
 
-I recently found a 10.5" 1080p monitor for free in Rice's [OEKD](https://oedk.rice.edu/). I've been looking for a project to use it in, and this was the perfect chance. I hooked up a Raspberry Pi 4 running Chromium in Kiosk Mode, wrote a few autostart scripts, and now [Rice Flight](https://www.aiaa.rice.edu/riceflight.html) has a live view of nearby aircraft! It restarts every night and reloads the website every three hours. It also auto-selects the nearest aircraft and displays a picture if available.
+I recently found a 10.5" 1080p monitor for free in Rice's [OEKD](https://oedk.rice.edu/). I've been looking for a project to use it in, and this was the perfect chance. I hooked up a Raspberry Pi 4 running Chromium in Kiosk Mode, wrote a few autostart scripts, and now [Rice Flight](https://www.aiaa.rice.edu/riceflight.html) has a live view of nearby aircraft! It restarts every night and reloads the website every three hours. It also auto-selects the nearest aircraft and displays a picture of it if available.
 
 
 <div class="row justify-content-sm-center">
@@ -335,6 +330,6 @@ I recently found a 10.5" 1080p monitor for free in Rice's [OEKD](https://oedk.ri
 </div>
 
 
-## Historical Performance Data
+## Performance Data
 
-You can find historical data [here](https://adsb.wilsonharper.net/graphs1090/).
+You can find historical performance data [here](https://adsb.wilsonharper.net/graphs1090/).
