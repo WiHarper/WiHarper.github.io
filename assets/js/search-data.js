@@ -50,8 +50,8 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "projects-tracking-planes-150-miles-away-on-hostile-university-wifi",
-          title: 'Tracking Planes 150 Miles Away on Hostile University WiFi',
+            },},{id: "projects-tracking-planes-150-miles-away-on-hostile-dorm-wifi",
+          title: 'Tracking Planes 150 Miles Away on Hostile Dorm WiFi',
           description: "overcoming humidity and client isolation with a Pi Zero 2 W and custom antenna",
           section: "Projects",handler: () => {
               window.location.href = "/projects/adsb/";
