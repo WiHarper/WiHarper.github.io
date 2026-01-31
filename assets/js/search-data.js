@@ -52,7 +52,7 @@ ninja.data = [{
               window.location.href = "/books/the_godfather/";
             },},{id: "projects-tracking-aircraft-200-miles-away-from-a-dorm-balcony",
           title: 'Tracking Aircraft 200 Miles Away from a Dorm Balcony',
-          description: "overcoming humidity and client isolation with a Pi Zero 2W and a custom antenna",
+          description: "overcoming humidity and client isolation with a Pi Zero 2 W and custom antenna",
           section: "Projects",handler: () => {
               window.location.href = "/projects/adsb/";
             },},{id: "projects-hardware-audio-control-for-windows-apps",
