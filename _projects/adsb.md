@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Tracking Planes 150 Miles Away on Hostile University WiFi
+title: Tracking Planes 150 Miles Away on Hostile Dorm WiFi
 description: overcoming humidity and client isolation with a Pi Zero 2 W and custom antenna
 img: assets/img/adsb/thumb.png
 importance: 70
@@ -322,9 +322,13 @@ Filtering for military aircraft reveals more than I expected. There are plenty o
 
 I recently found a 10.5" 1080p monitor for free in Rice's [OEKD](https://oedk.rice.edu/). I've been looking for a project to use it in, and this was the perfect chance. I hooked up a Raspberry Pi 4 running Chromium in Kiosk Mode, wrote a few autostart scripts, and now [Rice Flight](https://www.aiaa.rice.edu/riceflight.html) has a live view of nearby aircraft! It restarts every night and reloads the website every three hours. It also auto-selects the nearest aircraft and displays a picture of it if available.
 
+
 <div class="row justify-content-sm-center">
-    <div class="col-sm-9 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260129_051649964.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    <div class="col-sm-8 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/adsb/PXL_20260131_224912600.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm-4 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/adsb/PXL_20260131_224922739.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
