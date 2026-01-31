@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Tracking Aircraft 200 Miles Away from a Dorm Balcony
+title: Building a 200-Mile ADS-B Ground Station on University WiFi
 description: overcoming humidity and client isolation with a Pi Zero 2 W and custom antenna
 img: assets/img/adsb/thumb.png
 importance: 70
@@ -8,14 +8,16 @@ category:
 related publications: false
 ---
 
-I built an ADS-B ground station to track aircraft 200 miles away from my dorm balcony, all on restricted university WiFi and in Houston's humidity. My limited budget forced me to improvise--specifically, I made a quarter-wave ground plane antenna that increased my message rate by 100x over the stock dipole.
+My budget was limited. Rice University’s WiFi forbids peer-to-peer connections. Houston’s weather kills electronics. I still built an ADS-B ground station on my dorm balcony that tracks aircraft from Austin to Louisiana.
+
+I constructed a quarter-wave ground plane antenna that increased my message rate from 5 to 700 msg/s--two orders of magnitude. A weatherproof-ish box with cooling protects the electronics. Setting up Tailscale and Cloudflare Tunnels allowed compatibility with Rice's WiFi and an actually-usable viewing experience.
 
 
 <div class="map-facade" id="mapContainer" onclick="loadMap()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter') loadMap()">
     <img src="/assets/img/adsb/preview.png" alt="Live ADS-B Map Preview" class="map-placeholder">
     
     <div class="play-button">
-        <span>Click for Live Map</span>
+        <span>View Live Map</span>
     </div>
 </div>
  
@@ -92,7 +94,7 @@ I built an ADS-B ground station to track aircraft 200 miles away from my dorm ba
 
 You can view the live feed in its own tab [here](https://adsb.wilsonharper.net/?temptrails=1000&centerReceiver&zoom=9&rangeRings=1&extendedlabels=1).
 
-## Motivation & Constraints
+## Motivation
 
 I've been wanting to feed data to ADS-B aggregators and get some experience with Raspberry Pis as always-on computers. ADS-B is the system aircraft use to broadcast GPS, altitude, and speed. Aggregators like FlightRadar24 rely on volunteer feeders to collect this 1090 MHz data. I wanted to build a node for that network.
 
@@ -118,9 +120,9 @@ I also noticed a lack of documentation online explaining why specific design dec
 With that in mind, here's my bill of materials:
 
 - [A 2832U-based Software-defined Radio](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Defined/dp/B0CD745394)  
-    I went with the RTL-SDR Blog V4. It seems like the Blog V3 might have better range but more heat, so I'm happy with this decision.
+    I went with the RTL-SDR Blog V4. The V4 runs cooler than the acclaimed V3--super important here.
 - [Raspberry Pi Zero 2 W Kit](https://www.amazon.com/Raspberry-Pi-Zero-WH-Kit/dp/B0DRRDJKDV)  
-    The Pi Zero 2 W is low power consumption, leading to less heat. It has WiFi and just one USB-OTG port--that's all I need! The kit came with a heatsink, and USB and HDMI adapters. 
+    The Pi Zero 2 W has low power consumption, leading to less heat. It has WiFi and just one USB-OTG port--that's all I need! The kit came with a heatsink, and USB and HDMI adapters. 
 - [CanaKit 5V 2.5A Micro USB Power Supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4)  
     A high-quality power adapter is necessary for a project like this. The SDR draws quite a bit of power for a Pi Zero, and stability issues can impact reception. I would have liked a power supply that was explicitly weather resistant. The cable's ferrite core was also inconvenient for fitting inside the tight enclosure. 
 - [SanDisk High Endurance MicroSD Card - 32GB](https://shop.sandisk.com/products/memory-cards/microsd-cards/sandisk-high-endurance-uhs-i-microsd?sku=SDSQQNR-032G-GN6IA)  
@@ -138,7 +140,7 @@ And a few more parts that can vary depending on price and installation details:
 - N-type to SMA cable
 
 
-Rounding out the list, I used a PVC pipe for mounting, some wire crimp connectors, and miscellaneous fasteners, glue, etc. I also purchased conformal coating for the Pi, but I'm not sure it's needed.
+Rounding out the list, I used a PVC pipe for mounting, some wire crimp connectors, and miscellaneous fasteners, glue, etc. I also purchased conformal coating for the Pi, and I plan to apply it soon.
 
 
 ## Build Process
@@ -173,7 +175,12 @@ I flashed the Pi with [ADSB.im](https://adsb.im/home). This feeder image is fair
 
 All the components were just placed into the box. Wire length was an issue, but this works just fine.
 
-Initial config on Rice WiFi was a challenge. ADSB.im is meant to run headlessly, and config is done via a localhost website. Because Rice's WiFi does not support peer-to-peer connections, I set it up by connecting both the Pi and my laptop to my phone's hotspot. Now, it runs on the Rice Visitor WiFi. At 2.4 GHz, the range is there but stability is not perfect; it loses connection occasionally. Still, its uptime is around 99.9%. That sounds great to me.
+Initial config on Rice WiFi was a challenge. ADSB.im is meant to run headlessly, and config is done via a localhost website. Because Rice's WiFi does not support peer-to-peer connections, I set it up by first connecting both the Pi and my laptop to my phone's hotspot. My next step was installing Tailscale. Once I switched over to the Rice WiFi, I was able to SSH in over WAN for more configuration.
+
+I use Tailscale to remote into the Pi over Rice WiFi for config, SSH-ing, and accessing the tar1090 map directly. I used a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to enable public access and cache map tiles/interface data to reduce load on the Pi. Port forwarding on Rice WiFi is not possible, and I like Cloudflare's security.
+
+
+At 2.4 GHz, the WiFi range is there. Stability is not perfect; it loses connection occasionally. Still, its uptime is around 99.5%. That sounds great to me.
 
 The Pi Zero 2 W struggles with many aggregators, and multilateration (a method to locate an aircraft even if it does not broadcast its location) tends to have issues. This was a compromise I was willing to make in order to have the Zero 2 W's low heat generation. Right now, I'm feeding data to:
 - [ADSB.lol](https://adsb.lol/)
@@ -184,14 +191,13 @@ The Pi Zero 2 W struggles with many aggregators, and multilateration (a method t
 
 ADS-B signals are decoded using [readsb](https://github.com/wiedehopf/readsb). The map interface is [tar1090](https://github.com/wiedehopf/tar1090), and the graphs are from [graph1090](https://github.com/wiedehopf/graphs1090).
 
-I used [Tailscale](https://tailscale.com/) to remote into the Pi over Rice WiFi for config, SSH, and accessing the tar1090 map directly. I used a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) to enable public access and cache map tiles/interface data to reduce load on the Pi. Port forwarding on Rice WiFi is not possible, and I like Cloudflare's security.
 
 
 ## Antenna Construction
 
 There are commercially-available 1090 MHz ADS-B antennas. As an electrical engineering student, though, it seemed worthwhile (and cheaper!) to build my own. There are a few designs out there, but most follow a similar pattern with a vertical whip and four radials at 45 degrees. 
 
-I did some math to determine the right length for the whip and radials. To find the wavelength, we divide C by 1090 MHz, giving us a length of 0.275 meters. For a quarter-wave monopole, the resonant length is 0.275 meters divided by 4, giving 68.75 mm. With this insulated copper wire, the velocity factor is about 0.95. This means radio waves travel at about 0.95 C. This factor means the antenna wires should be just a bit shorter. Therefore, each wire is about 66 mm from tip to connection point. 
+I calculated the resonant length for the whip and radials. To find the wavelength, we divide C by 1090 MHz, giving us a length of 0.275 meters. For a quarter-wave monopole, the resonant length is 0.275 meters divided by 4, giving 68.75 mm. With this insulated copper wire, the velocity factor is about 0.95. This means radio waves travel at about 0.95 C. Applying this factor reduces the required physical length of the elements. Therefore, each wire is about 66 mm from tip to connection point. 
 
 
 <div class="row mt-5">
@@ -273,7 +279,7 @@ I also like keeping track of the actual number of aircraft tracked. It's seen up
     </div>
 </div>
 
-These two above graphs might be my favorite of the bunch because the difference between antennas/locations is so stark. Signal level has increased across the board. The strongest signals are as high as -1.5 dB, and the noise floor hasn't appreciably increased. This high value means the SDR may be clipping, and I plan to investigate that.
+These two above graphs might be my favorite of the bunch because the difference between antennas/locations is so stark. RSSI (signal strength) has increased across the board. The strongest signals are as high as -1.5 dB, and the noise floor hasn't appreciably increased. This high value means the SDR may be clipping, and I plan to investigate this. I am currently using readsb's autogain feature.
 
 
 Range has also clearly skyrocketed, and I've been able to occasionally see aircraft past Austin!
@@ -319,7 +325,7 @@ Filtering for military aircraft reveals more than I expected. There are plenty o
 
 ## Displaying the Info
 
-I recently found a 10.5" 1080p monitor for free in Rice's [OEKD](https://oedk.rice.edu/). I've been looking for a project to use it in, and this was the perfect chance. I hooked up a Raspberry Pi 4 running Chromium in Kiosk Mode, wrote a few autostart scripts, and now Rice Flight has a live view of nearby aircraft! It restarts every night and reloads the website every three hours. It also auto-selects the nearest aircraft and displays a picture if available.
+I recently found a 10.5" 1080p monitor for free in Rice's [OEKD](https://oedk.rice.edu/). I've been looking for a project to use it in, and this was the perfect chance. I hooked up a Raspberry Pi 4 running Chromium in Kiosk Mode, wrote a few autostart scripts, and now [Rice Flight](https://www.aiaa.rice.edu/riceflight.html) has a live view of nearby aircraft! It restarts every night and reloads the website every three hours. It also auto-selects the nearest aircraft and displays a picture if available.
 
 
 <div class="row justify-content-sm-center">
