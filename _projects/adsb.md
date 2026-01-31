@@ -1,14 +1,14 @@
 ---
 layout: page
 title: Tracking Aircraft 200 Miles Away from a Dorm Balcony
-description: overcoming humidity and client isolation with a Pi Zero 2W and a custom antenna
+description: overcoming humidity and client isolation with a Pi Zero 2 W and custom antenna
 img: assets/img/adsb/thumb.png
 importance: 70
 category:
 related publications: false
 ---
 
-I built an ADS-B ground station to track aircraft 200 miles away from my dorm balcony, all on restricted university WiFi and in Houston's 100% humidity. My limited budget required some custom engineering--specifically, a spider antenna that increased my message rate by 100x over the stock dipole.
+I built an ADS-B ground station to track aircraft 200 miles away from my dorm balcony, all on restricted university WiFi and in Houston's humidity. My limited budget forced me to improvise--specifically, I made a quarter-wave ground plane antenna that increased my message rate by 100x over the stock dipole.
 
 
 <div class="map-facade" id="mapContainer" onclick="loadMap()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter') loadMap()">
@@ -18,7 +18,7 @@ I built an ADS-B ground station to track aircraft 200 miles away from my dorm ba
         <span>Click for Live Map</span>
     </div>
 </div>
-
+ 
 <style>
     .map-facade {
         width: 100%;
@@ -94,20 +94,18 @@ You can view the live feed in its own tab [here](https://adsb.wilsonharper.net/?
 
 ## Motivation & Constraints
 
-I've been wanting to feed data to ADS-B aggregators and get some experience with Raspberry Pis as always-on computers. Living in a dorm at Rice University presented an interesting set of constraints, though.
-
-ADS-B is the system aircraft use to broadcast GPS, altitude, and speed. Aggregators like FlightRadar24 rely on volunteer feeders to collect this 1090 MHz data. I wanted to build a node for that network.
+I've been wanting to feed data to ADS-B aggregators and get some experience with Raspberry Pis as always-on computers. ADS-B is the system aircraft use to broadcast GPS, altitude, and speed. Aggregators like FlightRadar24 rely on volunteer feeders to collect this 1090 MHz data. I wanted to build a node for that network.
 
 The basic idea is that a single-board computer and software-defined radio listen to 1090 MHz signals, decode them, and send them to aggregators over the internet. (A small minority of aircraft broadcast on 978 MHz, but catching those signals requires another SDR.)
 
 As I decided on what parts to purchase, I kept a few factors in mind:
 
 - The entire setup must be mounted high up. The Martel College fifth floor balcony was the clear choice.
-- The feeder must communicate over WiFi. I could not run an ethernet cable to the balcony. Making things more tricky, the Rice network has client isolation, preventing peer-to-peer communications.
+- The feeder must communicate over WiFi. I could not run an ethernet cable to the balcony. Making things more tricky, the Rice network enforces client isolation, preventing peer-to-peer communications.
 - Cooling and weatherproofing is a priority. Houston is hot, rainy, and humid. High temperatures and moisture can cause the Pi to throttle and the software-defined radio to pick up the wrong frequencies.
 - I want it to be small, consume little power, and take up little space.
 
-I also noticed that there were only a few examples online where design decisions were explained and documented, and I'd like to make this contribution to the corpus. I'd like to thank [Ian Hsieh](https://www.linkedin.com/in/ian-hsieh-b67457216) for his help.
+I also noticed a lack of documentation online explaining why specific design decisions were made, so I wanted to contribute my reasoning to the corpus. I'd like to thank [Ian Hsieh](https://www.linkedin.com/in/ian-hsieh-b67457216) for his help.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -124,7 +122,7 @@ With that in mind, here's my bill of materials:
 - [Raspberry Pi Zero 2 W Kit](https://www.amazon.com/Raspberry-Pi-Zero-WH-Kit/dp/B0DRRDJKDV)  
     The Pi Zero 2 W is low power consumption, leading to less heat. It has WiFi and just one USB-OTG port--that's all I need! The kit came with a heatsink, and USB and HDMI adapters. 
 - [CanaKit 5V 2.5A Micro USB Power Supply](https://www.amazon.com/CanaKit-Raspberry-Supply-Adapter-Listed/dp/B00MARDJZ4)  
-    A high-quality power adapter is necessary for a project like this. The SDR draws quite a bit of power for a Pi Zero, and stability issues can impact reception. I would have liked a power supply that was explicitly weather resistant. The cable's ferrite core was also inconvenient. 
+    A high-quality power adapter is necessary for a project like this. The SDR draws quite a bit of power for a Pi Zero, and stability issues can impact reception. I would have liked a power supply that was explicitly weather resistant. The cable's ferrite core was also inconvenient for fitting inside the tight enclosure. 
 - [SanDisk High Endurance MicroSD Card - 32GB](https://shop.sandisk.com/products/memory-cards/microsd-cards/sandisk-high-endurance-uhs-i-microsd?sku=SDSQQNR-032G-GN6IA)  
     Continuous operation is hard on SD cards. While the software is designed to avoid tons of writing, a high-quality card ought to help with longevity, especially in Houston's heat. 16GB would have been fine, but the 32GB SKU was only a few bucks more.  
 - [1090 MHz Saw Filter](https://www.amazon.com/dp/B09RPKHQ6S)  
@@ -134,19 +132,18 @@ And a few more parts that can vary depending on price and installation details:
 
 - Weather-resistant box  
     I went with [this one](https://www.amazon.com/dp/B0CZ2ZXRKS) from Amazon, and it ended up being about the right size.
+- N-type 4-hole bulkhead  
+    I made a custom spider-style antenna out of wire and a connector. A wide variety of connectors are often used, such as F-81L or SO-239. I went with an N-type for its superior weather resistance and better handling of high-frequency signals.
 - Copper wire
 - N-type to SMA cable
-- N-type 4-hole bulkhead  
-    I made a custom spider-style antenna out of wire and a connector. A wide variety of connectors are often used, such as F-81L or SO-239. I went with an N-type for two reasons:
-    1. It's fairly rugged and weatherproof.  
-    2. It handles high frequency signals better.  
+
 
 Rounding out the list, I used a PVC pipe for mounting, some wire crimp connectors, and miscellaneous fasteners, glue, etc. I also purchased conformal coating for the Pi, but I'm not sure it's needed.
 
 
 ## Build Process
 
-I started by getting the box ready. My strategy to deal with heat was fairly straightforward, relying on convection. A small hole in the bottom and top of the box ought to let heat rise through the container. 
+I started by getting the box ready. My thermal strategy relies on simple passive convection. Intake and exhaust vents at the bottom and top create a chimney effect to dissipate heat.
 
 
 <div class="row mt-5">
@@ -174,9 +171,7 @@ I protected both holes with some mesh to keep insects out. The top hole has a PV
 
 I flashed the Pi with [ADSB.im](https://adsb.im/home). This feeder image is fairly easy to set up and can simultaneously feed several aggregators. 
 
-
-
-All the components were kind of shoved into the box. Wire length was an issue, but this works just fine.
+All the components were just placed into the box. Wire length was an issue, but this works just fine.
 
 Initial config on Rice WiFi was a challenge. ADSB.im is meant to run headlessly, and config is done via a localhost website. Because Rice's WiFi does not support peer-to-peer connections, I set it up by connecting both the Pi and my laptop to my phone's hotspot. Now, it runs on the Rice Visitor WiFi. At 2.4 GHz, the range is there but stability is not perfect; it loses connection occasionally. Still, its uptime is around 99.9%. That sounds great to me.
 
@@ -196,7 +191,7 @@ I used [Tailscale](https://tailscale.com/) to remote into the Pi over Rice WiFi 
 
 There are commercially-available 1090 MHz ADS-B antennas. As an electrical engineering student, though, it seemed worthwhile (and cheaper!) to build my own. There are a few designs out there, but most follow a similar pattern with a vertical whip and four radials at 45 degrees. 
 
-I did some math to determine the right length for the whip and radials. To find the wavelength, we divide C by 1090 MHz, giving us a length of 0.275 meters. For a quarter-wave monopole, the resonant length is 0.275 meters divided by 4, giving 68.75 mm. In copper, the velocity factor is about 0.95. This means radio waves travel at about 0.95 C. This factor means the antenna wires should be just a bit shorter. Therefore, each wire is about 66 mm from tip to connection point. 
+I did some math to determine the right length for the whip and radials. To find the wavelength, we divide C by 1090 MHz, giving us a length of 0.275 meters. For a quarter-wave monopole, the resonant length is 0.275 meters divided by 4, giving 68.75 mm. With this insulated copper wire, the velocity factor is about 0.95. This means radio waves travel at about 0.95 C. This factor means the antenna wires should be just a bit shorter. Therefore, each wire is about 66 mm from tip to connection point. 
 
 
 <div class="row mt-5">
@@ -230,7 +225,7 @@ I attached the antenna to a cable gland, which I then attached to a 5' PVC pipe.
     </div>
 </div>
 
-Because the Pi power cord has a large ferrite core toward the end, I didn't have as much slack inside the box as I would've liked. This limitation led me to make the excellent engineering decision of shoving everything inside. Ultimately, it works just fine. I could see better placement helping with heat dissipation; we'll see later if that's needed.
+Because the Pi power cord has a large ferrite core toward the end, I didn't have as much slack inside the box as I would've liked. Fitting components in required a bit of force, and I'd improve this in a second iteration. Ultimately, it works just fine. I could see better placement helping with heat dissipation; we'll see later if that's needed.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -241,7 +236,7 @@ Because the Pi power cord has a large ferrite core toward the end, I didn't have
 
 ## Performance
 
-I initially tested the feeder with the stock 20 cm dipole on the first floor of a brick building. Performance was as poor, as expected, but it gave me a great baseline. ADS-B signals are mostly line-of-sight, and the dipole's length wasn't doing me any favors.
+I initially tested the feeder with the stock 20 cm dipole on the first floor of a brick building. Performance was poor, as expected, but it gave me a great baseline. ADS-B signals are mostly line-of-sight, and the dipole's length wasn't doing me any favors.
 
 Later, I installed the antenna and relocated the feeder to a 5th-floor balcony. You can see this change happened Saturday at noon in the following graphs.
 
@@ -293,7 +288,7 @@ Houston is still quite cold, but it's great to see the CPU stay under 50 degrees
 
 ## Some Fun Data Analysis
 
-Now that I've run the feeder for about a week, I have some data to play with! I especially enjoy the [heatmap view](https://adsb.wilsonharper.net/?heatmap). Each dot represents one received message. Colder-colored dots are at a higher altitude.
+Now that I've run the feeder for about a week, I have some data to play with! I especially enjoy the [heatmap view](https://adsb.wilsonharper.net/?heatmap). Each dot represents one received message. Cooler colors (blues/purples) represent higher altitudes.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-9 mt-3 mt-md-0">
@@ -311,7 +306,7 @@ This is too much information to view at once. Luckily, it's easy to filter. Let'
 </div>
 
 
-Filtering for military aircraft reveals more than I expected. There are plenty of Cessnas, but I've also seen tons of NASA T-38s, a C-17, and an A-330 registered to the Royal Canadian Air Force.
+Filtering for military aircraft reveals more than I expected. There are plenty of small transport crafts, but I've also seen tons of NASA T-38s, a C-17, and an A-330 registered to the Royal Canadian Air Force.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
