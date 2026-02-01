@@ -183,7 +183,7 @@ If the four radials were flat, they would have an impedance of about 35 Ohms. By
 
 ## Software
 
-I flashed the Pi with [ADSB.im](https://adsb.im/home). This feeder image is fairly easy to set up and can simultaneously feed several aggregators. ADS-B signals are decoded using [readsb](https://github.com/wiedehopf/readsb). The map interface is [tar1090](https://github.com/wiedehopf/tar1090), and the graphs are from [graph1090](https://github.com/wiedehopf/graphs1090).
+I flashed the Pi with [ADSB.im](https://adsb.im/home). This feeder image is fairly easy to set up and can simultaneously feed several aggregators. ADS-B signals are decoded using [readsb](https://github.com/wiedehopf/readsb). The map interface is [tar1090](https://github.com/wiedehopf/tar1090), and the graphs are from [graphs1090](https://github.com/wiedehopf/graphs1090).
 
 
 Initial config on Rice WiFi was a challenge, though. ADSB.im is meant to run headlessly, and config is done via a localhost website. Because Rice's WiFi does not support peer-to-peer connections, I set it up by first connecting both the Pi and my laptop to my phone's hotspot, but I needed a better strategy for long-term use. 
