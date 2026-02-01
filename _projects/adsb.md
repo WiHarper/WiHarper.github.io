@@ -194,6 +194,12 @@ For the public facing map, I decided to use Cloudflare. I run the cloudflared da
 
 At 2.4 GHz, the WiFi range is decent. Stability is not perfect; it loses connection occasionally. Still, its uptime is around 99.5%. That sounds great to me.
 
+<div class="row justify-content-sm-center">
+    <div class="col-sm-9 mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-31 154038.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
 The Pi Zero 2 W struggles to feed many aggregators, and multilateration (a method to locate an aircraft even if it does not broadcast its location) tends to have issues. The slower CPU contributes, but I expect the main culprit is network jitter and latency caused by WiFi and tunneling.
 
 This was a compromise I was willing to make in order to have the Zero 2 W's low heat generation. Right now, I'm feeding data to:
@@ -204,11 +210,7 @@ This was a compromise I was willing to make in order to have the Zero 2 W's low 
 - [FlightAware](https://www.flightaware.com/live/map)
 
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-9 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-31 154038.png" title=" " class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
+
 
 
 Oh, and feeding data gets me free access to the business plans on paid aggregators, giving me access to detailed data from around the globe.
