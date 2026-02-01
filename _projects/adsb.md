@@ -237,11 +237,6 @@ I attached the antenna to a cable gland, which I then attached to a 5' PVC pipe.
 
 Because the Pi power cord has a large ferrite core toward the end, I didn't have as much slack inside the box as I would've liked. Fitting components in required a bit of force, and I'd improve this in a second iteration. Ultimately, it works just fine. I could see better placement helping with heat dissipation; we'll see later if that's needed.
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_201100311.jpg" title=" " class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
 
 
 ## Performance
