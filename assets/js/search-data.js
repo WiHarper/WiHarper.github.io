@@ -45,12 +45,7 @@ ninja.data = [{
             window.open("https://medium.com/@al-folio/displaying-external-posts-on-your-al-folio-blog-b60a1d241a0a?source=rss-17feae71c3c4------2", "_blank");
           
         },
-      },{id: "books-the-godfather",
-          title: 'The Godfather',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/the_godfather/";
-            },},{id: "projects-tracking-planes-150-miles-away-on-strict-dorm-wifi",
+      },{id: "projects-tracking-planes-150-miles-away-on-strict-dorm-wifi",
           title: 'Tracking Planes 150 Miles Away on Strict Dorm WiFi',
           description: "overcoming humidity and client isolation with a Pi Zero 2 W and custom antenna",
           section: "Projects",handler: () => {
