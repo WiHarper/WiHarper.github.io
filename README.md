@@ -1,1 +1,1 @@
-View live website at [https://wilsonharper.net](url).
+View live website at [https://wilsonharper.net](wilsonharper.net).
