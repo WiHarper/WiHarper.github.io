@@ -50,9 +50,9 @@ ninja.data = [{
           description: "overcoming humidity and client isolation with a Pi Zero 2 W and custom antenna",
           section: "Projects",handler: () => {
               window.location.href = "/projects/adsb/";
-            },},{id: "projects-a-diy-integrated-circuit-clock",
-          title: 'A DIY Integrated Circuit Clock',
-          description: "troubleshooting and making a case for an Aliexpress project",
+            },},{id: "projects-a-diy-integrated-circuit-clock-and-case",
+          title: 'A DIY Integrated Circuit Clock and Case',
+          description: "making a case for an Aliexpress project, breaking it, and fixing it",
           section: "Projects",handler: () => {
               window.location.href = "/projects/clock/";
             },},{id: "projects-hardware-audio-control-for-windows-apps",
