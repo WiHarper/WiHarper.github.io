@@ -3,7 +3,7 @@ layout: page
 title: Manned and Robotic Mars Mission Architecture
 description: for canyon excavation and habitat preparation
 img: assets/img/was/rover4.jpg
-importance: 150
+importance: 290
 category:
 related_publications: false
 ---
