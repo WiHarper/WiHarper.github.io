@@ -54,6 +54,6 @@ When I hooked it up to a 5V power supply, it worked immediately!
         </video>
     </div>
 </div>
-<div class="caption">
-    The clock in action—the 555 timer provides the pulse for the counters.
-</div>
+
+
+writeup in progress
