@@ -50,6 +50,11 @@ ninja.data = [{
           description: "overcoming humidity and client isolation with a Pi Zero 2 W and custom antenna",
           section: "Projects",handler: () => {
               window.location.href = "/projects/adsb/";
+            },},{id: "projects-a-diy-integrated-circuit-clock",
+          title: 'A DIY Integrated Circuit Clock',
+          description: "troubleshooting and making a case for an Aliexpress project",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/clock/";
             },},{id: "projects-hardware-audio-control-for-windows-apps",
           title: 'Hardware Audio Control for Windows Apps',
           description: "using all-original CAD, an Arduino Micro, and a fork of the deej project",
