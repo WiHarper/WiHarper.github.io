@@ -49,7 +49,7 @@ When I hooked it up to a 5V power supply, it worked immediately!
             muted 
             playsinline 
             class="img-fluid rounded z-depth-1">
-            <source src="{{ '/assets/img/clock_demo.mp4' | relative_url }}" type="video/mp4">
+            <source src="{{ '/assets/img/Pxl 20260221 014427808.mp4' | relative_url }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
