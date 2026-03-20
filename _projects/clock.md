@@ -41,12 +41,9 @@ The soldering process was perfectly straightforward. It took a while, but it tur
 When I hooked it up to a 5V power supply, it worked immediately! 
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
+    <div class="col-sm-6 mt-3 mt-md-0">
         <video 
             controls 
-            autoplay 
-            loop 
-            muted 
             playsinline 
             class="img-fluid rounded z-depth-1">
             <source src="{{ '/assets/img/clock/Pxl20260221014427808.mp4' | relative_url }}" type="video/mp4">
