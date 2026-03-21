@@ -13,7 +13,7 @@ At the UW Aerospace Scholars program, I served as Mars Rover Project Lead, devel
 
 ---
 
-## **Manned Pressurized Rover**
+## Manned Pressurized Rover
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
@@ -41,7 +41,7 @@ At the UW Aerospace Scholars program, I served as Mars Rover Project Lead, devel
 
 ---
 
-## **Unmanned Excavation Fleet**
+## Unmanned Excavation Fleet
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
@@ -60,7 +60,7 @@ At the UW Aerospace Scholars program, I served as Mars Rover Project Lead, devel
 
 ---
 
-## **Mars Surveyor Aircraft**
+## Mars Surveyor Aircraft
 
 In addition, I designed a Mars surveyor aircraft to map the Red Planet prior to a manned expedition.
 

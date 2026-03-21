@@ -8,9 +8,11 @@ category:
 related publications: false
 ---
 
+## A Clock Without an MCU
+
 The last few months, I've been obsessed with [Ben Eater](https://eater.net/)'s series where he builds an 8-bit CPU, video card, and 6502 computer using breadboards. He makes kits available for purchase, but I wanted to do my own thing. As I learned more about integrated circuits, it seemed like a clock would be a fun project--not too challenging, but I'd still learn plenty. It's easy to make a clock from an Arduino or other microcontroller, but making it from integrated circuits is a little (lot) harder. Instead of writing a few lines of code to handle ticking and keeping track of time, I'm relying on discrete logic signals propagating through larger circuits.
 
- Shout-out to Gislain Benoit who deadbugged [a clock](https://techno-logic-art.com/clock.htm) from just transistors, resistors, and capacitors!
+Shout-out to Gislain Benoit who deadbugged [a clock](https://techno-logic-art.com/clock.htm) from just transistors, resistors, and capacitors!
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
@@ -31,6 +33,8 @@ I found [this video](https://www.youtube.com/watch?v=0hwWnPxKU14) from bigclived
         {% include figure.liquid path="assets/img/clock/PXL_20260318_203859592.PORTRAIT.ORIGINAL.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
+
+## Making It
 
 The soldering process was perfectly straightforward. It took a while, but it turned out well. Many pads were fairly compact, but it wasn't too hard to avoid short circuits. I like that it uses a crystal oscillator over the less-accurate 555 timer.
 
@@ -54,6 +58,8 @@ When I hooked it up to a 5V power supply, it worked immediately! The controls ar
     </div>
 </div>
 
+
+
 At this point, I was very happy with how this looked--I just needed a way to display it! Some time in Fusion led to this design. The base is pretty simple. A circular hole in the base lets the USB cable pass through. The rectangular cutout that the clock rests on is so the through-hole components have enough space. The cover is laser-cut acrylic. 
 
 
@@ -68,6 +74,25 @@ At this point, I was very happy with how this looked--I just needed a way to dis
         {% include figure.liquid loading="lazy" path="assets/img/clock/cad3.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
+
+## How it Works
+
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/clock/CD4511.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+| Component |Function | Description |
+| :--- | :--- | :--- | 
+| **CD4511**  | Binary to 7-Segment Decoder | Converts 4-bit binary into signals suitable for each LED segment |
+| **CD4518**  | Dual Binary Up-Counter | A chip with two binary counters--each counter handles one digit |
+| **CD4060**  | 14-Stage Ripple Counter | Divides the 32.768 kHz signal into a 2 Hz signal though flip-flops |
+| **CD4013**  | Dual D-Type Flip-Flop | Divides the 2 Hz signal into a 1 Hz signal |
+| **CD4081**  | Quad 2-Input AND Gate | Increments next digit when a counter maxes out |
+| **32.768 kHz Crystal**  | Crystal Oscillator | Vibrates at 32.768 kHz |
+
 
 
 Without any power negotiation, a USB adapter puts out 5V. I found an old USB-A cable and chopped off the end. Stripping the insulation from the VCC and GND wires inside creates an easy 5V power supply. I found the brightness was a bit too high, so I attached a resistor in series with ground inside the USB cable, bringing the voltage closer to 3.3V.
