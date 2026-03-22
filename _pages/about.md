@@ -27,9 +27,9 @@ I'm especially interested in the intersection of hardware and signal processing.
 I’m excited to get even more hands-on, practical experience with electrical and computer engineering, and I'd love to chat about rockets, Rice, or anything else!
 
 Feel free to check out my [projects](https://wilsonharper.net/projects/), [resume](https://wilsonharper.net/resume/), or contact me below. I'm especially proud of my:
-- Rapidly-engineered live telemetry and logging system for my L1 certification rocket
-- ADS-B feeder equipped with a custom antenna and running Tailscale and Cloudflare Funnels
-- UAV capable of position-holding and transporting objects in GPS-denied environments
+- [Rapidly-engineered live telemetry and logging system for my L1 certification rocket](https://wilsonharper.net/projects/l1avio/)
+- [ADS-B feeder equipped with a custom antenna and running Tailscale and Cloudflare Funnels](https://wilsonharper.net/projects/adsb/)
+- [UAV capable of position-holding and transporting objects in GPS-denied environments](https://wilsonharper.net/projects/uav/)
 
 
 <style>
