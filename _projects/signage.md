@@ -2,7 +2,7 @@
 layout: page
 title: Simple & Cheap Digital Signage from a Pi 400
 description: putting together an "it just works" display system for my college commons
-img: assets/img/signage/PXL_20260316_175230133.jpg
+img: assets/img/signage/thumb.jpg
 importance: 110
 category:
 related publications: false
@@ -40,7 +40,7 @@ The Pi 400 is an overclocked Pi 4 4GB built into a keyboard and massive heatsink
     </div>
 </div>
 
-Obviously, I needed a way to protect the internals, so I drew a simple .DXF you can get [here](https://wilsonharper.net/assets/img/clock/pi400case). I first cut it out of acrylic, but it broke easily. Plywood worked much better, even if it didn't look as cool.
+Obviously, I needed a way to protect the internals, so I drew a simple .DXF you can get [here](https://wilsonharper.net/assets/img/clock/pi400case). I first cut it out of acrylic, but it broke easily. Plywood worked much better, even if it didn't look as cool. I love using Fusion's canvas feature for making sketches like these.
 
 
 <div class="row mt-5">
