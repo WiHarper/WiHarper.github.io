@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Engineering a Live Rocket Telemetry System in Two Weeks
+title: Live Rocket Telemetry and Logging in Just Two Weeks
 description: creating a logging and telemetry system for my L1 certification rocket
 img: assets/img/avio/thumb
 importance: 50
