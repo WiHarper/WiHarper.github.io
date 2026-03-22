@@ -10,6 +10,10 @@ related publications: false
 
 ## WORK IN PROGRESS
 
+Check back soon for a finished post!
+
+---
+
 In two weeks--from conception to launch--I designed a rocket telemetry system that could display live data, aid in recovery, and log hundreds of thousands of data points. On March 14th, 2026, it launched!
 
 ## The _Prestige_ Inspiration
@@ -35,7 +39,7 @@ I've long had an interest in NASA Mission Control. During the _Prestige_ launch,
 There were several folks there who also had their certs launch on March 14th, so we started discussing ideas at the _Prestige_ launch. I knew I wanted to do something interesting with mine, but I wasn't yet sure what that would look like. My first thought was modeling it after a classic rocket like the Mercury-Redstone Launch Vehicle. Throughout the day, I kept thinking more about the tech side of things, and I realized that if I worked hard and got a bit lucky, I had just enough time to pull off a custom electronics system. There 
 was intense time pressure, so I got to work quickly.
 
- I'd like to thank [Brandon Shin](https://www.linkedin.com/in/brandon-shin-46b67020b/) for his contributions to the codebase, debugging help, and overall support. I also want to give a shout-out to the Certification Leads [Ilina Goyal](https://www.linkedin.com/in/ilina-goyal/) and [Lavinia Barker](https://www.linkedin.com/in/lavinia-barker/) for supporting this project.
+ I'd like to thank [Brandon Shin](https://www.linkedin.com/in/brandon-shin-46b67020b/) for his contributions to the codebase, debugging help, and overall help. I also want to give a shout-out to the Certification Leads [Ilina Goyal](https://www.linkedin.com/in/ilina-goyal/) and [Lavinia Barker](https://www.linkedin.com/in/lavinia-barker/) for supporting this project.
  
 ---
 
@@ -136,3 +140,8 @@ Here's my bill of materials:
 ## Data Analysis
 
 ## Next Steps
+
+
+
+
+- [Live telemetry and logging system](https://wilsonharper.net/projects/l1avio/) for my L1 certification rocket--built in two weeks
