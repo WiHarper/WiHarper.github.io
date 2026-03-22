@@ -45,7 +45,7 @@ The soldering process was perfectly straightforward. It took a while, but it tur
     </div>
 </div>
 
-When I hooked it up to a 5V power supply, it worked immediately! The controls are simple--one button increments hours, the other increments minutes. The switch connects and disconnects the 1HZ signal that causes the "tick".
+When I hooked it up to a 5V power supply, it worked immediately! The controls are simple--one button increments hours, the other increments minutes. The switch connects and disconnects the 1 Hz signal that causes the "tick".
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
@@ -91,7 +91,7 @@ At this point, I was very happy with how this looked--I just needed a way to dis
 | :--- | :--- | :--- | 
 | **CD4511**  | Binary to 7-Segment Decoder | Converts 4-bit binary into signals suitable for each LED segment |
 | **CD4518**  | Dual Binary Up-Counter | A chip with two binary counters--each counter handles one digit |
-| **CD4060**  | 14-Stage Ripple Counter | Divides the 32.768 kHz oscillator signal into a 2 Hz signal though flip-flops |
+| **CD4060**  | 14-Stage Ripple Counter | Divides the 32.768 kHz oscillator signal into a 2 Hz signal through flip-flops |
 | **CD4013**  | Dual D-Type Flip-Flop | Divides the 2 Hz signal into a 1 Hz signal |
 | **CD4081**  | Quad 2-Input AND Gate | Increments next digit when a counter maxes out |
 | :--- | :--- | :--- | 
