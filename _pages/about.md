@@ -27,9 +27,9 @@ I'm especially interested in the intersection of hardware and signal processing.
 I’m excited to get even more hands-on, practical experience with electrical and computer engineering, and I'd love to chat about aerospace, Rice, or anything else!
 
 Feel free to check out my [projects](https://wilsonharper.net/projects/), [resume](https://wilsonharper.net/resume/), or contact me below. I'm especially proud of my:
-- [Rapidly-engineered live telemetry and logging system for my L1 certification rocket](https://wilsonharper.net/projects/l1avio/)
-- [ADS-B feeder equipped with a custom antenna and running Tailscale and Cloudflare Tunnels](https://wilsonharper.net/projects/adsb/)
-- [UAV capable of position-holding and transporting objects in GPS-denied environments](https://wilsonharper.net/projects/uav/)
+- [Live telemetry and logging system](https://wilsonharper.net/projects/l1avio/) for my L1 certification rocket--built in two weeks
+- [ADS-B feeder](https://wilsonharper.net/projects/adsb/) equipped with a custom antenna and running Tailscale and Cloudflare Tunnels
+- [UAV](https://wilsonharper.net/projects/uav/) capable of position-holding and transporting objects in GPS-denied environments
 
 
 <style>
