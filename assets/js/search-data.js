@@ -60,6 +60,11 @@ ninja.data = [{
           description: "using all-original CAD, an Arduino Micro, and a fork of the deej project",
           section: "Projects",handler: () => {
               window.location.href = "/projects/deej/";
+            },},{id: "projects-engineering-a-live-rocket-telemetry-system-in-two-weeks",
+          title: 'Engineering a Live Rocket Telemetry System in Two Weeks',
+          description: "creating a logging and telemetry system for my L1 certification rocket",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/l1avio/";
             },},{id: "projects-manned-and-robotic-mars-mission-architecture",
           title: 'Manned and Robotic Mars Mission Architecture',
           description: "for canyon excavation and habitat preparation",
@@ -70,6 +75,11 @@ ninja.data = [{
           description: "and presenting research on SAR and Doppler at MIT Lincoln Laboratory RISE",
           section: "Projects",handler: () => {
               window.location.href = "/projects/radar/";
+            },},{id: "projects-simple-amp-cheap-digital-signage-from-a-pi-400",
+          title: 'Simple &amp;amp; Cheap Digital Signage from a Pi 400',
+          description: "putting together an &quot;it just works&quot; display system for my college commons",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/signage/";
             },},{id: "projects-achieving-stable-flight-in-gps-denied-environments",
           title: 'Achieving Stable Flight in GPS-Denied Environments',
           description: "featuring position-holding, a gripper, and sensor fusion with optical flow and LiDAR",
