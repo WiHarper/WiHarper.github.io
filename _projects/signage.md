@@ -2,7 +2,7 @@
 layout: page
 title: Simple & Cheap Digital Signage from a Pi 400
 description: putting together an "it just works" display system for my college commons
-img: assets/img/clock/thumb.jpg
+img: assets/img/signage/PXL_20260316_175230133.jpg
 importance: 110
 category:
 related publications: false
