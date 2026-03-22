@@ -10,7 +10,7 @@ related publications: false
 
 Rice University has a system of residential colleges (yep, like Hogwarts Houses!) and each has its own government. Saebyeok Keum and I serve as Martel College secretaries. When we were running, we noticed [Lovett College](https://lovett.rice.edu/) has a TV in their commons that displays announcements, shoutouts, and other valuable information. Martel College has a wall-mounted TV in the commons, and we've never even seen it on! We decided to make fixing up this TV one of our campaign promises.
 
-In Martel Parliament, it's fairly easy to get a money request passed if it's under $100--that was our maximum budget. I wanted to make a system that would truly last even after we both leave office, and this turned out to be a major guiding factor in our decisions. 
+In Martel Parliament, it's fairly easy to get a money request passed if it's under $100, so that was our maximum budget. I wanted to make a system that would truly last even after we both leave office, and this priority turned out to be a major guiding factor in our decisions. 
 
 ## Hardware
 
