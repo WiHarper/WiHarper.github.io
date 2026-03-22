@@ -34,6 +34,8 @@ I've long had an interest in NASA Mission Control. During the _Prestige_ launch,
 
 There were several folks there who also had their certs launch on March 14th, so we started discussing ideas at the _Prestige_ launch. I knew I wanted to do something interesting with mine, but I wasn't yet sure what that would look like. My first thought was modeling it after a classic rocket like the Mercury-Redstone Launch Vehicle. Throughout the day, I kept thinking more about the tech side of things, and I realized that if I worked hard and got a bit lucky, I had just enough time to pull off a custom electronics system. There 
 was intense time pressure, so I got to work quickly.
+
+ I'd like to thank [Brandon Shin](https://www.linkedin.com/in/brandon-shin-46b67020b/) for his contributions to the codebase, debugging help, and overall support. I also want to give a shout-out to the Certification Leads [Ilina Goyal](https://www.linkedin.com/in/ilina-goyal/) and [Lavinia Barker](https://www.linkedin.com/in/lavinia-barker/) for supporting this project.
  
 ---
 
@@ -41,7 +43,7 @@ was intense time pressure, so I got to work quickly.
 
 The first step was naturally making a list of goals for this flight computer. The most basic system would act as an altimeter, logging apogee. I knew I could go further than that, though. I also wanted to log this data over time and record GPS location/altitude, acceleration, and temperature. A μSD card makes sense for this quantity of information--in fact, my final .CSV file was ~15 MB. This wouldn't fit on many MCU flash chips. The radio bandwidth was fairly low and updated at 1 Hz, but with an onboard uSD card, I expected to log at speeds around 20 Hz. 
 
-The holy grail to me was live data visualization on my laptop. For an L1 cert that doesn't fly all that high, it's certainly overkill. Still, getting such a system working would be great experience for when I eventually  build my Level 2 Cert rocket. Also, it's just plain cool!
+The grail to me was live data visualization on my laptop. For an L1 cert that doesn't fly all that high, it's certainly overkill. Still, getting such a system working would be great experience for when I eventually build my Level 2 Cert rocket. Also, it's just plain cool!
 
 Notably, this flight computer does not handle separation charges and has no way to physically interact with the world. After several passive flights, I'd be interested in implementing charge deployment--with a COTS backup, of course. The data my flight computer collects would be useful for running simulations to be sure the recovery system works safely. 
 
@@ -60,43 +62,34 @@ Let's do it!
 
 ## Hardware Choices
 
-### Avionics Bay Parts
+Here's my bill of materials:
 
-#### [Feather RP2040 Adalogger](https://www.adafruit.com/product/5980)
+- [Feather RP2040 Adalogger](https://www.adafruit.com/product/5980)  
+    Choosing a microcontroller was the biggest decision. The Adafruit Feather line is a modular system with easy expansion. I chose the RP2040 version for its low power consumption and the reliability of the built-in SPI uSD card slot.
+- [Adafruit BMP390](https://www.adafruit.com/product/4816)  
+     The BMP390 is a classic choice, and I found one lying around the [OEDK](https://oedk.rice.edu) for free. Its performance is good, it's lightweight and compact, and it supports SPI and I2C. The temperature sensor is built in. I used I2C for communication. 
+- [Adafruit LSM6DSOX + LIS3MDL](https://www.adafruit.com/product/4517)  
+    An IMU combo. While I only used the LSM6DSOX accelerometer, I plan to enable the LIS3MDL magnetometer in the future for full 9-degree tracking. This board also uses I2C.
+- [NEO-6MV2 GPS](https://www.amazon.com/gp/product/B0B31NRSD2)  
+     The Adafruit GPS is quite pricy, and I knew any UART GPS unit would work fine. This one from Amazon is as good as any, and I like that it has a micro-USB plug for configuration. The external antenna is also great. 
+- [Missile Works Screw Switch](https://store2263081.ecwid.com/Screw-Switch-p38076724)  
+     Screw switches are common in high powered rocketry because they are extremely unlikely to have issues under heavy vibration and acceleration. Grateful for [Wyatt Armstrong](https://www.linkedin.com/in/wyatt-armstrong/) for letting me borrow one from Eclipse Flight Control. With my wiring, the flight computer is actually enabled when the screw switch is in the disconnected position--more on this later. 
+- [Adafruit RFM95W LoRa Transceiver](https://www.adafruit.com/product/3072)  
+     915 MHz radio was the obvious choice here. It's a standard in COTS flight computers; the other standard is 435 MHz. This frequency requires a Ham radio license, and while I do have one, it's easier to not worry about it. Also, a 435 MHz quarter-wave antenna is naturally about twice the length of a 915 MHz antenna, so I like the compactness of this choice. It uses SPI. 
+- [Adafruit Feather RP2040 with RFM95 LoRa](https://www.adafruit.com/product/5714)  
+    Used for the ground station. It features the same RFM95 radio as the rocket's module, and having the radio built directly onto the MCU board is convenient.
+- [N-Type 4-Hole Bulkhead and N-type to uFL Cable]  
+     I planned to make a custom 915 MHz ground plane antenna, and these parts are what individual solid-code wires attach to. Similar bulkheads will work fine. 
 
-Choosing a microcontroller was the biggest decision. The Adafruit Feather line is a great system of modular MCUs with easy expansion and documentation. Of those boards, I was most familiar with the RP2040 and ESP32. The RP2040 has lower power consumption, and Adafruit offers a board with the RP2040 and a built-in uSD card writer. I knew the reliability increase with a hardwired uSD card slot was huge, so I went with that. Of course, the RP2040 has great IO, so choosing the remaining sensors wasn't too hard. Under the hood, the uSD card slot uses SPI.
+---
 
-#### [Adafruit BMP390](https://www.adafruit.com/product/4816)
+## CAD & Assembly
 
-The BMP390 is a classic choice, and I found one lying around the [OEDK](https://oedk.rice.edu) for free. Its performance is good, it's lightweight and compact, and it supports SPI and I2C. The temperature sensor is built in. I used I2C for communication. 
 
-#### [Adafruit LSM6DSOX + LIS3MDL](https://www.adafruit.com/product/4517)
 
-Adafruit breakout boards are good, eh? The LSM6DSOX IMU has great performance. I didn't use the LIS3MDL magnetometer, but I plan to enable it in the future to get tracking data in 9 degrees. This also uses I2C.
+---
 
-#### [NEO-6MV2 GPS](https://www.amazon.com/gp/product/B0B31NRSD2)
-
-The Adafruit GPS is quite pricy, and I knew any UART GPS unit would work fine. This one from Amazon is as good as any, and I like that it has a micro-USB plug for configuration. The external antenna is also great.
-
-#### [Missile Works Screw Switch](https://store2263081.ecwid.com/Screw-Switch-p38076724)
-
-Screw switches are common in high powered rocketry because they are extremely unlikely to have issues under heavy vibration and acceleration. Grateful for [Wyatt Armstrong](https://www.linkedin.com/in/wyatt-armstrong/) for letting me borrow one from Eclipse Flight Control. With my wiring, the flight computer is actually enabled when the screw switch is in the disconnected position--more on this later. 
-
-#### [Adafruit RFM95W LoRa Transceiver](https://www.adafruit.com/product/3072)
-
-915 MHz radio was the obvious choice here. It's a standard in COTS flight computers; the other standard is 435 MHz. This frequency requires a Ham radio license, and while I do have one, it's easier to not worry about it. Also, a 435 MHz quarter-wave antenna is naturally about twice the length of a 915 MHz antenna, so I like the compactness of this choice. It uses SPI.
-
-### Ground Station Parts
-
-#### [Adafruit Feather RP2040 with RFM95 LoRa](https://www.adafruit.com/product/5714)
-
-This features the same RFM95 radio as the external LoRa module in the rocket. It's convenient to have the radio built in. 
-
-#### N-Type 4-Hole Bulkhead and N-type to uFL Cable
-
-I planned to make a custom 915 MHz ground plane antenna, and these parts are what individual solid-code wires attach to. Similar bulkheads will work fine.
-
-## CAD, Assembly, and Wiring
+## Wiring
 
 
 <div class="row">
@@ -132,10 +125,11 @@ I planned to make a custom 915 MHz ground plane antenna, and these parts are wha
 | **Screw Switch**     | Terminal 1        | EN                 | Enable Pin                 |
 |                      | Terminal 2        | GND                | Pull to GND for to disable |
 
-
-
+---
 
 ## The Software Stack
+
+## Making the Rocket
 
 ## Launch Day
 
