@@ -292,6 +292,7 @@ Range has also clearly skyrocketed, and I've been able to occasionally see aircr
 </div>
 
 Houston is still quite cold, but it's great to see the CPU stay under 50 degrees C. I had to enable ZRAM memory compression to improve stability. It's sitting around 25% CPU utilization. It's only using about 4 GB of space on the MicroSD card. 
+
 ---
 
 ## Data Analysis
