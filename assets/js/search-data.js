@@ -72,7 +72,7 @@ ninja.data = [{
               window.location.href = "/projects/marsdesigns/";
             },},{id: "projects-synthetic-aperture-radar-at-mit-lincoln-laboratory",
           title: 'Synthetic Aperture Radar at MIT Lincoln Laboratory',
-          description: "and presenting research on SAR and Doppler at MIT LL RISE",
+          description: "conducting and presenting research on SAR and Doppler at MIT LL RISE",
           section: "Projects",handler: () => {
               window.location.href = "/projects/radar/";
             },},{id: "projects-simple-amp-cheap-digital-signage-from-a-pi-400",
