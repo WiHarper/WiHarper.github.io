@@ -32,15 +32,15 @@ I kept poking around on the Micro Center website and realized the Pi 400 was on 
     </div>
 </div>
 
-The Pi 400 is an overclocked Pi 4 4GB built into a keyboard and massive heatsink, so this is a great deal for $40. The form factor is a bit strange for our purposes, but saving that much money made it a no-brainer. Once we picked it up, I started eyeing mounting options. The keyboard made it difficult to get things like zip-ties through the whole unit, so I removed the keyboard.
+The Pi 400 is an overclocked Pi 4 4GB built into a keyboard and massive heatsink, so this is a great deal for $40. The form factor is a bit strange for our purposes, but saving that much money made it a no-brainer. Once we picked it up, I started eyeing mounting options. The keyboard made it difficult to get things like zip-ties through the whole unit, so I removed the keyboard. I'd guess removing the keyboard also makes it a less appealing target for thieves, and this sort of simplification is always nice.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/clock/PXL_20260224_143254289.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/signage/PXL_20260224_143254289.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
-Obviously, I needed a way to protect the internals, so I drew a simple .DXF you can get [here](https://wilsonharper.net/assets/img/clock/pi400case). I first cut it out of acrylic, but it broke easily. Plywood worked much better, even if it didn't look as cool. I love using Fusion's canvas feature for making sketches like these.
+Obviously, I needed a way to protect the internals, so I drew a simple .DXF you can get [here](https://wilsonharper.net/assets/img/signage/pi400case). I first cut it out of acrylic, but it broke easily. Plywood worked much better, even if it didn't look as cool. I love using Fusion's canvas feature for making sketches like these.
 
 
 <div class="row mt-5">
