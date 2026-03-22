@@ -3,7 +3,7 @@ layout: page
 title: Tracking Planes 150 Miles Away on Strict Dorm WiFi
 description: overcoming humidity and client isolation with a Pi Zero 2 W and custom antenna
 img: assets/img/adsb/thumb.png
-importance: 70
+importance: 60
 category:
 related publications: false
 ---

@@ -3,7 +3,7 @@ layout: page
 title: Hardware Audio Control for Windows Apps
 description: using all-original CAD, an Arduino Micro, and a fork of the deej project
 img: assets/img/deej/PXL_20240421_034149214.PORTRAIT.jpg
-importance: 90
+importance: 100
 category:
 related_publications: false
 ---

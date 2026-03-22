@@ -3,7 +3,7 @@ layout: page
 title: A DIY Integrated Circuit Clock and Case
 description: making a case for an AliExpress project, breaking it, and fixing it
 img: assets/img/clock/thumb.jpg
-importance: 70
+importance: 90
 category:
 related publications: false
 ---

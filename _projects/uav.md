@@ -19,9 +19,7 @@ related publications: false
     The assembled UAV
 </div>
 
-This UAV was built to compete in the Technology Student Association UAV Challenge. It was built and iterated over the span of three years.
-
-It is capable of holding position in GPS-denied environments using optical flow and LiDAR. It was designed with a modular 3D-printed airframe and servo-actuated gripper to move payloads. It implements EKF sensor fusion, remote telemetry, and power distribution systems.
+This UAV was built and iterated over the span of three years. It is capable of holding position in GPS-denied environments using optical flow and LiDAR. It was designed with a modular 3D-printed airframe and servo-actuated gripper to move payloads. It implements EKF sensor fusion, remote telemetry, and power distribution systems.
 
 
 ---
