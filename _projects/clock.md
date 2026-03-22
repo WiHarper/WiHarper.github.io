@@ -8,7 +8,6 @@ category:
 related publications: false
 ---
 
-## A Clock Without an MCU
 
 The last few months, I've been obsessed with [Ben Eater](https://eater.net/)'s series where he builds an 8-bit CPU, video card, and 6502 computer using breadboards. He makes kits available for purchase, but I wanted to do my own thing. As I learned more about integrated circuits, it seemed like a clock would be a fun project--not too challenging, but I'd still learn plenty. It's easy to make a clock from an Arduino or other microcontroller, but making it from integrated circuits is a little (lot) harder. Instead of writing a few lines of code to handle ticking and keeping track of time, I'm relying on discrete logic signals propagating through larger circuits.
 
@@ -33,6 +32,8 @@ I found [this video](https://www.youtube.com/watch?v=0hwWnPxKU14) from bigclived
         {% include figure.liquid path="assets/img/clock/PXL_20260318_203859592.PORTRAIT.ORIGINAL.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
+
+---
 
 ## Making It
 
@@ -75,6 +76,8 @@ At this point, I was very happy with how this looked--I just needed a way to dis
     </div>
 </div>
 
+---
+
 ## How it Works
 
 
@@ -88,12 +91,14 @@ At this point, I was very happy with how this looked--I just needed a way to dis
 | :--- | :--- | :--- | 
 | **CD4511**  | Binary to 7-Segment Decoder | Converts 4-bit binary into signals suitable for each LED segment |
 | **CD4518**  | Dual Binary Up-Counter | A chip with two binary counters--each counter handles one digit |
-| **CD4060**  | 14-Stage Ripple Counter | Divides the 32.768 kHz signal into a 2 Hz signal though flip-flops |
+| **CD4060**  | 14-Stage Ripple Counter | Divides the 32.768 kHz oscillator signal into a 2 Hz signal though flip-flops |
 | **CD4013**  | Dual D-Type Flip-Flop | Divides the 2 Hz signal into a 1 Hz signal |
 | **CD4081**  | Quad 2-Input AND Gate | Increments next digit when a counter maxes out |
-| **32.768 kHz Crystal**  | Crystal Oscillator | Vibrates at 32.768 kHz |
+| :--- | :--- | :--- | 
 
+---
 
+The crystal oscillator puts out a 32.768 kHz signal. The CD4060 cleanly divides that signal into a 2 Hz signal, and the CD4013 divides it one last time to once per second. This signal propagates through each CD4518. This circuit counts up and outputs binary. Once it gets to a high enough value (6 or 10, depending on the digit), the CD4081 detects that, resets it, and increments the next counter by one. The binary signals the CD4518s put out are converted to 7-segment-display signals by the CD4511.
 
 Without any power negotiation, a USB adapter puts out 5V. I found an old USB-A cable and chopped off the end. Stripping the insulation from the VCC and GND wires inside creates an easy 5V power supply. I found the brightness was a bit too high, so I attached a resistor in series with ground inside the USB cable, bringing the voltage closer to 3.3V.
 

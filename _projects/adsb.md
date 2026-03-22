@@ -138,6 +138,7 @@ And a few more parts that can vary depending on price and installation details:
 
 Rounding out the list, I used a PVC pipe for mounting the antenna, some wire crimp connectors, and miscellaneous fasteners, glue, etc. I also purchased conformal coating for the Pi, and I plan to apply it soon.
 
+---
 
 ## Enclosure Assembly
 
@@ -157,7 +158,7 @@ I started by getting the box ready. My thermal strategy relies on passive convec
 </div>
 
 I protected both holes with some mesh to keep insects out. The top hole has a PVC elbow connector to prevent water ingress. As Houston heats up, we'll see how effective this cooling design is. Since airflow was the priority, I wasn't aiming for an airtight box.
-
+---
 
 ## Antenna Construction
 
@@ -181,6 +182,7 @@ However, signals travel slower in copper wire than in a vacuum. With this insula
 
 If the four radials were flat, they would have an impedance of about 35 Ohms. By bending them to 45 degrees, their impedance is about 50 Ohms. This matches the 50 Ohm standard of the coax and SDR, minimizing reflections.
 
+---
 ## Software
 
 I flashed the Pi with [ADSB.im](https://adsb.im/home). This feeder image is fairly easy to set up and can simultaneously feed several aggregators. ADS-B signals are decoded using [readsb](https://github.com/wiedehopf/readsb). The map interface is [tar1090](https://github.com/wiedehopf/tar1090), and the graphs are from [graphs1090](https://github.com/wiedehopf/graphs1090).
@@ -217,7 +219,7 @@ Oh, and feeding data gets me free access to the business plans on paid aggregato
 
 
 
-
+---
 ## Installation
 
 
@@ -237,7 +239,7 @@ I attached the antenna to a cable gland, which I then attached to a 5' PVC pipe.
 
 Because the Pi power cord has a large ferrite core toward the end, I didn't have as much slack inside the box as I would've liked. Fitting components in required a bit of force, and I'd improve this in a second iteration. Ultimately, it works just fine. I could see better placement helping with heat dissipation; we'll see later if that's needed.
 
-
+---
 
 ## Performance
 
@@ -289,6 +291,7 @@ Range has also clearly skyrocketed, and I've been able to occasionally see aircr
 </div>
 
 Houston is still quite cold, but it's great to see the CPU stay under 50 degrees C. I had to enable ZRAM memory compression to improve stability. It's sitting around 25% CPU utilization. It's only using about 4 GB of space on the MicroSD card. 
+---
 
 ## Data Analysis
 Now that I've run the feeder for a while, I have some data to play with! I especially enjoy the [heatmap view](https://adsb.wilsonharper.net/?heatmap). Each dot represents one received message. Cooler colors (blues/purples) represent higher altitudes.
@@ -319,6 +322,7 @@ Filtering for military aircraft reveals more than I expected. There are plenty o
         {% include figure.liquid path="assets/img/adsb/Screenshot 2026-01-25 121350.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
+---
 
 ## Displaying the Info
 
@@ -333,7 +337,7 @@ I recently found a 10.5" 1080p monitor for free in Rice's [OEDK](https://oedk.ri
         {% include figure.liquid path="assets/img/adsb/PXL_20260131_224922739.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
-
+---
 
 ## Conclusion
 
