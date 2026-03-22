@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Synthetic Aperture Radar at the Lincoln Laboratory
+title: Synthetic Aperture Radar at MIT Lincoln Laboratory
 description: and presenting research on SAR and Doppler at MIT LL RISE
 img: assets/img/radar/PXL_20240724_022544293.NIGHT.jpg
 importance: 80
