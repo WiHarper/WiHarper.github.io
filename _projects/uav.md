@@ -3,7 +3,7 @@ layout: page
 title: Achieving Stable Flight in GPS-Denied Environments 
 description: featuring position-holding, a gripper, and sensor fusion with optical flow and LiDAR
 img: assets/img/uav_images/PXL_20250402_002400514.PORTRAIT.jpg
-importance: 80
+importance: 70
 category:
 related publications: false
 ---

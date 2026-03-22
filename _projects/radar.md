@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Building a Synthetic Aperture Radar
-description: and presenting research on SAR and Doppler at MIT Lincoln Laboratory RISE
+title: Synthetic Aperture Radar at the Lincoln Laboratory
+description: and presenting research on SAR and Doppler at MIT LL RISE
 img: assets/img/radar/PXL_20240724_022544293.NIGHT.jpg
-importance: 70
+importance: 80
 category:
 related_publications: false
 ---
