@@ -70,9 +70,9 @@ ninja.data = [{
           description: "for canyon excavation and habitat preparation",
           section: "Projects",handler: () => {
               window.location.href = "/projects/marsdesigns/";
-            },},{id: "projects-building-a-synthetic-aperture-radar",
-          title: 'Building a Synthetic Aperture Radar',
-          description: "and presenting research on SAR and Doppler at MIT Lincoln Laboratory RISE",
+            },},{id: "projects-synthetic-aperture-radar-at-the-lincoln-laboratory",
+          title: 'Synthetic Aperture Radar at the Lincoln Laboratory',
+          description: "and presenting research on SAR and Doppler at MIT LL RISE",
           section: "Projects",handler: () => {
               window.location.href = "/projects/radar/";
             },},{id: "projects-simple-amp-cheap-digital-signage-from-a-pi-400",
