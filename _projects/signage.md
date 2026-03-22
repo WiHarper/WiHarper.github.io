@@ -40,7 +40,7 @@ The Pi 400 is an overclocked Pi 4 4GB built into a keyboard and massive heatsink
     </div>
 </div>
 
-Obviously, I needed a way to protect the internals, so I drew a simple .DXF you can get [here](https://wilsonharper.net/assets/img/signage/pi400case). I first cut it out of acrylic, but it broke easily. Plywood worked much better, even if it didn't look as cool. I love using Fusion's canvas feature for making sketches like these.
+Obviously, I needed a way to protect the internals, so I drew a simple .DXF you can get [here](https://wilsonharper.net/assets/img/signage/pi400case.dxf). I first cut it out of acrylic, but it broke easily. Plywood worked much better, even if it didn't look as cool. I love using Fusion's canvas feature for making sketches like these.
 
 
 <div class="row mt-5">
