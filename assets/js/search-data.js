@@ -60,8 +60,8 @@ ninja.data = [{
           description: "using all-original CAD, an Arduino Micro, and a fork of the deej project",
           section: "Projects",handler: () => {
               window.location.href = "/projects/deej/";
-            },},{id: "projects-engineering-a-live-rocket-telemetry-system-in-two-weeks",
-          title: 'Engineering a Live Rocket Telemetry System in Two Weeks',
+            },},{id: "projects-live-rocket-telemetry-and-logging-in-just-two-weeks",
+          title: 'Live Rocket Telemetry and Logging in Just Two Weeks',
           description: "creating a logging and telemetry system for my L1 certification rocket",
           section: "Projects",handler: () => {
               window.location.href = "/projects/l1avio/";
