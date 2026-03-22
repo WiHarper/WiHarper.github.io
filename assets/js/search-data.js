@@ -70,8 +70,8 @@ ninja.data = [{
           description: "for canyon excavation and habitat preparation",
           section: "Projects",handler: () => {
               window.location.href = "/projects/marsdesigns/";
-            },},{id: "projects-synthetic-aperture-radar-at-the-lincoln-laboratory",
-          title: 'Synthetic Aperture Radar at the Lincoln Laboratory',
+            },},{id: "projects-synthetic-aperture-radar-at-mit-lincoln-laboratory",
+          title: 'Synthetic Aperture Radar at MIT Lincoln Laboratory',
           description: "and presenting research on SAR and Doppler at MIT LL RISE",
           section: "Projects",handler: () => {
               window.location.href = "/projects/radar/";
