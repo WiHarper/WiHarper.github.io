@@ -28,7 +28,7 @@ I’m excited to get even more hands-on, practical experience with electrical an
 
 Feel free to check out my [projects](https://wilsonharper.net/projects/), [resume](https://wilsonharper.net/resume/), or contact me below. I'm especially proud of my:
 - [Rapidly-engineered live telemetry and logging system for my L1 certification rocket](https://wilsonharper.net/projects/l1avio/)
-- [ADS-B feeder equipped with a custom antenna and running Tailscale and Cloudflare Funnels](https://wilsonharper.net/projects/adsb/)
+- [ADS-B feeder equipped with a custom antenna and running Tailscale and Cloudflare Tunnels](https://wilsonharper.net/projects/adsb/)
 - [UAV capable of position-holding and transporting objects in GPS-denied environments](https://wilsonharper.net/projects/uav/)
 
 
