@@ -158,6 +158,7 @@ I started by getting the box ready. My thermal strategy relies on passive convec
 </div>
 
 I protected both holes with some mesh to keep insects out. The top hole has a PVC elbow connector to prevent water ingress. As Houston heats up, we'll see how effective this cooling design is. Since airflow was the priority, I wasn't aiming for an airtight box.
+
 ---
 
 ## Antenna Construction
