@@ -98,7 +98,7 @@ At this point, I was very happy with how this looked--I just needed a way to dis
 
 ---
 
-The crystal oscillator puts out a 32.768 kHz signal. The CD4060 cleanly divides that signal into a 2 Hz signal, and the CD4013 divides it one last time to once per second. This signal propagates through each CD4518. This circuit counts up and outputs binary. Once it gets to a high enough value (6 or 10, depending on the digit), the CD4081 detects that, resets it, and increments the next counter by one. The binary signals the CD4518s put out are converted to 7-segment-display signals by the CD4511. This schematic from LEAP shows a few more details.
+The crystal oscillator puts out a 32.768 kHz signal. The CD4060 cleanly divides that signal into a 2 Hz signal, and the CD4013 divides it one last time to once per second. This signal propagates through each CD4518. This circuit counts up and outputs binary. Once it gets to a high enough value (6 or 10, depending on the digit), the CD4081 detects that, resets it, and increments the next counter by one. The binary signals the CD4518s put out are converted to 7-segment-display signals by the CD4511. This schematic [from LEAP](https://leap.tardate.com/electronics101/digitallogic/digitalclockkit/) shows a few more details.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
