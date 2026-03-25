@@ -6,6 +6,7 @@ img: assets/img/l1/thumb.png
 importance: 500
 category:
 related publications: false
+published: false
 ---
 
 ## WORK IN PROGRESS
@@ -82,7 +83,7 @@ Here's my bill of materials:
      915 MHz radio was the obvious choice here. It's a standard in COTS flight computers; the other standard is 435 MHz. This frequency requires a Ham radio license, and while I do have one, it's easier to not worry about it. Also, a 435 MHz quarter-wave antenna is naturally about twice the length of a 915 MHz antenna, so I like the compactness of this choice. It uses SPI. 
 - [Adafruit Feather RP2040 with RFM95 LoRa](https://www.adafruit.com/product/5714)  
     Used for the ground station. It features the same RFM95 radio as the rocket's module, and having the radio built directly onto the MCU board is convenient.
-- [N-Type 4-Hole Bulkhead and N-type to uFL Cable]  
+- N-Type 4-Hole Bulkhead and N-type to uFL Cable
      I planned to make a custom 915 MHz ground plane antenna, and these parts are what individual solid-code wires attach to. Similar bulkheads will work fine. 
 
 ---
@@ -127,7 +128,7 @@ Here's my bill of materials:
 |                      | G0 (IRQ)          | 11                 | Interrupt Request          |
 | **uSD Writer**       | CS                | 23                 | SPI Chip Select (Internal) |
 | **Screw Switch**     | Terminal 1        | EN                 | Enable Pin                 |
-|                      | Terminal 2        | GND                | Pull to GND for to disable |
+|                      | Terminal 2        | GND                | Pull to GND to disable     |
 
 ---
 
