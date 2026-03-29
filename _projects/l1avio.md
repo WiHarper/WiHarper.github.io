@@ -6,10 +6,10 @@ img: assets/img/l1/thumb.png
 importance: 500
 category:
 related publications: false
-published: false
+published: true
 ---
 
-## WORK IN PROGRESS
+## **WORK IN PROGRESS**
 
 Check back soon for a finished post!
 
@@ -63,6 +63,14 @@ And:
 
 Let's do it!
 
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/IMG_5282.HEIC" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+
 ---
 
 ## Hardware Choices
@@ -86,16 +94,63 @@ Here's my bill of materials:
 - N-Type 4-Hole Bulkhead and N-type to uFL Cable
      I planned to make a custom 915 MHz ground plane antenna, and these parts are what individual solid-code wires attach to. Similar bulkheads will work fine. 
 
+
+---
+
+## Making the Rocket
+
+Obviously, I need to put this avionics system into a real rocket. And hey--wasn't the original goal just getting my L1 Cert? Let's talk about it. Aside from the avionics bay, my rocket is standard fare, so this section will be quick.
+
+The first step was deciding the rocket's basic specifications. I immediately knew I wanted the space that two body tubes would provide. A body diameter of 2.6" provides enough space without lowering the apogee. I modeled it in OpenRocket and realized stability would be a challenge--not because it would be unstable, but because it'd be overstable. The stability margin depends on the center of gravity, the center of pressure, and the rocket's diameter. Ideally, the stability margin should be between ~1.3 and ~2, and a rocket with a stability margin over ~2.3 is considered overstable. My initial model had a stability margin of ~2.7.
+
+Overstability increases the rocket's predisposition to weathercocking--pitching into the wind. My rocket model was overstable because the flight computer put so much mass toward the nose of the rocket. The solution? Make the rocket as short as possible. Instead of using a typical coupler, I realized I'd need to create a system that combines the nose cone, upper body tube, and coupler into one solid unit. Yep, in the below model, the mass component is clipping into the coupler--that's the design!
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/opr1.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/opr2.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+You can find the OpenRocket model [here](https://wilsonharper.net/assets/img/l1/L1 Cert with Avionics - Wide.ork). The rest of the design was simpler. The body tubes are heavy-duty cardboard, and the fins are laser-cut plywood. The nosecone is 3D-printed PLA. The rest is lots of epoxy, haha.
+
+<div class="row mt-5">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260306_040314583.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/l1/" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
 ---
 
 ## CAD & Assembly
+
+I wanted to get a sense of space in the real world before I dove into any CAD. Because I had just two weeks and the boards hadn't arrived yet, I used the next best thing--cardboard!I cut each piece to its actual size and assembled them on a "sled." This first design had surprising longevity. 
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-8 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/l1/PXL_20260302_140750474.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm-4 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/l1/PXL_20260302_140805713.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+
+
 
 
 
 ---
 
 ## Wiring
-
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -134,9 +189,11 @@ Here's my bill of materials:
 
 ## The Software Stack
 
-## Making the Rocket
+### Rocket
 
-## Launch Day
+### Ground Station
+
+## Launch
 
 ## Data Analysis
 
