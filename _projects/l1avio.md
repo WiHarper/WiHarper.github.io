@@ -66,7 +66,7 @@ Let's do it!
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/l1/IMG_5282.HEIC" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/l1/IMG_5282.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -124,7 +124,7 @@ You can find the OpenRocket model [here](https://wilsonharper.net/assets/img/l1/
         {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260306_040314583.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260306_040254154.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
