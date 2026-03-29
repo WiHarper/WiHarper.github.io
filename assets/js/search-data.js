@@ -60,11 +60,6 @@ ninja.data = [{
           description: "using all-original CAD, an Arduino Micro, and a fork of the deej project",
           section: "Projects",handler: () => {
               window.location.href = "/projects/deej/";
-            },},{id: "projects-live-rocket-telemetry-and-logging-in-just-two-weeks",
-          title: 'Live Rocket Telemetry and Logging in Just Two Weeks',
-          description: "creating a logging and telemetry system for my L1 certification rocket",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/l1avio/";
             },},{id: "projects-manned-and-robotic-mars-mission-architecture",
           title: 'Manned and Robotic Mars Mission Architecture',
           description: "for canyon excavation and habitat preparation",
