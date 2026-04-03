@@ -193,7 +193,7 @@ Finally, I put all the components in the model to ensure everything was the righ
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/l1/cad9.PNG" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
-
+</div>
 
 ---
 
@@ -283,11 +283,11 @@ I also ought to have a ground for it, and the typical approach to that would be 
     </div>
 </div>
 
+
+
 ---
 
 ## The Software Stack
-
-### Rocket
 
 ### Ground Station
 
