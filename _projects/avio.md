@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Live Rocket Telemetry and Logging in Just Two Weeks
-description: creating a logging and telemetry system for my L1 certification rocket
+description: creating a custom logging and telemetry system for my L1 certification rocket
 img: assets/img/l1/thumb.png
 importance: 50
 category:
@@ -10,7 +10,7 @@ related publications: false
 
 ## **WORK IN PROGRESS**
 
-Check back soon for a finished post!
+Check back soon for a finished post! In the meantime, feel free to read what I have so far.
 
 ---
 
