@@ -56,7 +56,7 @@
         - Creating avionics bays with COTS components for high-reliability recovery systems
     - title: Custom LoRa Rocket Flight Computer & Telemetry Stack
       institution: Personal Project
-      year: 2026 - Present
+      year: 2026
       icon: fa-solid fa-satellite-dish
       description:
         - Designed, programmed, and integrated a custom RP2040-based flight computer in two weeks

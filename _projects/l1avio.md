@@ -3,10 +3,9 @@ layout: page
 title: Live Rocket Telemetry and Logging in Just Two Weeks
 description: creating a logging and telemetry system for my L1 certification rocket
 img: assets/img/l1/thumb.png
-importance: 500
+importance: 50
 category:
 related publications: false
-published: false
 ---
 
 ## **WORK IN PROGRESS**
@@ -143,10 +142,48 @@ I wanted to get a sense of space in the real world before I dove into any CAD. B
     </div>
 </div>
 
+After that first design, I did some actual CAD. Big thanks to [Ian Hsieh](https://www.linkedin.com/in/ian-hsieh-b67457216/) for helping out. In terms of component placement, I knew the GPS antenna would need to be away from noisy or RF-opaque materials. Similarly, the 1090 MHz LoRa antenna needed to be away from the two M5 threaded rods to avoid shielding and unpredictable reflections. The accelerometer/magnetometer also needed to be away from large metal objects and high-current wires. 
+
+<div class="row mt-5">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/cad1.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/cad2.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="aassets/img/l1/cad3.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+Because I needed a clean way to slide the avionics bay in and out of the upper body tube, I decided to make it slide onto threaded rods that are directly attached to the nose cone. Additionally, the top of the nose cone slides onto the base where it is epoxied in place.
+
+<div class="row mt-5">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/cad4.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/cad5.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="aassets/img/l1/cad6.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+Finally, I put all the components in the model to ensure everything was the right size. The tight timeline impacted how pretty the renders are and my ability to include things like the LoRa antenna, screw switch, etc.
 
 
-
-
+<div class="row mt-5">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/cad7.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/cad8.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="aassets/img/l1/cad9.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 ---
 
@@ -184,6 +221,9 @@ I wanted to get a sense of space in the real world before I dove into any CAD. B
 | **uSD Writer**       | CS                | 23                 | SPI Chip Select (Internal) |
 | **Screw Switch**     | Terminal 1        | EN                 | Enable Pin                 |
 |                      | Terminal 2        | GND                | Pull to GND to disable     |
+
+The
+
 
 ---
 
