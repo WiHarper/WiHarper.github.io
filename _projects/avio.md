@@ -296,8 +296,3 @@ I also ought to have a ground for it, and the typical approach to that would be 
 ## Data Analysis
 
 ## Next Steps
-
-
-
-
-- [Live telemetry and logging system](https://wilsonharper.net/projects/avio/) for my L1 certification rocket--built in two weeks
