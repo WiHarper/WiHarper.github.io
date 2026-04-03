@@ -1,112 +1,119 @@
-- title: "General Info"
+- title: General Info
   type: map
   contents:
-    - name: "Full Name"
-      [cite_start]value: "Wilson Harper [cite: 1]"
-    - name: "Website"
-      [cite_start]value: "<a href=\"http://wilsonharper.net\">wilsonharper.net</a> [cite: 5]"
-    - name: "Email"
-      [cite_start]value: "<a href=\"mailto:hello@wilsonharper.net\">hello@wilsonharper.net</a> [cite: 2]"
-    - name: "LinkedIn"
-      [cite_start]value: "<a href=\"http://linkedin.com/in/Wilson-Harper\">Wilson-Harper</a> [cite: 2]"
-    - name: "Location"
-      [cite_start]value: "Houston, TX [cite: 6]"
+    - name: Full Name
+      value: Wilson Harper
+    - name: Website
+      value: <a href="http://wilsonharper.net">wilsonharper.net</a>
+    - name: Email
+      value: <a href="mailto:hello@wilsonharper.net">hello@wilsonharper.net</a>
+    - name: LinkedIn
+      value: <a href="http://linkedin.com/in/Wilson-Harper">Wilson-Harper</a>
+    - name: Location
+      value: Houston, TX
 
-- title: "Education"
+- title: Education
   type: time_table
   contents:
-    - title: "B.S. Electrical & Computer Engineering; Minor in Entrepreneurship [cite: 4]"
-      [cite_start]institution: "Rice University [cite: 4]"
-      [cite_start]year: "Class of 2029 [cite: 4]"
-      icon: "fa-solid fa-graduation-cap"
+    - title: B.S. Electrical & Computer Engineering; Minor in Entrepreneurship
+      institution: Rice University — Houston, TX
+      year: Class of 2029
+      icon: fa-solid fa-graduation-cap
       description:
-        - [cite_start]"Recipient, Martel College Outstanding New Student Award (2026) [cite: 4]"
-        - [cite_start]"Secretary, Martel College Parliament [cite: 4]"
+        - Recipient, Martel College Outstanding New Student Award (2026)
+        - Secretary, Martel College Parliament
+    - title: High School Diploma
+      institution: Davis High School — Yakima, WA
+      year: 2021 - 2025
+      icon: fa-solid fa-school
+      description:
+        - Earned 3.99 GPA, IB Diploma, and Washington State Seal of Biliteracy in Spanish
 
-- title: "Engineering Experience"
+- title: Engineering Experience
   type: time_table
   contents:
-    - [cite_start]title: "Incoming Embedded Engineering Intern [cite: 4]"
-      [cite_start]institution: "RTX BBN Technologies [cite: 4]"
-      [cite_start]year: "Summer 2026 [cite: 4]"
-      icon: "fa-solid fa-microchip"
+    - title: Incoming Embedded Engineering Intern
+      institution: RTX BBN Technologies
+      year: 2026
+      icon: fa-solid fa-microchip
       description:
-        - [cite_start]"Selected to prototype embedded systems and robust PNT algorithms for harsh, GPS-denied environments [cite: 4]"
-    - [cite_start]title: "Undergraduate Researcher [cite: 4]"
-      [cite_start]institution: "Rice Experimental Pixels Lab [cite: 4]"
-      [cite_start]year: "2026 - Present [cite: 4]"
-      icon: "fa-solid fa-flask"
+        - Selected to prototype embedded systems and robust PNT algorithms for harsh, GPS-denied environments
+    - title: Undergraduate Researcher
+      institution: Rice Experimental Pixels Lab
+      year: 2026 - Present
+      icon: fa-solid fa-flask
       description:
-        - [cite_start]"Engineering a compact, highly directional wind system to synchronize physical airflow with XR environments [cite: 4]"
-        - [cite_start]"Designing and integrating remote blowers, ducting, and control circuitry within strict spatial constraints [cite: 4]"
-        - [cite_start]"Implementing UDP with networked POE-powered ESP32s, servos, and PWM fans [cite: 4]"
-    - [cite_start]title: "Avionics and Electrical Engineer [cite: 4]"
-      [cite_start]institution: "Rice Eclipse Rocketry [cite: 4]"
-      [cite_start]year: "2025 - Present [cite: 4]"
-      icon: "fa-solid fa-rocket"
+        - Engineering a compact, highly directional wind system to synchronize physical airflow with XR environments
+        - Designing and integrating remote blowers, ducting, and control circuitry within strict spatial constraints
+        - Implementing UDP with networked POE-powered ESP32s, servos, and PWM fans
+    - title: Avionics and Electrical Engineer
+      institution: Rice Eclipse Rocketry
+      year: 2025 - Present
+      icon: fa-solid fa-rocket
       description:
-        - [cite_start]"Designing avionics architecture for an Active Flight Stabilization system intended for a spaceshot rocket [cite: 4]"
-        - [cite_start]"Integrating RP2350 with I2C/UART/SPI sensors on a custom PCB to actuate servo canards in real-time [cite: 4]"
-        - [cite_start]"Creating avionics bays with COTS components for high-reliability recovery systems [cite: 4]"
-    - [cite_start]title: "Custom LoRa Rocket Flight Computer & Telemetry Stack [cite: 4]"
-      [cite_start]institution: "Technical Projects [cite: 4]"
-      [cite_start]year: "2026 - Present [cite: 4]"
-      icon: "fa-solid fa-microchip"
+        - Designing avionics architecture for an Active Flight Stabilization system intended for a spaceshot rocket
+        - Integrating RP2350 with I2C/UART/SPI sensors on a custom PCB to actuate servo canards in real-time
+        - Creating avionics bays with COTS components for high-reliability recovery systems
+    - title: Custom LoRa Rocket Flight Computer & Telemetry Stack
+      institution: Personal Project
+      year: 2026 - Present
+      icon: fa-solid fa-satellite-dish
       description:
-        - [cite_start]"Designed, programmed, and integrated a custom RP2040-based flight computer in two weeks [cite: 4]"
-        - [cite_start]"Engineered 1 Hz LoRa telemetry while logging altimeter, accelerometer, and GPS data at 20 Hz [cite: 4]"
-        - [cite_start]"Built an accompanying ground station with custom antenna to display live data and Google Earth position [cite: 4]"
-    - [cite_start]title: "ADS-B Flight Tracking Station & Data Pipeline [cite: 4]"
-      [cite_start]institution: "Technical Projects [cite: 4]"
-      [cite_start]year: "2025-2026 [cite: 4]"
-      icon: "fa-solid fa-plane-up"
+        - Designed, programmed, and integrated a custom RP2040-based flight computer in two weeks
+        - Engineered 1 Hz LoRa telemetry while logging altimeter, accelerometer, and GPS data at 20 Hz
+        - Built an accompanying ground station with custom antenna to display live data and Google Earth position
+    - title: ADS-B Flight Tracking Station & Data Pipeline
+      institution: Personal Project
+      year: 2025 - 2026
+      icon: fa-solid fa-plane-up
       description:
-        - [cite_start]"Built Pi-powered ADS-B tracker featuring a custom-soldered 1090 MHz ground plane spider antenna [cite: 4]"
-        - [cite_start]"Created secure data pipelines using Cloudflare Tunnels, Tailscale, and GitHub Pages [cite: 4]"
-    - [cite_start]title: "UAV with Position-Holding in GPS-Denied Environments [cite: 4]"
-      [cite_start]institution: "Technical Projects [cite: 4]"
-      [cite_start]year: "2022-2025 [cite: 4]"
-      icon: "fa-solid fa-screwdriver-wrench"
+        - Built Pi-powered ADS-B tracker featuring a custom-soldered 1090 MHz ground plane spider antenna
+        - Created secure data pipelines using Cloudflare Tunnels, Tailscale, and GitHub Pages
+    - title: UAV with Position-Holding in GPS-Denied Environments
+      institution: Technology Student Association
+      year: 2022 - 2025
+      icon: fa-solid fa-screwdriver-wrench
       description:
-        - [cite_start]"Led the design of a UAV capable of navigating GPS-denied environments with optical flow and LIDAR [cite: 4]"
-        - [cite_start]"Implemented EKF sensor fusion, remote telemetry, modular airframe, and servo-actuated gripper [cite: 4]"
-    - [cite_start]title: "Doppler & Synthetic Aperture Radar [cite: 4]"
-      [cite_start]institution: "MIT Lincoln Laboratory RISE [cite: 4]"
-      [cite_start]year: "2024 [cite: 4]"
-      icon: "fa-solid fa-flask"
+        - Led the design of a UAV capable of navigating GPS-denied environments with optical flow and LiDAR
+        - Implemented EKF sensor fusion, remote telemetry, modular airframe, and servo-actuated gripper
+    - title: Researcher
+      institution: MIT Lincoln Laboratory RISE
+      year: 2024
+      icon: fa-solid fa-flask
       description:
-        - [cite_start]"One of -4% of applicants selected for DoD-sponsored free research experience [cite: 4]"
-        - [cite_start]"Researched, built, and programmed Doppler and synthetic aperture radars, mentored by Lincoln Labs staff [cite: 4]"
+        - One of ~4% of applicants selected for DoD-sponsored free research experience
+        - Researched, built, and programmed Doppler and synthetic aperture radars, mentored by Lincoln Labs staff
 
-- title: "Professional Experience"
+- title: Professional Experience
   type: time_table
   contents:
-    - [cite_start]title: "Teaching Assistant, BUSI 361: Communication for Entrepreneurs [cite: 4]"
-      [cite_start]institution: "Rice University [cite: 4]"
-      [cite_start]year: "2026 [cite: 4]"
-      icon: "fa-solid fa-chalkboard-user"
+    - title: Teaching Assistant, BUSI 361 (Communication for Entrepreneurs)
+      institution: Rice University — Houston, TX
+      year: 2026
+      icon: fa-solid fa-chalkboard-user
       description:
-        - [cite_start]"Facilitating instruction on communication, conflict resolution, networking, and workplace dynamics [cite: 4]"
-    - [cite_start]title: "Summer Camp Staff [cite: 4]"
-      [cite_start]institution: "Spokane, WA [cite: 4]"
-      [cite_start]year: "2025 [cite: 4]"
-      icon: "fa-solid fa-campground"
+        - Facilitating instruction on communication, conflict resolution, networking, and workplace dynamics
+        - Coaching students on public speaking to effectively communicate complex concepts
+    - title: Summer Camp Staff
+      institution: Spokane, WA
+      year: 2025
+      icon: fa-solid fa-campground
       description:
-        - [cite_start]"Responsible for up to 65 guests at a remote location accessible only by boat [cite: 4]"
-        - [cite_start]"Handled high-stakes logistics, guest relations, and conflict resolution for attendees [cite: 4]"
+        - Responsible for up to 65 guests at a remote location accessible only by boat
+        - Handled high-stakes logistics, guest relations, and conflict resolution for attendees
 
-- title: "Skills"
+- title: Skills
   type: nested_list
   contents:
-    - [cite_start]title: "Certifications [cite: 4]"
+    - title: Certifications
       items:
-        - [cite_start]"Technician Class Amateur Radio License, Tripoli Level 1 High Powered Rocketry Certification [cite: 4]"
-    - [cite_start]title: "Hardware & Systems [cite: 4]"
+        - Technician Class Amateur Radio License, Tripoli Level 1 High Powered Rocketry Certification
+    - title: Hardware & Systems
       items:
-        - [cite_start]"LIDAR, radar, sensor integration, UAVs, PCB design, microcontrollers, LoRa, telemetry [cite: 4]"
-    - [cite_start]title: "Software [cite: 4]"
+        - LiDAR, radar, sensor integration, UAVs, PCB design, microcontrollers, LoRa, telemetry
+    - title: Software
       items:
-        - [cite_start]"Python, C/C++, CAD (Fusion, Onshape), ArduPilot, Cloudflare, Tailscale, KiCad [cite: 4]"
-    - [cite_start]title: "Tools [cite: 4]"
+        - Python, C/C++, CAD (Fusion, Onshape), ArduPilot, Cloudflare, Tailscale, KiCad
+    - title: Tools
       items:
-        - [cite_start]"oscilloscopes, soldering, 3D printing, CNC routing, hand tools, multimeters, breadboards [cite: 4]"
+        - oscilloscopes, soldering, 3D printing, CNC routing, hand tools, multimeters, breadboards
