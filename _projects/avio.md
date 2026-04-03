@@ -92,6 +92,8 @@ Here's my bill of materials:
     Used for the ground station. It features the same RFM95 radio as the rocket's module, and having the radio built directly onto the MCU board is convenient.
 - N-Type 4-Hole Bulkhead and N-type to uFL Cable
      I planned to make a custom 915 MHz ground plane antenna, and these parts are what individual solid-code wires attach to. Similar bulkheads will work fine. 
+- 1000 mAh 3.7V LiPo
+     I bought a generic unit off Amazon and it works fine. However, keep in mind the polarity--the JST connector on the battery was actually reversed from what the RP2040 Adalogger expects. It was a quick but crucial fix.
 
 
 ---
@@ -142,7 +144,7 @@ I wanted to get a sense of space in the real world before I dove into any CAD. B
     </div>
 </div>
 
-After that first design, I did some actual CAD. Big thanks to [Ian Hsieh](https://www.linkedin.com/in/ian-hsieh-b67457216/) for helping out. In terms of component placement, I knew the GPS antenna would need to be away from noisy or RF-opaque materials. Similarly, the 1090 MHz LoRa antenna needed to be away from the two M5 threaded rods to avoid shielding and unpredictable reflections. The accelerometer/magnetometer also needed to be away from large metal objects and high-current wires. 
+After that first design, I did some actual CAD. Big thanks to [Ian Hsieh](https://www.linkedin.com/in/ian-hsieh-b67457216/) for helping out. In terms of component placement, I knew the GPS antenna would need to be away from noisy or RF-opaque materials. Similarly, the 915 MHz LoRa antenna needed to be away from the two M5 threaded rods to avoid shielding and unpredictable reflections. The accelerometer/magnetometer also needed to be away from large metal objects and high-current wires. 
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
@@ -152,7 +154,7 @@ After that first design, I did some actual CAD. Big thanks to [Ian Hsieh](https:
         {% include figure.liquid loading="eager" path="assets/img/l1/cad2.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="aassets/img/l1/cad3.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/l1/cad3.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -166,24 +168,32 @@ Because I needed a clean way to slide the avionics bay in and out of the upper b
         {% include figure.liquid loading="eager" path="assets/img/l1/cad5.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="aassets/img/l1/cad6.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/l1/cad6.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
-Finally, I put all the components in the model to ensure everything was the right size. The tight timeline impacted how pretty the renders are and my ability to include things like the LoRa antenna, screw switch, etc.
+You can see this in real life:
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260309_010125102.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+Finally, I put all the components in the model to ensure everything was the right size. The tight timeline impacted how pretty the renders are and my ability to include things like the LoRa antenna, the screw switch, etc. in the CAD.
 
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/l1/cad7.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/l1/cad7.PNG" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/l1/cad8.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/l1/cad8.PNG" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="aassets/img/l1/cad9.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/l1/cad9.PNG" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
-</div>
+
 
 ---
 
@@ -222,8 +232,56 @@ Finally, I put all the components in the model to ensure everything was the righ
 | **Screw Switch**     | Terminal 1        | EN                 | Enable Pin                 |
 |                      | Terminal 2        | GND                | Pull to GND to disable     |
 
-The
+---
 
+I'll walk through the assembly process First, I physically attached all the boards, working from the first layer to the last. Afterwards, I wired everything up, again from the bottom up.
+
+Notice that the GPS antenna (tan plastic and metal) is at the very top to avoid shielding. The battery has its own section because it naturally doesn't have any attachment points. The screw switch protrudes a bit, but there was enough space for everything to slide in and out of the body tube.
+
+<div class="row mt-5">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260308_184617271.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260308_184625087.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260308_184638893.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+Wiring took a bit longer. Here are some in-progress photos:
+
+<div class="row mt-5">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260314_030258371.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260314_030319848.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260309_010133867.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+The 915 MHz antenna was a fun challenge. Doing some math (same formula I used for my [ADS-B 1090 MHz antenna](https://wilsonharper.net/projects/adsb)) indicates an ideal length of ~80 mm. This is the vertical green wire you see here:
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260403_170608158.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+I also ought to have a ground for it, and the typical approach to that would be another 80 mm wire going up, parallel but opposite the green wire. There wasn't enough space to do that, so I had to route it around a few components without letting it get too close to the GPS antenna. I considered attaching it to one of the threaded rods to create a massive ground, but I thought there was a chance that would affect performance in unpredictable ways. It would also make assembly annoying. You can see the ground antenna here in black coming off a pad directly next to the green antenna. It routes to the other side of the sled.
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-8 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/clock/PXL_20260403_170616673.PORTRAIT.ORIGINAL.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm-4 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/clock/PXL_20260403_170624488.PORTRAIT.ORIGINAL.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 ---
 
@@ -242,4 +300,4 @@ The
 
 
 
-- [Live telemetry and logging system](https://wilsonharper.net/projects/l1avio/) for my L1 certification rocket--built in two weeks
+- [Live telemetry and logging system](https://wilsonharper.net/projects/avio/) for my L1 certification rocket--built in two weeks
