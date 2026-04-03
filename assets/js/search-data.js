@@ -52,7 +52,7 @@ ninja.data = [{
               window.location.href = "/projects/adsb/";
             },},{id: "projects-live-rocket-telemetry-and-logging-in-just-two-weeks",
           title: 'Live Rocket Telemetry and Logging in Just Two Weeks',
-          description: "creating a logging and telemetry system for my L1 certification rocket",
+          description: "creating a custom logging and telemetry system for my L1 certification rocket",
           section: "Projects",handler: () => {
               window.location.href = "/projects/avio/";
             },},{id: "projects-a-diy-integrated-circuit-clock-and-case",
