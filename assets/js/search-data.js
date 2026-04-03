@@ -50,9 +50,14 @@ ninja.data = [{
           description: "overcoming humidity and client isolation with a Pi Zero 2 W and custom antenna",
           section: "Projects",handler: () => {
               window.location.href = "/projects/adsb/";
+            },},{id: "projects-live-rocket-telemetry-and-logging-in-just-two-weeks",
+          title: 'Live Rocket Telemetry and Logging in Just Two Weeks',
+          description: "creating a logging and telemetry system for my L1 certification rocket",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/avio/";
             },},{id: "projects-a-diy-integrated-circuit-clock-and-case",
           title: 'A DIY Integrated Circuit Clock and Case',
-          description: "making a case for an AliExpress project, breaking it, and fixing it",
+          description: "making a case (literal and figurative) for an AliExpress project, breaking it, and fixing it",
           section: "Projects",handler: () => {
               window.location.href = "/projects/clock/";
             },},{id: "projects-hardware-audio-control-for-windows-apps",
@@ -60,11 +65,6 @@ ninja.data = [{
           description: "using all-original CAD, an Arduino Micro, and a fork of the deej project",
           section: "Projects",handler: () => {
               window.location.href = "/projects/deej/";
-            },},{id: "projects-live-rocket-telemetry-and-logging-in-just-two-weeks",
-          title: 'Live Rocket Telemetry and Logging in Just Two Weeks',
-          description: "creating a logging and telemetry system for my L1 certification rocket",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/l1avio/";
             },},{id: "projects-manned-and-robotic-mars-mission-architecture",
           title: 'Manned and Robotic Mars Mission Architecture',
           description: "for canyon excavation and habitat preparation",
