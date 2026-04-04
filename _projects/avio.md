@@ -8,9 +8,11 @@ category:
 related publications: false
 ---
 
+---
+
 ## **WORK IN PROGRESS**
 
-Check back (very very) soon for a finished post! In the meantime, feel free to read what I have so far.
+**Check back (very very) soon for a finished post! In the meantime, feel free to read what I have so far.**
 
 ---
 
