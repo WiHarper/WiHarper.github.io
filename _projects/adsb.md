@@ -339,6 +339,7 @@ I recently found a 10.5" 1080p monitor for free in Rice's [OEDK](https://oedk.ri
         {% include figure.liquid path="assets/img/adsb/PXL_20260131_224922739.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
+
 ---
 
 ## Conclusion

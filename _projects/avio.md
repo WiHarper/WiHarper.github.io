@@ -8,11 +8,9 @@ category:
 related publications: false
 ---
 
-I had exactly two weeks to design and build a custom flight computer for my Level 1 high-power certification rocket. 
+I had exactly two weeks to design and build a custom flight computer for my Level 1 high-power certification rocket. I wanted a custom RP2040-based flight computer transmitting telemetry data over LoRa, logging at 20 Hz to a μSD card, and updating a live 3D tracker in Google Earth. Here is how I went from cardboard prototypes to flying my avionics system in 14 days.
 
-I wanted a custom RP2040-based flight computer transmitting telemetry data over LoRa, logging at 20 Hz to a μSD card, and updating a live, 3D tracker in Google Earth. Here is how I went from cardboard prototypes to flying my avionics system in 14 days.
-
-[Skip to the launch](https://wilsonharper.net/projects/avio/#launch)
+[**Skip to the launch**](https://wilsonharper.net/projects/avio/#launch)
 
 
 <div class="row">
@@ -70,8 +68,9 @@ And:
 Let's do it!
 
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/l1/IMG_5282.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
@@ -153,15 +152,13 @@ I wanted to get a sense of space in the real world before I dove into any CAD. B
 
 After that first design, I did some actual CAD. Big thanks to [Ian Hsieh](https://www.linkedin.com/in/ian-hsieh-b67457216/) for helping out. In terms of component placement, I knew the GPS antenna would need to be away from noisy or RF-opaque materials. Similarly, the 915 MHz LoRa antenna needed to be away from the two M5 threaded rods to avoid shielding and unpredictable reflections. The accelerometer/magnetometer also needed to be away from large metal objects and high-current wires. 
 
-<div class="row mt-5">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/cad1.png" title=" " class="img-fluid rounded z-depth-1" %}
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-8 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/l1/cad1.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/cad2.png" title=" " class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/cad3.png" title=" " class="img-fluid rounded z-depth-1" %}
+    <div class="col-sm-4 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/l1/cad2.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -263,9 +260,6 @@ Wiring took a bit longer. Here are some in-progress photos:
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_030258371.jpg" title=" " class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_030319848.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
@@ -302,16 +296,22 @@ Because I wanted a structure that wasn't too reliant on the cardboard body tubes
 
 ##### Upper Body Tube Assembly
 
+The basic idea with the upper body tube is that the avionics bay slides on rails attached to the nose cone, which then slides in the packing tube.
+
+
+
 <div class="row justify-content-sm-center">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124603149.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
+
 First, the avionics sled slides onto two M5 threaded rods connected to the nose cone:
 
+
 <div class="row justify-content-sm-center">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124549839.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
@@ -319,36 +319,36 @@ First, the avionics sled slides onto two M5 threaded rods connected to the nose 
 It gets secured in place:
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124539323.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 The upper body tube slides over the entire assembly:
 
+
 <div class="row justify-content-sm-center">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124517896.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
+
 This "half-coupler" slides into the upper body tube and is lightly held in place by the earlier M5 nuts.
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124440946.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
-
 Finally, the bulkhead is screwed in and the full upper body is done.
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124423608.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    <div class="col-sm-6 mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/l1/assets/img/l1/PXL_20260319_124423608.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
-
 
 ##### Making a Livery
 
