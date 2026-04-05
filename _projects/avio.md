@@ -571,5 +571,10 @@ Still, I see clear ways to improve:
 - Fix the memory leak
 - Create a two-way link so I can enable or disable logging remotely
 
-
 I've started work on my Level 2 Certification rocket and plan to launch soon. I'll integrate this same telemetry system. Because of the sled design, it's easy to make new bulkheads and slide this on the rails. Over the long-term, I plan to keep iterating on my design--maybe make it into a custom PCB or, once reliability is near-perfect, allow it to control black power charges for parachute deployment. That's a project for another day.
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260314_155055065.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
