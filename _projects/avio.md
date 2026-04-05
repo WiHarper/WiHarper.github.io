@@ -515,13 +515,25 @@ Using the logged data, I'm able to replay the flight:
             controls 
             playsinline 
             class="img-fluid rounded z-depth-1">
-            <source src="{{ '/assets/img/l1/2026-04-04 16-18-35.mp4' | relative_url }}" type="video/mp4">
+            <source src="{{ '/assets/img/l1/2026-04-04 16-18-35 - Trim.mp4' | relative_url }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div> 
 </div>
 
+When I recovered it, the flight computer was still flashing its LED, indicating all systems survived the launch and landing just fine. I was thrilled!
+
 ## Data Analysis
+
+When I took the uSD card out and plugged it into my computer, I was pleased to find ~15 MB of `.CSV` data saved. Most of it is simply the rocket sitting on the launch pad, stationary. However, there are about 900 lines of flight data!
+
+Most of it is what you might expect. Graphing altitude and time yields half a parabola and half a line:
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/l1/Altitude (m) and Time (s).png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 ## Next Steps
 
