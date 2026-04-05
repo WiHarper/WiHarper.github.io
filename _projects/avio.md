@@ -122,7 +122,7 @@ Overstability increases the rocket's predisposition to weathercocking--pitching 
     </div>
 </div>
 
-You can find the OpenRocket model [here](https://wilsonharper.net/assets/img/l1/L1 Cert with Avionics - Wide.ork). The rest of the design was simpler. The body tubes are heavy-duty cardboard, and the fins are laser-cut plywood. The nosecone is 3D-printed PLA. The rest is lots of epoxy, haha.
+You can find the OpenRocket model [here](https://wilsonharper.net/assets/img/l1/L1 Cert with Avionics - Wide.ork). The rest of the design was simpler. The body tubes are heavy-duty cardboard, and the fins are laser-cut plywood. The nosecone is 3D-printed PLA. The rest is lots of epoxy.
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
