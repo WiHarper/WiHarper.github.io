@@ -48,8 +48,7 @@ I've long had an interest in NASA Mission Control. During the _Prestige_ launch,
     </div> 
 </div>
 
-There were several folks there who also had their certs launch on March 14th, so we started discussing ideas at the _Prestige_ launch. I knew I wanted to do something interesting with mine, but I wasn't yet sure what that would look like. My first thought was modeling it after a classic rocket like the Mercury-Redstone Launch Vehicle. Throughout the day, I kept thinking more about the tech side of things, and I realized that if I worked hard and got a bit lucky, I had just enough time to pull off a custom electronics system. There 
-was intense time pressure, so I got to work quickly.
+There were several folks there who also had their certs launch on March 14th, so we started discussing ideas at the _Prestige_ launch. I knew I wanted to do something interesting with mine, but I wasn't yet sure what that would look like. My first thought was modeling it after a classic rocket like the Mercury-Redstone Launch Vehicle. Throughout the day, I kept thinking more about the tech side of things, and I realized that if I worked hard and got a bit lucky, I had just enough time to pull off a custom electronics system. There was intense time pressure, so I got to work quickly.
 
  I'd like to thank [Brandon Shin](https://www.linkedin.com/in/brandon-shin-46b67020b/) for his contributions to the codebase, debugging help, and overall help. I also want to give a shout-out to the Certification Leads [Ilina Goyal](https://www.linkedin.com/in/ilina-goyal/) and [Lavinia Barker](https://www.linkedin.com/in/lavinia-barker/) for supporting this project.
  
@@ -57,7 +56,7 @@ was intense time pressure, so I got to work quickly.
 
 ## System Architecture 
 
-The first step was naturally making a list of goals for this flight computer. The most basic system would act as an altimeter, logging apogee. I knew I could go further than that, though. I also wanted to log this data over time and record GPS location/altitude, acceleration, and temperature. A μSD card makes sense for this quantity of information--in fact, my final .CSV file was ~15 MB. This wouldn't fit on many MCU flash chips. The radio bandwidth was fairly low and updated at 1 Hz, but with an onboard uSD card, I expected to log at speeds around 20 Hz. 
+The first step was naturally making a list of goals for this flight computer. The most basic system would act as an altimeter, logging apogee. I knew I could go further than that, though. I also wanted to log this data over time and record GPS location/altitude, acceleration, and temperature. A μSD card makes sense for this quantity of information--in fact, my final `.CSV` file was ~15 MB. This wouldn't fit on many MCU flash chips. The radio bandwidth was fairly low and updated at 1 Hz, but with an onboard uSD card, I expected to log at speeds around 20 Hz. 
 
 The grail to me was live data visualization on my laptop. For an L1 cert that doesn't fly all that high, it's certainly overkill. Still, getting such a system working would be great experience for when I eventually build my Level 2 Cert rocket. Also, it's just plain cool!
 
@@ -95,7 +94,7 @@ Here's my bill of materials:
 - [Adafruit LSM6DSOX + LIS3MDL](https://www.adafruit.com/product/4517)  
     An IMU combo. While I only used the LSM6DSOX accelerometer, I plan to enable the LIS3MDL magnetometer in the future for full 9-degree tracking. This board also uses I2C.
 - [NEO-6MV2 GPS](https://www.amazon.com/gp/product/B0B31NRSD2)  
-     The Adafruit GPS is quite pricy, and I knew any UART GPS unit would work fine. This one from Amazon is as good as any, and I like that it has a micro-USB plug for configuration. The external antenna is also great. 
+     The Adafruit GPS is quite pricey, and I knew any UART GPS unit would work fine. This one from Amazon is as good as any, and I like that it has a micro-USB plug for configuration. The external antenna is also great. 
 - [Missile Works Screw Switch](https://store2263081.ecwid.com/Screw-Switch-p38076724)  
      Screw switches are common in high powered rocketry because they are extremely unlikely to have issues under heavy vibration and acceleration. Grateful for [Wyatt Armstrong](https://www.linkedin.com/in/wyatt-armstrong/) for letting me borrow one from Eclipse Flight Control. With my wiring, the flight computer is actually enabled when the screw switch is in the disconnected position--more on this later. 
 - [Adafruit RFM95W LoRa Transceiver](https://www.adafruit.com/product/3072)  
@@ -299,10 +298,92 @@ I also ought to have a ground for the antenna, and the typical approach to that 
     </div>
 </div>
 
+---
+
+## Putting it Together
+
+Because I wanted a structure that wasn't too reliant on the cardboard body tubes, I made a slightly overengineered system. 
+
+##### Upper Body Tube Assembly
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260319_124603149.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+First, the avionics sled slides onto two M5 threaded rods connected to the nose cone:
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260319_124549839.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+It gets secured in place:
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260319_124539323.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+The upper body tube slides over the entire assembly:
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260319_124517896.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+This "half-coupler" slides into the upper body tube and is lightly held in place by the earlier M5 nuts.
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260319_124440946.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+
+Finally, the bulkhead is screwed in and the full upper body is done.
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260319_124423608.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+
+##### Making a Livery
+
+Painting the rocket and making custom decals was way more fun than I expected!
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-8 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/l1/PXL_20260313_015629277.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm-4 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/l1/PXL_20260312_194248310.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+This was my first time using a Cricut. I don't love its software, but it's hard to argue with the results.
+
+<div class="row mt-5">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260314_061332973.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260314_061328479.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260314_061323425.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 ---
 
-### Ground Station
+## Ground Station
 
 The ground station was a fun mini-project. I used the same design (and spare parts) from my 1090 MHz ground plane antenna I built for my [ADS-B feeder](https://wilsonharper.net/adsb). Each wire is just a few millimeters longer to account for the longer wavelength of the lower frequency 915 MHz LoRa. 
 
@@ -330,12 +411,12 @@ The software stack was split into three distinct environments:
 2. C++ running on the ground station, responsible for receiving radio packets and giving them to my laptop.
 3. Python running on my laptop, responsible for visualizing data in a GUI and logging backup data.
 
-#### Flight Computer
+##### Flight Computer
 
 The flight computer code consists of a big loop that:
 - Reads sensor values at 20 Hz
-- Stores sensor values to a .CSV on the uSD card at 20 Hz
-- Closes and reopens the .CSV at 1 Hz
+- Stores sensor values to a `.CSV` on the uSD card at 20 Hz
+- Closes and reopens the `.CSV` at 1 Hz
 - Transmits sensor values over LoRa at 1 Hz
 
 Rather than using a big loop with `delay()`, the flight computer uses `millis()` to handle those separate tasks at different frequencies. 
@@ -353,28 +434,92 @@ While logging happens 20 times a second, transmitting data that fast over LoRa w
 
 While most of the components in my avionics bay use very little power, the uSD card and radio (transmitting at 20 dBm) take a bit more. I've offset flushing the uSD card and transmitting to avoid brownouts. Specifically, the radio transmits  on the second (e.g., 1000ms, 2000ms), while the SD card flushes to disk on the half-second (e.g., 1500ms, 2500ms).
 
-I dealt with an issue for ages where the loop would hang after 5-30 minutes. A few things could cause this--a memory leak, an I2C issue, or many cosmic ray bit flips (/s). Because I was short on time, it was easier to implement a watchdog. `watchdog_enable(2000, 1)` starts a high-level timer that reboots the RP2040 after 2 seconds unless the watchdog is petted (yes, that's the actual term). In the main loop, `watchdog_update()` keeps the dog happy. While it's absolutely true that this is not an ideal solution, my code is lightweight enough that it reboots nearly instantly, and it's a [tried-and-true method](https://xkcd.com/1495/).
+I dealt with an issue for ages where the loop would hang after 5-30 minutes. A few things could cause this--a memory leak, an I2C issue, or many cosmic ray bit flips (/s). Because I was short on time, it was easier to implement a watchdog. `watchdog_enable(2000, 1)` starts a high-level timer that reboots the RP2040 after 2 seconds unless the watchdog is petted (yes, that's the actual term). In the main loop, `watchdog_update()` keeps the dog happy. While it's absolutely true that this is not an ideal solution, my code is lightweight enough that it reboots nearly instantly.
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/hard_reboot.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    xkcd.com/1495
+</div>
 
 The BMP390 barometer has a known issue where its first reading upon startup is often wildly inaccurate. To fix this, `setup()` calls `bmp.performReading()` once and discards the result before the main loop. I initially implemented a calibration script that would take the average of the first 10 readings and mark that as ground level, but if the watchdog restarted in mid-air, the calibration would break. Instead, I just logged raw barometric data and calibrated it post-launch.
 
 Standard GPS modules are limited to about Mach 1.6. While my rocket is subsonic, I learned that if I send a specific hex payload to the u-blox GPS, I can disable this lock and adjust the Kalman filters for high acceleration. It's probably not needed, but it's fun!
 
-#### Ground Station
+##### Ground Station
 
 This code is much less complicated. The RP2040 constantly listens for LoRa packets. When data arrives, it prints it over the Serial port as a comma-separated string. It also appends signal strength to the end, following this format: `TELEMETRY,altitude,latitude,longitude,velocity,sats,rssi`.
 
-#### Laptop GUI
+##### Laptop GUI
 
 I wanted my laptop to do three things with the data:
 - Display numerical information
 - Plot altitude over time
 - Show the rocket in 3D in Google Earth
 
-With the ground station printing strings over the COM port, I wanted a nicer way to visualize that data that just the serial monitor. Using the `Tkinter` library, I made a simple dashboard to display information. It uses the first 10 telemetry packets to establish a ground level--and because this script never restarts, it doesn't have issues if the flight computer watchdog triggers. Using the Haversine formula, it calculates the distance between the launch pad and the rocket's GPS location. I used `Matplotlib` to graph altitude. It makes a pretty parabola!
+With the ground station printing strings over the COM port, I wanted a nicer way to visualize that data than just the serial monitor. Using the `Tkinter` library, I made a simple dashboard to display information. It uses the first 10 telemetry packets to establish a ground level--and because this script never restarts, it doesn't have issues if the flight computer watchdog triggers. Using the Haversine formula, it calculates the distance between the launch pad and the rocket's GPS location. I used `Matplotlib` to graph altitude. It makes a pretty parabola!
 
-My favorite part of the software stack is the live 3D tracking. I wanted to see the rocket fly in real time on Google Earth. To accomplish this, I wrote a 
+My favorite part of the software stack is the live 3D tracking. I wanted to see the rocket fly in real time on Google Earth. To accomplish this, the Python script generates a Keyhole Markup Language file with the rocket's coordinates and altitude. Google Earth looks at this `.KML` file at 1 Hz and updates the location and altitude of a pin. For how cool it looks, the software side wasn't too bad.
+
+Finally, the script saves a local `.CSV` file in case there are any issues with the onboard uSD card.
+
+---
 
 ## Launch
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-8 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/l1/PXL_20260314_170713052.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm-4 mt-3 mt-md-0">
+        {% include figure.liquid path="assets/img/l1/PXL_20260314_134159202.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+On March 14th, we drove out to Hearne, through Aggieland! The wind was mostly calm with occasional gusts. I packed in a CTI H135 motor and disconnected the screw switch. The ground station started receiving packets. I put the rocket on the pad. 
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260314_172712510.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+And then it sat on the pad for what felt like an hour. First, the igniter didn't ignite the motor--it likely wasn't in far enough. After that, a few prop planes that seemed to be ignoring Tripoli Houston's waiver caused more delays. I was biting my fingernails hoping the flight computer kept transmitting. It did. 
+
+And then it launched.
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-8 mt-3 mt-md-0">
+        <video 
+            controls 
+            playsinline 
+            class="img-fluid rounded z-depth-1">
+            <source src="{{ '/assets/img/l1/img_1475.mov.mp4' | relative_url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div> 
+</div>
+
+Pretty cool, eh?
+
+The live telemetry worked! It lost GPS lock for a bit during ascent, but I was able to monitor altitude and apogee in real time--I instantly knew Project Kairos hit 1680 feet!
+
+Using the logged data, I'm able to replay the flight:
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-8 mt-3 mt-md-0">
+        <video 
+            controls 
+            playsinline 
+            class="img-fluid rounded z-depth-1">
+            <source src="{{ '/assets/img/l1/2026-04-04 16-18-35.mp4' | relative_url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div> 
+</div>
 
 ## Data Analysis
 
