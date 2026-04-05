@@ -477,8 +477,8 @@ Finally, the script saves a local `.csv` file in case there are any issues with 
 
 On March 14th, we drove out to Hearne, through Aggieland! The wind was mostly calm with occasional gusts. I packed in a CTI H135 motor and disconnected the screw switch. The ground station started receiving packets. I put the rocket on the pad. 
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
+<div class="row justify-content-sm-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_172712510.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
@@ -501,11 +501,11 @@ And then it launched.
 
 Pretty cool, eh?
 
-The live telemetry worked! It lost GPS lock for a bit during ascent, but I was able to monitor altitude and apogee in real time--I instantly knew Project Kairos hit 1680 feet!
+The live telemetry worked! It lost GPS lock for a bit during ascent, but I was able to monitor altitude and apogee in real time--I instantly knew the rocket hit 1680 feet!
 
 Shortly after apogee, it lost contact and only retransmitted once during the rest of the descent. I don't know why--my guess is the shielding from the threaded rods plus the vertically-polarized antenna was just too much. Specifically, during apogee, the flight computer antenna pivots to be horizontal, no longer matching the vertically-polarized ground station antenna.
 
-Using the logged data, I'm able to replay the flight:
+Using the logged data, I'm able to replay the flight in the mission control GUI:
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-12 mt-3 mt-md-0">
@@ -525,7 +525,7 @@ When I recovered it, the flight computer was still flashing its LED, indicating 
 
 ## Data Analysis
 
-When I took the μSD card out and plugged it into my computer, I was pleased to find ~15 MB of `.csv` data saved. Most of it is simply the rocket sitting on the launch pad, stationary. However, there are about 900 lines of flight data!
+When I took the μSD card out and plugged it into my computer, I was pleased to find ~15 MB of `.csv` data saved. Most of it is simply the rocket sitting on the launch pad. However, there are about 900 lines of flight data!
 
 Most of it is what you might expect. Graphing altitude and time yields a parabola for ascent and linear decay after parachute deployment.
 
