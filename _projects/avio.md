@@ -8,8 +8,11 @@ category:
 related publications: false
 ---
 
+I had exactly two weeks to design and build a custom flight computer for my Level 1 high-power certification rocket. 
 
-In two weeks--from conception to launch--I designed a rocket telemetry system that could display live data, aid in recovery, and log hundreds of thousands of data points. On March 14th, 2026, it launched.
+I wanted a custom RP2040-based flight computer transmitting telemetry data over LoRa, logging at 20 Hz to a μSD card, and updating a live, 3D tracker in Google Earth. Here is how I went from cardboard prototypes to flying my avionics system in 14 days.
+
+[Skip to the launch](https://wilsonharper.net/projects/avio/#launch)
 
 
 <div class="row">
@@ -18,16 +21,17 @@ In two weeks--from conception to launch--I designed a rocket telemetry system th
     </div>
 </div>
 
+
 ---
 
 
 ## The _Prestige_ Inspiration
 
-The two major U.S. rocket clubs--National Association of Rocketry and Tripoli Rocketry Association--regulate the purchase of high-powered motors through a certification system. [Rice Eclipse](https://eclipse.rice.edu/) rocketry has a division that helps people get their Level 1 Certifications. 
+The two major U.S. rocket clubs--National Association of Rocketry and the Tripoli Rocketry Association--regulate the purchase of high-powered motors through a certification system. [Rice Eclipse](https://eclipse.rice.edu/) rocketry has a division that helps people get their Level 1 Certifications. 
 
-Two weeks before my certification launch, I went to another Eclipse event--the launch of our _Prestige_ rocket. This dual-stage rocket had a simulated apogee of 9,000 ft. I've been part of the team designing the avionics bay for _Prestige_, and it was amazing to see our gear in action. Specifically, the booster and sustainer had several pieces of electronics each--a flight computer, GPS tracker, altimeter, and so on. 
+Two weeks before my certification launch, I went to another Eclipse event--the launch of our _Prestige_ rocket. This dual-stage rocket had a simulated apogee of 9,000 feet. I've been part of the team designing the avionics bay for _Prestige_, and it was amazing to see our gear in action. Specifically, the booster and sustainer had several pieces of electronics each--a flight computer, GPS tracker, altimeter, and so on. 
 
-I've long had an interest in NASA Mission Control. During the _Prestige_ launch, I realized just how much this passion for mission control carried over to high-powered rocketry. Seeing the telemetry systems come alive--and seeing the troubleshooting when they didn't--was a highlight of the day. 
+I've long had an interest in NASA Mission Control. During the _Prestige_ launch, I realized just how much this passion for mission control carried over to high-powered rocketry. Seeing the telemetry systems come alive--and seeing the troubleshooting when they didn't--was a highlight of the day. I realized I wanted my own telemetry system for my L1.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
@@ -41,9 +45,8 @@ I've long had an interest in NASA Mission Control. During the _Prestige_ launch,
     </div> 
 </div>
 
-There were several folks there who also had their certification launches on March 14th, so we started discussing ideas at the _Prestige_ launch. I knew I wanted to do something interesting with mine, but I wasn't yet sure what that would look like. My first thought was modeling it after a classic rocket like the Mercury-Redstone Launch Vehicle. Throughout the day, I kept thinking more about the tech side of things, and I realized that if I worked hard and got a bit lucky, I had just enough time to pull off a custom electronics system. There was intense time pressure, so I got to work quickly.
 
- I'd like to thank [Brandon Shin](https://www.linkedin.com/in/brandon-shin-46b67020b/) for his contributions to the codebase, debugging, and overall support. I also want to give a shout-out to the Certification Leads [Ilina Goyal](https://www.linkedin.com/in/ilina-goyal/) and [Lavinia Barker](https://www.linkedin.com/in/lavinia-barker/) for supporting this project.
+I'd like to thank [Brandon Shin](https://www.linkedin.com/in/brandon-shin-46b67020b/) for his contributions to the codebase, debugging, and overall help. I also want to give a shout-out to the Certification Leads [Ilina Goyal](https://www.linkedin.com/in/ilina-goyal/) and [Lavinia Barker](https://www.linkedin.com/in/lavinia-barker/) for supporting this project.
  
 ---
 
@@ -53,7 +56,7 @@ The first step was naturally making a list of goals for this flight computer. Th
 
 The stretch goal was live data visualization on my laptop. For an L1 cert that doesn't fly all that high, it's certainly overkill. Still, getting such a system working would be great experience for when I eventually build my level 2 certification rocket. Also, it's just plain cool!
 
-Notably, this flight computer does not handle separation charges and has no way to physically interact with the world. After several passive flights, I'd be interested in implementing charge deployment--with a COTS backup, of course. The data my flight computer collects would be useful for running simulations to be sure the recovery system works safely. 
+Notably, this flight computer does not handle separation charges and has no way to physically interact with the world. After several passive flights, I'd be interested in implementing charge deployment--with a commercial off-the-shelf backup, of course. The data my flight computer collects would be useful for running simulations to be sure the recovery system works safely. 
 
 Let's make the goals clearer:
 - Collect altitude and temperature data
@@ -87,11 +90,11 @@ Here's my bill of materials:
 - [Adafruit LSM6DSOX + LIS3MDL](https://www.adafruit.com/product/4517)
     An IMU combo. While I only used the LSM6DSOX accelerometer, I plan to enable the LIS3MDL magnetometer in the future for full 9-axis tracking. This board also uses I2C.
 - [NEO-6MV2 GPS](https://www.amazon.com/gp/product/B0B31NRSD2)
-     The Adafruit GPS is quite pricey, and I knew any UART GPS unit would work fine. This one from Amazon is as good as any, and I like that it has a micro-USB plug for configuration. The external antenna is also great. 
+     Adafruit's GPS is pricey, but any UART GPS unit works fine. This generic Amazon module is perfectly adequate, and the micro-USB plug makes configuration easy. The external antenna is also great. 
 - [Missile Works Screw Switch](https://store2263081.ecwid.com/Screw-Switch-p38076724)
-     Screw switches are common in high-powered rocketry because they are extremely unlikely to have issues under heavy vibration and acceleration. Grateful to [Wyatt Armstrong](https://www.linkedin.com/in/wyatt-armstrong/) for letting me borrow one from Eclipse Flight Control. With my wiring, the flight computer is actually enabled when the screw switch is in the disconnected position--more on this later. 
+     Screw switches are common in high-powered rocketry because they are extremely unlikely to have issues under heavy vibration and acceleration. I'm grateful to [Wyatt Armstrong](https://www.linkedin.com/in/wyatt-armstrong/) for letting me borrow one from Eclipse Flight Control. With my wiring, the flight computer is actually enabled when the screw switch is in the disconnected position--more on this later. 
 - [Adafruit RFM95W LoRa Transceiver](https://www.adafruit.com/product/3072)
-     915 MHz radio was the obvious choice here. It's a standard in COTS flight computers; the other standard is 435 MHz. This frequency requires an amateur radio license, and while I do have one, it's easier to not worry about it. Also, a 435 MHz quarter-wave antenna is naturally about twice the length of a 915 MHz antenna, so I like the compactness of this choice. It uses SPI. 
+     915 MHz radio was the obvious choice here. It's a standard in COTS flight computers; the other standard is 435 MHz. 435 MHz radio requires an amateur radio license, and while I do have one, using 915 MHz is just easier. Also, a 435 MHz quarter-wave antenna is naturally about twice the length of a 915 MHz antenna, so I like the compactness of this choice. It uses SPI. 
 - [Adafruit Feather RP2040 with RFM95 LoRa](https://www.adafruit.com/product/5714)
     Used for the ground station. It features the same RFM95 radio as the rocket's module, and having the radio built directly onto the MCU board is convenient.
 - N-Type 4-Hole Bulkhead and N-Type to uFL Cable
@@ -216,7 +219,7 @@ Finally, I put all the components in the model to ensure everything was the righ
 |                      | GND               | GND                | Ground                     |
 |                      | SCL               | SCL                | I2C Clock                  |
 |                      | SDA               | SDA                | I2C Data                   |
-| **LSM6DSOX IMU**     | VIN               | 3V                 | Power (3.3V)               |
+| **LSM6DSOX IMU**     | VIN               | 3.3V               | Power (3.3V)               |
 |                      | GND               | GND                | Ground                     |
 |                      | SCL               | SCL                | I2C Clock                  |
 |                      | SDA               | SDA                | I2C Data                   |
@@ -416,7 +419,7 @@ Rather than using a big loop with `delay()`, the flight computer uses `millis()`
 
 Every 50 ms, the RP2040 polls the BMP390 barometer, the LSM6DSOX accelerometer, and the GPS module. It constructs a comma-separated string containing mission time, absolute pressure altitude, GPS altitude, latitude, longitude, vertical velocity, temperature, and acceleration. This string is  written to the μSD card.
 
-While logging happens 20 times a second, transmitting data that fast over LoRa would take too much bandwidth. At 1 Hz, the flight computer sends the most recent set of data as a `char` array. To save bandwidth further, this sent data includes only GPS latitude and longitude, barometric altitude, and  satellite count. Additionally, the data on the μSD card is not safe until it is flushed--otherwise, it will disappear on power loss or disconnection. Calling `flush()` every so often is necessary to fully write the data. 
+While logging happens 20 times a second, transmitting data that fast over LoRa would take too much bandwidth. At 1 Hz, the flight computer sends the most recent set of data as a `char` array. To save bandwidth further, this sent data includes only GPS latitude and longitude, barometric altitude, and satellite count. Additionally, the data on the μSD card is not safe until it is flushed--otherwise, it will disappear on power loss or disconnection. Calling `flush()` every so often is necessary to fully write the data. 
 
 
 <div class="row justify-content-sm-center">
@@ -427,7 +430,7 @@ While logging happens 20 times a second, transmitting data that fast over LoRa w
 
 While most of the components in my avionics bay use very little power, the μSD card and radio (transmitting at 20 dBm) take a bit more. I've offset flushing the μSD card and transmitting to avoid brownouts. This is also why I added the capacitor to the radio earlier! Specifically, the radio transmits on the second (e.g., 1000ms, 2000ms), while the SD card flushes to disk on the half-second (e.g., 1500ms, 2500ms).
 
-I dealt with an issue for ages where the loop would hang after 5-30 minutes. A few things could cause this--a memory leak, an I2C issue, or many cosmic ray bit flips (/s). Because I was short on time, it was easier to implement a watchdog. `watchdog_enable(2000, 1)` starts a high-level timer that reboots the RP2040 after 2 seconds unless the watchdog is petted (yes, that's the actual term). In the main loop, `watchdog_update()` keeps the dog happy. While it's absolutely true that this is not an ideal solution, my code is lightweight enough that it reboots nearly instantly.
+I dealt with an issue for ages where the loop would hang after 5-30 minutes. A few things could cause this--a memory leak, an I2C issue, or many cosmic ray bit flips (/s). Because I was short on time, it was easier to implement a watchdog. `watchdog_enable(2000, 1)` starts a high-level timer that reboots the RP2040 after 2 seconds unless the watchdog is fed (yes, that's the actual term). In the main loop, `watchdog_update()` keeps the dog happy. While it's absolutely true that this is not an ideal solution, my code is lightweight enough that it reboots nearly instantly.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
@@ -440,7 +443,7 @@ I dealt with an issue for ages where the loop would hang after 5-30 minutes. A f
 
 The BMP390 barometer has a known issue where its first reading upon startup is often wildly inaccurate. To fix this, `setup()` calls `bmp.performReading()` once and discards the result before the main loop. I initially implemented a calibration script that would take the average of the first 10 readings and mark that as ground level, but if the watchdog restarted in mid-air, the calibration would break. Instead, I just logged raw barometric data and calibrated it post-launch.
 
-Standard GPS modules are limited to about Mach 1.6--the COCOM limit. While my rocket is subsonic, I learned that if I send a specific hex payload to the u-blox GPS, I can disable this lock and adjust the Kalman filters for high acceleration. It's probably not needed, but it's fun!
+Standard GPS modules are limited to about Mach 1.6--the COCOM limit. While my rocket is subsonic, I learned that if I send a specific hex payload to the u-blox GPS, I can change the dynamic platform model and adjust the Kalman filters for high acceleration. It's probably not needed, but it's fun!
 
 ##### Ground Station
 
@@ -526,7 +529,7 @@ When I took the μSD card out and plugged it into my computer, I was pleased to 
 
 Most of it is what you might expect. Graphing altitude and time yields a parabola for ascent and linear decay after parachute deployment.
 
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/l1/Altitude (m) and Time (s).png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
@@ -534,7 +537,7 @@ Most of it is what you might expect. Graphing altitude and time yields a parabol
 
 Temperature slowly decreased--notice the zoomed-in vertical axis:
 
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="lazy" path="assets/img/l1/Temperature (C) and Time (s).png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
@@ -542,13 +545,13 @@ Temperature slowly decreased--notice the zoomed-in vertical axis:
 
 The acceleration data is interesting:
 
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/Acceleration (m/s²) and Time (s).png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/Acceleration (ms^-2) and Time (s).png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
-As it's sitting on the pad, it registers 9.5 m/s² of acceleration. This is pretty close to the expected value of 9.81 m/s². During powered ascent, Accel_Y seems to max out at 39.18 m/s². Dividing that by 9.81 m/s² yields almost exactly 4 Gs. OpenRocket estimates a maximum acceleration of 128 m/s², or 13.1 Gs. Interesting! 
+As it's sitting on the pad, it registers 9.5 m/s² of acceleration. This is pretty close to the expected value of 9.81 m/s². During powered ascent, Accel_Y seems to max out at 39.18 m/s². Dividing that by 9.81 m/s² yields almost exactly 4g. OpenRocket estimates a maximum acceleration of 128 m/s², or 13.1 Gs. Interesting! 
 
 I've done some research and have learned that, by default, the accelerometer maxes out at ±4g, which perfectly matches its clipping behavior. I had hit the sensor's default ceiling! For future versions, I'll have to change that config and enable it to read up to ±16g.
 
