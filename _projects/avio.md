@@ -8,13 +8,6 @@ category:
 related publications: false
 ---
 
----
-
-## **WORK IN PROGRESS**
-
-**Check back (very very) soon for a finished post! In the meantime, feel free to read what I have so far.**
-
----
 
 In two weeks--from conception to launch--I designed a rocket telemetry system that could display live data, aid in recovery, and log hundreds of thousands of data points. On March 14th, 2026, it launched!
 
@@ -524,6 +517,8 @@ Using the logged data, I'm able to replay the flight:
 </div>
 
 When I recovered it, the flight computer was still flashing its LED, indicating all systems survived the launch and the landing just fine. I was thrilled!
+
+---
 
 ## Data Analysis
 
