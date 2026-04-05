@@ -18,9 +18,19 @@ related publications: false
 
 In two weeks--from conception to launch--I designed a rocket telemetry system that could display live data, aid in recovery, and log hundreds of thousands of data points. On March 14th, 2026, it launched!
 
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/55149321512_7e03b56905_o(1).jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+---
+
+
 ## The _Prestige_ Inspiration
 
-The two major U.S. rocket clubs--National Association of Rocketry and Tripoli-- regulate the purchase of high powered motors through a certification system. [Rice Eclipse](https://eclipse.rice.edu/) rocketry has a division that helps people get their Level 1 Certifications. 
+The two major U.S. rocket clubs--National Association of Rocketry and Tripoli--regulate the purchase of high powered motors through a certification system. [Rice Eclipse](https://eclipse.rice.edu/) rocketry has a division that helps people get their Level 1 Certifications. 
 
 Two weeks before my certification launch, I went to another Eclipse event--the launch of our _Prestige_ rocket. This dual-stage rocket had a simulated apogee of 9,000'. I've been part of the team designing the avionics bay for _Prestige_, and it was amazing to see our gear in action. Specifically, the booster and sustainer had several pieces of electronics each--a flight computer, GPS tracker, altimeter, and so on. 
 
@@ -236,7 +246,9 @@ Finally, I put all the components in the model to ensure everything was the righ
 
 ---
 
-I'll walk through the assembly process First, I physically attached all the boards, working from the first layer to the last. Afterwards, I wired everything up, again from the bottom up.
+Most of the wiring plan was straightforward. The only tricky part was making sure the uSD card slot and LoRa didn't have any issues both operating on SPI. The screw switch pulls EN to GND when closed, so its function is inverted from typical operation. 
+
+I'll walk through the assembly process. I physically attached all the boards, working from the first layer to the last. Afterwards, I wired everything up, again from the bottom up.
 
 Notice that the GPS antenna (tan plastic and metal) is at the very top to avoid shielding. The battery has its own section because it naturally doesn't have any attachment points. The screw switch protrudes a bit, but there was enough space for everything to slide in and out of the body tube.
 
@@ -274,7 +286,9 @@ The 915 MHz antenna was a fun challenge. Doing some math (same formula I used fo
     </div>
 </div>
 
-I also ought to have a ground for it, and the typical approach to that would be another 80 mm wire going up, parallel but opposite the green wire. There wasn't enough space to do that, so I had to route it around a few components without letting it get too close to the GPS antenna. I considered attaching it to one of the threaded rods to create a massive ground, but I thought there was a chance that would affect performance in unpredictable ways. It would also make assembly annoying. You can see the ground antenna here in black coming off a pad directly next to the green antenna. It routes to the other side of the sled.
+At the top of the radio, I've added a capacitor bridging the 3.3V and GND pads to reduce the possibility of a brownout.
+
+I also ought to have a ground for the antenna, and the typical approach to that would be another 80 mm wire going up, parallel but opposite the green wire. There wasn't enough space to do that, so I had to route it around a few components without letting it get too close to the GPS antenna. I considered attaching it to one of the threaded rods to create a massive ground, but I thought there was a chance that would affect performance in unpredictable ways. It would also make assembly annoying. You can see the ground antenna here in black coming off a pad directly next to the green antenna. It routes to the other side of the sled.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
@@ -286,15 +300,84 @@ I also ought to have a ground for it, and the typical approach to that would be 
 </div>
 
 
+---
+
+### Ground Station
+
+The ground station was a fun mini-project. I used the same design (and spare parts) from my 1090 MHz ground plane antenna I built for my [ADS-B feeder](https://wilsonharper.net/adsb). Each wire is just a few millimeters longer to account for the longer wavelength of the lower frequency 915 MHz LoRa. 
+
+
+<div class="row mt-5">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260404_193510239.PORTRAIT.ORIGINAL.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260404_193516821.PORTRAIT.ORIGINAL.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260404_193527628.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+The microcontroller is another Adafruit Feather RP2040, this time with the radio built in. I already had the tripod from prior adventures with software-defined radio.
 
 ---
 
 ## The Software Stack
 
-### Ground Station
+The software stack was split into three distinct environments: 
+1. C++ running on the flight computer, responsible for logging and transmitting data.
+2. C++ running on the ground station, responsible for receiving radio packets and giving them to my laptop.
+3. Python running on my laptop, responsible for visualizing data in a GUI and logging backup data.
+
+#### Flight Computer
+
+The flight computer code consists of a big loop that:
+- Reads sensor values at 20 Hz
+- Stores sensor values to a .CSV on the uSD card at 20 Hz
+- Closes and reopens the .CSV at 1 Hz
+- Transmits sensor values over LoRa at 1 Hz
+
+Rather than using a big loop with `delay()`, the flight computer uses `millis()` to handle those separate tasks at different frequencies. 
+
+Every 50 ms, the RP2040 polls the BMP390 barometer, the LSM6DSOX accelerometer, and the GPS module. It constructs a comma-separated string containing mission time, absolute pressure altitude, GPS altitude, latitude, longitude, vertical velocity, temperature, and acceleration. This string is  written to the uSD card.
+
+While logging happens 20 times a second, transmitting data that fast over LoRa would take too much bandwidth. At 1 Hz, the flight computer sends the most recent set of data as a `char` array. To save bandwidth further, this sent data includes only GPS latitude and longitude, barometric altitude, and  satellite count. Additionally, the data on the uSD card is not safe until it is flushed--otherwise, it will disappear on power loss or disconnection. Calling `flush()` every so often is necessary to fully write the data. 
+
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/l1/PXL_20260403_170630205.PORTRAIT.ORIGINAL.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+While most of the components in my avionics bay use very little power, the uSD card and radio (transmitting at 20 dBm) take a bit more. I've offset flushing the uSD card and transmitting to avoid brownouts. Specifically, the radio transmits  on the second (e.g., 1000ms, 2000ms), while the SD card flushes to disk on the half-second (e.g., 1500ms, 2500ms).
+
+I dealt with an issue for ages where the loop would hang after 5-30 minutes. A few things could cause this--a memory leak, an I2C issue, or many cosmic ray bit flips (/s). Because I was short on time, it was easier to implement a watchdog. `watchdog_enable(2000, 1)` starts a high-level timer that reboots the RP2040 after 2 seconds unless the watchdog is petted (yes, that's the actual term). In the main loop, `watchdog_update()` keeps the dog happy. While it's absolutely true that this is not an ideal solution, my code is lightweight enough that it reboots nearly instantly, and it's a [tried-and-true method](https://xkcd.com/1495/).
+
+The BMP390 barometer has a known issue where its first reading upon startup is often wildly inaccurate. To fix this, `setup()` calls `bmp.performReading()` once and discards the result before the main loop. I initially implemented a calibration script that would take the average of the first 10 readings and mark that as ground level, but if the watchdog restarted in mid-air, the calibration would break. Instead, I just logged raw barometric data and calibrated it post-launch.
+
+Standard GPS modules are limited to about Mach 1.6. While my rocket is subsonic, I learned that if I send a specific hex payload to the u-blox GPS, I can disable this lock and adjust the Kalman filters for high acceleration. It's probably not needed, but it's fun!
+
+#### Ground Station
+
+This code is much less complicated. The RP2040 constantly listens for LoRa packets. When data arrives, it prints it over the Serial port as a comma-separated string. It also appends signal strength to the end, following this format: `TELEMETRY,altitude,latitude,longitude,velocity,sats,rssi`.
+
+#### Laptop GUI
+
+I wanted my laptop to do three things with the data:
+- Display numerical information
+- Plot altitude over time
+- Show the rocket in 3D in Google Earth
+
+With the ground station printing strings over the COM port, I wanted a nicer way to visualize that data that just the serial monitor. Using the `Tkinter` library, I made a simple dashboard to display information. It uses the first 10 telemetry packets to establish a ground level--and because this script never restarts, it doesn't have issues if the flight computer watchdog triggers. Using the Haversine formula, it calculates the distance between the launch pad and the rocket's GPS location. I used `Matplotlib` to graph altitude. It makes a pretty parabola!
+
+My favorite part of the software stack is the live 3D tracking. I wanted to see the rocket fly in real time on Google Earth. To accomplish this, I wrote a 
 
 ## Launch
 
 ## Data Analysis
 
 ## Next Steps
+
+I've started work on my Level 2 Certification rocket and plan to launch soon. I'll integrate this same telemetry system. Because of the sled design, it's easy to make new bulkheads and slide this on the rails. I plan to keep iterating on my design--maybe make it into a custom PCB or, once reliability is near-perfect, allow it to control black power charges for parachute deployment. 
