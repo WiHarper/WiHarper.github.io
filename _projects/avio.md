@@ -437,7 +437,7 @@ While most of the components in my avionics bay use very little power, the uSD c
 I dealt with an issue for ages where the loop would hang after 5-30 minutes. A few things could cause this--a memory leak, an I2C issue, or many cosmic ray bit flips (/s). Because I was short on time, it was easier to implement a watchdog. `watchdog_enable(2000, 1)` starts a high-level timer that reboots the RP2040 after 2 seconds unless the watchdog is petted (yes, that's the actual term). In the main loop, `watchdog_update()` keeps the dog happy. While it's absolutely true that this is not an ideal solution, my code is lightweight enough that it reboots nearly instantly.
 
 <div class="row justify-content-sm-center">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/l1/hard_reboot.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
@@ -507,6 +507,8 @@ Pretty cool, eh?
 
 The live telemetry worked! It lost GPS lock for a bit during ascent, but I was able to monitor altitude and apogee in real time--I instantly knew Project Kairos hit 1680 feet!
 
+Shortly after apogee, it lost contact and only retransmitted once during the rest of descent. I don't know why--my guess is the shielding from the threaded rods plus the vertically-polarized antenna was just too much.  
+
 Using the logged data, I'm able to replay the flight:
 
 <div class="row justify-content-sm-center">
@@ -521,7 +523,7 @@ Using the logged data, I'm able to replay the flight:
     </div> 
 </div>
 
-When I recovered it, the flight computer was still flashing its LED, indicating all systems survived the launch and landing just fine. I was thrilled!
+When I recovered it, the flight computer was still flashing its LED, indicating all systems survived the launch and the landing just fine. I was thrilled!
 
 ## Data Analysis
 
@@ -535,6 +537,39 @@ Most of it is what you might expect. Graphing altitude and time yields half a pa
     </div>
 </div>
 
-## Next Steps
+Temperature slowly decreased--notice the zoomed-in vertical axis:
 
-I've started work on my Level 2 Certification rocket and plan to launch soon. I'll integrate this same telemetry system. Because of the sled design, it's easy to make new bulkheads and slide this on the rails. I plan to keep iterating on my design--maybe make it into a custom PCB or, once reliability is near-perfect, allow it to control black power charges for parachute deployment. 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/l1/Temperature (C) and Time (s).png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+The acceleration data is interesting:
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/l1/Acceleration (ms^-2) and Time (s).png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+As it's sitting on the pad, it registers 9.5 ms^-2 of acceleration. This is pretty close to the expected value of 9.81 ms^-2. During powered ascent, Accel_Y seems to max out at 39.18 ms^-2. Dividing that by 4 yields a value of exactly 4 Gs. Openrocket estimates a maximum acceleration of 128 ms^-2, or 13.1 Gs. Interesting! 
+
+I've done some research and have learned that, by default, the accelerometer maxes out at ±4 Gs. For future versions, I'll have to change that config. 
+
+After launch, we can see negative acceleration, indicating the rocket is coasting and losing velocity. After parachute deployment, the oscillations in the wind appear effectively random. I was hoping to be able to integrate over acceleration to get another estimate for apogee, but the maxed-out value during ascent makes that impossible. Next time!
+
+---
+
+## Conclusion
+
+I feel strongly that this project has been a massive success. This two-week timeline was a serious sprint, and I'm a bit shocked I was able to pull it off. I learned a ton about LoRa and telemetry, robust programming, and integration in tight, harsh spaces. 
+
+Still, I see clear ways to improve:
+- Allow the accelerometer to register higher acceleration
+- Figure out the comms loss after apogee
+- Fix the memory leak
+- Create a two-way link so I can enable or disable logging remotely
+
+
+I've started work on my Level 2 Certification rocket and plan to launch soon. I'll integrate this same telemetry system. Because of the sled design, it's easy to make new bulkheads and slide this on the rails. Over the long-term, I plan to keep iterating on my design--maybe make it into a custom PCB or, once reliability is near-perfect, allow it to control black power charges for parachute deployment. That's a project for another day.
