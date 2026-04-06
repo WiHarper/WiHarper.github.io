@@ -50,8 +50,8 @@ ninja.data = [{
           description: "overcoming humidity and client isolation with a Pi Zero 2 W and custom antenna",
           section: "Projects",handler: () => {
               window.location.href = "/projects/adsb/";
-            },},{id: "projects-live-rocket-telemetry-and-logging-in-just-two-weeks",
-          title: 'Live Rocket Telemetry and Logging in Just Two Weeks',
+            },},{id: "projects-live-rocket-telemetry-and-logging-in-two-weeks",
+          title: 'Live Rocket Telemetry and Logging in Two Weeks',
           description: "creating a custom logging and telemetry system for my L1 certification rocket",
           section: "Projects",handler: () => {
               window.location.href = "/projects/avio/";
