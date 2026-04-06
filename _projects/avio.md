@@ -8,7 +8,7 @@ category:
 related publications: false
 ---
 
-I had exactly two weeks to design and build a custom flight computer for my Level 1 high-power certification rocket. I wanted a custom RP2040-based flight computer transmitting telemetry data over LoRa, logging at 20 Hz to a μSD card, and updating a live 3D tracker in Google Earth. Here is how I went from cardboard prototypes to flying my avionics system in 14 days.
+I had exactly two weeks to design and build a custom flight computer for my Level 1 high-power certification rocket. I wanted a custom RP2040-based flight computer transmitting telemetry data over LoRa, logging at 20 Hz to a μSD card, and updating a live 3D tracker in Google Earth. Here's how I went from a cardboard prototype to flying the avionics system in 14 days.
 
 [**Skip to the launch**](https://wilsonharper.net/projects/avio/#launch)
 
@@ -50,11 +50,11 @@ I'd like to thank [Brandon Shin](https://www.linkedin.com/in/brandon-shin-46b670
 
 ## System Architecture 
 
-The first step was naturally making a list of goals for this flight computer. The most basic system would act as an altimeter, logging apogee. I knew I could go further than that, though. I also wanted to log this data over time and record GPS location/altitude, acceleration, and temperature. A μSD card makes sense for this quantity of information--in fact, my final `.csv` file was ~15 MB. This wouldn't fit on many MCU flash chips. The radio bandwidth was fairly low and updated at 1 Hz, but with an onboard μSD card, I expected to log at speeds around 20 Hz. 
+The first step was naturally making a list of goals for this flight computer. The most basic system would act as an altimeter, logging apogee. I knew I could go further than that, though. I also wanted to log this data over time and record GPS location/altitude, acceleration, and temperature. A μSD card makes sense for this quantity of information--in fact, my final `.csv` file was ~15 MB. This wouldn't fit on many MCU flash chips. The radio bandwidth was fairly low, and updated at 1 Hz, but with an onboard μSD card, I expected to log at speeds around 20 Hz. 
 
 The stretch goal was live data visualization on my laptop. For an L1 cert that doesn't fly all that high, it's certainly overkill. Still, getting such a system working would be great experience for when I eventually build my level 2 certification rocket. Also, it's just plain cool!
 
-Notably, this flight computer does not handle separation charges and has no way to physically interact with the world. After several passive flights, I'd be interested in implementing charge deployment--with a commercial off-the-shelf backup, of course. The data my flight computer collects would be useful for running simulations to be sure the recovery system works safely. 
+Notably, this flight computer does not handle separation charges and has no way to physically interact with the world. After several passive flights, I'd be interested in implementing charge deployment--with a commercial off-the-shelf backup, of course. The data my flight computer collects would be useful for running simulations to be sure a future recovery system works safely. 
 
 Let's make the goals clearer:
 - Collect altitude and temperature data
@@ -82,31 +82,31 @@ Let's do it!
 
 Here's my bill of materials:
 
-- [Feather RP2040 Adalogger](https://www.adafruit.com/product/5980)
+- [Feather RP2040 Adalogger](https://www.adafruit.com/product/5980)  
     Choosing a microcontroller was the biggest decision. The Adafruit Feather line is a modular system with easy expansion. I chose the RP2040 version for its low power consumption and the reliability of the built-in SPI μSD card slot.
-- [Adafruit BMP390](https://www.adafruit.com/product/4816)
-     The BMP390 is a classic choice, and I found one lying around the [Rice Oshman Engineering Design Kitchen](https://oedk.rice.edu) for free. Its performance is good, it's lightweight and compact, and it supports SPI and I2C. The temperature sensor is built in. I used I2C for communication. 
-- [Adafruit LSM6DSOX + LIS3MDL](https://www.adafruit.com/product/4517)
+- [Adafruit BMP390](https://www.adafruit.com/product/4816)  
+    The BMP390 is a classic choice, and I found one lying around the [Rice Oshman Engineering Design Kitchen](https://oedk.rice.edu) for free. Its performance is good, it's lightweight and compact, and it supports SPI and I2C. The temperature sensor is built in. I used I2C for communication. 
+- [Adafruit LSM6DSOX + LIS3MDL](https://www.adafruit.com/product/4517)  
     An IMU combo. While I only used the LSM6DSOX accelerometer, I plan to enable the LIS3MDL magnetometer in the future for full 9-axis tracking. This board also uses I2C.
-- [NEO-6MV2 GPS](https://www.amazon.com/gp/product/B0B31NRSD2)
-     Adafruit's GPS is pricey, but any UART GPS unit works fine. This generic Amazon module is perfectly adequate, and the micro-USB plug makes configuration easy. The external antenna is also great. 
-- [Missile Works Screw Switch](https://store2263081.ecwid.com/Screw-Switch-p38076724)
-     Screw switches are common in high-powered rocketry because they are extremely unlikely to have issues under heavy vibration and acceleration. I'm grateful to [Wyatt Armstrong](https://www.linkedin.com/in/wyatt-armstrong/) for letting me borrow one from Eclipse Flight Control. With my wiring, the flight computer is actually enabled when the screw switch is in the disconnected position--more on this later. 
-- [Adafruit RFM95W LoRa Transceiver](https://www.adafruit.com/product/3072)
-     915 MHz radio was the obvious choice here. It's a standard in COTS flight computers; the other standard is 435 MHz. 435 MHz radio requires an amateur radio license, and while I do have one, using 915 MHz is just easier. Also, a 435 MHz quarter-wave antenna is naturally about twice the length of a 915 MHz antenna, so I like the compactness of this choice. It uses SPI. 
-- [Adafruit Feather RP2040 with RFM95 LoRa](https://www.adafruit.com/product/5714)
+- [NEO-6MV2 GPS](https://www.amazon.com/gp/product/B0B31NRSD2)  
+    Adafruit's GPS is pricey, but any UART GPS unit works fine. This generic Amazon module is perfectly adequate, and the micro-USB plug makes configuration easy. The external antenna is also great. 
+- [Missile Works Screw Switch](https://store2263081.ecwid.com/Screw-Switch-p38076724)  
+    Screw switches are common in high-powered rocketry because they are extremely unlikely to have issues under heavy vibration and acceleration. I'm grateful to [Wyatt Armstrong](https://www.linkedin.com/in/wyatt-armstrong/) for letting me borrow one from Eclipse Flight Control. With my wiring, the flight computer is actually enabled when the screw switch is in the disconnected position--more on this later. 
+- [Adafruit RFM95W LoRa Transceiver](https://www.adafruit.com/product/3072)  
+    915 MHz radio was the obvious choice here. It's a standard in COTS flight computers; the other standard is 435 MHz. 435 MHz radio requires an amateur radio license, and while I do have one, using 915 MHz is just easier. Also, a 435 MHz quarter-wave antenna is naturally about twice the length of a 915 MHz antenna, so I like the compactness of this choice. It uses SPI. 
+- [Adafruit Feather RP2040 with RFM95 LoRa](https://www.adafruit.com/product/5714)  
     Used for the ground station. It features the same RFM95 radio as the rocket's module, and having the radio built directly onto the MCU board is convenient.
-- N-Type 4-Hole Bulkhead and N-Type to uFL Cable
-     I planned to make a custom 915 MHz ground plane antenna, and these parts are what individual solid-core wires attach to. Similar bulkheads will work fine. 
-- 1000 mAh 3.7V LiPo
-     I bought a generic unit off Amazon and it works fine. However, keep in mind the polarity--the JST connector on the battery was actually reversed from what the RP2040 Adalogger expects. It was a quick but crucial fix.
+- N-Type 4-Hole Bulkhead and N-Type to uFL Cable  
+    I planned to make a custom 915 MHz ground plane antenna, and these parts are what individual solid-core wires attach to. Similar bulkheads will work fine. 
+- 1000 mAh 3.7V LiPo  
+    I bought a generic unit off Amazon and it works fine. However, keep in mind the polarity--the JST connector on the battery was actually reversed from what the RP2040 Adalogger expects. It was a quick but crucial fix.
 
 
 ---
 
 ## Making the Rocket
 
-Obviously, I needed to put this avionics system into a real rocket. And hey--wasn't the original goal just getting my L1 Cert? Let's talk about it. Aside from the avionics bay, my rocket is standard fare, so this section will be quick.
+Obviously, I needed to put this avionics system into a real rocket. And hey--wasn't the original goal getting my L1 Cert? Let's talk about it. Aside from the avionics bay, my rocket is standard fare, so this section will be quick.
 
 The first step was deciding the rocket's basic specifications. I immediately knew I wanted the internal space that two body tubes would provide. A body diameter of 2.6 inches provides enough space without lowering the apogee. I modeled it in OpenRocket and realized stability would be a challenge--not because it would be unstable, but because it'd be overstable. The stability margin depends on the center of gravity, the center of pressure, and the rocket's diameter. Ideally, the stability margin should be between ~1.3 and ~2, and a rocket with a stability margin over ~2.3 is considered overstable. My initial model had a stability margin of ~2.7.
 
@@ -153,14 +153,17 @@ I wanted to get a sense of space in the real world before I dove into any CAD. B
 After that first design, I did some actual CAD. Big thanks to [Ian Hsieh](https://www.linkedin.com/in/ian-hsieh-b67457216/) for helping out. In terms of component placement, I knew the GPS antenna would need to be away from noisy or RF-opaque materials. Similarly, the 915 MHz LoRa antenna needed to be away from the two M5 threaded rods to avoid shielding and unpredictable reflections. The accelerometer/magnetometer also needed to be away from large metal objects and high-current wires. 
 
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/l1/cad1.png" title=" " class="img-fluid rounded z-depth-1" %}
+
+<div class="row mt-5">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/l1/cad1.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/l1/cad2.png" title=" " class="img-fluid rounded z-depth-1" %}
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/l1/cad2.png" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
+
+
 
 Because I needed a clean way to slide the avionics bay in and out of the upper body tube, I decided to make it slide onto threaded rods that are directly attached to the nose cone. Additionally, the top of the nose cone slides onto the base where it is epoxied in place.
 
@@ -242,7 +245,7 @@ Most of the wiring plan was straightforward. The only tricky part was making sur
 
 I'll walk through the assembly process. I physically attached all the boards, working from the first layer to the last. Afterwards, I wired everything up, again from the bottom up.
 
-Notice that the GPS antenna (tan plastic and metal) is at the very top to avoid shielding. The battery has its own section because it naturally doesn't have any attachment points. The screw switch protrudes a bit, but there was enough space for everything to slide in and out of the body tube.
+Notice that the GPS antenna (tan plastic and metal) is at the very top to avoid excessive shielding. The battery has its own section because it naturally doesn't have any attachment points. The screw switch protrudes a bit, but there was enough space for everything to slide in and out of the body tube.
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
@@ -382,7 +385,7 @@ This was my first time using a Cricut. I don't love its software, but it's hard 
 
 ## Ground Station
 
-The ground station was a fun mini-project. I used the same design (and spare parts) from my 1090 MHz ground plane antenna I built for my [ADS-B feeder](https://wilsonharper.net/adsb). Each wire is just a few millimeters longer to account for the longer wavelength of the lower frequency 915 MHz LoRa. 
+The ground station was a fun mini-project. I used the same design (and spare parts) from my 1090 MHz ground plane antenna I built for my [ADS-B feeder](https://wilsonharper.net/projects/adsb). Each wire is just a few millimeters longer (80 mm total) to account for the longer wavelength of the lower frequency 915 MHz LoRa. 
 
 
 <div class="row mt-5">
