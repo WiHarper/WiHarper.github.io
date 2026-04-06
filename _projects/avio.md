@@ -346,9 +346,10 @@ Finally, the bulkhead is screwed in and the full upper body is done.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/assets/img/l1/PXL_20260319_124423608.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124423608.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
+
 
 ##### Making a Livery
 
@@ -479,7 +480,7 @@ On March 14th, we drove out to Hearne, through Aggieland! The wind was mostly ca
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_172712510.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_172841933.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
