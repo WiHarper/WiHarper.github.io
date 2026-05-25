@@ -113,7 +113,7 @@
         - LiDAR, radar, sensor integration, UAVs, PCB design, microcontrollers, LoRa, telemetry
     - title: Software
       items:
-        - Python, C/C++, CAD (Fusion, Onshape), ArduPilot, Cloudflare, Tailscale, KiCad
+        - Python, CAD (Fusion, Onshape), ArduPilot, Cloudflare, Tailscale, KiCad
     - title: Tools
       items:
         - oscilloscopes, soldering, 3D printing, CNC routing, hand tools, multimeters, breadboards
