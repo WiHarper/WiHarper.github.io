@@ -20,7 +20,7 @@
       year: Class of 2029
       icon: fa-solid fa-graduation-cap
       description:
-        - Recipient, Martel College Outstanding New Student Award (2026)
+        - Lillian Haynie Trustee Scholar; Martel College Outstanding New Student Award
         - Secretary, Martel College Parliament
     - title: High School Diploma
       institution: Davis High School — Yakima, WA
@@ -32,28 +32,28 @@
 - title: Engineering Experience
   type: time_table
   contents:
-    - title: Incoming Embedded Engineering Intern
+    - title: Electrical Engineering Intern
       institution: RTX BBN Technologies
       year: 2026
       icon: fa-solid fa-microchip
       description:
-        - Selected to prototype embedded systems and robust PNT algorithms for harsh, GPS-denied environments
+    - title: Mission Control Lead, Rice Eclipse Rocketry
+      institution: Rice Eclipse Rocketry
+      year: 2025 - Present
+      icon: fa-solid fa-rocket
+      description:
+        - Leading development of electronics and software for Rice’s liquid engine development program
+        - Integrating Raspberry Pi with LabJack DAQ and solenoids for critical control and data gathering
+        - Designing avionics architecture for an Active Flight Stabilization system intended for a spaceshot rocket
+        - Integrating RP2350 with I2C/UART/SPI sensors on a custom PCB to actuate servo canards in real-time
     - title: Undergraduate Researcher
       institution: Rice Experimental Pixels Lab
-      year: 2026 - Present
+      year: 2026
       icon: fa-solid fa-flask
       description:
         - Engineering a compact, highly directional wind system to synchronize physical airflow with XR environments
         - Designing and integrating remote blowers, ducting, and control circuitry within strict spatial constraints
         - Implementing UDP with networked POE-powered ESP32s, servos, and PWM fans
-    - title: Avionics and Electrical Engineer
-      institution: Rice Eclipse Rocketry
-      year: 2025 - Present
-      icon: fa-solid fa-rocket
-      description:
-        - Designing avionics architecture for an Active Flight Stabilization system intended for a spaceshot rocket
-        - Integrating RP2350 with I2C/UART/SPI sensors on a custom PCB to actuate servo canards in real-time
-        - Creating avionics bays with COTS components for high-reliability recovery systems
     - title: Custom LoRa Rocket Flight Computer & Telemetry Stack
       institution: Personal Project
       year: 2026
