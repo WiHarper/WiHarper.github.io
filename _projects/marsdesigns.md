@@ -6,6 +6,7 @@ img: assets/img/was/rover4.jpg
 importance: 120
 category:
 related_publications: false
+published: false
 ---
 
 At the UW Aerospace Scholars program, I served as Mars Rover Project Lead, developing outlines and designs for multiple Mars rovers. We presented this research on viable manned Mars vehicle to industry professionals. We created a multi-stage robotic and manned mobility architecture for Martian canyon excavation and habitat preparation. We focused on power redundancy, structural durability, and autonomous logistics.
