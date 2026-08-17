@@ -65,11 +65,6 @@ ninja.data = [{
           description: "using all-original CAD, an Arduino Micro, and a fork of the deej project",
           section: "Projects",handler: () => {
               window.location.href = "/projects/deej/";
-            },},{id: "projects-manned-and-robotic-mars-mission-architecture",
-          title: 'Manned and Robotic Mars Mission Architecture',
-          description: "for canyon excavation and habitat preparation",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/marsdesigns/";
             },},{id: "projects-synthetic-aperture-radar-at-mit-lincoln-laboratory",
           title: 'Synthetic Aperture Radar at MIT Lincoln Laboratory',
           description: "conducting and presenting research on SAR and Doppler at MIT LL RISE",
