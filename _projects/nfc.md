@@ -78,13 +78,13 @@ I routed, deleted, and rerouted the traces for the LEDs around six times. I sett
 
 ## PCB Industrial Design & Aesthetics
 
-### Front Layout Strategy
+### Layout Strategy
+
+
+
+I thought it'd be aesthetically pleasing to keep all ICs and passive components to the left third of the PCB. 
 
 ### Back Layout Strategy
-
----
-
-## Firmware Architecture & Optimization
 
 ---
 

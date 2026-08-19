@@ -8,20 +8,19 @@
     - name: Email
       value: <a href="mailto:hello@wilsonharper.net">hello@wilsonharper.net</a>
     - name: LinkedIn
-      value: <a href="http://linkedin.com/in/Wilson-Harper">Wilson-Harper</a>
+      value: <a href="http://linkedin.com/in/Wilson-Harper">Wilson Harper</a>
     - name: Location
       value: Houston, TX
 
 - title: Education
   type: time_table
   contents:
-    - title: B.S. Electrical & Computer Engineering; Minor in Entrepreneurship
+    - title: B.S. Electrical Engineering; Minor in Entrepreneurship
       institution: Rice University — Houston, TX
       year: Class of 2029
       icon: fa-solid fa-graduation-cap
       description:
         - Lillian Haynie Trustee Scholar; Martel College Outstanding New Student Award
-        - Secretary, Martel College Parliament
     - title: High School Diploma
       institution: Davis High School — Yakima, WA
       year: 2021 - 2025
@@ -29,32 +28,56 @@
       description:
         - Earned 3.99 GPA, IB Diploma, and Washington State Seal of Biliteracy in Spanish
 
-- title: Engineering Experience
+- title: Experience
   type: time_table
   contents:
     - title: Electrical Engineering Intern
       institution: RTX BBN Technologies
-      year: 2026
+      year: Summer 2026
       icon: fa-solid fa-microchip
       description:
+        - Informed system architecture and analysis for a low-cost mobile embedded system within an agile team
+        - Evaluated radar range and detection ability on small mobile platforms through rigorous field testing
+        - Executed trade studies to select COTS boards and positioning systems under tight SWaP-C constraints
+        - Developed rugged field deployment solutions for high-speed, FPGA-based fiber-optic hardware systems
+        - Integrated in-house PCBs and COTS power supplies into operator-centric custom rackmount enclosures
+        - Designed a 4-layer PCB in Altium for harsh environments, integrating high-speed ICs and a robust PDN
     - title: Mission Control Lead, Rice Eclipse Rocketry
       institution: Rice Eclipse Rocketry
       year: 2025 - Present
       icon: fa-solid fa-rocket
       description:
-        - Leading development of electronics and software for Rice’s liquid engine development program
-        - Integrating Raspberry Pi with LabJack DAQ and solenoids for critical control and data gathering
+        - Leading development of electronics and software for Rice's liquid engine development program
+        - Executed the program's first successful liquid hotfire, enabling the transition to future liquid launches
+        - Integrating Raspberry Pi with custom PCBs, LabJack DAQ, and solenoids for critical control and data gathering
         - Designing avionics architecture for an Active Flight Stabilization system intended for a spaceshot rocket
         - Integrating RP2350 with I2C/UART/SPI sensors on a custom PCB to actuate servo canards in real-time
     - title: Undergraduate Researcher
       institution: Rice Experimental Pixels Lab
-      year: 2026
+      year: Spring 2026
       icon: fa-solid fa-flask
       description:
         - Engineering a compact, highly directional wind system to synchronize physical airflow with XR environments
         - Designing and integrating remote blowers, ducting, and control circuitry within strict spatial constraints
         - Implementing UDP with networked POE-powered ESP32s, servos, and PWM fans
-    - title: Custom LoRa Rocket Flight Computer & Telemetry Stack
+    - title: Teaching Assistant, BUSI 361 (Communication for Entrepreneurs)
+      institution: Rice University — Houston, TX
+      year: Spring 2026
+      icon: fa-solid fa-chalkboard-user
+      description:
+        - Facilitated instruction on communication, conflict resolution, networking, and workplace dynamics
+    - title: Summer Camp Staff
+      institution: Spokane, WA
+      year: Summer 2025
+      icon: fa-solid fa-campground
+      description:
+        - Responsible for up to 65 guests at a remote location accessible only by boat
+        - Handled high-stakes logistics, guest relations, and conflict resolution for attendees
+
+- title: Technical Projects
+  type: time_table
+  contents:
+    - title: Custom Rocket Flight Computer & Telemetry Stack
       institution: Personal Project
       year: 2026
       icon: fa-solid fa-satellite-dish
@@ -74,46 +97,28 @@
       year: 2022 - 2025
       icon: fa-solid fa-screwdriver-wrench
       description:
-        - Led the design of a UAV capable of navigating GPS-denied environments with optical flow and LiDAR
+        - Led national-competition team in design of UAV with optical flow and LiDAR to navigate in tight environments
         - Implemented EKF sensor fusion, remote telemetry, modular airframe, and servo-actuated gripper
-    - title: Researcher
+    - title: Doppler & Synthetic Aperture Radar Researcher
       institution: MIT Lincoln Laboratory RISE
-      year: 2024
+      year: Summer 2024
       icon: fa-solid fa-flask
       description:
         - One of ~4% of applicants selected for DoD-sponsored free research experience
         - Researched, built, and programmed Doppler and synthetic aperture radars, mentored by Lincoln Labs staff
-
-- title: Professional Experience
-  type: time_table
-  contents:
-    - title: Teaching Assistant, BUSI 361 (Communication for Entrepreneurs)
-      institution: Rice University — Houston, TX
-      year: 2026
-      icon: fa-solid fa-chalkboard-user
-      description:
-        - Facilitating instruction on communication, conflict resolution, networking, and workplace dynamics
-        - Coaching students on public speaking to effectively communicate complex concepts
-    - title: Summer Camp Staff
-      institution: Spokane, WA
-      year: 2025
-      icon: fa-solid fa-campground
-      description:
-        - Responsible for up to 65 guests at a remote location accessible only by boat
-        - Handled high-stakes logistics, guest relations, and conflict resolution for attendees
 
 - title: Skills
   type: nested_list
   contents:
     - title: Certifications
       items:
-        - Technician Class Amateur Radio License, Tripoli Level 1 High Powered Rocketry Certification
+        - General Class Amateur Radio License, Tripoli Level 1 High Powered Rocketry Certification
     - title: Hardware & Systems
       items:
         - LiDAR, radar, sensor integration, UAVs, PCB design, microcontrollers, LoRa, telemetry
     - title: Software
       items:
-        - Python, CAD (Fusion, Onshape), ArduPilot, Cloudflare, Tailscale, KiCad
+        - Python, CAD (Fusion, Onshape), ArduPilot, Cloudflare, Tailscale, KiCad, Altium
     - title: Tools
       items:
-        - oscilloscopes, soldering, 3D printing, CNC routing, hand tools, multimeters, breadboards
+        - oscilloscopes, soldering, 3D printing, hand tools, multimeters, breadboards, function generators
