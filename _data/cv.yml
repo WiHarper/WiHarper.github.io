@@ -50,16 +50,16 @@
         - Leading development of electronics and software for Rice's liquid engine development program
         - Executed the program's first successful liquid hotfire, enabling the transition to future liquid launches
         - Integrating Raspberry Pi with custom PCBs, LabJack DAQ, and solenoids for critical control and data gathering
-        - Designing avionics architecture for an Active Flight Stabilization system intended for a spaceshot rocket
-        - Integrating RP2350 with I2C/UART/SPI sensors on a custom PCB to actuate servo canards in real-time
+        - Designed avionics architecture for an Active Flight Stabilization system intended for a spaceshot rocket
+        - Integrated RP2350 with I2C/UART/SPI sensors on a custom PCB to actuate servo canards in real-time
     - title: Undergraduate Researcher
       institution: Rice Experimental Pixels Lab
       year: Spring 2026
       icon: fa-solid fa-flask
       description:
-        - Engineering a compact, highly directional wind system to synchronize physical airflow with XR environments
-        - Designing and integrating remote blowers, ducting, and control circuitry within strict spatial constraints
-        - Implementing UDP with networked POE-powered ESP32s, servos, and PWM fans
+        - Engineered a compact, highly directional wind system to synchronize physical airflow with XR environments
+        - Designed and integrated remote blowers, ducting, and control circuitry within strict spatial constraints
+        - Implemented UDP with networked POE-powered ESP32s, servos, and PWM fans
     - title: Teaching Assistant, BUSI 361 (Communication for Entrepreneurs)
       institution: Rice University — Houston, TX
       year: Spring 2026
