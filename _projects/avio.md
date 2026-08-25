@@ -479,7 +479,7 @@ Finally, the script saves a local `.csv` file in case there are any issues with 
     </div>
 </div>
 
-On March 14th, we drove out to Hearne, through Aggieland! The wind was mostly calm with occasional gusts. I packed in a CTI H135 motor and disconnected the screw switch. The ground station started receiving packets. I put the rocket on the pad. 
+On March 14th, we drove out to Hearne, TX. The wind was mostly calm with occasional gusts. I packed in a CTI H135 motor and disconnected the screw switch. The ground station started receiving packets. I put the rocket on the pad. 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
