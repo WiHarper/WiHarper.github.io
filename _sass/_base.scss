@@ -4,6 +4,21 @@
 
 // Typography
 
+// All headers and titles use Roboto Mono
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand,
+.post-title,
+.header-bar h1,
+.publications h1,
+.publications h2 {
+  font-family: "Roboto Mono", "Consolas", "Courier New", monospace;
+}
+
 p,
 h1,
 h2,
