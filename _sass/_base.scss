@@ -273,6 +273,8 @@ ul.task-list input[type="checkbox"] {
 
 .dropdown-item {
   color: var(--global-text-color);
+  font-family: $title-mono-font;
+  letter-spacing: -0.03em;
 
   &:hover {
     color: var(--global-hover-color);
@@ -299,10 +301,18 @@ ul.task-list input[type="checkbox"] {
 
   .navbar-brand {
     color: var(--global-text-color);
+
+    &.title {
+      font-family: $title-mono-font;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+    }
   }
 
   .navbar-nav .nav-item .nav-link {
     color: var(--global-text-color);
+    font-family: $title-mono-font;
+    letter-spacing: -0.03em;
 
     &:hover {
       color: var(--global-hover-color);
@@ -622,6 +632,10 @@ footer.sticky-bottom {
 }
 
 .post-title {
+  font-family: $title-mono-font;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+
   mjx-container[jax="CHTML"][display="true"] {
     display: unset;
   }
@@ -714,6 +728,19 @@ footer.sticky-bottom {
         color: var(--global-theme-color);
       }
     }
+  }
+
+  .card .card-body .card-title,
+  .card .card-body .card-title a {
+    font-family: $title-mono-font;
+    font-size: 1.575rem;
+    font-weight: 600; /* Try 700, 800, or bold */
+    line-height: 1.3;
+    letter-spacing: -0.04em;
+  }
+
+  .card .card-body .card-text {
+    font-size: 1.0rem;
   }
 
   .card {

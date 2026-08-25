@@ -17,5 +17,7 @@ services:
       - 35729:35729
     volumes:
       - .:/srv/jekyll
+    # Use the repo script so local entry_point.sh changes apply without rebuilding
+    command: ["/srv/jekyll/bin/entry_point.sh"]
     environment:
       - JEKYLL_ENV=development
