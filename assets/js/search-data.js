@@ -55,6 +55,11 @@ ninja.data = [{
           description: "creating a custom logging and telemetry system for my L1 certification rocket",
           section: "Projects",handler: () => {
               window.location.href = "/projects/avio/";
+            },},{id: "projects-open-source-active-pcb-business-card-powered-by-nfc",
+          title: 'Open-Source Active PCB Business Card Powered by NFC',
+          description: "using RF to power an MCU and 21 animated LEDs from a smartphone",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/businesscard/";
             },},{id: "projects-a-diy-integrated-circuit-clock-and-case",
           title: 'A DIY Integrated Circuit Clock and Case',
           description: "making a case (literal and figurative) for an AliExpress project, breaking it, and fixing it",
