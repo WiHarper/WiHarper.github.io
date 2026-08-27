@@ -1,17 +1,22 @@
 ---
 layout: page
-title: An Open-Source Active PCB Business Card Powered by NFC
-description: using NFC energy harvesting to power an 8-bit MCU and 21 animated LEDs from a smartphone tap
-img: assets/img/nfc/thumb.png
+title: Open-Source Active PCB Business Card Powered by NFC
+description: using RF to power an MCU and 21 animated LEDs from a smartphone
+img: assets/img/nfc/thumb.jpg
 importance: 45
 category:
 related publications: false
-published: false
+published: true
 ---
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/nfc/hero.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 
-## Project Goals
+## Project Goals 
 
 This project started about three months ago. I was learning KiCad and wanted an easy project to make before I jumped into complex 4-layer designs with more complicated microcontrollers. I think that would have been easier, in some ways. This final product taught me more about every aspect of the PCB process than I could have expected, but the result is also way better than I could have expected. I also think it's the first of its kind.
 
@@ -22,7 +27,7 @@ This project started about three months ago. I was learning KiCad and wanted an 
             controls 
             playsinline 
             class="img-fluid rounded z-depth-1">
-            <source src="{{ '/assets/img/nfc/nfc.mov' | relative_url }}" type="video/mp4">
+            <source src="{{ '/assets/img/nfc/nfc2.mov' | relative_url }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div> 
@@ -40,13 +45,18 @@ It's worth explaining how NFC works: Your phone continuously emits a small magne
 
 The theory behind it didn't seem that complicated to me. I quickly made a schematic in KiCad. I chose the STMicro chip because I thought its datasheet seemed friendlier. The ATtiny412 microchip was also an easy choice with its compact size, sufficient GPIOs, and very low power requirements. 
 
-//schematic picture here
 
-The LEDs are connected using a technique called [Charlieplexing](https://en.wikipedia.org/wiki/Charlieplexing), exploiting the face that LEDs are, of course, diodes. The Wikipedia article is a great guide to it, but the key is that tri-state logic can be used to have a few GPIOs control many LEDs. Specifically, the formula is: y = x*(x-1) where y is the number of LEDs that can be independently controlled and x is the number of GPIOs. The primary downside is that only one LED can be lit at a time, but that can be mitigated by using PWM and spreading duty cycles across multiple LEDs.
+<div class="row justify-content-sm-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/sch1.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
-For this first draft, I used 4 GPIOs to control 12 LEDs.
 
-// charlieplexing diagram
+The LEDs are connected using a technique called [Charlieplexing](https://en.wikipedia.org/wiki/Charlieplexing), exploiting the face that LEDs are, of course, diodes. The Wikipedia article is a great guide to it, but the key is that tri-state logic can be used to have a few GPIOs control many LEDs. Specifically, the formula is: y = x*(x-1) where y is the number of LEDs that can be independently controlled and x is the number of GPIOs. The primary downside is that only one LED can be lit at a time, but that can be mitigated by using PWM and spreading duty cycles across multiple LEDs. For this first draft, I used 4 GPIOs to control 12 LEDs.
+
+
+
 
 ---
 
@@ -58,13 +68,32 @@ Because I was away from Rice University this summer, I didn't have a way to asse
 
 With these constraints, there was no reason not to go with a QFN package, which the ATtiny412 does not have. After some research, I found the ATtiny816. It's similar to the ATtiny412 but with 17 GPIOs and a much thinner 3x3mm VQFN package. This choice allowed me to move to 20 Charlieplexed LEDs and a simple indicator LED that goes to `GND`. 
 
+<div class="row justify-content-sm-center">
+    <div class="col-sm-6 mt-3 mt-md-0">
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/new_sch.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
 ---
 
 ## Hardware Choices & Bill of Materials
 
+
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-12 mt-3 mt-md-0">
+        <iframe 
+            src="https://wilsonharper.net/assets/html/ibom.html" 
+            style="width: 100%; height: 800px; border: none;"
+            title="Interactive Bill of Materials">
+        </iframe>
+    </div>
+</div>
+
+View full details *[here](https://wilsonharper.net/assets/html/ibom.html)*.
+
 ---
 
-## Circuit Math & Hardware Engineering
 
 ### Antenna Physics & Resonance Calculation
 
@@ -88,11 +117,17 @@ I decided to use 100-Ohm resistors on each of the Charlieplexed traces. The tota
 ## PCB Layout & RF Isolation Design
 
 
-I determined the dimensions and properties of the antenna using STM's [antenna inductance tool](link). I wanted the antenna to take up the full space of the card, so I just played around with turn count, trace width, and trace spacing until I found a combination that worked well. I needed the inductance to be exactly xuH. This worked:
+I determined the dimensions and properties of the antenna using STM's [antenna inductance tool](https://eds.st.com/antenna/#/). I wanted the antenna to take up the full space of the card, so I just played around with turn count, trace width, and trace spacing until I found a combination that worked well. I needed the inductance to be close to 2.75µH. This worked:
 
-// STM calculator image
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/nfc/st.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
-I went ahead and routed the PCB. I was surprised that KiCad doesn't offer a built-in antenna or coil generation tool, and all plug-ins I tried were not capable of a rectangular spiral. A KiPython script was the answer. An LLM helped create the script, and it was working after a few minutes of conversation. It generates a simple rectangular-spiral trace that matched the numbers I put into the SMT calculator. I've included the `.py` file in the repo, and I could see it being genuinely useful to folks. Afterward, I rounded the corners by hand--this modification changed the enclosed area by no more than a few percent.
+Because this inductance is a bit lower, it gives me the ability to tune it up or down. If it was exactly 2.75µH already, I could add a capacitor in parallel to increase the inductance--but there'd be no way to decrease the inductance! 
+
+I went ahead and routed the PCB. I was surprised that KiCad doesn't offer a built-in antenna or coil generation tool, and all plug-ins I tried were not capable of a rectangular spiral. A KiPython script was the answer. An LLM helped create the script, and it was working after a few minutes of conversation. It generates a simple rectangular-spiral trace that matched the numbers I put into the SMT calculator. I've included the `.py` file [in the repo](https://github.com/WiHarper/nfc_card/blob/main/coil.py), and I could see it being genuinely useful to folks. Afterward, I rounded the corners by hand--this modification changed the enclosed area by no more than a few percent.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -128,7 +163,12 @@ Net colors made it easier to understand which trace goes where. The ribbon topol
 
 I decided to show all traces on the back of the card. I also created a simple block diagram and IC BoM. To copy the traces to the `B.Silkscreen` layer, I plotted `F.Cu` and `B.Cu` as `.SVGs` and imported them onto `B.Silkscreen`, aligning them by eye. The routing is unusual in many ways, and I am sure a seasoned electrical engineer would notice changes worth making. I'm sure more than one person is reading this and thinking *Why didn't he use a ground plane?* A ground plane would prevent all flux through the antenna, killing it. With my goals of minimizing enclosed current and creating an interesting and pleasing aesthetic, I think the end result is solid. 
 
-// back of card
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/nfc/back.png" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
 
 ---
 
@@ -139,18 +179,29 @@ The cards are the same dimensions as a credit card, and I paid a bit extra to ma
 
 When I went to purchase, I had to make a decision: Should I order just a few to see if they work, or should I commit all the way? After hours in JLCPCB's quoting tool, I realized the marginal cost of each additional card was tiny, and the difference between purchasing five and thirty wasn't huge. I bit the bullet, crossed my fingers, and ordered thirty.
 
+When it first arrived, I started by testing if it could even harvest power. I hooked up an LED across `VCC` and `GND`... and it worked! Of course, it's hard to take a picture of the card while it's against the back of the phone.
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/nfc/PXL_20260720_232537413.jpgg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+
 
 ---
+
 
 ## Programming
 
 
-I have three small exposed pads on the back: `GND`, `VCC`, and `UPDI`. This order--similar to RC servos--prevents any damage if the connection is rotated 180 degrees. Each pad is 1.8mm in diameter with a center-to-center distance of 0.1"/0.254mm. This standard breadboard distance allows me to use the [Adafruit Pogo Pin Clip](link) to connect to it without adding another component. Because business cards are handled roughly and thrown in static-y wallets and pockets, I added a TVS diode bridging `UPDI` and `GND` so any high voltage flows straight into ground instead of frying the MCU.
+
+I have three small exposed pads on the back: `GND`, `VCC`, and `UPDI`. This order--similar to RC servos--prevents any damage if the connection is rotated 180 degrees. Each pad is 1.8mm in diameter with a center-to-center distance of 0.1"/0.254mm. This standard breadboard distance allows me to use the a [Pogo Pin Clip](https://www.adafruit.com/product/5434) to connect to it without adding another component. Because business cards are handled roughly and thrown in static-y wallets and pockets, I added a TVS diode bridging `UPDI` and `GND` so any high voltage flows straight into ground instead of frying the MCU.
 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/nfc/using updi.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/nfc/PXL_20260720_232539684.jpg" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -164,9 +215,9 @@ I have three small exposed pads on the back: `GND`, `VCC`, and `UPDI`. This orde
 
 The ATtiny816 is programmed over UPDI--Unified Program and Debug Interface. It's similar to UART but in a single-wire format. There are official debuggers, and USB-to-serial adapters can work too. People have also used Arduinos and RPi Picos as programmers, and that last option sounded like the most fun. The majority of Arduinos that support the jtag2updi firmware have 5V logic levels, so I had to go with a Pico. I found a `UF2` file, wired everything up, and... nothing happened. I spent hours working through IDE settings and trying different pins. Finally, I had the bright idea to hook up its output to an oscilloscope. Nothing happened. I felt very silly and decided to order the [Adafruit UPDI Friend](https://www.adafruit.com/product/5879). It worked instantly.
 
-The [code itself](link to code) is similar in some ways to a basic blinking Arduino sketch. However, I wrote the main loop in bare-metal C so the Charlieplexed matrix could loop as fast as possible, keeping flicker to a minimum. 
+The [code itself](https://github.com/WiHarper/nfc_card/blob/main/nfc_card.ino) is similar in some ways to a basic blinking Arduino sketch. However, I wrote the main loop in bare-metal C so the Charlieplexed matrix could loop as fast as possible, keeping flicker to a minimum. 
 
-The NTAG I2C Plus is ironically not connected to the ATtiny through I2C. To program it, I initially used the well-known [NFC Tools](link) Android app. After some errors, I realized the [NXP TagWriter] app worked much better to format and write my contact info to the card.
+The NTAG I2C Plus is ironically not connected to the ATtiny through I2C. To program it, I initially used the well-known [NFC Tools](https://play.google.com/store/apps/details?id=com.wakdev.wdnfc&hl=en_US) Android app. After some errors, I realized the [NXP TagWriter](https://play.google.com/store/search?q=nxp+tagwriter&c=apps&hl=en_US) app worked much better to format and write my contact info to the card.
 
 The QR code and NFC link both direct devices to [connect.wilsonharper.net](connect.wilsonharper.net). Currently, that just redirects to [wilsonharper.net](wilsonharper.net), but I can configure it in Cloudflare to route to any URL.  
 
@@ -176,5 +227,8 @@ The thirty cards I have now ought to last a while. Once I do run out, though, I 
 
 "Hardware is hard" is a phrase I've heard frequently, and this project made me realize how true it is. Individually, nothing in this project is novel or even that complicated: NFC PCB antennas, blinky LEDs with an MCU, and PCB business cards have all been done before. As far as I can tell, though, no one has combined them into one aesthetically-pleasing package. There were moments where I felt sure this was beyond my capabilities. After triple-checking every possible issue, I realized I just had to send it, and I'm so glad I did.
 
-// image
-
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/nfc/hero2.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
