@@ -27,8 +27,8 @@ At Rice, I serve as the Mission Control lead for [Rice Eclipse](https://eclipse.
 I’m excited to get even more hands-on, practical experience with electrical and computer engineering, and I'd love to chat about aerospace, Rice, or anything else!
 
 Feel free to check out my [projects](https://wilsonharper.net/projects/), [resume](https://wilsonharper.net/resume/), or contact me below. I'm especially proud of my:
+- [NFC-powered business card](https://wilsonharper.net/projects/adsb/) that uses RF to power an MCU and 21 animated LEDs from a smartphone
 - [Live telemetry and logging system](https://wilsonharper.net/projects/avio/) for my L1 certification rocket--built in two weeks
-- [ADS-B feeder](https://wilsonharper.net/projects/adsb/) equipped with a custom antenna and running Tailscale and Cloudflare Tunnels
 - [UAV](https://wilsonharper.net/projects/uav/) capable of position-holding and transporting objects in GPS-denied environments
 
 

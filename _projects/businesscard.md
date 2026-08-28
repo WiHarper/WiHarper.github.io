@@ -25,7 +25,7 @@ This project started about three months ago as an easy way to learn KiCad before
             controls 
             playsinline 
             class="img-fluid rounded z-depth-1">
-            <source src="{{ '/assets/img/nfc/nfc.mp4' | relative_url }}" type="video/mp4">
+            <source src="{{ '/assets/img/nfc/nfc_fixed.mp4' | relative_url }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div> 
