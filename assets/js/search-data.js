@@ -55,8 +55,8 @@ ninja.data = [{
           description: "creating a custom logging and telemetry system for my L1 certification rocket",
           section: "Projects",handler: () => {
               window.location.href = "/projects/avio/";
-            },},{id: "projects-open-source-active-pcb-business-card-powered-by-nfc",
-          title: 'Open-Source Active PCB Business Card Powered by NFC',
+            },},{id: "projects-nfc-energy-harvesting-pcb-business-card-with-an-mcu",
+          title: 'NFC Energy-Harvesting PCB Business Card with an MCU',
           description: "using RF to power an MCU and 21 animated LEDs from a smartphone",
           section: "Projects",handler: () => {
               window.location.href = "/projects/businesscard/";
