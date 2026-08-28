@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Open-Source Active PCB Business Card Powered by NFC
+title: NFC Energy-Harvesting PCB Business Card with an MCU
 description: using RF to power an MCU and 21 animated LEDs from a smartphone
 img: assets/img/nfc/thumb.jpg
 importance: 45
@@ -34,9 +34,9 @@ This project started about three months ago as an easy way to learn KiCad before
 
 I've seen all sorts of business cards done on PCBs. [Most that I've seen](https://salvagedcircuitry.com/pcb-business-card.html) use the silkscreen and maybe exposed copper to include contact details and a QR code. These are really cool--but they're more about graphic design than electrical engineering. [Others](https://mrdrprofbolt.wordpress.com/2020/04/16/an-electronic-business-card/) include more complicated features like displays, batteries, and inputs--super cool, but expensive and thick.
 
-I wanted to make something that challenged me but was simple and cheap enough to be able to give to people. Eventually, I stumbled upon [NFC business cards](https://www.instructables.com/PCB-Business-Card-With-NFC/). This concept was perfect: no battery required, some basic RF engineering, and a cheap BOM. Once I started looking into specific NFC chips, I realized a few even have the ability to harvest NFC energy for other components--most notably, the NXP NTAG I2C Plus and the STMicro ST25DV-KC. 
+I wanted to make something simple and cheap enough to be able to give to people. Eventually, I stumbled upon [NFC business cards](https://www.instructables.com/PCB-Business-Card-With-NFC/). This concept was perfect: no battery required, some basic RF engineering, and a cheap BOM. Once I started looking into specific NFC chips, I realized a few even have the ability to harvest NFC energy for other components--most notably, the NXP NTAG I2C Plus and the STMicro ST25DV-KC. 
 
-It's worth explaining how NFC works: Your phone continuously emits a small magnetic field. An NFC card picks up on that field, making your phone act like a tiny wireless charger. The card never actually transmits a message to your phone. Instead, it changes how much energy it absorbs from the field, and your phone detects those power dips and converts them to binary data. Most NFC tags use this harvested energy only to run their internal memory, but some NFC chips are able to take excess DC voltage and route it out to external hardware. This business card uses that last feature.
+I should explain how NFC works: Your phone continuously emits a small magnetic field. An NFC card picks up on that field, making your phone act like a tiny wireless charger. The card never actually transmits a message back to your phone. Instead, it changes how much energy it absorbs from the field, and your phone detects those power dips and converts them to binary data. Most NFC tags use this harvested energy only to run their internal circuitry, but some NFC chips are able to take excess DC voltage and route it out to external hardware. This business card uses that last feature.
 
 The theory didn't seem too complicated. I quickly made a schematic in KiCad. The ATtiny412 microchip was an easy choice with its compact size, sufficient GPIOs, and very low power requirements.
 
@@ -46,7 +46,7 @@ The theory didn't seem too complicated. I quickly made a schematic in KiCad. The
     </div>
 </div>
 
-The LEDs are connected using a technique called [Charlieplexing](https://en.wikipedia.org/wiki/Charlieplexing), exploiting the unidirectional current flow inherent to diodes. The Wikipedia article is a great guide to it, but the key is that tri-state logic can be used to have a few GPIOs control many LEDs. Specifically, the formula is: y = x⋅(x-1) where y represents the number of LEDs that can be independently controlled, and x represents the number of GPIOs. The primary downside is that only one LED can be lit at a time, but that can be mitigated by using PWM and spreading duty cycles across multiple LEDs. For this first draft, I used 4 GPIOs (`GPIO_A` through `GPIO_D`) to control 12 LEDs.
+The LEDs are connected using a technique called [Charlieplexing](https://en.wikipedia.org/wiki/Charlieplexing), exploiting the unidirectional current flow inherent to diodes. That Wikipedia article is a great guide to it, but the key is that tri-state logic can be used to have a few GPIOs control many LEDs. Specifically, the formula is: y = x⋅(x-1) where y represents the number of LEDs that can be independently controlled, and x represents the number of GPIOs. The primary downside is that only one LED can be lit at a time, but that can be mitigated by using PWM and spreading duty cycles across multiple LEDs. For this first draft, I used 4 GPIOs (`GPIO_A` through `GPIO_D`) to control 12 LEDs.
 
 ---
 
@@ -72,7 +72,7 @@ As I was reading through the NTAG I2C Plus datasheet, I noticed it specified tha
     </div>
 </div>
 
-The large 10 µF capacitor at the bottom helps smooth out `VCC`, but it would draw too much current at startup. R3 limits inrush current to just a few mA. Once the capacitor becomes charged, though, R3 would slow the capacitor down too much. The MOSFET, Q1, acts as a switch. After 120 ms, C3 is fully charged. The MCU pulls `GATE` low, giving the capacitor a low-impedance path to smooth voltage drops. R2 is just a pull-up resistor to keep `GATE` high for the first 120 ms. This creates a circuit with the benefits of a large capacitor without ignoring the datasheet.
+The large 10 µF capacitor at the bottom helps smooth out `VCC`, but it would draw too much current at startup. `R3` limits inrush current to just a few mA. Once the capacitor becomes charged, though, `R3` would slow the capacitor down too much. The MOSFET, `Q1`, acts as a switch. After 120 ms, `C3` is fully charged. The MCU pulls `GATE` low, giving the capacitor a low-impedance path to smooth voltage drops. `R2` is just a pull-up resistor to keep `GATE` high for the first 120 ms. This creates a circuit with the benefits of a large capacitor without ignoring the datasheet.
 
 I decided to use 100 Ω resistors on each of the Charlieplexed traces. The total resistance is effectively doubled because current must flow out of one GPIO, through the resistor, through the LED, and then through another resistor. I also realized that if 100 Ω resistors allowed too much current, I could PWM the LEDs at a high frequency. With the 10 µF capacitor, these pulses would smooth to a steady current, preventing `VOUT` from collapsing. At a 1 kHz refresh and 20% duty cycle, the math indicates that `VOUT` drops by about 0.2 V.
 
@@ -90,9 +90,9 @@ I determined the dimensions and properties of the antenna using STM's [antenna i
     </div>
 </div>
 
-Because this inductance is a bit lower, it gives me the ability to tune it to exactly the right frequency. If it was exactly 2.75 µH already, I could add a capacitor in parallel to decrease the resonant frequency--but there'd be no way to increase it. I populated a 1.5 pF capacitor so I could tune it lower if needed. 
+Because this inductance is a bit lower, it gives me the ability to tune it to exactly the right frequency. If it were already exactly 2.75 µH, I could add a capacitor in parallel to decrease the resonant frequency--but there'd be no way to increase it. I populated a 1.5 pF capacitor so I could tune it lower if needed. 
 
-I went ahead and routed the PCB. I was surprised that KiCad doesn't offer a built-in antenna or coil generation tool, and all plug-ins I tried were not capable of a rectangular spiral. A KiPython script was the answer. An LLM helped create the script, and it was working after a few minutes of conversation. It generates a simple rectangular-spiral trace that matched the numbers I put into the SMT calculator. I've included the `.py` file [in the repo](https://github.com/WiHarper/nfc_card/blob/main/coil.py), and I could see it being genuinely useful for others. Afterward, I rounded the corners by hand--this modification changed the enclosed area by no more than a few percent.
+I went ahead and routed the PCB. I was surprised that KiCad doesn't offer a built-in antenna or coil generation tool, and all the plug-ins I tried were not capable of a rectangular spiral. A KiPython script was the answer. An LLM helped create the script, and it was working after a few minutes of conversation. It generates a simple rectangular-spiral trace that matched the numbers I put into the SMT calculator. I've included the `.py` file in [the repo](https://github.com/WiHarper/nfc_card/blob/main/coil.py), and I could see it being genuinely useful for others. Afterward, I rounded the corners by hand--this modification changed the enclosed area by just a few percent.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -106,7 +106,7 @@ I went ahead and routed the PCB. I was surprised that KiCad doesn't offer a buil
 
 I thought it'd be aesthetically pleasing to keep all ICs and passive components to the left quarter of the PCB. I routed, deleted, and rerouted the traces for the LEDs something like six times, and I settled on this design. While it is possible to route the traces in a way that results in a shorter average trace length, I wanted to avoid creating a full loop--and I also wanted to minimize loop area. With a full loop, the traces would couple with the NFC field and create destructive eddy currents. By leaving the gap in the top middle of the loop, no currents are able to form, so the antenna remains unaffected by macro-scale RF interference. 
 
-Net colors made it easier (and more fun) to understand which trace goes where. The ribbon topology does still create enclosed current between each trace, a separate effect from the main loop. Keeping spacing and width minimal helped.
+Net colors made it easier (and more fun) to understand which trace goes where. The ribbon topology does still create enclosed current between each trace, a separate effect from the main loop. Keeping trace spacing and width minimal helped.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -150,7 +150,7 @@ Of course, it's hard to take a picture of the card while it's against the back o
 
 ## Programming
 
-I have three small exposed pads on the back: `GND`, `VCC`, and `UPDI`. This order--similar to RC servos--prevents any damage if the connection is rotated 180 degrees. Each pad is 1.8mm in diameter with a center-to-center distance of 0.1"/0.254mm. This standard breadboard distance allows me to use a [Pogo Pin Clip](https://www.adafruit.com/product/5434) to connect to it without adding another component. Business cards are handled roughly and thrown in static-y wallets and pockets, so I added a TVS diode bridging `UPDI` and `GND` so any high voltage flows straight into ground instead of frying the MCU.
+I have three small exposed pads on the back: `GND`, `VCC`, and `UPDI`. This order of pads--similar to RC servos--prevents any damage if the connection is rotated 180 degrees. Each pad is 1.8mm in diameter with a center-to-center distance of 0.1"/0.254mm. This standard breadboard distance allows me to use a [Pogo Pin Clip](https://www.adafruit.com/product/5434) to connect to it without adding another component. Business cards are handled roughly and thrown in static-y wallets and pockets, so I added a TVS diode bridging `UPDI` and `GND` so any high voltage flows straight into ground instead of frying the MCU.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
@@ -167,7 +167,7 @@ The [code itself](https://github.com/WiHarper/nfc_card/blob/main/nfc_card.ino) i
 
 The NTAG I2C Plus is ironically not connected to the ATtiny through I2C. To program it, I initially used the well-known [NFC Tools](https://play.google.com/store/apps/details?id=com.wakdev.wdnfc&hl=en_US) Android app. After some errors, I realized the [NXP TagWriter](https://play.google.com/store/search?q=nxp+tagwriter&c=apps&hl=en_US) app worked much better to format and write my contact info to the card.
 
-The QR code and NFC link both direct devices to [https://connect.wilsonharper.net](https://connect.wilsonharper.net). Currently, that just redirects to [https://wilsonharper.net](https://wilsonharper.net), but I can configure it in Cloudflare to route to any URL.  
+The QR code and NFC link both direct devices to [https://connect.wilsonharper.net](https://connect.wilsonharper.net). Currently, that just redirects to [https://wilsonharper.net](https://wilsonharper.net), but I can configure it in Cloudflare to route to any URL without any hardware changes.  
 
 ---
 
@@ -185,7 +185,7 @@ The QR code and NFC link both direct devices to [https://connect.wilsonharper.ne
     </div>
 </div>
 
-View full details [here](https://wilsonharper.net/assets/html/ibom.html).
+View full BOM details [here](https://wilsonharper.net/assets/html/ibom.html).
 
 ---
 
