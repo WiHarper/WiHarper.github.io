@@ -10,7 +10,7 @@ related publications: false
 
 I built an ADS-B ground station on my dorm balcony--behind restrictive campus WiFi and in Houston heat--using a Pi Zero 2 W, a DIY quarter-wave antenna, and Cloudflare Tunnels and Tailscale. I increased message rate from ~5 to ~750 msg/s, and it now tracks aircraft from Austin to Louisiana.
 
-*The station is currently offline while I spend time away from campus over the summer. It will return!*
+*The station is currently offline--I'm excited to bring it back online as I return to campus.*
 
 <div class="map-facade" id="mapContainer" onclick="loadMap()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter') loadMap()">
     <img src="/assets/img/adsb/preview.png" alt="Live ADS-B Map Preview" class="map-placeholder">
