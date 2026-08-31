@@ -17,7 +17,7 @@ published: true
 
 <br>
 
-*Discussed on [Hacker News](https://news.ycombinator.com/item?id=49478426) and [Hackaday](https://hackaday.com/2026/08/31/building-an-energy-harvesting-business-card/).*
+*Discussed on [Hacker News](https://news.ycombinator.com/item?id=49478426)*
 
 Like most business cards, mine doesn't have a battery. When it's tapped against a phone, though, 21 LEDs start an animation, powered just by NFC.
 
