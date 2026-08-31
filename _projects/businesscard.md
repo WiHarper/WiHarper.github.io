@@ -11,7 +11,7 @@ published: true
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/nfc/hero.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/nfc/hero.jpg" title="Business card" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -36,13 +36,13 @@ I've seen all sorts of business cards done on PCBs. [Most that I've seen](https:
 
 I wanted to make something simple and cheap enough to be able to give to people. Eventually, I stumbled upon [NFC business cards](https://www.instructables.com/PCB-Business-Card-With-NFC/). This concept was perfect: no battery required, some basic RF engineering, and a cheap BOM. Once I started looking into specific NFC chips, I realized a few even have the ability to harvest NFC energy for other components--most notably, the NXP NTAG I2C Plus and the STMicro ST25DV-KC. 
 
-I should explain how NFC works: Your phone continuously emits a small magnetic field. An NFC card picks up on that field, making your phone act like a tiny wireless charger. The card never actually transmits a message back to your phone. Instead, it changes how much energy it absorbs from the field, and your phone detects those power dips and converts them to binary data. Most NFC tags use this harvested energy only to run their internal circuitry, but some NFC chips are able to take excess DC voltage and route it out to external hardware. This business card uses that last feature.
+I should explain how NFC works: Your phone emits a small magnetic field several times a second. An NFC card picks up on that field, making your phone act like a tiny wireless charger. The card never actually transmits a message back to your phone. Instead, it changes how much energy it absorbs from the field, and your phone detects those power dips and converts them to binary data. Most NFC tags use this harvested energy only to run their internal circuitry, but some NFC chips are able to take excess DC voltage and route it out to external hardware. This business card uses that last feature.
 
 The theory didn't seem too complicated. I quickly made a schematic in KiCad. The ATtiny412 microchip was an easy choice with its compact size, sufficient GPIOs, and very low power requirements.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/sch1.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/sch1.png" title="First schematic" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -52,7 +52,7 @@ The LEDs are connected using a technique called [Charlieplexing](https://en.wiki
 
 ## System Architecture
 
-While I initially chose an ATtiny412 MCU, I realized it was suboptimal for a few reasons. It only has 5 GPIOs and comes only in through-hole/leaded-pin packages, not QFN, making it sit taller off the PCB.
+While I initially chose an ATtiny412 MCU, I realized it was suboptimal for a few reasons. It only has 5 GPIOs and comes only in SOIC/leaded-pin packages, not QFN, making it sit taller off the PCB.
 
 Because I was away from college this summer, I didn't have a way to assemble PCBs, so I needed to have JLCPCB assemble them for me. Also, if I planned on giving these to people, I didn't want any lead in them, and I don't have access to a lead-free electronics workspace even back at college. JLCPCB supports full RoHS compliance, so it was an easy choice.
 
@@ -60,7 +60,7 @@ Since I was getting it professionally assembled anyway, I might as well go with 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/nfc/new_sch.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/nfc/new_sch.png" title="New schematic" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -68,11 +68,11 @@ As I was reading through the NTAG I2C Plus datasheet, I noticed it specified tha
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/nfc/cap.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/nfc/cap.png" title="Capacitor circuit" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
-The large 10 µF capacitor at the bottom helps smooth out `VCC`, but it would draw too much current at startup. `R3` limits inrush current to just a few mA. Once the capacitor becomes charged, though, `R3` would slow the capacitor down too much. The MOSFET, `Q1`, acts as a switch. After 120 ms, `C3` is fully charged. The MCU pulls `GATE` low, giving the capacitor a low-impedance path to smooth voltage drops. `R2` is just a pull-up resistor to keep `GATE` high for the first 120 ms. This creates a circuit with the benefits of a large capacitor without ignoring the datasheet.
+The large 10 µF capacitor, C3, at the bottom helps smooth out `VCC`, but it would draw too much current at startup. `R3` limits inrush current to just a few mA. Once the capacitor becomes charged, though, `R3` would slow the capacitor down too much. The P-Channel MOSFET, `Q1`, acts as a switch. After 120 ms, `C3` is fully charged. The MCU pulls `GATE` low, giving the capacitor a low-impedance path to smooth voltage drops. `R2` is just a pull-up resistor to keep `GATE` high for the first 120 ms. This creates a circuit with the benefits of a large capacitor without ignoring the datasheet.
 
 I decided to use 100 Ω resistors on each of the Charlieplexed traces. The total resistance is effectively doubled because current must flow out of one GPIO, through the resistor, through the LED, and then through another resistor. I also realized that if 100 Ω resistors allowed too much current, I could PWM the LEDs at a high frequency. With the 10 µF capacitor, these pulses would smooth to a steady current, preventing `VOUT` from collapsing. At a 1 kHz refresh and 20% duty cycle, the math indicates that `VOUT` drops by about 0.2 V.
 
@@ -86,17 +86,17 @@ I determined the dimensions and properties of the antenna using STM's [antenna i
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/st.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/st.png" title="STM inductance calculator" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 Because this inductance is a bit lower, it gives me the ability to tune it to exactly the right frequency. If it were already exactly 2.75 µH, I could add a capacitor in parallel to decrease the resonant frequency--but there'd be no way to increase it. I populated a 1.5 pF capacitor so I could tune it lower if needed. 
 
-I went ahead and routed the PCB. I was surprised that KiCad doesn't offer a built-in antenna or coil generation tool, and all the plug-ins I tried were not capable of a rectangular spiral. A KiPython script was the answer. An LLM helped create the script, and it was working after a few minutes of conversation. It generates a simple rectangular-spiral trace that matched the numbers I put into the SMT calculator. I've included the `.py` file in [the repo](https://github.com/WiHarper/nfc_card/blob/main/software/coil.py), and I could see it being genuinely useful for others. Afterward, I rounded the corners by hand--this modification changed the enclosed area by just a few percent.
+I went ahead and routed the PCB. I was surprised that KiCad doesn't offer a built-in antenna or coil generation tool, and all the plug-ins I tried were not capable of a rectangular spiral. A KiPython script was the answer. An LLM helped create the script, and it was working after a few minutes of conversation. It generates a simple rectangular-spiral trace that matched the numbers I put into the SMT calculator. I've included the `.py` file in [the repo](https://github.com/WiHarper/nfc_card/blob/main/software/coil.py), and I could see it being useful for others. Afterward, I rounded the corners by hand--this modification changed the enclosed area by just a few percent.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/antenna.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/antenna.png" title="Bare antenna" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -110,7 +110,7 @@ Net colors made it easier (and more fun) to understand which trace goes where. T
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/ctraces.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/ctraces.png" title="Full trace layout" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -122,7 +122,7 @@ I decided to show all traces on the back of the card. I also created a simple bl
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/back.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/back.png" title="Business card back" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -140,7 +140,7 @@ When it first arrived, I started by testing if it could even harvest power. I ho
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/PXL_20260720_232537413.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/PXL_20260720_232537413.jpg" title="Testing jig" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -154,10 +154,10 @@ I have three small exposed pads on the back: `GND`, `VCC`, and `UPDI`. This orde
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/PXL_20260720_232539684.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/PXL_20260720_232539684.jpg" title="Programming jig" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/pads.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/pads.png" title="Programming pads" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -197,7 +197,7 @@ The thirty cards I have now should last a while. Once I do run out, though, I pl
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/hero2.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/hero2.jpg" title="Stack of cards" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
