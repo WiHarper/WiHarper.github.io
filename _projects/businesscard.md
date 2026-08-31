@@ -15,6 +15,10 @@ published: true
     </div>
 </div>
 
+<br>
+
+*Discussed on [Hacker News](https://news.ycombinator.com/item?id=49478426) and [Hackaday](https://hackaday.com/2026/08/31/building-an-energy-harvesting-business-card/).*
+
 Like most business cards, mine doesn't have a battery. When it's tapped against a phone, though, 21 LEDs start an animation, powered just by NFC.
 
 This project started about three months ago as an easy way to learn KiCad before jumping into more complex designs. "Easy" didn't last long. This final product taught me more about every aspect of the PCB process than I could have expected, and the result turned out way better than I imagined. The full repo is [here](https://github.com/WiHarper/nfc_card).
@@ -89,7 +93,7 @@ I determined the dimensions and properties of the antenna using STM's [antenna i
         {% include figure.liquid loading="lazy" path="assets/img/nfc/st.png" title="STM inductance calculator" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
-
+ 
 Because this inductance is a bit lower, it gives me the ability to tune it to exactly the right frequency. If it were already exactly 2.75 µH, I could add a capacitor in parallel to decrease the resonant frequency--but there'd be no way to increase it. I populated a 1.5 pF capacitor so I could tune it lower if needed. 
 
 I went ahead and routed the PCB. I was surprised that KiCad doesn't offer a built-in antenna or coil generation tool, and all the plug-ins I tried were not capable of a rectangular spiral. A KiPython script was the answer. An LLM helped create the script, and it was working after a few minutes of conversation. It generates a simple rectangular-spiral trace that matched the numbers I put into the SMT calculator. I've included the `.py` file in [the repo](https://github.com/WiHarper/nfc_card/blob/main/software/coil.py), and I could see it being useful for others. Afterward, I rounded the corners by hand--this modification changed the enclosed area by just a few percent.
