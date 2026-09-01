@@ -80,6 +80,11 @@ ninja.data = [{
           description: "putting together an &quot;it just works&quot; display system for my college commons",
           section: "Projects",handler: () => {
               window.location.href = "/projects/signage/";
+            },},{id: "projects-did-i-design-the-world-39-s-smallest-rocket-flight-computer",
+          title: 'Did I Design the World&amp;#39;s Smallest Rocket Flight Computer?',
+          description: "a work in progress",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/tfc/";
             },},{id: "projects-achieving-stable-flight-in-gps-denied-environments",
           title: 'Achieving Stable Flight in GPS-Denied Environments',
           description: "featuring position-holding, a gripper, and sensor fusion with optical flow and LiDAR",
