@@ -21,7 +21,7 @@ published: true
 
 Like most business cards, mine doesn't have a battery. When it's tapped against a phone, though, 21 LEDs start an animation, powered just by NFC.
 
-This project started about three months ago as an easy way to learn KiCad before jumping into more complex designs. "Easy" didn't last long. This final product taught me more about every aspect of the PCB process than I could have expected, and the result turned out way better than I imagined. The full repo is [here](https://github.com/WiHarper/nfc_card).
+This project started about three months ago as an easy way to get more experience with PCB design. "Easy" didn't last long. This final product taught me more about every aspect of the PCB process than I could have expected, and the result turned out way better than I imagined. The full repo is [here](https://github.com/WiHarper/nfc_card).
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
