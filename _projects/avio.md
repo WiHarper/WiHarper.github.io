@@ -10,6 +10,8 @@ related publications: false
 
 I had exactly two weeks to design and build a custom flight computer for my Level 1 high-power certification rocket. I wanted an RP2040-based flight computer transmitting telemetry data over LoRa, logging at 20 Hz to a μSD card, and updating a live 3D tracker in Google Earth. Here's how I went from a cardboard prototype to flying the avionics system in 14 days.
 
+*Work-in-progress 10 x 10mm V2 [here](https://wilsonharper.net/projects/tfc/)*
+
 [**Skip to the launch**](https://wilsonharper.net/projects/avio/#launch)
 
 
