@@ -17,7 +17,7 @@ published: true
 
 Six months ago, I built a [flight computer](https://wilsonharper.net/projects/avio/) in two weeks. Using what I've learned from that project, I've designed a new flight computer that I believe to be the world's smallest, measuring just 10 x 10mm. The current record seems to be a [16 x 17mm computer](https://www.youtube.com/watch?v=5TTcbMv5tDc) built by Joe at BPS.Space. Mine is 36% the size of his. Joe's build was focused on a compact way to achieve thrust-vector control. Mine is designed to go on more traditional hobby rockets, so I haven't included PWM servo outputs--giving me space to add 16 MB of onboard flash.
 
-It's currently being fabricated and assembled, and this page will be updated as it progresses.
+I plan to fabricate and assemble it soon, and this page will be updated as it progresses.
 
 The flight computer features an STM32L4 microcontroller and a flash chip running in Quad-SPI. Because the STM32L4 supports QSPI and DMA, data can be quickly moved to flash without stalling loops.
 
