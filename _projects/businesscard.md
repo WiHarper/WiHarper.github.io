@@ -110,7 +110,7 @@ I went ahead and routed the PCB. I was surprised that KiCad doesn't offer a buil
 
 I thought it'd be aesthetically pleasing to keep all ICs and passive components to the left quarter of the PCB. I routed, deleted, and rerouted the traces for the LEDs something like six times, and I settled on this design. While it is possible to route the traces in a way that results in a shorter average trace length, I wanted to avoid creating a full loop--and I also wanted to minimize loop area. With a full loop, the traces would couple with the NFC field and create destructive eddy currents. By leaving the gap in the top middle of the loop, no currents are able to form, so the antenna remains unaffected by macro-scale RF interference. 
 
-Net colors made it easier (and more fun) to understand which trace goes where. The ribbon topology does still create enclosed current between each trace, a separate effect from the main loop. Keeping trace spacing and width minimal helped.
+Net colors made it easier (and more fun) to understand which trace goes where. The ribbon topology does still create enclosed flux between each trace, a separate effect from the main loop. Keeping trace spacing and width minimal helped.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -130,7 +130,7 @@ I decided to show all traces on the back of the card. I also created a simple bl
     </div>
 </div>
 
-With my goals of minimizing enclosed current and creating an interesting and pleasing aesthetic, I think the end result is solid. 
+With my goals of minimizing enclosed flux and creating an interesting and pleasing aesthetic, I think the end result is solid. 
 
 ---
 
