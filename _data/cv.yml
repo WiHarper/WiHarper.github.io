@@ -4,11 +4,11 @@
     - name: Full Name
       value: Wilson Harper
     - name: Website
-      value: <a href="http://wilsonharper.net">wilsonharper.net</a>
+      value: <a href="https://wilsonharper.net">wilsonharper.net</a>
     - name: Email
       value: <a href="mailto:hello@wilsonharper.net">hello@wilsonharper.net</a>
     - name: LinkedIn
-      value: <a href="http://linkedin.com/in/Wilson-Harper">Wilson Harper</a>
+      value: <a href="https://linkedin.com/in/Wilson-Harper">Wilson Harper</a>
     - name: Location
       value: Houston, TX
 
@@ -36,48 +36,47 @@
       year: Summer 2026
       icon: fa-solid fa-microchip
       description:
-        - Informed system architecture and analysis for a low-cost mobile embedded system within an agile team
-        - Evaluated radar range and detection ability on small mobile platforms through rigorous field testing
-        - Executed trade studies to select COTS boards and positioning systems under tight SWaP-C constraints
-        - Developed rugged field deployment solutions for high-speed, FPGA-based fiber-optic hardware systems
-        - Integrated in-house PCBs and COTS power supplies into operator-centric custom rackmount enclosures
+        - Evaluated system architecture and performance for a low-cost mobile embedded system to optimize latency
         - Designed a 4-layer PCB in Altium for harsh environments, integrating high-speed ICs and a robust PDN
-    - title: Mission Control Lead, Rice Eclipse Rocketry
+        - Field-tested radar detection against autonomous and manual mobile platforms across multi-site field trials
+        - Executed trade studies to select off-the-shelf boards and positioning systems under tight SWaP-C constraints
+        - Developed rugged field deployment solutions for high-speed, FPGA-based fiber-optic hardware systems
+    - title: Mission Control Lead
       institution: Rice Eclipse Rocketry
       year: 2025 - Present
       icon: fa-solid fa-rocket
       description:
         - Leading development of electronics and software for Rice's liquid engine development program
         - Executed the program's first successful liquid hotfire, enabling the transition to future liquid launches
-        - Integrating Raspberry Pi with custom PCBs, LabJack DAQ, and solenoids for critical control and data gathering
-        - Designed avionics architecture for an Active Flight Stabilization system intended for a spaceshot rocket
-        - Integrated RP2350 with I2C/UART/SPI sensors on a custom PCB to actuate servo canards in real-time
+        - Integrated LabJack DAQ and Raspberry Pi to sample sensors at 300 Hz, actuate solenoids, and ignite engine
+        - Designed avionics architecture for an active flight stabilization system intended for a spaceshot rocket
+        - Implemented RP2350 with I2C/UART/SPI sensors on a custom PCB to actuate servo canards in real-time
     - title: Undergraduate Researcher
       institution: Rice Experimental Pixels Lab
       year: Spring 2026
       icon: fa-solid fa-flask
       description:
         - Engineered a compact, highly directional wind system to synchronize physical airflow with XR environments
-        - Designed and integrated remote blowers, ducting, and control circuitry within strict spatial constraints
-        - Implemented UDP with networked POE-powered ESP32s, servos, and PWM fans
+        - Implemented UDP with networked POE-powered ESP32s, servos, and PWM fans within strict spatial constraints
     - title: Teaching Assistant, BUSI 361 (Communication for Entrepreneurs)
       institution: Rice University — Houston, TX
       year: Spring 2026
       icon: fa-solid fa-chalkboard-user
       description:
         - Facilitated instruction on communication, conflict resolution, networking, and workplace dynamics
-    - title: Summer Camp Staff
-      institution: Spokane, WA
-      year: Summer 2025
-      icon: fa-solid fa-campground
-      description:
-        - Responsible for up to 65 guests at a remote location accessible only by boat
-        - Handled high-stakes logistics, guest relations, and conflict resolution for attendees
 
 - title: Technical Projects
   type: time_table
   contents:
-    - title: Custom Rocket Flight Computer & Telemetry Stack
+    - title: "Batteryless NFC Business Card with MCU & 21-LED Matrix"
+      institution: Personal Project
+      year: Summer 2026
+      icon: fa-solid fa-id-card
+      description:
+        - Engineered batteryless PCB harvesting 13.56 MHz RF power to drive an MCU and 21 animated LEDs
+        - "Tuned planar loop antenna, inrush-limiting power circuitry, and bare-metal C Charlieplexing system"
+        - "Open-source design featured by Hackaday.com, Adafruit Blog, and Microchip; ranked #4 on Hacker News"
+    - title: "Custom Rocket Flight Computer & Telemetry Stack"
       institution: Personal Project
       year: 2026
       icon: fa-solid fa-satellite-dish
@@ -85,7 +84,8 @@
         - Designed, programmed, and integrated a custom RP2040-based flight computer in two weeks
         - Engineered 1 Hz LoRa telemetry while logging altimeter, accelerometer, and GPS data at 20 Hz
         - Built an accompanying ground station with custom antenna to display live data and Google Earth position
-    - title: ADS-B Flight Tracking Station & Data Pipeline
+        - Designed dense 1cm² 4-layer V2 avionics PCB with STM32L4, dual IMUs, barometer, and flash
+    - title: "ADS-B Flight Tracking Station & Data Pipeline"
       institution: Personal Project
       year: 2025 - 2026
       icon: fa-solid fa-plane-up
@@ -99,12 +99,12 @@
       description:
         - Led national-competition team in design of UAV with optical flow and LiDAR to navigate in tight environments
         - Implemented EKF sensor fusion, remote telemetry, modular airframe, and servo-actuated gripper
-    - title: Doppler & Synthetic Aperture Radar Researcher
+    - title: "Doppler & Synthetic Aperture Radar"
       institution: MIT Lincoln Laboratory RISE
       year: Summer 2024
       icon: fa-solid fa-flask
       description:
-        - One of ~4% of applicants selected for DoD-sponsored free research experience
+        - One of ~4% of applicants selected for DoW-sponsored residential research experience
         - Researched, built, and programmed Doppler and synthetic aperture radars, mentored by Lincoln Labs staff
 
 - title: Skills
@@ -113,12 +113,12 @@
     - title: Certifications
       items:
         - General Class Amateur Radio License, Tripoli Level 1 High Powered Rocketry Certification
-    - title: Hardware & Systems
+    - title: "Hardware & Systems"
       items:
-        - LiDAR, radar, sensor integration, UAVs, PCB design, microcontrollers, LoRa, telemetry
+        - Radar/mmWave, LiDAR, UAVs, Microcontrollers, LoRa, SPI/I2C/UART, Networking
     - title: Software
       items:
-        - Python, CAD (Fusion, Onshape), ArduPilot, Cloudflare, Tailscale, KiCad, Altium
+        - C, C++, Python, Altium Designer, KiCad, CAD (Solidworks, Fusion 360, Onshape), ArduPilot, Git, Linux
     - title: Tools
       items:
-        - oscilloscopes, soldering, 3D printing, hand tools, multimeters, breadboards, function generators
+        - Oscilloscopes, Multimeters, SMD Soldering, Function Generators, 3D Printing, Hand Tools
