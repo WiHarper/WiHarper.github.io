@@ -11,6 +11,12 @@ social: true # includes social icons at the bottom of the page
 
 ---
 
+## Highlighted Projects
+
+- [NFC-powered business card]({{ '/projects/businesscard/' | relative_url }}) that uses RF to power an MCU and 21 animated LEDs from a smartphone
+- [Live telemetry and logging system]({{ '/projects/avio/' | relative_url }}) for my L1 certification rocket--built in two weeks
+- [UAV]({{ '/projects/uav/' | relative_url }}) capable of position-holding and transporting objects in GPS-denied environments
+
 <!-- pages/projects.md -->
 <div class="projects">
 {% if site.enable_project_categories and page.display_categories %}
