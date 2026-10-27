@@ -96,7 +96,7 @@ I determined the dimensions and properties of the antenna using STM's [antenna i
  
 Because this inductance is a bit lower, it gives me the ability to tune it to exactly the right frequency. If it were already exactly 2.75 µH, I could add a capacitor in parallel to decrease the resonant frequency--but there'd be no way to increase it. I populated a 1.5 pF capacitor so I could tune it lower if needed. 
 
-I went ahead and routed the PCB. I was surprised that KiCad doesn't offer a built-in antenna or coil generation tool, and all the plug-ins I tried were not capable of a rectangular spiral. A KiPython script was the answer. An LLM helped create the script, and it was working after a few minutes of conversation. It generates a simple rectangular-spiral trace that matched the numbers I put into the SMT calculator. I've included the `.py` file in [the repo](https://github.com/WiHarper/nfc_card/blob/main/software/coil.py), and I could see it being useful for others. Afterward, I rounded the corners by hand--this modification changed the enclosed area by just a few percent.
+I went ahead and routed the PCB. I was surprised that KiCad doesn't offer a built-in antenna or coil generation tool, and all the plug-ins I tried were not capable of a rectangular spiral. A KiPython script was the answer. An LLM helped create the script, and it was working after a few minutes of conversation. It generates a simple rectangular-spiral trace that matched the numbers I put into the STM calculator. I've included the `.py` file in [the repo](https://github.com/WiHarper/nfc_card/blob/main/software/coil.py), and I could see it being useful for others. Afterward, I rounded the corners by hand--this modification changed the enclosed area by just a few percent.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -154,7 +154,7 @@ Of course, it's hard to take a picture of the card while it's against the back o
 
 ## Programming
 
-I have three small exposed pads on the back: `GND`, `VCC`, and `UPDI`. This order of pads--similar to RC servos--prevents any damage if the connection is rotated 180 degrees. Each pad is 1.8mm in diameter with a center-to-center distance of 0.1"/0.254mm. This standard breadboard distance allows me to use a [Pogo Pin Clip](https://www.adafruit.com/product/5434) to connect to it without adding another component. Business cards are handled roughly and thrown in static-y wallets and pockets, so I added a TVS diode bridging `UPDI` and `GND` so any high voltage flows straight into ground instead of frying the MCU.
+I have three small exposed pads on the back: `GND`, `VCC`, and `UPDI`. This order of pads--similar to RC servos--prevents any damage if the connection is rotated 180 degrees. Each pad is 1.8mm in diameter with a center-to-center distance of 0.1"/2.54mm. This standard breadboard distance allows me to use a [Pogo Pin Clip](https://www.adafruit.com/product/5434) to connect to it without adding another component. Business cards are handled roughly and thrown in static-y wallets and pockets, so I added a TVS diode bridging `UPDI` and `GND` so any high voltage flows straight into ground instead of frying the MCU.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
