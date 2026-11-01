@@ -195,7 +195,7 @@ View full BOM details [here](https://wilsonharper.net/assets/html/ibom.html).
 
 ## Lessons Learned
 
-The thirty cards I have now should last a while. Once I do run out, though, I plan to make a V2. `VOUT` stays at a high enough voltage to power any color of LED, and green or yellow could be interesting. I'm also considering adding a thin button or two for interactivity, and there are several arcade-style games I could make with a ring of LEDs. 
+The thirty cards I have now should last a while. Once I do run out, though, I plan to make a V2. `VOUT` stays at a high enough voltage to power any color of LED, and green or yellow could be interesting. I'm also considering adding a thin button or two for interactivity, and there are several arcade-style games I could make with a ring of LEDs. Since publishing, I've learned that iOS handles NFC different from Android--it only powers the card long enough to transfer the NFC payload, meaning LEDs don't light up. I'm curious if there are ways to rectify (no pun intended) this difference.
 
 "Hardware is hard" is a phrase I've heard frequently, and this project made me realize how true it is. Individually, nothing in this project is novel or even that complicated: NFC PCB antennas, blinky LEDs with an MCU, and PCB business cards have all been done before. As far as I can tell, though, no one has combined them into one aesthetically-pleasing package--or, at least, I couldn't find an example anywhere online (there are several that have NFC harvesting, circuitry in the antenna, or Charlieplexing, but not all three). There were moments where I felt sure this was beyond my capabilities. After triple-checking every possible issue, I realized I just had to send it, and I'm so glad I did.
 
