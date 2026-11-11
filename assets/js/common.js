@@ -34,7 +34,9 @@ $(document).ready(function () {
     // phones hide the sidebar, so offer the same links as a collapsed list under the page title
     var postHeader = document.querySelector(".post .post-header");
     var tocLinks = $myNav.find("a");
-    if (postHeader && tocLinks.length) {
+    // (skipped on the resume, which is short enough not to need it)
+    var isResume = document.querySelector(".cv") !== null;
+    if (postHeader && tocLinks.length && !isResume) {
       var details = document.createElement("details");
       details.className = "toc-mobile";
       var summary = document.createElement("summary");

@@ -294,6 +294,19 @@ ul.timeline li::before {
         color: var(--global-divider-color);
       }
     }
+
+    /* phones: one contact per line, no separators, so nothing wraps mid-list */
+    @media (max-width: 576px) {
+      margin-top: 0;
+
+      span {
+        display: block;
+
+        + span::before {
+          content: none;
+        }
+      }
+    }
   }
 
   h6.title {
