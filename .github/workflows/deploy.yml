@@ -67,8 +67,7 @@ permissions:
 jobs:
   deploy:
     # available images: https://github.com/actions/runner-images#available-images
-    # pinned: the newer ubuntu-latest image has been failing to reach the Ubuntu package servers
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
@@ -77,14 +76,9 @@ jobs:
         with:
           ruby-version: "3.3"
           bundler-cache: true
-      - name: Install ImageMagick (cached) 🖼️
-        # restores the packages from a cache, so most runs never contact the Ubuntu package servers
-        uses: awalsh128/cache-apt-pkgs-action@latest
-        with:
-          packages: imagemagick
-          version: 1.0
       - name: Install and Build 🔧
         run: |
+          sudo apt-get update && sudo apt-get install -y imagemagick
           export JEKYLL_ENV=production
           bundle exec jekyll build --trace
       - name: Purge unused CSS 🧹
