@@ -218,3 +218,119 @@ ul.timeline li::before {
      color: var(--global-text-color);
 }
 */
+
+/*****************************
+ * Resume page: flat sections that borrow from the PDF resume
+ * (coloured section rules, dates on the right, compact bullets)
+ *****************************/
+
+.cv {
+  .cv-section {
+    margin-top: 2.25rem;
+
+    > h2 {
+      color: var(--global-theme-color);
+      font-size: 1.5rem;
+      font-weight: 500;
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.25rem;
+      border-bottom: 2px solid var(--global-theme-color);
+    }
+  }
+
+  .list-group-item {
+    background-color: transparent;
+    border: none;
+    color: var(--global-text-color);
+    padding: 0.75rem 0 0.25rem;
+  }
+
+  /* title on the left, date on the right */
+  .cv-entry-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .cv-entry-heading {
+    min-width: 0;
+  }
+
+  .cv-date {
+    flex-shrink: 0;
+    text-align: right;
+
+    .cv-year {
+      color: var(--global-text-color);
+      font-family: $title-mono-font;
+      font-size: 0.85rem;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+    }
+
+    p.location {
+      margin: 0;
+      color: var(--global-text-color-light);
+    }
+  }
+
+  .cv-institution {
+    color: var(--global-text-color-light);
+    line-height: 1.4;
+  }
+
+  .cv-contact {
+    margin: -0.5rem 0 0;
+    color: var(--global-text-color-light);
+
+    span {
+      color: inherit;
+      white-space: nowrap;
+
+      + span::before {
+        content: "|";
+        margin: 0 0.6rem;
+        color: var(--global-divider-color);
+      }
+    }
+  }
+
+  h6.title {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+
+  table.institution {
+    margin-bottom: 0.25rem;
+    color: var(--global-text-color-light);
+
+    td {
+      color: inherit;
+    }
+  }
+
+  ul.items,
+  ul.subitems {
+    list-style: disc;
+    margin-bottom: 0;
+    padding-left: 1.4rem;
+  }
+
+  /* skills: "Category: items" on one line, like the PDF */
+  .cv-nested .list-group-item {
+    padding: 0.35rem 0 0;
+  }
+
+  .cv-nested-title {
+    font-weight: 700;
+  }
+
+  .list-group-item > h5 {
+    font-size: 1rem;
+    font-style: normal !important;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+}

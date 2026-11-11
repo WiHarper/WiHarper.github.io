@@ -1,19 +1,14 @@
 - title: General Info
-  type: map
+  type: contact # one line under the page title; change to `map` for a table
   contents:
-    - name: Full Name
-      value: Wilson Harper
-    - name: Website
-      value: <a href="https://wilsonharper.net">wilsonharper.net</a>
     - name: Email
       value: <a href="mailto:hello@wilsonharper.net">hello@wilsonharper.net</a>
     - name: LinkedIn
-      value: <a href="https://linkedin.com/in/Wilson-Harper">Wilson Harper</a>
-    - name: Location
-      value: Houston, TX
+      value: <a href="https://linkedin.com/in/Wilson-Harper">linkedin.com/in/Wilson-Harper</a>
 
 - title: Education
   type: time_table
+  subheadings: true
   contents:
     - title: B.S. Electrical Engineering; Minor in Entrepreneurship
       institution: Rice University — Houston, TX
@@ -59,7 +54,6 @@
         - Engineered a compact, highly directional wind system to synchronize physical airflow with XR environments
         - Implemented UDP with networked POE-powered ESP32s, servos, and PWM fans within strict spatial constraints
     - title: Teaching Assistant, BUSI 361 (Communication for Entrepreneurs)
-      institution: Rice University — Houston, TX
       year: Spring 2026
       icon: fa-solid fa-chalkboard-user
       description:
@@ -69,7 +63,6 @@
   type: time_table
   contents:
     - title: "Batteryless NFC Business Card with MCU & 21-LED Matrix"
-      institution: Personal Project
       year: Summer 2026
       icon: fa-solid fa-id-card
       description:
@@ -77,7 +70,6 @@
         - "Tuned planar loop antenna, inrush-limiting power circuitry, and bare-metal C Charlieplexing system"
         - "Open-source design featured by Hackaday.com, Adafruit Blog, and Microchip; ranked #4 on Hacker News"
     - title: "Custom Rocket Flight Computer & Telemetry Stack"
-      institution: Personal Project
       year: 2026
       icon: fa-solid fa-satellite-dish
       description:
@@ -86,21 +78,18 @@
         - Built an accompanying ground station with custom antenna to display live data and Google Earth position
         - Designed dense 1cm² 4-layer V2 avionics PCB with STM32L4, dual IMUs, barometer, and flash
     - title: "ADS-B Flight Tracking Station & Data Pipeline"
-      institution: Personal Project
       year: 2025 - 2026
       icon: fa-solid fa-plane-up
       description:
         - Built Pi-powered ADS-B tracker featuring a custom-soldered 1090 MHz ground plane spider antenna
         - Created secure data pipelines using Cloudflare Tunnels, Tailscale, and GitHub Pages
     - title: UAV with Position-Holding in GPS-Denied Environments
-      institution: Technology Student Association
       year: 2022 - 2025
       icon: fa-solid fa-screwdriver-wrench
       description:
         - Led national-competition team in design of UAV with optical flow and LiDAR to navigate in tight environments
         - Implemented EKF sensor fusion, remote telemetry, modular airframe, and servo-actuated gripper
-    - title: "Doppler & Synthetic Aperture Radar"
-      institution: MIT Lincoln Laboratory RISE
+    - title: "Doppler & Synthetic Aperture Radar at MIT Lincoln Laboratory RISE"
       year: Summer 2024
       icon: fa-solid fa-flask
       description:

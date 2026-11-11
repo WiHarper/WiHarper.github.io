@@ -15,7 +15,7 @@ Shout-out to Gislain Benoit who deadbugged [a clock](https://techno-logic-art.co
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/clock/fc5.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/clock/fc5.jpg" alt="Deadbug clock built from transistors and resistors with red displays" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -26,10 +26,10 @@ I found [this video](https://www.youtube.com/watch?v=0hwWnPxKU14) from bigclived
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/clock/PXL_20260318_203839218.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/clock/PXL_20260318_203839218.PORTRAIT.jpg" alt="Hand holding bare clock circuit board with components" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/clock/PXL_20260318_203859592.PORTRAIT.ORIGINAL.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/clock/PXL_20260318_203859592.PORTRAIT.ORIGINAL.jpg" alt="Back of bare clock circuit board with solder joints" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -41,7 +41,7 @@ The soldering process was perfectly straightforward. It took a while, but it tur
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/clock/PXL_20260221_022456907.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/clock/PXL_20260221_022456907.jpg" alt="Small plastic box holding resistors and chips" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -52,7 +52,9 @@ When I hooked it up to a 5V power supply, it worked immediately! The controls ar
         <video 
             controls 
             playsinline 
-            class="img-fluid rounded z-depth-1">
+            class="img-fluid rounded z-depth-1"
+            preload="metadata"
+            poster="{{ '/assets/img/clock/Pxl20260221014427808-poster.jpg' | relative_url }}">
             <source src="{{ '/assets/img/clock/Pxl20260221014427808.mp4' | relative_url }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -66,13 +68,13 @@ At this point, I was very happy with how this looked--I just needed a way to dis
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/clock/cad1.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/clock/cad1.png" alt="CAD render of clock board in a case on a stand" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/clock/cad2.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/clock/cad2.png" alt="CAD render of the clock stand" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/clock/cad3.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/clock/cad3.png" alt="CAD render of acrylic cover with cutouts" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -83,7 +85,7 @@ At this point, I was very happy with how this looked--I just needed a way to dis
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/clock/CD4511.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/clock/CD4511.png" alt="Labeled photo of the assembled clock showing chip names" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -102,25 +104,25 @@ The crystal oscillator puts out a 32.768 kHz signal. The CD4060 cleanly divides 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/clock/DigitalClockKit_schematic.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/clock/DigitalClockKit_schematic.jpg" alt="Schematic of the digital clock circuit with CD4511 and CD4518 chips" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 Without any power negotiation, a USB adapter puts out 5V. I found an old USB-A cable and chopped off the end. Stripping the insulation from the VCC and GND wires inside creates an easy 5V power supply. I found the brightness was a bit too high, so I attached a resistor in series with ground inside the USB cable, bringing the voltage closer to 3.3V.
 
-During testing, I powered it up while the back was sitting on the metal underside of a removed Raspberry Pi 400 keyboard (taken from [this project](https://wilsonharper.net/projects/signage)). I instantly noticed that a segment on the very first display was no longer lighting up--I had short-circuited it! I felt very silly indeed. Because I had two more kits, I had plenty of parts to troubleshoot with. Since the ICs are all in sockets, my first step was swapping them all out. That didn't fix anything. Next, I got a power supply out, connected ground to ground, and touched 5V to each resistor-segment in order and found that the 7-segment display itself had broken. After a few minutes with a soldering iron and a hot-air rework station, I swapped in a spare display and was back in business.
+During testing, I powered it up while the back was sitting on the metal underside of a removed Raspberry Pi 400 keyboard (taken from [this project]({{ '/projects/signage' | relative_url }})). I instantly noticed that a segment on the very first display was no longer lighting up--I had short-circuited it! I felt very silly indeed. Because I had two more kits, I had plenty of parts to troubleshoot with. Since the ICs are all in sockets, my first step was swapping them all out. That didn't fix anything. Next, I got a power supply out, connected ground to ground, and touched 5V to each resistor-segment in order and found that the 7-segment display itself had broken. After a few minutes with a soldering iron and a hot-air rework station, I swapped in a spare display and was back in business.
 
 
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/clock/PXL_20260318_200806730.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/clock/PXL_20260318_200806730.jpg" alt="Hand holding a white 3D printed clock stand" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/clock/PXL_20260318_202640562.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/clock/PXL_20260318_202640562.PORTRAIT.jpg" alt="Assembled clock with red seven-segment displays on a desk" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/clock/PXL_20260318_203143488.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/clock/PXL_20260318_203143488.jpg" alt="Close view of blue terminal block and wires on clock board" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -133,7 +135,9 @@ Overall, I'm very happy with how it's turned out. My original goal was to learn 
         <video 
             controls 
             playsinline 
-            class="img-fluid rounded z-depth-1">
+            class="img-fluid rounded z-depth-1"
+            preload="metadata"
+            poster="{{ '/assets/img/clock/Pxl 20260318 204613189.Locked-poster.jpg' | relative_url }}">
             <source src="{{ '/assets/img/clock/Pxl 20260318 204613189.Locked.mp4' | relative_url }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>

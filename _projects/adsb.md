@@ -108,7 +108,7 @@ I also noticed a lack of documentation online explaining why specific design dec
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/adsb/PXL_20260124_200845740.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/adsb/PXL_20260124_200845740.jpg" alt="Antenna mast and feeder box mounted on a balcony railing" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -148,13 +148,13 @@ I started by getting the box ready. My thermal strategy relies on passive convec
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_163439190.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_163439190.jpg" alt="Feeder box side view showing a mesh vent and mounting brackets" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_172448052.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_172448052.PORTRAIT.jpg" alt="White PVC elbow fitting on the top of the feeder box" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200950880.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200950880.jpg" alt="Underside of the feeder box mounted on a railing" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -172,13 +172,13 @@ However, signals travel slower in copper wire than in a vacuum. With this insula
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_175615330.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_175615330.jpg" alt="Four blue antenna wires with ring terminals on a table" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_181314546.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_181314546.jpg" alt="Panel-mount connector with copper wire soldered to its center pin" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_182613898.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_182613898.jpg" alt="Antenna with four blue radials bent downward on a table" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -200,7 +200,7 @@ At 2.4 GHz, the WiFi range is decent. Stability is not perfect; it loses connect
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-9 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-31 154038.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-31 154038.png" alt="ADS-B feeder data sharing setup page with aggregator checkboxes" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -229,13 +229,13 @@ I attached the antenna to a cable gland, which I then attached to a 5' PVC pipe.
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200900324.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200900324.PORTRAIT.jpg" alt="Antenna on top of a pipe in front of a brick wall" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200940822.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_200940822.PORTRAIT.jpg" alt="Feeder box on a railing labeled ADS-B Receiver and Feeder" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_201023922.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/PXL_20260124_201023922.PORTRAIT.jpg" alt="Inside the feeder box showing an SDR dongle, SAW filter and Raspberry Pi" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -251,7 +251,7 @@ Later, I installed the antenna and relocated the feeder to a 5th-floor balcony. 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-local_trailing_rate-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-local_trailing_rate-7d.png" alt="Graph of ADS-B message rate over one week" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -261,7 +261,7 @@ With the old antenna and location, I was lucky to see over 5 messages per second
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-9 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-aircraft-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-aircraft-7d.png" alt="Graph of aircraft seen and tracked over one week" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -270,7 +270,7 @@ I also like keeping track of the actual number of aircraft tracked. It's seen up
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-9 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-range-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-range-7d.png" alt="Graph of ADS-B range in nautical miles over one week" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -278,7 +278,7 @@ I also like keeping track of the actual number of aircraft tracked. It's seen up
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-9 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-signal-7d.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/dump1090-localhost-signal-7d.png" alt="Graph of ADS-B signal level in dBFS over one week" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -288,7 +288,7 @@ Range has also clearly skyrocketed, and I've been able to occasionally see aircr
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-12 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-26 153206.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-26 153206.png" alt="Map of aircraft around Houston with range rings" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -301,7 +301,7 @@ Now that I've run the feeder for a while, I have some data to play with! I espec
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-9 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-29 133638.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-29 133638.jpg" alt="Map of aircraft positions across east Texas colored by altitude" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -310,7 +310,7 @@ This is too much information to view at once. Luckily, it's easy to filter. Let'
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-9 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-29 134430.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/adsb/Screenshot 2026-01-29 134430.jpg" alt="Map of low-altitude aircraft around Houston airports" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -319,10 +319,10 @@ Filtering for military aircraft reveals more than I expected. There are plenty o
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/adsb/canada.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/adsb/canada.jpg" alt="Tracker screen showing a Canadian Airbus A330 flight and its details" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/adsb/Screenshot 2026-01-25 121350.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/adsb/Screenshot 2026-01-25 121350.png" alt="Tracker screen showing a C-17 military transport over Houston" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 ---
@@ -334,10 +334,10 @@ I recently found a 10.5" 1080p monitor for free in Rice's [OEDK](https://oedk.ri
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/adsb/PXL_20260131_224912600.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/adsb/PXL_20260131_224912600.jpg" alt="Club room with award certificates and a monitor showing aircraft" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/adsb/PXL_20260131_224922739.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/adsb/PXL_20260131_224922739.jpg" alt="Monitor showing a live map of aircraft around Houston" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 

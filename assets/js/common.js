@@ -30,6 +30,33 @@ $(document).ready(function () {
       target: navSelector,
       offset: 100,
     });
+
+    // phones hide the sidebar, so offer the same links as a collapsed list under the page title
+    var postHeader = document.querySelector(".post .post-header");
+    var tocLinks = $myNav.find("a");
+    if (postHeader && tocLinks.length) {
+      var details = document.createElement("details");
+      details.className = "toc-mobile";
+      var summary = document.createElement("summary");
+      summary.textContent = "On this page";
+      details.appendChild(summary);
+      var list = document.createElement("ul");
+      tocLinks.each(function () {
+        var item = document.createElement("li");
+        // nested (sub-heading) links sit one level deeper in the sidebar
+        if ($(this).parents("ul").length > 1) item.className = "toc-mobile-sub";
+        var link = document.createElement("a");
+        link.href = this.getAttribute("href");
+        link.textContent = this.textContent;
+        link.addEventListener("click", function () {
+          details.open = false;
+        });
+        item.appendChild(link);
+        list.appendChild(item);
+      });
+      details.appendChild(list);
+      postHeader.insertAdjacentElement("afterend", details);
+    }
   }
 
   // add css to jupyter notebooks

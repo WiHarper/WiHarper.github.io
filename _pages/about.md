@@ -11,25 +11,34 @@ profile:
   more_info: >
     <p> </p>
 
-social: true # includes social icons at the bottom of the page
+social: false # icons and copyright now come from the site-wide footer
+featured_projects: [businesscard, avio, adsb] # project file names shown as cards, in order
 
 
 ---
 
-## Hi,
-
-It's great to see you! 👋
-
 I’m Wilson, an electrical engineering student at Rice University fascinated by rockets, radars, and avionics.
 
-At Rice, I serve as the Mission Control lead for [Rice Eclipse](https://eclipse.rice.edu/)'s liquid rocket engine program. With Eclipse, I've also designed an active fin stabilization system and other custom avionics. Previously, I've interned at [RTX BBN Technologies](https://www.rtx.com/what-we-do/bbn-technologies) in Cambridge, Massachusetts, and I also engineered compact, directional wind systems for immersive environments in Rice's [Experimental Pixels Lab](https://pixels.rice.edu/). In high school, I investigated synthetic aperture radar and its applications at the [MIT Lincoln Laboratory](https://www.ll.mit.edu/).
+At Rice, I serve as the Mission Control lead for [Rice Eclipse](https://eclipse.rice.edu/)'s liquid rocket engine program. With Eclipse, I've also designed an active fin stabilization system and other custom avionics. Previously, I interned at [RTX BBN Technologies](https://www.rtx.com/what-we-do/bbn-technologies) in Cambridge, Massachusetts, and I also engineered compact, directional wind systems for immersive environments in Rice's [Experimental Pixels Lab](https://pixels.rice.edu/). 
 
-I’m excited to get even more hands-on, practical experience with electrical and computer engineering, and I'd love to chat about aerospace, Rice, or anything else!
+My open-source [NFC business card]({{ '/projects/businesscard/' | relative_url }}) was featured on [Hackaday](https://hackaday.com/2026/08/31/building-an-energy-harvesting-business-card), [Adafruit](https://blog.adafruit.com/2026/08/31/an-nfc-energy-harvesting-pcb-business-card-with-a-microcontroller/), and [Hacker News](https://news.ycombinator.com/item?id=49478426). In high school, I investigated synthetic aperture radar and its applications at the [MIT Lincoln Laboratory](https://www.ll.mit.edu/).
 
-Feel free to check out my [projects](https://wilsonharper.net/projects/), [resume](https://wilsonharper.net/resume/), or contact me below. I'm especially proud of my:
-- [NFC-powered business card](https://wilsonharper.net/projects/businesscard/) that uses RF to power an MCU and 21 animated LEDs from a smartphone
-- [Live telemetry and logging system](https://wilsonharper.net/projects/avio/) for my L1 certification rocket--built in two weeks
-- [UAV](https://wilsonharper.net/projects/uav/) capable of position-holding and transporting objects in GPS-denied environments
+Feel free to check out more of my [projects]({{ '/projects/' | relative_url }}), my [resume]({{ '/resume/' | relative_url }}), or contact me below. I'd love to chat about aerospace, Rice, or anything else!
+
+<br>
+
+
+<div class="projects featured-projects">
+  <div class="row row-cols-1 row-cols-md-3">
+    {% assign featured_slugs = page.featured_projects %}
+    {% for slug in featured_slugs %}
+      {% assign project = site.projects | where: "slug", slug | first %}
+      {% if project %}
+        {% include projects.liquid %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
 
 
 <style>

@@ -8,7 +8,7 @@ middle_name:
 last_name: Harper
 contact_note: >
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Website about Wilson Harper
+  Wilson Harper is an electrical engineering student at Rice University fascinated by rockets, radars, and avionics.
 footer_text: 
 keywords: Wilson Harper, Rice, ECE, Electrical Engineering, Houston, Texas, Yakima, Washington, Avionics # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
@@ -59,9 +59,9 @@ max_width: 930px
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
 serve_schema_org: false # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+og_image: https://wilsonharper.net/assets/img/prof_pic.jpg # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
@@ -220,6 +220,13 @@ defaults:
       path: "assets"
     values:
       sitemap: false
+  # heading sidebar on every project page (override per page with `toc: false`)
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      toc:
+        sidebar: left
 
 sass:
   style: compressed

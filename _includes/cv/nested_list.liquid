@@ -1,15 +1,21 @@
-<ul class="card-text font-weight-light list-group list-group-flush">
+<ul class="card-text font-weight-light list-group list-group-flush cv-nested">
   {% for content in entry.contents %}
     <li class="list-group-item">
-      <h5 class="font-italic">{{ content.title }}</h5>
-      {% if content.items %}
-        <ul class="subitems">
-          {% for subitem in content.items %}
-            <li>
-              <span class="subitem">{{ subitem }}</span>
-            </li>
-          {% endfor %}
-        </ul>
+      {% if content.items and content.items.size == 1 %}
+        {% comment %} single-item groups read as one line: "Category: items" {% endcomment %}
+        <span class="cv-nested-title">{{ content.title }}:</span>
+        <span class="subitem">{{ content.items[0] }}</span>
+      {% else %}
+        <h5 class="font-italic">{{ content.title }}</h5>
+        {% if content.items %}
+          <ul class="subitems">
+            {% for subitem in content.items %}
+              <li>
+                <span class="subitem">{{ subitem }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
       {% endif %}
     </li>
   {% endfor %}

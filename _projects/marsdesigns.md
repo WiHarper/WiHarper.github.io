@@ -18,13 +18,13 @@ At the UW Aerospace Scholars program, I served as Mars Rover Project Lead, devel
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/was/rover4.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/was/rover4.jpg" alt="Rendered rover with solar panel and NASA logo" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/was/rover2.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/was/rover2.jpg" alt="Rendered rover with antenna on a desert plain" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/was/rover3.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/was/rover3.jpg" alt="Rendered rover with NASA logo on cracked ground" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -46,10 +46,10 @@ At the UW Aerospace Scholars program, I served as Mars Rover Project Lead, devel
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/was/miner1.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/was/miner1.jpg" alt="Rendered excavation robot with drum tracks on Mars" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/was/miner2.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/was/miner2.jpg" alt="Rendered excavation robots with drum tracks on dark ground" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -67,15 +67,15 @@ In addition, I designed a Mars surveyor aircraft to map the Red Planet prior to 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/was/1.png" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/was/1.jpg" alt="Labeled render of a solar-powered Mars surveyor aircraft" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/was/mars_robot.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/was/mars_robot.jpg" alt="Close-up render of the aircraft with labeled systems" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/was/robot_lidar.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/was/robot_lidar.jpg" alt="Render of the LiDAR system under the aircraft" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>

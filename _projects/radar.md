@@ -16,7 +16,7 @@ related_publications: false
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/PXL_20240724_022544293.NIGHT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/radar/PXL_20240724_022544293.NIGHT.jpg" alt="Close-up of a glowing radar unit on cardboard in grass at night" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -31,7 +31,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image15.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image15.png" alt="Diagram of SAR spotlight and strip map modes from an airplane" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -45,13 +45,13 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image8.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image8.png" alt="Diagram of a synthetic aperture with antenna positions and range" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image6.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image6.png" alt="Diagram of cross range and pixel size formulas for a radar image" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -65,7 +65,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image10.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image10.png" alt="Diagrams of range walk and back projection across antenna positions" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -75,20 +75,20 @@ related_publications: false
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image9.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image9.png" alt="Colored wave pattern in a dome shape from a radar simulation" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image45.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image45.png" alt="Colored wave pattern in a wide fan shape" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image12.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image12.png" alt="Colored wave pattern in a narrow fan shape" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image22.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image22.png" alt="Speckled colored wave pattern from the radar returns" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -101,7 +101,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image18.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image18.png" alt="Diagram of a radar on a tape measure recording range profiles" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -110,7 +110,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image17.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image17.jpg" alt="Red radar unit with orange tabs set along a tape measure" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -141,10 +141,10 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/radar/from_slides/image31.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/radar/from_slides/image31.jpg" alt="Radar unit on cardboard in a grass field with city lights behind" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/radar/from_slides/image36.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/radar/from_slides/image36.jpg" alt="Smiling person sitting on a grass field at night" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -155,13 +155,13 @@ related_publications: false
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image26.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image26.png" alt="SAR image of an empty field used as a control" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image51.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image51.png" alt="SAR image with a circled return from a person" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image29.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image29.png" alt="SAR image with a circled strong return from a person and a trash can" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -178,10 +178,10 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/radar/from_slides/image28.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/radar/from_slides/image28.jpg" alt="Road and lake view with three objects circled in white" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/radar/from_slides/image24.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/radar/from_slides/image24.jpg" alt="Sidewalk and road at the testing location with a person near a wall" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -190,7 +190,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image33.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/image33.jpg" alt="Range history plot next to a photo of a park road" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -201,7 +201,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/fastandslow.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/fastandslow.jpg" alt="Two SAR images of a tree and pole from fast and slow motion" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -210,7 +210,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/overlay.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/overlay.jpg" alt="SAR image overlaid on an aerial photo of a road" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -229,7 +229,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/reflectorvisual.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/reflectorvisual.jpg" alt="Two photos of the scan area without and with a reflector" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -239,7 +239,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/reflectordata.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/radar/from_slides/reflectordata.jpg" alt="Two SAR images without and with a reflector" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">

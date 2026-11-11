@@ -14,13 +14,13 @@ In Martel Parliament, it's fairly easy to get a money request passed if it's und
 
 ## Hardware
 
-My first step was choosing hardware. I have [some experience](https://wilsonharper.net/projects/adsb/#displaying-the-info) with using Raspberry Pis for displaying live ADS-B data, so that was my first idea. The big draw with a Pi is that there are many closed-source signage OSes, but if those ever stop being an option, I can make my own system.
+My first step was choosing hardware. I have [some experience]({{ '/projects/adsb/#displaying-the-info' | relative_url }}) with using Raspberry Pis for displaying live ADS-B data, so that was my first idea. The big draw with a Pi is that there are many closed-source signage OSes, but if those ever stop being an option, I can make my own system.
 
 The Pi 4 I used for that ADS-B display had 4GB of RAM, and I  didn't want to go below that. Unfortunately, the Pi 4 4GB is very expensive right now--$75 is a tough sell, and we'd still need a case.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/signage/pi4gb.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/signage/pi4gb.png" alt="Store listing photo of a Raspberry Pi 4 Model B board" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -28,7 +28,7 @@ I kept poking around on the Micro Center website and realized the Pi 400 was on 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/signage/pi400.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/signage/pi400.png" alt="Store listing photo of a Raspberry Pi 400 keyboard computer" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -36,22 +36,22 @@ The Pi 400 is an overclocked Pi 4 4GB built into a keyboard and massive heatsink
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/signage/PXL_20260224_143254289.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/signage/PXL_20260224_143254289.jpg" alt="Back of a red Raspberry Pi 400 case with a ruler" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
-Obviously, I needed a way to protect the internals, so I drew a simple .DXF you can get [here](https://wilsonharper.net/assets/img/signage/pi400case.dxf). I first cut it out of acrylic, but it broke easily. Plywood worked much better, even if it didn't look as cool. I love using Fusion's canvas feature for making sketches like these.
+Obviously, I needed a way to protect the internals, so I drew a simple .DXF you can get [here]({{ '/assets/img/signage/pi400case.dxf' | relative_url }}). I first cut it out of acrylic, but it broke easily. Plywood worked much better, even if it didn't look as cool. I love using Fusion's canvas feature for making sketches like these.
 
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/signage/picase.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/signage/picase.png" alt="CAD render of a case panel with vent slots" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/signage/PXL_20260316_175230133.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/signage/PXL_20260316_175230133.jpg" alt="Laser cutter cutting vent slots into a wood panel" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/signage/PXL_20260316_184847595.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/signage/PXL_20260316_184847595.jpg" alt="Finished laser cut panel with vent slots in a red case" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -59,7 +59,7 @@ Mounting it behind the TV took some zip-ties, and that was about it. It looks a 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/signage/PXL_20260316_193420825.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/signage/PXL_20260316_193420825.jpg" alt="Vented case mounted on the back of a TV" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -71,6 +71,6 @@ If Yodeck ever changes their pricing, it won't be hard to switch to a different 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/signage/PXL_20260316_193410508.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/signage/PXL_20260316_193410508.jpg" alt="Commons room with a wall TV showing a digital sign" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>

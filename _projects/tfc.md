@@ -11,11 +11,11 @@ published: true
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/tfc/hero.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/tfc/hero.png" alt="3D render of flight computer board with tall white connector" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
-Six months ago, I built a [flight computer](https://wilsonharper.net/projects/avio/) in two weeks. Using what I've learned from that project, I've designed a new flight computer that I believe to be the world's smallest, measuring just 10 x 10mm. The current record seems to be a [16 x 17mm computer](https://www.youtube.com/watch?v=5TTcbMv5tDc) built by Joe at BPS.Space. Mine is 36% the size of his. Joe's build was focused on a compact way to achieve thrust-vector control. Mine is designed to go on more traditional hobby rockets, so I haven't included PWM servo outputs--giving me space to add 16 MB of onboard flash.
+Six months ago, I built a [flight computer]({{ '/projects/avio/' | relative_url }}) in two weeks. Using what I've learned from that project, I've designed a new flight computer that I believe to be the world's smallest, measuring just 10 x 10mm. The current record seems to be a [16 x 17mm computer](https://www.youtube.com/watch?v=5TTcbMv5tDc) built by Joe at BPS.Space. Mine is 36% the size of his. Joe's build was focused on a compact way to achieve thrust-vector control. Mine is designed to go on more traditional hobby rockets, so I haven't included PWM servo outputs--giving me space to add 16 MB of onboard flash.
 
 I plan to fabricate and assemble it soon, and this page will be updated as it progresses.
 
@@ -25,10 +25,10 @@ The board also uses the LPS22DF barometer and the LSM6DSV320X IMU, which combine
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/tfc/side.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/tfc/side.png" alt="3D render of flight computer board from the side" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/tfc/back.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/tfc/back.png" alt="3D render of board back with a square chip and connector" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -47,7 +47,7 @@ I designed it in KiCad and used the [JLCImport tool](https://github.com/jvanderb
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/tfc/sch.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/tfc/sch.png" alt="KiCad schematic of MCU, sensors, flash and power sections" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -77,7 +77,7 @@ Routing a microcontroller, flash, sensors, and power into this small a form fact
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/tfc/all.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/tfc/all.png" alt="PCB layout of all layers combined with pad labels" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -85,10 +85,10 @@ Routing a microcontroller, flash, sensors, and power into this small a form fact
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/tfc/1.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/tfc/1.png" alt="Top copper layer of PCB with red traces and ground pour" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/tfc/2.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/tfc/2.png" alt="Inner layer 1 traces in green on the PCB" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -96,9 +96,9 @@ Routing a microcontroller, flash, sensors, and power into this small a form fact
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/tfc/3.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/tfc/3.png" alt="Inner layer 2 traces in orange on the PCB" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/tfc/4.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/tfc/4.png" alt="Bottom copper layer of PCB with blue traces" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>

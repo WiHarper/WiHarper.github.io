@@ -8,17 +8,17 @@ category:
 related publications: false
 ---
 
-*Work-in-progress 10 x 10mm V2 [here](https://wilsonharper.net/projects/tfc/).*
+*Work-in-progress 10 x 10mm V2 [here]({{ '/projects/tfc/' | relative_url }}).*
 
 I had exactly two weeks to design and build a custom flight computer for my Level 1 high-power certification rocket. I wanted an RP2040-based flight computer transmitting telemetry data over LoRa, logging at 20 Hz to a μSD card, and updating a live 3D tracker in Google Earth. Here's how I went from a cardboard prototype to flying the avionics system in 14 days.
 
 
-[**Skip to the launch**](https://wilsonharper.net/projects/avio/#launch)
+[**Skip to the launch**]({{ '/projects/avio/#launch' | relative_url }})
 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/l1/55149321512_7e03b56905_o(1).jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/l1/55149321512_7e03b56905_o(1).jpg" alt="Rocket lifting off a launch rail with smoke and flame" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -39,7 +39,9 @@ I've long had an interest in NASA Mission Control. During the _Prestige_ launch,
         <video 
             controls 
             playsinline 
-            class="img-fluid rounded z-depth-1">
+            class="img-fluid rounded z-depth-1"
+            preload="metadata"
+            poster="{{ '/assets/img/l1/Vid 20260301 180501-poster.jpg' | relative_url }}">
             <source src="{{ '/assets/img/l1/Vid 20260301 180501.mp4' | relative_url }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -74,7 +76,7 @@ Let's do it!
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/l1/IMG_5282.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/l1/IMG_5282.jpg" sizes="(min-width: 576px) 360px, 95vw" alt="Smiling person beside a Project Kairos rocket on a launch rail" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -117,24 +119,24 @@ Overstability increases the rocket's predisposition to weathercocking--pitching 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/l1/opr1.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/l1/opr1.png" alt="OpenRocket side view of the L1 rocket with stability data" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/l1/opr2.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/l1/opr2.png" alt="OpenRocket cutaway showing avionics bay placement inside the rocket" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
-You can find the OpenRocket model [here](https://wilsonharper.net/assets/img/l1/L1 Cert with Avionics - Wide.ork). The rest of the design was simpler. The body tubes are heavy-duty cardboard, and the fins are laser-cut plywood. The nosecone is 3D-printed PLA. The rest is lots of epoxy.
+You can find the OpenRocket model [here]({{ '/assets/img/l1/L1 Cert with Avionics - Wide.ork' | relative_url }}). The rest of the design was simpler. The body tubes are heavy-duty cardboard, and the fins are laser-cut plywood. The nosecone is 3D-printed PLA. The rest is lots of epoxy.
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260306_040314583.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260306_040314583.PORTRAIT.jpg" alt="Cardboard body tube with plywood fins held in a hand" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260306_040254154.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260306_040254154.PORTRAIT.jpg" alt="Tall cardboard tube with plywood fins standing on a lab table" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -146,10 +148,10 @@ I wanted to get a sense of space in the real world before I dove into any CAD. B
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/l1/PXL_20260302_140750474.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/l1/PXL_20260302_140750474.jpg" alt="Cardboard sled mockup with labels for GPS BMP RP2040 and LiPo" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/l1/PXL_20260302_140805713.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/l1/PXL_20260302_140805713.jpg" alt="Cardboard mockup with labels for GPS antenna IMU and LoRa" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -159,10 +161,10 @@ After that first design, I did some actual CAD. Big thanks to [Ian Hsieh](https:
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/cad1.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/cad1.png" alt="CAD render of a transparent avionics bay with a grey base" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/cad2.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/cad2.png" alt="CAD render of the avionics bay from another angle" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -172,13 +174,13 @@ Because I needed a clean way to slide the avionics bay in and out of the upper b
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/cad4.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/cad4.png" alt="CAD render of the nose cone above a transparent tube" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/cad5.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/cad5.png" alt="CAD render of a nose cone with an inner coupler section" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/cad6.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/cad6.png" alt="CAD render of the nose cone and tube with ring details" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -186,7 +188,7 @@ You can see this in real life:
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260309_010125102.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260309_010125102.jpg" alt="White printed tube with two threaded rods attached" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -195,13 +197,13 @@ Finally, I put all the components in the model to ensure everything was the righ
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/cad7.PNG" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/cad7.PNG" alt="CAD render of the full rocket with avionics bay inside" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/cad8.PNG" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/cad8.PNG" alt="CAD render of the avionics bay with electronics mounted" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/cad9.PNG" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/cad9.PNG" alt="Close CAD render of the avionics sled with boards and battery" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -211,7 +213,7 @@ Finally, I put all the components in the model to ensure everything was the righ
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/L1 Avionics(5).gif" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/L1 Avionics(5).gif" alt="Wiring diagram of the flight computer and sensor modules" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -252,13 +254,13 @@ Notice that the GPS antenna (tan plastic and metal) is at the very top to avoid 
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260308_184617271.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260308_184617271.jpg" alt="Sled with GPS board and Feather RP2040 installed" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260308_184625087.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260308_184625087.jpg" alt="Sled with LSM6DSOX and BMP390 boards mounted" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260308_184638893.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260308_184638893.jpg" alt="Sled with IMU and barometer boards and wires" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -266,18 +268,18 @@ Wiring took a bit longer. Here are some in-progress photos:
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_030319848.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_030319848.jpg" alt="Wired sled with Feather board and GPS module visible" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260309_010133867.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260309_010133867.jpg" alt="Close view of Feather board with wires attached" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
-The 915 MHz antenna was a fun challenge. The math (using the same formula I used for my [ADS-B 1090 MHz antenna](https://wilsonharper.net/projects/adsb)) indicates an ideal length of ~80 mm. This is the vertical green wire you see here:
+The 915 MHz antenna was a fun challenge. The math (using the same formula I used for my [ADS-B 1090 MHz antenna]({{ '/projects/adsb' | relative_url }})) indicates an ideal length of ~80 mm. This is the vertical green wire you see here:
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260403_170608158.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260403_170608158.PORTRAIT.jpg" alt="Bottom of sled with BMP390 board and black velcro strap" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -287,10 +289,10 @@ I also ought to have a radial for the antenna, and the typical approach to that 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/l1/PXL_20260403_170616673.PORTRAIT.ORIGINAL.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/l1/PXL_20260403_170616673.PORTRAIT.ORIGINAL.jpg" alt="Wired sled with a green wire and tape wrapped around" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/l1/PXL_20260403_170624488.PORTRAIT.ORIGINAL.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/l1/PXL_20260403_170624488.PORTRAIT.ORIGINAL.jpg" alt="Close view of wired sled with taped wire bundles" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -308,7 +310,7 @@ The basic idea with the upper body tube is that the avionics bay slides on rails
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124603149.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124603149.jpg" alt="Avionics sled and nose cone parts laid out on the ground" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -318,7 +320,7 @@ First, the avionics sled slides onto two M5 threaded rods connected to the nose 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124549839.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124549839.jpg" alt="Avionics sled sliding onto two threaded rods" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -326,7 +328,7 @@ It gets secured in place:
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124539323.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124539323.jpg" alt="Sled secured with a velcro strap on the rods" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -335,7 +337,7 @@ The upper body tube slides over the entire assembly:
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124517896.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124517896.jpg" alt="Assembled sled with rods next to the body tube" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -344,7 +346,7 @@ This "half-coupler" slides into the upper body tube and is lightly held in place
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124440946.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124440946.jpg" alt="Wooden disk with eyebolt and threaded rod at the tube end" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -352,7 +354,7 @@ Finally, the bulkhead is screwed in and the full upper body is done.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124423608.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260319_124423608.jpg" alt="Bulkhead with eyebolt beside the KAIROS body tube" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -363,10 +365,10 @@ Painting the rocket and making custom decals was way more fun than I expected!
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/l1/PXL_20260313_015629277.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/l1/PXL_20260313_015629277.jpg" alt="Rocket on a table with a tripod antenna behind it" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/l1/PXL_20260312_194248310.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/l1/PXL_20260312_194248310.jpg" alt="Blue nose cone and tube beside a tape measure" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -374,13 +376,13 @@ This was my first time using a Cricut. I don't love its software, but it's hard 
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_061332973.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_061332973.jpg" alt="Blue and white tube labeled POWER and PRESSURE" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_061328479.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_061328479.jpg" alt="Blue and white tube labeled CENTER OF PRESSURE" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_061323425.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_061323425.jpg" alt="Blue fins and tube with a THIS WAY UP label" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -388,18 +390,18 @@ This was my first time using a Cricut. I don't love its software, but it's hard 
 
 ## Ground Station
 
-The ground station was a fun mini-project. I used the same design (and spare parts) from my 1090 MHz ground plane antenna I built for my [ADS-B feeder](https://wilsonharper.net/projects/adsb). Each wire is just a few millimeters longer (80 mm total) to account for the longer wavelength of the lower frequency 915 MHz LoRa. 
+The ground station was a fun mini-project. I used the same design (and spare parts) from my 1090 MHz ground plane antenna I built for my [ADS-B feeder]({{ '/projects/adsb' | relative_url }}). Each wire is just a few millimeters longer (80 mm total) to account for the longer wavelength of the lower frequency 915 MHz LoRa. 
 
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260404_193510239.PORTRAIT.ORIGINAL.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260404_193510239.PORTRAIT.ORIGINAL.jpg" alt="Ground station antenna on a white mount and tripod" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260404_193516821.PORTRAIT.ORIGINAL.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260404_193516821.PORTRAIT.ORIGINAL.jpg" alt="Close view of ground station antenna radials" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260404_193527628.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260404_193527628.PORTRAIT.jpg" alt="Close view of the tripod mount and antenna base" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -431,7 +433,7 @@ While logging happens 20 times a second, transmitting data that fast over LoRa w
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260403_170630205.PORTRAIT.ORIGINAL.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260403_170630205.PORTRAIT.ORIGINAL.jpg" alt="Sled with GPS module and Feather board wired inside" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -441,7 +443,7 @@ I dealt with an issue for ages where the loop would hang after 5-30 minutes. A f
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/hard_reboot.png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/hard_reboot.png" alt="xkcd comic about a server rebooting on a light timer" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -475,10 +477,10 @@ Finally, the script saves a local `.csv` file in case there are any issues with 
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/l1/PXL_20260314_170713052.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/l1/PXL_20260314_170713052.jpg" alt="Launch gear and upright rocket beside a red pickup truck" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/l1/PXL_20260314_134159202.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid path="assets/img/l1/PXL_20260314_134159202.jpg" alt="Water tower with a College Station welcome sign" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -486,7 +488,7 @@ On March 14th, we drove out to Hearne, TX. The wind was mostly calm with occasio
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_172841933.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_172841933.jpg" alt="Rocket standing on a launch rail on grass" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -499,7 +501,9 @@ And then it launched.
         <video 
             controls 
             playsinline 
-            class="img-fluid rounded z-depth-1">
+            class="img-fluid rounded z-depth-1"
+            preload="metadata"
+            poster="{{ '/assets/img/l1/img_1475.mov-poster.jpg' | relative_url }}">
             <source src="{{ '/assets/img/l1/img_1475.mov.mp4' | relative_url }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -519,7 +523,9 @@ Using the logged data, I'm able to replay the flight in the mission control GUI:
         <video 
             controls 
             playsinline 
-            class="img-fluid rounded z-depth-1">
+            class="img-fluid rounded z-depth-1"
+            preload="metadata"
+            poster="{{ '/assets/img/l1/2026-04-04 16-18-35 - Trim-poster.jpg' | relative_url }}">
             <source src="{{ '/assets/img/l1/2026-04-04 16-18-35 - Trim.mp4' | relative_url }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -538,7 +544,7 @@ Most of it is what you might expect. Graphing altitude and time yields a parabol
 
 <div class="row justify-content-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/Altitude (m) and Time (s).png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/Altitude (m) and Time (s).png" alt="Line chart of altitude in meters over time" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -546,7 +552,7 @@ Temperature slowly decreased--notice the zoomed-in vertical axis:
 
 <div class="row justify-content-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/Temperature (C) and Time (s).png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/Temperature (C) and Time (s).png" alt="Line chart of temperature in Celsius over time" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -554,7 +560,7 @@ The acceleration data is interesting:
 
 <div class="row justify-content-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/Acceleration (ms^-2) and Time (s).png" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/Acceleration (ms^-2) and Time (s).png" alt="Line chart of acceleration on three axes over time" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -580,6 +586,6 @@ I've started work on my Level 2 Certification rocket and plan to launch soon. I'
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_155055065.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/l1/PXL_20260314_155055065.jpg" alt="Rocket standing on gravel in front of a red pickup truck" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>

@@ -1,57 +1,54 @@
 <ul class="card-text font-weight-light list-group list-group-flush">
   {% for content in entry.contents %}
     <li class="list-group-item">
-      <div class="row">
-        {% if content.year %}
-          <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px">
-            <table class="table-cv">
-              <tbody>
-                <tr>
-                  <td>
-                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
-                      {{- content.year -}}
-                    </span>
-                  </td>
-                </tr>
-                {% if content.location %}
-                  <tr>
-                    <td>
-                      <p class="location">
-                        <i class="fa-solid fa-location-dot iconlocation"></i>
-                        {{ content.location }}
-                      </p>
-                    </td>
-                  </tr>
-                {% endif %}
-              </tbody>
-            </table>
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <div class="cv-entry-heading">
+            {% comment %}
+              "Title, Institution" on one line, like the PDF resume. Set `subheadings: true` on a
+              section (or `subheading: true` on one entry) in cv.yml to put the institution on its
+              own line instead, for long titles.
+            {% endcomment %}
+            {% assign institution_below = false %}
+            {% if entry.subheadings or content.subheading %}
+              {% assign institution_below = true %}
+            {% endif %}
+            {% if content.title or content.institution %}
+              <h6 class="title font-weight-bold">
+                {{- content.title -}}
+                {%- unless institution_below -%}
+                  {%- if content.title and content.institution %}, {% endif -%}
+                  {{- content.institution -}}
+                {%- endunless -%}
+              </h6>
+              {% if institution_below and content.institution %}
+                <div class="cv-institution">{{ content.institution }}</div>
+              {% endif %}
+            {% endif %}
+            {% if content.department %}
+              <div class="department">
+                <i class="fa-regular fa-circle-dot icondepartment"></i>
+                {{- content.department -}}
+              </div>
+            {% endif %}
           </div>
-        {% endif %}
-        <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
-          {% if content.title %}
-            <h6 class="title font-weight-bold ml-1 ml-md-4">{{ content.title }}</h6>
+          {% if content.year or content.location %}
+            <div class="cv-date">
+              {% if content.year %}
+                <span class="cv-year">{{- content.year -}}</span>
+              {% endif %}
+              {% if content.location %}
+                <p class="location">
+                  <i class="fa-solid fa-location-dot iconlocation"></i>
+                  {{ content.location }}
+                </p>
+              {% endif %}
+            </div>
           {% endif %}
-          {% if content.department or content.institution %}
-            <table class="table-cv ml-1 ml-md-4 institution">
-              <tbody>
-                {% if content.institution %}
-                  <tr>
-                    <td class="institution">{{ content.institution }}</td>
-                  </tr>
-                {% endif %}
-                {% if content.department %}
-                  <tr>
-                    <td style="vertical-align: top; text-align: center" class="department">
-                      <i class="fa-regular fa-circle-dot icondepartment"></i>
-                    </td>
-                    <td class="department">{{ content.department }}</td>
-                  </tr>
-                {% endif %}
-              </tbody>
-            </table>
-          {% endif %}
+        </div>
+        <div class="cv-entry-body">
           {% if content.maindescription %}
-            <div class="ml-1 ml-md-4">{{ content.maindescription }}</div>
+            <div>{{ content.maindescription }}</div>
           {% endif %}
           {% if content.description %}
             <ul class="items">
@@ -94,7 +91,7 @@
             </ul>
           {% endif %}
           {% if content.linkitems %}
-            <div class="container-links ml-1 ml-md-4">
+            <div class="container-links">
               {% for item in content.linkitems %}
                 {% if item.link %}
                   <div class="container-link-button">

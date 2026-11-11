@@ -14,13 +14,13 @@ I built this volume mixer to more easily control how loud different applications
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/deej/Screenshot 2026-01-07 195208.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/deej/Screenshot 2026-01-07 195208.jpg" alt="CAD render of mixer case with a sloped top" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/deej/Screenshot 2026-01-07 195311.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/deej/Screenshot 2026-01-07 195311.jpg" alt="CAD render of mixer case with an engraved icon panel" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/deej/Screenshot 2026-01-07 195327.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/deej/Screenshot 2026-01-07 195327.jpg" alt="CAD render of mixer top with five slider slots" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -31,13 +31,13 @@ I built this volume mixer to more easily control how loud different applications
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/deej/PXL_20240421_021039763.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/deej/PXL_20240421_021039763.jpg" alt="Close view of Arduino board with yellow wires soldered on" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/deej/PXL_20240421_012837645.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/deej/PXL_20240421_012837645.jpg" alt="Open mixer case showing slider potentiometers and wiring" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/deej/PXL_20240421_020515696.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/deej/PXL_20240421_020515696.jpg" alt="Board on a helping-hand stand beside a solder spool" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -53,7 +53,7 @@ I built this volume mixer to more easily control how loud different applications
 </div>
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/deej/PXL_20240421_034149214.PORTRAIT.jpg" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/deej/PXL_20240421_034149214.PORTRAIT.jpg" alt="Finished mixer with five sliders and five buttons on a desk" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">

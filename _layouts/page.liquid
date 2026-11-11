@@ -18,6 +18,37 @@ layout: default
     {{ content }}
   </article>
 
+  {% if page.collection == 'projects' %}
+    {% comment %} previous / next project, in the same order as the cards on the projects page {% endcomment %}
+    {% assign sorted_projects = site.projects | sort: 'importance' %}
+    {% for project in sorted_projects %}
+      {% if project.url == page.url %}
+        {% assign prev_index = forloop.index0 | minus: 1 %}
+        {% assign next_index = forloop.index0 | plus: 1 %}
+        {% assign prev_project = nil %}
+        {% if prev_index >= 0 %}
+          {% assign prev_project = sorted_projects[prev_index] %}
+        {% endif %}
+        {% assign next_project = sorted_projects[next_index] %}
+      {% endif %}
+    {% endfor %}
+    <nav class="project-nav" aria-label="More projects">
+      {% if prev_project %}
+        <a class="project-nav-prev" href="{{ prev_project.url | relative_url }}">
+          <span class="project-nav-label">&larr; Previous project</span>
+          {{ prev_project.title }}
+        </a>
+      {% endif %}
+      {% if next_project %}
+        <a class="project-nav-next" href="{{ next_project.url | relative_url }}">
+          <span class="project-nav-label">Next project &rarr;</span>
+          {{ next_project.title }}
+        </a>
+      {% endif %}
+    </nav>
+    <p class="project-nav-all"><a href="{{ '/projects/' | relative_url }}">All projects</a></p>
+  {% endif %}
+
   {% if page.related_publications %}
     <h2>References</h2>
     <div class="publications">

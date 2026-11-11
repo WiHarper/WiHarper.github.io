@@ -29,9 +29,18 @@ layout: default
     <article>
       <div class="cv">
         {% for entry in site.data.cv %}
+          {% comment %} `type: contact` renders as one line under the page title, with no section heading {% endcomment %}
+          {% if entry.type == 'contact' %}
+            <p class="cv-contact">
+              {% for content in entry.contents %}
+                <span>{{ content.value }}</span>
+              {% endfor %}
+            </p>
+            {% continue %}
+          {% endif %}
           <a class="anchor" id="{{ entry.title }}"></a>
-          <div class="card mt-3 p-3">
-            <h3 class="card-title font-weight-medium">{{ entry.title }}</h3>
+          <div class="cv-section">
+            <h2>{{ entry.title }}</h2>
             <div>
               {% if entry.type == 'list' %}
                 {% include cv/list.liquid %}
@@ -87,8 +96,8 @@ layout: default
           {% endif %}
           {% if data[0] == 'meta' or data[1].size == 0 %} {% continue %} {% endif %}
           <a class="anchor" id="{{ data[0] }}"></a>
-          <div class="card mt-3 p-3">
-            <h3 class="card-title font-weight-medium">{{ data[0] | capitalize }}</h3>
+          <div class="cv-section">
+            <h2>{{ data[0] | capitalize }}</h2>
             <div>
               {% case data[0] %}
                 {% when 'basics' %}

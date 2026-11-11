@@ -425,7 +425,7 @@ ul.task-list input[type="checkbox"] {
   text-align: center;
 
   .contact-icons {
-    font-size: 4rem;
+    font-size: 2rem;
 
     a {
       img {
@@ -467,7 +467,7 @@ ul.task-list input[type="checkbox"] {
 
 /* Footer-specific social icon styles */
 .footer-social {
-  font-size: 3rem; /* halfway between 4rem and 5rem */
+  font-size: 2rem; /* same size on every page */
 
   a {
     i::before {
@@ -1271,6 +1271,17 @@ nav[data-toggle="toc"] {
 
 #toc-sidebar {
   z-index: 1;
+  /* stay below the fixed navbar while scrolling, and scroll if taller than the screen */
+  top: 5rem;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+}
+
+/* smooth scrolling for sidebar/anchor links */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 .echarts {
@@ -1552,4 +1563,106 @@ figure.cover {
 
 mjx-container[jax="CHTML"][display="true"] {
   overflow-x: auto;
+}
+
+// Home page: featured project cards
+.featured-projects {
+  clear: both; // sit below the floated photo, at full width
+  margin-top: 1rem;
+}
+
+// Phone-only "On this page" list (built in common.js from the sidebar links)
+.toc-mobile {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .toc-mobile {
+    display: block;
+    margin-bottom: 1.5rem;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0.5rem;
+
+    summary {
+      cursor: pointer;
+      font-family: $title-mono-font;
+      font-size: 0.9rem;
+      color: var(--global-text-color);
+    }
+
+    ul {
+      list-style: none;
+      margin: 0.5rem 0 0;
+      padding: 0;
+    }
+
+    li {
+      padding: 0.3rem 0;
+
+      &.toc-mobile-sub {
+        padding-left: 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+// Previous / next links at the bottom of a project page
+// (same font, size and weight as the heading sidebar)
+.project-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--global-divider-color);
+
+  a {
+    flex: 1 1 14rem;
+    max-width: 48%;
+    color: var(--global-text-color);
+    font-size: 0.75rem;
+    font-weight: 500;
+
+    &:hover {
+      color: var(--global-theme-color);
+      text-decoration: none;
+    }
+
+    &.project-nav-next {
+      margin-left: auto;
+      text-align: right;
+    }
+  }
+
+  .project-nav-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--global-text-color-light);
+  }
+}
+
+.project-nav-all {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+
+  a {
+    color: var(--global-text-color);
+
+    &:hover {
+      color: var(--global-hover-color);
+      text-decoration: none;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .project-nav a {
+    max-width: 100%;
+  }
 }

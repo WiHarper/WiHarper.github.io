@@ -11,7 +11,7 @@ published: true
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/nfc/hero.jpg" title="Business card" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/nfc/hero.jpg" alt="NFC business card with lit red LEDs resting on a phone" title="Business card" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -28,7 +28,9 @@ This project started about three months ago as an easy way to get more experienc
         <video 
             controls 
             playsinline 
-            class="img-fluid rounded z-depth-1">
+            class="img-fluid rounded z-depth-1"
+            preload="metadata"
+            poster="{{ '/assets/img/nfc/nfc_fixed-poster.jpg' | relative_url }}">
             <source src="{{ '/assets/img/nfc/nfc_fixed.mp4' | relative_url }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -46,7 +48,7 @@ The theory didn't seem too complicated. I quickly made a schematic in KiCad. The
 
 <div class="row justify-content-sm-center">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/sch1.png" title="First schematic" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/sch1.png" alt="KiCad schematic of first draft with ATtiny412 and LED circuit" title="First schematic" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -64,7 +66,7 @@ Since I was getting it professionally assembled anyway, I might as well go with 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/nfc/new_sch.png" title="New schematic" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/nfc/new_sch.png" alt="KiCad schematic of revised card with ATtiny816 and NTAG chip" title="New schematic" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -72,7 +74,7 @@ As I was reading through the NTAG I2C Plus datasheet, I noticed it specified tha
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/nfc/cap.png" title="Capacitor circuit" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/nfc/cap.png" alt="Schematic of power capacitor circuit with MOSFET and resistors" title="Capacitor circuit" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -90,7 +92,7 @@ I determined the dimensions and properties of the antenna using STM's [antenna i
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/st.png" title="STM inductance calculator" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/st.png" alt="Antenna inductance calculator screenshot showing 2.65 uH result" title="STM inductance calculator" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
  
@@ -100,7 +102,7 @@ I went ahead and routed the PCB. I was surprised that KiCad doesn't offer a buil
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/antenna.png" title="Bare antenna" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/antenna.png" alt="Bare rectangular NFC antenna trace on a dark background" title="Bare antenna" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -114,7 +116,7 @@ Net colors made it easier (and more fun) to understand which trace goes where. T
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/ctraces.png" title="Full trace layout" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/ctraces.png" alt="PCB layout of full trace routing with LEDs and chips" title="Full trace layout" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -126,7 +128,7 @@ I decided to show all traces on the back of the card. I also created a simple bl
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/back.png" title="Business card back" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/back.png" alt="Back of business card with traces and block diagram" title="Business card back" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -144,7 +146,7 @@ When it first arrived, I started by testing if it could even harvest power. I ho
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/PXL_20260720_232537413.jpg" title="Testing jig" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/PXL_20260720_232537413.jpg" alt="Card on a desk wired to a breadboard with a lit LED" title="Testing jig" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -158,10 +160,10 @@ I have three small exposed pads on the back: `GND`, `VCC`, and `UPDI`. This orde
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/PXL_20260720_232539684.jpg" title="Programming jig" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/PXL_20260720_232539684.jpg" alt="Orange programming clip with pogo pins touching card pads" title="Programming jig" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/pads.png" title="Programming pads" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/pads.png" alt="3D render of card back showing programming pads" title="Programming pads" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -189,7 +191,7 @@ The QR code and NFC link both direct devices to [https://connect.wilsonharper.ne
     </div>
 </div>
 
-View full BOM details [here](https://wilsonharper.net/assets/html/ibom.html).
+View full BOM details [here]({{ '/assets/html/ibom.html' | relative_url }}).
 
 ---
 
@@ -201,7 +203,7 @@ The thirty cards I have now should last a while. Once I do run out, though, I pl
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="lazy" path="assets/img/nfc/hero2.jpg" title="Stack of cards" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="lazy" path="assets/img/nfc/hero2.jpg" alt="Stack of NFC business cards on a wooden surface" title="Stack of cards" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
