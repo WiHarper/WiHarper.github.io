@@ -17,7 +17,7 @@ featured_projects: [businesscard, avio, adsb] # project file names shown as card
 
 ---
 
-I’m Wilson, an electrical engineering student at Rice University fascinated by rockets, radars, and avionics.
+I’m Wilson, an electrical engineering student at Rice University fascinated by rockets, radars, and avionics. 
 
 At Rice, I serve as the Mission Control lead for [Rice Eclipse](https://eclipse.rice.edu/)'s liquid rocket engine program. With Eclipse, I've also designed an active fin stabilization system and other custom avionics. Previously, I interned at [RTX BBN Technologies](https://www.rtx.com/what-we-do/bbn-technologies) in Cambridge, Massachusetts, and I also engineered compact, directional wind systems for immersive environments in Rice's [Experimental Pixels Lab](https://pixels.rice.edu/). 
 
