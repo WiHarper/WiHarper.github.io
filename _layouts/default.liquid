@@ -25,22 +25,22 @@
       {% comment %} skip the sidebar column when the page has no section headings {% endcomment %}
       {% if page.toc and page.toc.sidebar and content contains '<h2' %}
         {% if page.toc.sidebar == 'right' %}
-          <div class="row">
+          <div class="row toc-layout toc-layout-right">
             <!-- main content area -->
-            <div class="col-sm-9">{{ content }}</div>
+            <div class="col-sm-9 toc-content">{{ content }}</div>
             <!-- sidebar, which will move to the top on a small screen -->
-            <div class="col-sm-3">
+            <div class="col-sm-3 toc-col">
               <nav id="toc-sidebar" class="sticky-top"></nav>
             </div>
           </div>
         {% else %}
-          <div class="row">
+          <div class="row toc-layout">
             <!-- sidebar, which will move to the top on a small screen -->
-            <div class="col-sm-3">
+            <div class="col-sm-3 toc-col">
               <nav id="toc-sidebar" class="sticky-top"></nav>
             </div>
             <!-- main content area -->
-            <div class="col-sm-9">{{ content }}</div>
+            <div class="col-sm-9 toc-content">{{ content }}</div>
           </div>
         {% endif %}
       {% else %}

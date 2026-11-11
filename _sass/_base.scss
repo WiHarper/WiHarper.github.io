@@ -1666,3 +1666,30 @@ mjx-container[jax="CHTML"][display="true"] {
     max-width: 100%;
   }
 }
+
+// Wide screens: the text column keeps its width but is centred on the page (lining up with the
+// footer), and the heading sidebar sits just to its left. Narrower windows keep the plain
+// two-column layout, and phones get the collapsed "On this page" list instead.
+@media (min-width: 1150px) {
+  .toc-layout {
+    position: relative;
+    justify-content: center;
+
+    > .toc-col {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      // the centred 75% text column starts 12.5% in from the left
+      right: 87.5%;
+      width: 13rem;
+      max-width: none;
+      padding: 0 1.5rem 0 0;
+    }
+
+    &.toc-layout-right > .toc-col {
+      right: auto;
+      left: 87.5%;
+      padding: 0 0 0 1.5rem;
+    }
+  }
+}
