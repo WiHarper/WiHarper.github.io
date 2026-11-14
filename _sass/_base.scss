@@ -196,7 +196,8 @@ ul.task-list input[type="checkbox"] {
 // Profile
 
 .profile {
-  width: 100%;
+  // On phones, keep the headshot small and let the bio wrap beside it.
+  width: 40%;
 
   .more-info {
     margin-bottom: 5px;

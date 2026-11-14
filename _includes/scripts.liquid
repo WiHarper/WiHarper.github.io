@@ -184,8 +184,10 @@
 <script defer src="{{ '/assets/js/common.js' | relative_url | bust_file_cache }}"></script>
 <script defer src="{{ '/assets/js/copy_code.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
 
-<!-- Jupyter Open External Links New Tab -->
-<script defer src="{{ '/assets/js/jupyter_new_tab.js' | relative_url | bust_file_cache }}"></script>
+{% if page.jupyter_notebook %}
+  <!-- Jupyter Open External Links New Tab (set `jupyter_notebook: true` in a page's front matter to load) -->
+  <script defer src="{{ '/assets/js/jupyter_new_tab.js' | relative_url | bust_file_cache }}"></script>
+{% endif %}
 
 <!-- Badges -->
 {% if site.enable_publication_badges.altmetric %}
