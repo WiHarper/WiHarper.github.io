@@ -1,0 +1,58 @@
+{% comment %}
+  Person structured data (JSON-LD) for the homepage, so search engines treat the site as being about a person.
+  Profiles that represent you go in sameAs; articles written about you go in subjectOf.
+{% endcomment %}
+{% assign person_name = site.first_name | append: ' ' | append: site.last_name %}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "{{ site.url }}/#person",
+    "name": {{ person_name | jsonify }},
+    "givenName": {{ site.first_name | jsonify }},
+    "familyName": {{ site.last_name | jsonify }},
+    "url": "{{ site.url }}/",
+    "image": "{{ site.url }}/assets/img/{{ page.profile.image }}",
+    "description": {{ site.description | strip | jsonify }},
+    "jobTitle": "Electrical Engineering Student",
+    "affiliation": {
+      "@type": "CollegeOrUniversity",
+      "name": "Rice University",
+      "url": "https://www.rice.edu/"
+    },
+    "knowsAbout": ["Electrical engineering", "Avionics", "Rocketry", "Radar", "PCB design", "Embedded systems"],
+    "sameAs": [
+      "https://www.linkedin.com/in/{{ site.data.socials.linkedin_username }}",
+      "https://github.com/{{ site.data.socials.github_username }}",
+      "https://instagram.com/{{ site.data.socials.instagram_id }}"
+    ],
+    "subjectOf": [
+      {
+        "@type": "NewsArticle",
+        "headline": "Building an Energy-Harvesting Business Card",
+        "url": "https://hackaday.com/2026/08/31/building-an-energy-harvesting-business-card",
+        "publisher": { "@type": "Organization", "name": "Hackaday" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "An NFC Energy-Harvesting PCB Business Card with a Microcontroller",
+        "url": "https://blog.adafruit.com/2026/08/31/an-nfc-energy-harvesting-pcb-business-card-with-a-microcontroller/",
+        "publisher": { "@type": "Organization", "name": "Adafruit" }
+      },
+      {
+        "@type": "Article",
+        "headline": "Davis Senior on the Rise at MIT Program",
+        "datePublished": "2024-09-16",
+        "url": "https://www.ysd7.org/post-details/~board/ysd-stories/post/davis-senior-on-the-rise-at-mit-program",
+        "publisher": { "@type": "Organization", "name": "Yakima School District" }
+      },
+      {
+        "@type": "NewsArticle",
+        "headline": "Yakima School District celebrates young writers in annual Voices/Voces writing contest",
+        "datePublished": "2024-04-25",
+        "url": "https://www.applevalleynewsnow.com/news/yakima-school-district-celebrates-young-writers-in-annual-voices-voces-writing-contest/article_19667710-0332-11ef-9f4a-f7d26bf19475.html",
+        "publisher": { "@type": "Organization", "name": "Apple Valley News Now" }
+      }
+    ]
+  }
+</script>
