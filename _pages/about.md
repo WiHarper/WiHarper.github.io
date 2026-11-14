@@ -40,6 +40,8 @@ Feel free to check out more of my [projects]({{ '/projects/' | relative_url }}),
   </div>
 </div>
 
+<p class="project-nav-all"><a href="{{ '/projects/' | relative_url }}">All projects</a></p>
+
 
 <style>
   .profile img.rounded {
