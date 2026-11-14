@@ -17,11 +17,11 @@ published: true
 
 <br>
 
-*Discussed on [Hacker News](https://news.ycombinator.com/item?id=49478426) and featured on [Adafruit](https://blog.adafruit.com/2026/08/31/an-nfc-energy-harvesting-pcb-business-card-with-a-microcontroller/), [Hackaday.com](https://hackaday.com/2026/08/31/building-an-energy-harvesting-business-card), and by [Microchip Technologies](https://lnkd.in/p/gH3GDPX6).*
+*Discussed on [Hacker News](https://news.ycombinator.com/item?id=49478426) and featured on [Adafruit](https://blog.adafruit.com/2026/08/31/an-nfc-energy-harvesting-pcb-business-card-with-a-microcontroller/), [Hackaday.com](https://hackaday.com/2026/08/31/building-an-energy-harvesting-business-card), and by [Microchip Technology](https://lnkd.in/p/gH3GDPX6).*
 
 Like most business cards, mine doesn't have a battery. When it's tapped against a phone, though, 21 LEDs start an animation, powered just by NFC.
 
-This project started about three months ago as an easy way to get more experience with PCB design. "Easy" didn't last long. This final product taught me more about every aspect of the PCB process than I could have expected, and the result turned out way better than I imagined. The full repo is [here](https://github.com/WiHarper/nfc_card).
+This project started in May 2026 ago as an easy way to get more experience with PCB design. "Easy" didn't last long. Three months later, this final product taught me more about every aspect of the PCB process than I could have expected, and the result turned out way better than I imagined. The full repo is [here](https://github.com/WiHarper/nfc_card).
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
@@ -124,7 +124,7 @@ Net colors made it easier (and more fun) to understand which trace goes where. T
 
 ## Back Design
 
-I decided to show all traces on the back of the card. I also created a simple block diagram and IC BOM. To copy the traces to the `B.Silkscreen` layer, I plotted `F.Cu` and `B.Cu` as `.SVGs` and imported them onto `B.Silkscreen`, aligning them by eye. The routing is unusual in many ways, and I am sure a seasoned electrical engineer would notice changes worth making. I'm sure more than one person is reading this and thinking *Why didn't he use a ground plane?* A ground plane would prevent all flux through the antenna, killing it. 
+I decided to show all traces on the back of the card. I also created a simple block diagram and IC BOM. To copy the traces to the `B.Silkscreen` layer, I plotted `F.Cu` and `B.Cu` as `.SVGs` and imported them onto `B.Silkscreen`, aligning them by eye. The routing is unusual in many ways, and I am sure a seasoned electrical engineer would notice changes worth making. I'm sure more than one person is reading this and thinking *Why didn't he use a ground plane?* A ground plane would prevent some flux through the antenna, killing it. 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -197,7 +197,7 @@ View full BOM details [here]({{ '/assets/html/ibom.html' | relative_url }}).
 
 ## Lessons Learned
 
-The thirty cards I have now should last a while. Once I do run out, though, I plan to make a V2. `VOUT` stays at a high enough voltage to power any color of LED, and green or yellow could be interesting. I'm also considering adding a thin button or two for interactivity, and there are several arcade-style games I could make with a ring of LEDs. Since publishing, I've learned that iOS handles NFC different from Android--it only powers the card long enough to transfer the NFC payload, meaning LEDs don't light up. I'm curious if there are ways to rectify (no pun intended) this difference.
+The thirty cards I have now should last a while. Once I do run out, though, I plan to make a V2. `VOUT` stays at a high enough voltage to power any color of LED, and green or yellow could be interesting. I'm also considering adding a thin button or two for interactivity, and there are several arcade-style games I could make with a ring of LEDs. Since publishing, I've learned that iOS handles NFC differently from Android--it only powers the card long enough to transfer the NFC payload, meaning LEDs don't light up. I'm curious if there are ways to rectify (no pun intended) this difference.
 
 "Hardware is hard" is a phrase I've heard frequently, and this project made me realize how true it is. Individually, nothing in this project is novel or even that complicated: NFC PCB antennas, blinky LEDs with an MCU, and PCB business cards have all been done before. As far as I can tell, though, no one has combined them into one aesthetically-pleasing package--or, at least, I couldn't find an example anywhere online (there are several that have NFC harvesting, circuitry in the antenna, or Charlieplexing, but not all three). There were moments where I felt sure this was beyond my capabilities. After triple-checking every possible issue, I realized I just had to send it, and I'm so glad I did.
 
