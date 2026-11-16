@@ -37,9 +37,6 @@ Power and data share one connector. When the board is on the rocket, a 1s or 2s 
 
 Because of the board's low power draw and interrupt-driven logging, the LDO can handle the heat dissipation from even a 2s LiPo over the duration of a flight. My back-of-the-envelope calculation estimates heat generation at 150 mW, which isn't a problem over a short flight.
 
-I designed it in KiCad and used the [JLCImport tool](https://github.com/jvanderberg/kicad_jlcimport) for 3D models. 
-
-
 
 ---
 
