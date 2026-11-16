@@ -1,0 +1,21 @@
+{% comment %}
+  Sets three lists of projects for the including page:
+  - featured_projects: the ones named in _data/featured_projects.yml, in that order
+  - other_projects: every other project, sorted by `importance`
+  - ordered_projects: featured first, then the rest (the order the projects page shows them)
+{% endcomment %}
+{% assign featured_projects = '' | split: '' %}
+{% for slug in site.data.featured_projects %}
+  {% assign match = site.projects | where: 'slug', slug | first %}
+  {% if match %}
+    {% assign featured_projects = featured_projects | push: match %}
+  {% endif %}
+{% endfor %}
+{% assign other_projects = '' | split: '' %}
+{% assign sorted_all = site.projects | sort: 'importance' %}
+{% for project in sorted_all %}
+  {% unless site.data.featured_projects contains project.slug %}
+    {% assign other_projects = other_projects | push: project %}
+  {% endunless %}
+{% endfor %}
+{% assign ordered_projects = featured_projects | concat: other_projects %}

@@ -12,7 +12,6 @@ profile:
     <p> </p>
 
 social: false # icons and copyright now come from the site-wide footer
-featured_projects: [businesscard, avio, adsb] # project file names shown as cards, in order
 
 
 ---
@@ -28,14 +27,11 @@ Feel free to check out more of my [projects]({{ '/projects/' | relative_url }}),
 <br>
 
 
+{% include ordered_projects.liquid %}
 <div class="projects featured-projects">
   <div class="row row-cols-1 row-cols-md-3">
-    {% assign featured_slugs = page.featured_projects %}
-    {% for slug in featured_slugs %}
-      {% assign project = site.projects | where: "slug", slug | first %}
-      {% if project %}
-        {% include projects.liquid %}
-      {% endif %}
+    {% for project in featured_projects %}
+      {% include projects.liquid %}
     {% endfor %}
   </div>
 </div>

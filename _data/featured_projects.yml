@@ -1,0 +1,6 @@
+# Featured projects: shown on the home page and at the top of /projects, in this order.
+# Use each project's file name in _projects/ (without .md). Featured projects are left
+# out of the "More projects" list below them.
+- businesscard
+- avio
+- adsb

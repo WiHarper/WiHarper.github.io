@@ -1694,3 +1694,18 @@ mjx-container[jax="CHTML"][display="true"] {
     }
   }
 }
+
+// Section headings on the projects page ("Featured Projects", "More Projects")
+.projects .projects-section-title {
+  font-family: $title-mono-font;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--global-divider-color);
+
+  &:first-child {
+    margin-top: 0.5rem;
+  }
+}

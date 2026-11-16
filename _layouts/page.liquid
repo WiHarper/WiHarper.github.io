@@ -20,7 +20,8 @@ layout: default
 
   {% if page.collection == 'projects' %}
     {% comment %} previous / next project, in the same order as the cards on the projects page {% endcomment %}
-    {% assign sorted_projects = site.projects | sort: 'importance' %}
+    {% include ordered_projects.liquid %}
+    {% assign sorted_projects = ordered_projects %}
     {% for project in sorted_projects %}
       {% if project.url == page.url %}
         {% assign prev_index = forloop.index0 | minus: 1 %}
