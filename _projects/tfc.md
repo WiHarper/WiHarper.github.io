@@ -6,7 +6,7 @@ img: assets/img/tfc/hero.png
 importance: 40
 category:
 related_publications: false
-published: false
+published: true
 ---
 
 <div class="row">
@@ -36,9 +36,6 @@ The board also uses the LPS22DF barometer and the LSM6DSV320X IMU, which combine
 Power and data share one connector. When the board is on the rocket, a 1s or 2s LiPo can be plugged straight into the Molex connector. To remove flight logs from it, a custom USB-Molex cable will be used to both power it and communicate with it straight over the STM32's D+/D- pins. I have exposed SWD pads on the back for debugging that are accessible using a pogo pin clip. 
 
 Because of the board's low power draw and interrupt-driven logging, the LDO can handle the heat dissipation from even a 2s LiPo over the duration of a flight. My back-of-the-envelope calculation estimates heat generation at 150 mW, which isn't a problem over a short flight.
-
-I designed it in KiCad and used the [JLCImport tool](https://github.com/jvanderberg/kicad_jlcimport) for 3D models. 
-
 
 
 ---
