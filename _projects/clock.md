@@ -11,7 +11,7 @@ related publications: false
 
 The last few months, I've been obsessed with [Ben Eater](https://eater.net/)'s series where he builds an 8-bit CPU, video card, and 6502 computer using breadboards. He makes kits available for purchase, but I wanted to do my own thing. As I learned more about integrated circuits, it seemed like a clock would be a fun project--not too challenging, but I'd still learn plenty. It's easy to make a clock from an Arduino or other microcontroller, but making it from integrated circuits is a little (lot) harder. Instead of writing a few lines of code to handle ticking and keeping track of time, I'm relying on discrete logic signals propagating through larger circuits.
 
-Shout-out to Gislain Benoit who deadbugged [a clock](https://techno-logic-art.com/clock.htm) from just transistors, resistors, and capacitors!
+Shout-out to Ghislain Benoit who deadbugged [a clock](https://techno-logic-art.com/clock.htm) from just transistors, resistors, and capacitors!
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
@@ -19,7 +19,7 @@ Shout-out to Gislain Benoit who deadbugged [a clock](https://techno-logic-art.co
     </div>
 </div>
 <div class="caption">
-    Credit to Gislain Benoit
+    Credit to Ghislain Benoit
 </div>
 
 I found [this video](https://www.youtube.com/watch?v=0hwWnPxKU14) from bigclivedotcom where he walks through soldering an [IC clock kit](https://www.aliexpress.us/item/3256805867230474.html?) he found on AliExpress. I realized that it would be very helpful to have functional hardware in my hands before I designed any sort of schematic. Clive gave a link to the kit he used, and it was only $5! I picked up three kits because the cost of the bundled ICs and displays was actually lower than sourcing the individual components for my own future designs. I also expected to break a component or two, and I did. It showed up looking like this:
@@ -63,7 +63,7 @@ When I hooked it up to a 5V power supply, it worked immediately! The controls ar
 
 
 
-At this point, I was very happy with how this looked--I just needed a way to display it! Some time in Fusion led to this design. The base is pretty simple. A circular hole in the base lets the USB cable pass through. The rectangular cutout that the clock rests on is so the through-hole components have enough space. The cover is laser-cut acrylic. 
+At this point, I was very happy with how this looked--I just needed a way to display it! Some time in Fusion 360 led to this design. The base is pretty simple. A circular hole in the base lets the USB cable pass through. The rectangular cutout that the clock rests on is so the through-hole components have enough space. The cover is laser-cut acrylic. 
 
 
 <div class="row mt-5">

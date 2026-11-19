@@ -8,7 +8,7 @@ category:
 related publications: false
 ---
 
-I built an ADS-B ground station on my dorm balcony--behind restrictive campus WiFi and in Houston heat--using a Pi Zero 2 W, a DIY quarter-wave antenna, and Cloudflare Tunnels and Tailscale. I increased message rate from ~5 to ~750 msg/s, and it now tracks aircraft from Austin to Louisiana.
+I built an ADS-B ground station on my dorm balcony--behind restrictive campus WiFi and in Houston heat--using a Pi Zero 2 W, a DIY quarter-wave antenna, and Cloudflare Tunnel and Tailscale. I increased message rate from ~5 to ~750 msg/s, and it now tracks aircraft from Austin to Louisiana.
 
 
 <div class="map-facade" id="mapContainer" onclick="loadMap()" role="button" tabindex="0" onkeydown="if(event.key === 'Enter') loadMap()">
@@ -94,7 +94,7 @@ You can view the live feed in its own tab [here](https://adsb.wilsonharper.net/?
 
 ## Motivation
 
-I've been wanting to feed data to ADS-B aggregators and get some experience with Raspberry Pis as always-on computers. ADS-B is the system aircraft use to broadcast GPS, altitude, and speed. Aggregators like FlightRadar24 rely on volunteer feeders to collect this 1090 MHz data. I wanted to build a node for that network.
+I've been wanting to feed data to ADS-B aggregators and get some experience with Raspberry Pis as always-on computers. ADS-B is the system aircraft use to broadcast GPS, altitude, and speed. Aggregators like Flightradar24 rely on volunteer feeders to collect this 1090 MHz data. I wanted to build a node for that network.
 
 As I decided on what parts to purchase, I kept a few factors in mind:
 
@@ -115,7 +115,7 @@ I also noticed a lack of documentation online explaining why specific design dec
 
 With that in mind, here's my bill of materials:
 
-- [A 2832U-based Software-defined Radio](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Defined/dp/B0CD745394)  
+- [An RTL2832U-based Software-defined Radio](https://www.amazon.com/RTL-SDR-Blog-RTL2832U-Software-Defined/dp/B0CD745394)  
     I went with the RTL-SDR Blog V4. The V4 runs cooler than the well-known Blog V3.
 - [Raspberry Pi Zero 2 W Kit](https://www.amazon.com/Raspberry-Pi-Zero-WH-Kit/dp/B0DRRDJKDV)  
     The Pi Zero 2 W has low power consumption, leading to less heat. It has WiFi and just one USB-OTG port--that's all I need! The kit came with a heatsink and USB + HDMI adapters. 
@@ -181,15 +181,15 @@ However, signals travel slower in copper wire than in a vacuum. With this insula
     </div>
 </div>
 
-If the four radials were flat, they would have an impedance of about 35 Ohms. By bending them to 45 degrees, their impedance is about 50 Ohms. This matches the 50 Ohm standard of the coax and SDR, minimizing reflections.
+If the four radials were flat, they would have an impedance of about 35 ohms. By bending them to 45 degrees, their impedance is about 50 ohms. This matches the 50-ohm standard of the coax and SDR, minimizing reflections.
 
 ---
 ## Software
 
-I flashed the Pi with [ADSB.im](https://adsb.im/home). This feeder image is fairly easy to set up and can simultaneously feed several aggregators. ADS-B signals are decoded using [readsb](https://github.com/wiedehopf/readsb). The map interface is [tar1090](https://github.com/wiedehopf/tar1090), and the graphs are from [graphs1090](https://github.com/wiedehopf/graphs1090).
+I flashed the Pi with [adsb.im](https://adsb.im/home). This feeder image is fairly easy to set up and can simultaneously feed several aggregators. ADS-B signals are decoded using [readsb](https://github.com/wiedehopf/readsb). The map interface is [tar1090](https://github.com/wiedehopf/tar1090), and the graphs are from [graphs1090](https://github.com/wiedehopf/graphs1090).
 
 
-Initial config on Rice WiFi was a challenge, though. ADSB.im is meant to run headlessly, and config is done via a localhost website. Because Rice's WiFi does not support peer-to-peer connections, I set it up by first connecting both the Pi and my laptop to my phone's hotspot, but I needed a better strategy for long-term use. 
+Initial config on Rice WiFi was a challenge, though. adsb.im is meant to run headlessly, and config is done via a localhost website. Because Rice's WiFi does not support peer-to-peer connections, I set it up by first connecting both the Pi and my laptop to my phone's hotspot, but I needed a better strategy for long-term use. 
 
 The solution was Tailscale; I treat the Pi as a node on a private mesh network. Since I cannot SSH locally (due to client isolation), I SSH over the Tailscale interface. This allows me to update configurations or view the raw tar1090 interface securely from my laptop anywhere in the world, without exposing port 22 to the open web. I initially attempted to use Tailscale Funnels for public access to keep things simple. However, I found the performance on the Pi Zero to be sluggish--it just couldn't handle more than a few requests at once.
 
@@ -291,7 +291,7 @@ Range has also clearly skyrocketed, and I've been able to occasionally see aircr
     </div>
 </div>
 
-Houston is still quite cold, but it's great to see the CPU stay under 50 degrees C. I had to enable ZRAM memory compression to improve stability. It's sitting around 25% CPU utilization. It's only using about 4 GB of space on the MicroSD card. 
+Houston is still quite cold, but it's great to see the CPU stay under 50 degrees C. I had to enable zram memory compression to improve stability. It's sitting around 25% CPU utilization. It's only using about 4 GB of space on the MicroSD card. 
 
 ---
 
@@ -328,7 +328,7 @@ Filtering for military aircraft reveals more than I expected. There are plenty o
 
 ## Displaying the Info
 
-I recently found a 10.5" 1080p monitor for free in Rice's [OEDK](https://oedk.rice.edu/). I've been looking for a project to use it in, and this was the perfect chance. I hooked up a Raspberry Pi 4 running Chromium in Kiosk Mode, wrote a few autostart scripts, and now the student club [Rice Flight](https://www.aiaa.rice.edu/riceflight.html) has a live view of nearby aircraft! The system restarts every night and reloads the website every three hours. It also auto-selects the nearest aircraft and displays a picture of it if available.
+I recently found a 10.5" 1080p monitor for free in Rice's [OEDK](https://oedk.rice.edu/). I've been looking for a project to use it in, and this was the perfect chance. I hooked up a Raspberry Pi 4 running Chromium in kiosk mode, wrote a few autostart scripts, and now the student club [Rice Flight](https://www.aiaa.rice.edu/riceflight.html) has a live view of nearby aircraft! The system restarts every night and reloads the website every three hours. It also auto-selects the nearest aircraft and displays a picture of it if available.
 
 
 <div class="row justify-content-sm-center">

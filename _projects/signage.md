@@ -16,7 +16,7 @@ In Martel Parliament, it's fairly easy to get a money request passed if it's und
 
 My first step was choosing hardware. I have [some experience]({{ '/projects/adsb/#displaying-the-info' | relative_url }}) with using Raspberry Pis for displaying live ADS-B data, so that was my first idea. The big draw with a Pi is that there are many closed-source signage OSes, but if those ever stop being an option, I can make my own system.
 
-The Pi 4 I used for that ADS-B display had 4GB of RAM, and I  didn't want to go below that. Unfortunately, the Pi 4 4GB is very expensive right now--$75 is a tough sell, and we'd still need a case.
+The Pi 4 I used for that ADS-B display had 4GB of RAM, and I didn't want to go below that. Unfortunately, the Pi 4 4GB is very expensive right now--$75 is a tough sell, and we'd still need a case.
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
@@ -65,7 +65,7 @@ Mounting it behind the TV took some zip-ties, and that was about it. It looks a 
 
 ## Software
 
-My highest priority on the software side was making sure it was resilient, low-maintenance, and easy-to-use. My first thought was making a Google Slides presentation that the Pi would display using Chromium in kiosk mode. A cron script could automate startup and refreshes. I think this would have worked alright, but I realized the [Yodeck system](https://www.yodeck.com/) does a better job of this and is free for one screen. Aside from making it possible to control the Pi from a web interface, it caches files for offline playback, handles updates better, and can control the TV though HDMI-CEC. This feature allows me to control when the TV is on and off--and, if someone turns it off for a game night, it'll start right back up the next morning. Unlike my ADS-B feeder, Yodeck doesn't need peer-to-peer LAN communications for control, making everything easier on client-isolating WiFi.
+My highest priority on the software side was making sure it was resilient, low-maintenance, and easy-to-use. My first thought was making a Google Slides presentation that the Pi would display using Chromium in kiosk mode. A cron script could automate startup and refreshes. I think this would have worked alright, but I realized the [Yodeck system](https://www.yodeck.com/) does a better job of this and is free for one screen. Aside from making it possible to control the Pi from a web interface, it caches files for offline playback, handles updates better, and can control the TV through HDMI-CEC. This feature allows me to control when the TV is on and off--and, if someone turns it off for a game night, it'll start right back up the next morning. Unlike my ADS-B feeder, Yodeck doesn't need peer-to-peer LAN communications for control, making everything easier on client-isolating WiFi.
 
 If Yodeck ever changes their pricing, it won't be hard to switch to a different solution. That's why I'm so happy we've gone with a Pi, and all it takes to put content up there is modifying a Google Slides presentation.
 

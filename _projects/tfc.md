@@ -15,7 +15,7 @@ published: true
     </div>
 </div>
 
-Six months ago, I built a [flight computer]({{ '/projects/avio/' | relative_url }}) in two weeks. Using what I've learned from that project, I've designed a new flight computer that I believe to be the world's smallest, measuring just 10 x 10mm. The current record seems to be a [16 x 17mm computer](https://www.youtube.com/watch?v=5TTcbMv5tDc) built by Joe at BPS.Space. Mine is 36% the size of his. Joe's build was focused on a compact way to achieve thrust-vector control. Mine is designed to go on more traditional hobby rockets, so I haven't included PWM servo outputs--giving me space to add 16 MB of onboard flash.
+Six months ago, I built a [flight computer]({{ '/projects/avio/' | relative_url }}) in two weeks. Using what I've learned from that project, I've designed a new flight computer that I believe to be the world's smallest, measuring just 10 x 10 mm. The current record seems to be a [16 x 17 mm computer](https://www.youtube.com/watch?v=5TTcbMv5tDc) built by Joe at BPS.space. Mine is 36% the size of his. Joe's build was focused on a compact way to achieve thrust-vector control. Mine is designed to go on more traditional hobby rockets, so I haven't included PWM servo outputs--giving me space to add 16 MB of onboard flash.
 
 I plan to fabricate and assemble it soon, and this page will be updated as it progresses.
 

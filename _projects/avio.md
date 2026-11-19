@@ -8,7 +8,7 @@ category:
 related publications: false
 ---
 
-*Work-in-progress 10 x 10mm V2 [here]({{ '/projects/tfc/' | relative_url }}).*
+*Work-in-progress 10 x 10 mm V2 [here]({{ '/projects/tfc/' | relative_url }}).*
 
 I had exactly two weeks to design and build a custom flight computer for my Level 1 high-power certification rocket. I wanted an RP2040-based flight computer transmitting telemetry data over LoRa, logging at 20 Hz to a μSD card, and updating a live 3D tracker in Google Earth. Here's how I went from a cardboard prototype to flying the avionics system in 14 days.
 
@@ -57,7 +57,7 @@ I'd like to thank [Brandon Shin](https://www.linkedin.com/in/brandon-shin-46b670
 
 The first step was naturally making a list of goals for this flight computer. The most basic system would act as an altimeter, logging apogee. I knew I could go further than that, though. I also wanted to log this data over time and record GPS location/altitude, acceleration, and temperature. A μSD card makes sense for this quantity of information--in fact, my final `.csv` file was ~15 MB. This wouldn't fit on many MCU flash chips. The radio bandwidth was fairly low, and updated at 1 Hz, but with an onboard μSD card, I expected to log at speeds around 20 Hz. 
 
-The stretch goal was live data visualization on my laptop. For an L1 cert that doesn't fly all that high, it's certainly overkill. Still, getting such a system working would be great experience for when I eventually build my level 2 certification rocket. Also, it's just plain cool!
+The stretch goal was live data visualization on my laptop. For an L1 cert that doesn't fly all that high, it's certainly overkill. Still, getting such a system working would be great experience for when I eventually build my Level 2 certification rocket. Also, it's just plain cool!
 
 Notably, this flight computer does not handle separation charges and has no way to physically interact with the world. After several passive flights, I'd be interested in implementing charge deployment--with a commercial off-the-shelf backup, of course. The data my flight computer collects would be useful for running simulations to be sure a future recovery system works safely. 
 
@@ -101,7 +101,7 @@ Here's my bill of materials:
     915 MHz radio was the obvious choice here. It's a standard in COTS flight computers; the other standard is 435 MHz. 435 MHz radio requires an amateur radio license, and while I do have one, using 915 MHz is just easier. Also, a 435 MHz quarter-wave antenna is naturally about twice the length of a 915 MHz antenna, so I like the compactness of this choice. It uses SPI. 
 - [Adafruit Feather RP2040 with RFM95 LoRa](https://www.adafruit.com/product/5714)  
     Used for the ground station. It features the same RFM95 radio as the rocket's module, and having the radio built directly onto the MCU board is convenient.
-- N-Type 4-Hole Bulkhead and N-Type to uFL Cable  
+- N-Type 4-Hole Bulkhead and N-Type to U.FL Cable  
     I planned to make a custom 915 MHz ground plane antenna, and these parts are what individual solid-core wires attach to. Similar bulkheads will work fine. 
 - 1000 mAh 3.7V LiPo  
     I bought a generic unit off Amazon and it works fine. However, keep in mind the polarity--the JST connector on the battery was actually reversed from what the RP2040 Adalogger expects. It was a quick but crucial fix.
@@ -129,7 +129,7 @@ Overstability increases the rocket's predisposition to weathercocking--pitching 
     </div>
 </div>
 
-You can find the OpenRocket model [here]({{ '/assets/img/l1/L1 Cert with Avionics - Wide.ork' | relative_url }}). The rest of the design was simpler. The body tubes are heavy-duty cardboard, and the fins are laser-cut plywood. The nosecone is 3D-printed PLA. The rest is lots of epoxy.
+You can find the OpenRocket model [here]({{ '/assets/img/l1/L1 Cert with Avionics - Wide.ork' | relative_url }}). The rest of the design was simpler. The body tubes are heavy-duty cardboard, and the fins are laser-cut plywood. The nose cone is 3D-printed PLA. The rest is lots of epoxy.
 
 <div class="row mt-5">
     <div class="col-sm mt-3 mt-md-0">
@@ -304,7 +304,7 @@ Because I wanted a structure that wasn't too reliant on the cardboard body tubes
 
 ##### Upper Body Tube Assembly
 
-The basic idea with the upper body tube is that the avionics bay slides on rails attached to the nose cone, which then slides in the packing tube.
+The basic idea with the upper body tube is that the avionics bay slides on rails attached to the nose cone, which then slides in the upper body tube.
 
 
 
@@ -390,7 +390,7 @@ This was my first time using a Cricut. I don't love its software, but it's hard 
 
 ## Ground Station
 
-The ground station was a fun mini-project. I used the same design (and spare parts) from my 1090 MHz ground plane antenna I built for my [ADS-B feeder]({{ '/projects/adsb' | relative_url }}). Each wire is just a few millimeters longer (80 mm total) to account for the longer wavelength of the lower frequency 915 MHz LoRa. 
+The ground station was a fun mini-project. I used the same design (and spare parts) from my 1090 MHz ground plane antenna I built for my [ADS-B feeder]({{ '/projects/adsb' | relative_url }}). Each wire is just a few millimeters longer (80 mm total) to account for the longer wavelength of the lower-frequency 915 MHz LoRa. 
 
 
 <div class="row mt-5">
@@ -426,7 +426,7 @@ The flight computer code consists of a big loop that:
 
 Rather than using a big loop with `delay()`, the flight computer uses `millis()` to handle those separate tasks at different frequencies. 
 
-Every 50 ms, the RP2040 polls the BMP390 barometer, the LSM6DSOX accelerometer, and the GPS module. It constructs a comma-separated string containing mission time, absolute pressure altitude, GPS altitude, latitude, longitude, vertical velocity, temperature, and acceleration. This string is  written to the μSD card.
+Every 50 ms, the RP2040 polls the BMP390 barometer, the LSM6DSOX accelerometer, and the GPS module. It constructs a comma-separated string containing mission time, absolute pressure altitude, GPS altitude, latitude, longitude, vertical velocity, temperature, and acceleration. This string is written to the μSD card.
 
 While logging happens 20 times a second, transmitting data that fast over LoRa would take too much bandwidth. At 1 Hz, the flight computer sends the most recent set of data as a `char` array. To save bandwidth further, this sent data includes only GPS latitude and longitude, barometric altitude, and satellite count. Additionally, the data on the μSD card is not safe until it is flushed--otherwise, it will disappear on power loss or disconnection. Calling `flush()` every so often is necessary to fully write the data. 
 
@@ -437,7 +437,7 @@ While logging happens 20 times a second, transmitting data that fast over LoRa w
     </div>
 </div>
 
-While most of the components in my avionics bay use very little power, the μSD card and radio (transmitting at 20 dBm) take a bit more. I've offset flushing the μSD card and transmitting to avoid brownouts. This is also why I added the capacitor to the radio earlier! Specifically, the radio transmits on the second (e.g., 1000ms, 2000ms), while the SD card flushes to disk on the half-second (e.g., 1500ms, 2500ms).
+While most of the components in my avionics bay use very little power, the μSD card and radio (transmitting at 20 dBm) take a bit more. I've offset flushing the μSD card and transmitting to avoid brownouts. This is also why I added the capacitor to the radio earlier! Specifically, the radio transmits on the second (e.g., 1000 ms, 2000 ms), while the SD card flushes to disk on the half-second (e.g., 1500 ms, 2500 ms).
 
 I dealt with an issue for ages where the loop would hang after 5-30 minutes. A few things could cause this--a memory leak, an I2C issue, or many cosmic ray bit flips (/s). Because I was short on time, it was easier to implement a watchdog. `watchdog_enable(2000, 1)` starts a high-level timer that reboots the RP2040 after 2 seconds unless the watchdog is fed (yes, that's the actual term). In the main loop, `watchdog_update()` keeps the dog happy. While it's absolutely true that this is not an ideal solution, my code is lightweight enough that it reboots nearly instantly.
 
@@ -514,7 +514,7 @@ Pretty cool, eh?
 
 The live telemetry worked! It lost GPS lock for a bit during ascent, but I was able to monitor altitude and apogee in real time--I instantly knew the rocket hit 1680 feet!
 
-Shortly after apogee, it lost contact and only retransmitted once during the rest of the descent. I don't know why--my guess is the shielding from the threaded rods plus the vertically-polarized antenna was just too much. Specifically, during apogee, the flight computer antenna pivots to be horizontal, no longer matching the vertically-polarized ground station antenna.
+Shortly after apogee, it lost contact and only retransmitted once during the rest of the descent. I don't know why--my guess is the shielding from the threaded rods plus the vertically polarized antenna was just too much. Specifically, during apogee, the flight computer antenna pivots to be horizontal, no longer matching the vertically polarized ground station antenna.
 
 Using the logged data, I'm able to replay the flight in the mission control GUI:
 
@@ -564,7 +564,7 @@ The acceleration data is interesting:
     </div>
 </div>
 
-As it's sitting on the pad, it registers 9.5 m/s² of acceleration. This is pretty close to the expected value of 9.81 m/s². During powered ascent, Accel_Y seems to max out at 39.18 m/s². Dividing that by 9.81 m/s² yields almost exactly 4g. OpenRocket estimates a maximum acceleration of 128 m/s², or 13.1 Gs. Interesting! 
+As it's sitting on the pad, it registers 9.5 m/s² of acceleration. This is pretty close to the expected value of 9.81 m/s². During powered ascent, Accel_Y seems to max out at 39.18 m/s². Dividing that by 9.81 m/s² yields almost exactly 4g. OpenRocket estimates a maximum acceleration of 128 m/s², or 13.1g. Interesting! 
 
 I've done some research and have learned that, by default, the accelerometer maxes out at ±4g, which perfectly matches its clipping behavior. I had hit the sensor's default ceiling! For future versions, I'll have to change that config and enable it to read up to ±16g.
 
@@ -582,7 +582,7 @@ Still, I see clear ways to improve:
 - Fix whatever bug required the watchdog
 - Create a two-way link so I can enable or disable logging remotely
 
-I've started work on my Level 2 Certification rocket and plan to launch soon. I'll integrate this same telemetry system. Because of the sled design, it's easy to make new bulkheads and slide this on the rails. Over the long-term, I plan to keep iterating on my design--maybe make it into a custom PCB or, once reliability is near-perfect, allow it to control black powder charges for parachute deployment. That's a project for another day.
+I've started work on my Level 2 certification rocket and plan to launch soon. I'll integrate this same telemetry system. Because of the sled design, it's easy to make new bulkheads and slide this on the rails. Over the long-term, I plan to keep iterating on my design--maybe make it into a custom PCB or, once reliability is near-perfect, allow it to control black powder charges for parachute deployment. That's a project for another day.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">

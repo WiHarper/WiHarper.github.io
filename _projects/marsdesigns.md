@@ -9,7 +9,7 @@ related_publications: false
 published: false
 ---
 
-At the UW Aerospace Scholars program, I served as Mars Rover Project Lead, developing outlines and designs for multiple Mars rovers. We presented this research on viable manned Mars vehicle to industry professionals. We created a multi-stage robotic and manned mobility architecture for Martian canyon excavation and habitat preparation. We focused on power redundancy, structural durability, and autonomous logistics.
+At the UW Aerospace Scholars program, I served as Mars Rover Project Lead, developing outlines and designs for multiple Mars rovers. We presented this research on viable manned Mars vehicles to industry professionals. We created a multi-stage robotic and manned mobility architecture for Martian canyon excavation and habitat preparation. We focused on power redundancy, structural durability, and autonomous logistics.
 
   
 ---
@@ -31,7 +31,7 @@ At the UW Aerospace Scholars program, I served as Mars Rover Project Lead, devel
 **Details:**
 * Mission Profile: Arrives on the second rocket to provide long-range exploration and habitat docking capabilities.
 * Powered and propelled by primarily photovoltaic cells with backup nuclear power.
-* Nickel Titanium (Nitinol) alloy tires provide extreme terrain durability.
+* Nickel-titanium (Nitinol) alloy tires provide extreme terrain durability.
 
 
 **Life Support & Logistics:**

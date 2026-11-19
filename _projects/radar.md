@@ -12,7 +12,7 @@ related_publications: false
 
 ## What is Synthetic Aperture Radar?
 * Collects data by taking multiple snapshots of an area/surroundings to recreate a model 
-* Unlike other radar modes, SAR can be used for detailed 2-D modeling 
+* Unlike other radar modes, SAR can be used for detailed 2D modeling 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -51,7 +51,7 @@ related_publications: false
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image6.png" alt="Diagram of cross range and pixel size formulas for a radar image" title=" " class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/radar/from_slides/image6.png" alt="Diagram of crossrange and pixel size formulas for a radar image" title=" " class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -172,7 +172,7 @@ related_publications: false
 
 ### Experiment 2: Movement
 
-**Question:** How does a moving object’s speed affect its appearance on a SAR image? 
+**Question:** How does a moving object's speed affect its appearance on a SAR image? 
 
 **Hypothesis:** The faster a target moves, the weaker it will appear on a SAR image. 
 
@@ -252,8 +252,8 @@ related_publications: false
 
 * We demonstrated the ability of using SAR as a high-resolution 2D imaging method that overcomes traditional radar limitations. Using our small radar, we were able to create a larger synthetic aperture that captured much more detail.
 * Strip Map and Spotlight Modes: We focused primarily on the Strip Map mode, using it to create maps that could be confirmed with visual inspection and satellite imagery.
-* We determined that shadowing and blocking properties vary depending on an object’s density or metallic properties. It was possible to obscure objects behind more reflective objects, although our SAR had some ability to “see around” objects.
-* Fast movement blurs the resulting image, creating smears and less useful data. Slower—or no—motion results in better clarity.
+* We determined that shadowing and blocking properties vary depending on an object's density or metallic properties. It was possible to obscure objects behind more reflective objects, although our SAR had some ability to "see around" objects.
+* Fast movement blurs the resulting image, creating smears and less useful data. Slower--or no--motion results in better clarity.
 * Aerial data was best collected at an angle. Scanning from 45 degrees down from horizontal created data that had a better contrast between foreground objects and the environment compared to scanning top-down. It also reduced shadowing compared to collecting data from a horizontal viewpoint.
 
 

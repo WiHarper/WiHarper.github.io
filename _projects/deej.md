@@ -48,9 +48,6 @@ I built this volume mixer to more easily control how loud different applications
 
 
 
-<div class="caption">
-    Design and assembly
-</div>
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/deej/PXL_20240421_034149214.PORTRAIT.jpg" alt="Finished mixer with five sliders and five buttons on a desk" title=" " class="img-fluid rounded z-depth-1" %}
